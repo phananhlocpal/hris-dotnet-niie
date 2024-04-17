@@ -22,6 +22,7 @@ namespace HRMngt.Model
         UserModel GetById(string id);
 
         string RandomPasswords();
+        string GetNameDepartmentById(string id);
 
         void SendMail(string password, string userID);
 

@@ -79,7 +79,7 @@ namespace HRMngt.Views.Dialogs
                 connection.Open();
           
                 command.Connection = connection;
-                command.CommandText = "Select name from users where position = @Pos";
+                command.CommandText = "Select name from users where roles = @Pos";
                 command.Parameters.Add("@Pos", SqlDbType.Char).Value = pos;
                 List<string> items = new List<string>();
                 using (var reader = command.ExecuteReader())
@@ -96,5 +96,14 @@ namespace HRMngt.Views.Dialogs
             }
         }
 
+        private void bunifuPictureBox1_Click(object sender, EventArgs e)
+        {
+         
+        }
+
+        private void btnCancle_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

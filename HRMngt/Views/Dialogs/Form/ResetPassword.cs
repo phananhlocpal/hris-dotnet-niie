@@ -19,10 +19,7 @@ namespace HRMngt.Views.Dialogs
             InitializeComponent();
         }
 
-        private void kryptonLabel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -65,6 +62,11 @@ namespace HRMngt.Views.Dialogs
                 MessageBox.Show("Bạn nhập sai mật khẩu -_-");
             }
             
+        }
+
+        private void bunifuPictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

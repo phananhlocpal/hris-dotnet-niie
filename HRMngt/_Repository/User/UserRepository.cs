@@ -16,7 +16,7 @@ namespace HRMngt._Repository
 {
     public class UserRepository : IUserRepository
     {
-        private string connectionString = BaseRepository.connectionString;
+        string connectionString = "Data Source=localhost;Initial Catalog=HR;Integrated Security=True;Encrypt=False;";
         // Contructor
         public UserRepository()
         {
@@ -24,36 +24,43 @@ namespace HRMngt._Repository
         }
         public void Add(UserModel userModel)
         {
-            using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand())
+            try
             {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = "insert into users (name, email, phone, address, birthday, deal_salary, username, password, managerID, departmentID, on_boarding, close_date, scan_contract, ava, sex, status, position, contract_type, photo, roles) " +
-                    "values(@Name, @Email, @Phone, @Address, @Birthday, @Deal_salary, @Username, @Password, @ManagerID, @DepartmentID, @On_boarding, @Close_date, @Scan_contract, @Ava, @Sex, @Status, @Position, @Contract_type, @Photo, @Roles)";
-                command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = userModel.Name;
-                command.Parameters.Add("@Email", SqlDbType.VarChar).Value = userModel.Email;
-                command.Parameters.Add("@Phone", SqlDbType.VarChar, 10).Value = userModel.Phone;
-                command.Parameters.Add("@Address", SqlDbType.NVarChar).Value = userModel.Address;
-                command.Parameters.Add("@Birthday", SqlDbType.DateTime).Value = userModel.Birthday;
-                command.Parameters.Add("@Deal_salary", SqlDbType.Int).Value = userModel.Salary;
-                command.Parameters.Add("@Username", SqlDbType.VarChar).Value = userModel.Username;
-                command.Parameters.Add("@Password", SqlDbType.VarChar).Value = userModel.Password;
-                command.Parameters.Add("@ManagerID", SqlDbType.Char).Value = userModel.ManagerID;
-                command.Parameters.Add("@DepartmentID", SqlDbType.Char).Value = userModel.DepartmentID;
-                command.Parameters.Add("@On_boarding", SqlDbType.DateTime).Value = userModel.On_boarding;
-                command.Parameters.Add("@Close_date", SqlDbType.DateTime).Value = userModel.Close_date;
-                command.Parameters.Add("@Scan_contract", SqlDbType.NVarChar).Value = userModel.Scan_contract;
-                command.Parameters.Add("@Ava", SqlDbType.VarChar).Value = userModel.Ava;
-                command.Parameters.Add("@Sex", SqlDbType.NVarChar).Value = userModel.Sex;
-                command.Parameters.Add("@Status", SqlDbType.NVarChar).Value = userModel.Status;
-                command.Parameters.Add("@Position", SqlDbType.NVarChar).Value = userModel.Position;
-                command.Parameters.Add("@Contract_type", SqlDbType.NVarChar).Value = userModel.Contract_type;
-                command.Parameters.Add("@Photo", SqlDbType.Image).Value = userModel.Photo;
-                command.Parameters.Add("@Roles", SqlDbType.NVarChar).Value = userModel.Roles;
+                using (var connection = new SqlConnection(connectionString))
+                using (var command = new SqlCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = "insert into users (name, email, phone, address, birthday, deal_salary, username, password, managerID, departmentID, on_boarding, close_date, scan_contract, ava, sex, status, position, contract_type, photo, roles) " +
+                        "values(@Name, @Email, @Phone, @Address, @Birthday, @Deal_salary, @Username, @Password, @ManagerID, @DepartmentID, @On_boarding, @Close_date, @Scan_contract, @Ava, @Sex, @Status, @Position, @Contract_type, @Photo, @Roles)";
+                    command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = userModel.Name;
+                    command.Parameters.Add("@Email", SqlDbType.VarChar).Value = userModel.Email;
+                    command.Parameters.Add("@Phone", SqlDbType.VarChar, 10).Value = userModel.Phone;
+                    command.Parameters.Add("@Address", SqlDbType.NVarChar).Value = userModel.Address;
+                    command.Parameters.Add("@Birthday", SqlDbType.DateTime).Value = userModel.Birthday;
+                    command.Parameters.Add("@Deal_salary", SqlDbType.Int).Value = userModel.Salary;
+                    command.Parameters.Add("@Username", SqlDbType.VarChar).Value = userModel.Username;
+                    command.Parameters.Add("@Password", SqlDbType.VarChar).Value = userModel.Password;
+                    command.Parameters.Add("@ManagerID", SqlDbType.Char).Value = userModel.ManagerID;
+                    command.Parameters.Add("@DepartmentID", SqlDbType.Char).Value = userModel.DepartmentID;
+                    command.Parameters.Add("@On_boarding", SqlDbType.DateTime).Value = userModel.On_boarding;
+                    command.Parameters.Add("@Close_date", SqlDbType.DateTime).Value = userModel.Close_date;
+                    command.Parameters.Add("@Scan_contract", SqlDbType.NVarChar).Value = userModel.Scan_contract;
+                    command.Parameters.Add("@Ava", SqlDbType.VarChar).Value = userModel.Ava;
+                    command.Parameters.Add("@Sex", SqlDbType.NVarChar).Value = userModel.Sex;
+                    command.Parameters.Add("@Status", SqlDbType.NVarChar).Value = userModel.Status;
+                    command.Parameters.Add("@Position", SqlDbType.NVarChar).Value = userModel.Position;
+                    command.Parameters.Add("@Contract_type", SqlDbType.NVarChar).Value = userModel.Contract_type;
+                    command.Parameters.Add("@Photo", SqlDbType.Image).Value = userModel.Photo;
+                    command.Parameters.Add("@Roles", SqlDbType.NVarChar).Value = userModel.Roles;
 
-                command.ExecuteNonQuery();
-                connection.Close();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Thêm nhân viên hiện tại đang gặp sự cố!, vui lòng thử lại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -61,15 +68,22 @@ namespace HRMngt._Repository
 
         public void Delete(string id)
         {
-            using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand())
+            try
             {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = "delete from users where userID = @Id";
-                command.Parameters.Add("@Id", SqlDbType.Char).Value = id;
-                command.ExecuteNonQuery();
-                connection.Close();
+                using (var connection = new SqlConnection(connectionString))
+                using (var command = new SqlCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = "delete from users where userID = @Id";
+                    command.Parameters.Add("@Id", SqlDbType.Char).Value = id;
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Nhân viên hiện tại đang xuất hiện ở bảng khác!, vui lòng không xóa", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -186,7 +200,6 @@ namespace HRMngt._Repository
         public string GetNameById(string id)
         {
             string name = "";
-            MessageBox.Show($"{id}");
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
             {
@@ -209,6 +222,28 @@ namespace HRMngt._Repository
             return name;
         }
 
+        public string GetNameDepartmentById(string id)
+        {
+            string name = "";
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "Select name from department where departmentID = @Id";
+                command.Parameters.Add("@Id", SqlDbType.Char).Value = id;
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        name = reader[0].ToString();
+                    }
+                }
+                connection.Close();
+            }
+
+            return name;
+        }
         public UserModel GetById(string id)
         {
             var userModel = new UserModel();

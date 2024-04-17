@@ -16,7 +16,7 @@ namespace HRMngt._Repository
         IEnumerable<DepartmentModel> GetAll();
         IEnumerable<DepartmentModel> GetByDepartmentName(string name);
         
-        IEnumerable<DepartmentModel> GetByStatus(string status);
+        IEnumerable<DepartmentModel> GetByAddress(string address);
         DepartmentModel GetById(string id);
     }
 }

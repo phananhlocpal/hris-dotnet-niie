@@ -1,4 +1,5 @@
-﻿using HRMngt.Views.User;
+﻿using HRMngt.Views.Dialogs;
+using HRMngt.Views.User;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,6 +46,12 @@ namespace HRMngt.Views
         private void btnCheckin_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCheckin_Click_1(object sender, EventArgs e)
+        {
+            CheckinDialog checkin = new CheckinDialog();
+            checkin.Show();
         }
     }
 }

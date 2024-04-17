@@ -20,22 +20,53 @@ namespace HRMngt.Views
 {
     public partial class LoginView : Form, ILoginView
     {
-        SqlCommand cmd;
-        SqlConnection conn;
-        SqlDataReader dr;
+        public static int count = 0;
         public event EventHandler LoginEvent;
+        List<Image> images = new List<Image>();
+        string[] location = new string[25];
 
         public string username { get => txtUserName.Text; set => txtUserName.Text = value; }
         public string password { get => txtPassword.Text; set => txtPassword.Text = value; }
 
+        
+
         public LoginView()
         {
             InitializeComponent();
+            
+            location[0] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_1.jpg";
+            location[1] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_2.jpg";
+            location[2] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_4.jpg";
+            location[3] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_5.jpg";
+            location[4] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_6.jpg";
+            location[5] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_7.jpg";
+            location[6] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_8.jpg";
+            location[7] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_9.jpg";
+            location[8] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_10.jpg";
+            location[9] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_11.jpg";
+            location[10] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_12.jpg";
+            location[11] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_13.jpg";
+            location[12] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_14.jpg";
+            location[13] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_15.jpg";
+            location[14] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_16.jpg";
+            location[15] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_17.jpg";
+            location[16] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_18.jpg";
+            location[17] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_19.jpg";
+            location[18] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_20.jpg";
+            location[19] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_21.jpg";
+            location[20] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_22.jpg";
+            location[21] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_23.jpg";
+            location[22] = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_user_24.jpg";
+            tounage();
             RunEvent();
+
         }
         public void RunEvent()
         {
-            btnLogin.Click += delegate {LoginEvent?.Invoke(this, EventArgs.Empty); };
+            btnLogin.Click += delegate {
+                LoginEvent?.Invoke(this, EventArgs.Empty);
+                count++;
+            };
         }
         private void lbForgotPass_Click(object sender, EventArgs e)
         {
@@ -44,15 +75,73 @@ namespace HRMngt.Views
             forgot.ShowDialog();
         }
 
-        private void checkBoxShowPass_CheckedChanged(object sender, EventArgs e)
+        public void EnableLogin(bool type = true)
         {
-            if(checkBoxShowPass.Checked)
+            txtUserName.Enabled = type;
+            txtPassword.Enabled = type;
+            btnLogin.Enabled = type;
+        }
+         
+
+        private void bunifuPictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void hidePassword_Click(object sender, EventArgs e)
+        {
+            if (txtPassword.PasswordChar == '•')
             {
-                txtPassword.UseSystemPasswordChar = true;
+                showPassword.BringToFront();
+                txtPassword.PasswordChar = '\0';
             }
-            if(!checkBoxShowPass.Checked) {
-                txtPassword.UseSystemPasswordChar = false;
+        }
+        private void showPassword_Click(object sender, EventArgs e)
+        {
+            
+            if (txtPassword.PasswordChar == '\0')
+            {
+                hidePassword.BringToFront();
+                txtPassword.PasswordChar = '•';
             }
+        }
+        private void tounage()
+        {
+            for (int i = 0; i < 23; i++)
+            {
+                Bitmap bitmap = new Bitmap(location[i]);
+                images.Add(bitmap);
+            }
+            images.Add(Properties.Resources.textbox_user_24);
+        }
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (txtUserName.Text.Length > 0 && txtUserName.Text.Length <= 15)
+            {
+                picture.Image = images[txtUserName.Text.Length - 1];
+                picture.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            else if (txtUserName.Text.Length <= 0)
+                picture.Image = Properties.Resources.debut;
+            else
+                picture.Image = images[22];
+        }
+        private void textBox2_Click(object sender, EventArgs e)
+        {
+            Bitmap bmpass = new Bitmap(@"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\animation\textbox_password.png");
+            picture.Image = bmpass;
+        }
+
+        private void textBox1_Click(object sender, EventArgs e)
+        {
+            if (txtUserName.Text.Length > 0)
+                picture.Image = images[txtUserName.Text.Length - 1];
+            else
+                picture.Image = Properties.Resources.debut;
+
+        }
+        private void bunifuPictureBox2_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -8,9 +8,12 @@ namespace HRMngt.Views
 {
     public interface ILoginView
     {
+        
         string username { get; set; }
         string password { get; set; }  
         event EventHandler LoginEvent;
+
+        void EnableLogin(bool type = true);
         void Show();
         void Hide();
     }

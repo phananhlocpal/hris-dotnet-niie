@@ -31,21 +31,36 @@ namespace HRMngt.Presenters
 
         private void LoginEvent(object sender, EventArgs e)
         {
+            int count = Views.LoginView.count;
             string name = view.username;
             string pass = view.password;
             ID_USER = repository.Login(name, pass);
             if (ID_USER != "")
             {
                 UserModel user = repository.GetById(ID_USER);
-                IMainView main = new MainView();
+                IMainView main = new MainView(user);
                 this.view.Hide();
+                
                 presenter = new MainViewPresenter(main, user);
                 MessageBox.Show("Đăng nhập thành công", "Thành công", MessageBoxButtons.OK);
             }
             else
-            {
-                MessageBox.Show("Tài khoản và mật khẩu không đúng !");
+            {        
+                if (count == 3)
+                {
+                    MessageBox.Show("Đã nhập sai quá nhiều lần. Vui lòng thử lại sau.", "Đăng nhập thất bại", MessageBoxButtons.OK);
+                    view.EnableLogin(false);
+                    ClockCountdown clock = new ClockCountdown();
+                    clock.ShowDialog();
+                    view.EnableLogin(true);
+                    Views.LoginView.count = 0;
+                }
+                else
+                {
+                    MessageBox.Show("Tên người dùng hoặc mật khẩu không đúng. Vui lòng thử lại.", "Đăng nhập thất bại", MessageBoxButtons.OK);
+                }
             }
+            
         }
 
     }

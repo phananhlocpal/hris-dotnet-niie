@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbStatus = new System.Windows.Forms.ComboBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DepartmentView));
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            this.cbAddress = new System.Windows.Forms.ComboBox();
             this.cbDepartment = new System.Windows.Forms.ComboBox();
-            this.btnAdd = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.dgvDepartmentList = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,23 +42,24 @@
             this.btnRead = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnDelete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnExcel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.saveExcel = new System.Windows.Forms.SaveFileDialog();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnAdd = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            this.btnExcel = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepartmentList)).BeginInit();
             this.SuspendLayout();
             // 
-            // cbStatus
+            // cbAddress
             // 
-            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbStatus.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.cbStatus.FormattingEnabled = true;
-            this.cbStatus.Location = new System.Drawing.Point(157, 27);
-            this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(142, 24);
-            this.cbStatus.TabIndex = 7;
+            this.cbAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAddress.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.cbAddress.FormattingEnabled = true;
+            this.cbAddress.Location = new System.Drawing.Point(157, 27);
+            this.cbAddress.Name = "cbAddress";
+            this.cbAddress.Size = new System.Drawing.Size(142, 24);
+            this.cbAddress.TabIndex = 7;
             // 
             // cbDepartment
             // 
@@ -67,22 +70,6 @@
             this.cbDepartment.Name = "cbDepartment";
             this.cbDepartment.Size = new System.Drawing.Size(139, 24);
             this.cbDepartment.TabIndex = 6;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(1009, 18);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(85, 33);
-            this.btnAdd.StateCommon.Back.Color1 = System.Drawing.Color.White;
-            this.btnAdd.StateCommon.Back.Color2 = System.Drawing.Color.White;
-            this.btnAdd.StateCommon.Border.Color1 = System.Drawing.Color.White;
-            this.btnAdd.StateCommon.Border.Color2 = System.Drawing.Color.White;
-            this.btnAdd.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnAdd.TabIndex = 5;
-            this.btnAdd.Values.Text = "Tạo";
             // 
             // dgvDepartmentList
             // 
@@ -205,23 +192,6 @@
             this.btnDelete.ReadOnly = true;
             this.btnDelete.Width = 7;
             // 
-            // btnExcel
-            // 
-            this.btnExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcel.Location = new System.Drawing.Point(907, 18);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(85, 33);
-            this.btnExcel.StateCommon.Back.Color1 = System.Drawing.Color.White;
-            this.btnExcel.StateCommon.Back.Color2 = System.Drawing.Color.White;
-            this.btnExcel.StateCommon.Border.Color1 = System.Drawing.Color.White;
-            this.btnExcel.StateCommon.Border.Color2 = System.Drawing.Color.White;
-            this.btnExcel.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnExcel.TabIndex = 8;
-            this.btnExcel.Values.Text = "Xuất excel";
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
-            // 
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -252,6 +222,185 @@
             this.dataGridViewImageColumn3.ReadOnly = true;
             this.dataGridViewImageColumn3.Width = 125;
             // 
+            // btnAdd
+            // 
+            this.btnAdd.AllowAnimations = true;
+            this.btnAdd.AllowMouseEffects = true;
+            this.btnAdd.AllowToggling = false;
+            this.btnAdd.AnimationSpeed = 200;
+            this.btnAdd.AutoGenerateColors = false;
+            this.btnAdd.AutoRoundBorders = false;
+            this.btnAdd.AutoSizeLeftIcon = true;
+            this.btnAdd.AutoSizeRightIcon = true;
+            this.btnAdd.BackColor = System.Drawing.Color.Transparent;
+            this.btnAdd.BackColor1 = System.Drawing.Color.DodgerBlue;
+            this.btnAdd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.BackgroundImage")));
+            this.btnAdd.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnAdd.ButtonText = "Tạo";
+            this.btnAdd.ButtonTextMarginLeft = 0;
+            this.btnAdd.ColorContrastOnClick = 45;
+            this.btnAdd.ColorContrastOnHover = 45;
+            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Default;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btnAdd.CustomizableEdges = borderEdges1;
+            this.btnAdd.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnAdd.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnAdd.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnAdd.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnAdd.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdd.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnAdd.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnAdd.IconMarginLeft = 11;
+            this.btnAdd.IconPadding = 10;
+            this.btnAdd.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAdd.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnAdd.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnAdd.IconSize = 25;
+            this.btnAdd.IdleBorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnAdd.IdleBorderRadius = 1;
+            this.btnAdd.IdleBorderThickness = 1;
+            this.btnAdd.IdleFillColor = System.Drawing.Color.DodgerBlue;
+            this.btnAdd.IdleIconLeftImage = null;
+            this.btnAdd.IdleIconRightImage = null;
+            this.btnAdd.IndicateFocus = false;
+            this.btnAdd.Location = new System.Drawing.Point(930, 12);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnAdd.OnDisabledState.BorderRadius = 1;
+            this.btnAdd.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnAdd.OnDisabledState.BorderThickness = 1;
+            this.btnAdd.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnAdd.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnAdd.OnDisabledState.IconLeftImage = null;
+            this.btnAdd.OnDisabledState.IconRightImage = null;
+            this.btnAdd.onHoverState.BorderColor = System.Drawing.Color.White;
+            this.btnAdd.onHoverState.BorderRadius = 1;
+            this.btnAdd.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnAdd.onHoverState.BorderThickness = 1;
+            this.btnAdd.onHoverState.FillColor = System.Drawing.Color.White;
+            this.btnAdd.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnAdd.onHoverState.IconLeftImage = null;
+            this.btnAdd.onHoverState.IconRightImage = null;
+            this.btnAdd.OnIdleState.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnAdd.OnIdleState.BorderRadius = 1;
+            this.btnAdd.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnAdd.OnIdleState.BorderThickness = 1;
+            this.btnAdd.OnIdleState.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btnAdd.OnIdleState.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.OnIdleState.IconLeftImage = null;
+            this.btnAdd.OnIdleState.IconRightImage = null;
+            this.btnAdd.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnAdd.OnPressedState.BorderRadius = 1;
+            this.btnAdd.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnAdd.OnPressedState.BorderThickness = 1;
+            this.btnAdd.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnAdd.OnPressedState.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.OnPressedState.IconLeftImage = null;
+            this.btnAdd.OnPressedState.IconRightImage = null;
+            this.btnAdd.Size = new System.Drawing.Size(95, 44);
+            this.btnAdd.TabIndex = 19;
+            this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnAdd.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnAdd.TextMarginLeft = 0;
+            this.btnAdd.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnAdd.UseDefaultRadiusAndThickness = true;
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.AllowAnimations = true;
+            this.btnExcel.AllowMouseEffects = true;
+            this.btnExcel.AllowToggling = false;
+            this.btnExcel.AnimationSpeed = 200;
+            this.btnExcel.AutoGenerateColors = false;
+            this.btnExcel.AutoRoundBorders = false;
+            this.btnExcel.AutoSizeLeftIcon = true;
+            this.btnExcel.AutoSizeRightIcon = true;
+            this.btnExcel.BackColor = System.Drawing.Color.Transparent;
+            this.btnExcel.BackColor1 = System.Drawing.Color.DodgerBlue;
+            this.btnExcel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExcel.BackgroundImage")));
+            this.btnExcel.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnExcel.ButtonText = "Xuất excel";
+            this.btnExcel.ButtonTextMarginLeft = 0;
+            this.btnExcel.ColorContrastOnClick = 45;
+            this.btnExcel.ColorContrastOnHover = 45;
+            this.btnExcel.Cursor = System.Windows.Forms.Cursors.Default;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.btnExcel.CustomizableEdges = borderEdges2;
+            this.btnExcel.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnExcel.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnExcel.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnExcel.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnExcel.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
+            this.btnExcel.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnExcel.ForeColor = System.Drawing.Color.White;
+            this.btnExcel.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExcel.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnExcel.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnExcel.IconMarginLeft = 11;
+            this.btnExcel.IconPadding = 10;
+            this.btnExcel.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExcel.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnExcel.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnExcel.IconSize = 25;
+            this.btnExcel.IdleBorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnExcel.IdleBorderRadius = 1;
+            this.btnExcel.IdleBorderThickness = 1;
+            this.btnExcel.IdleFillColor = System.Drawing.Color.DodgerBlue;
+            this.btnExcel.IdleIconLeftImage = null;
+            this.btnExcel.IdleIconRightImage = null;
+            this.btnExcel.IndicateFocus = false;
+            this.btnExcel.Location = new System.Drawing.Point(813, 12);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnExcel.OnDisabledState.BorderRadius = 1;
+            this.btnExcel.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnExcel.OnDisabledState.BorderThickness = 1;
+            this.btnExcel.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnExcel.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnExcel.OnDisabledState.IconLeftImage = null;
+            this.btnExcel.OnDisabledState.IconRightImage = null;
+            this.btnExcel.onHoverState.BorderColor = System.Drawing.Color.White;
+            this.btnExcel.onHoverState.BorderRadius = 1;
+            this.btnExcel.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnExcel.onHoverState.BorderThickness = 1;
+            this.btnExcel.onHoverState.FillColor = System.Drawing.Color.White;
+            this.btnExcel.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnExcel.onHoverState.IconLeftImage = null;
+            this.btnExcel.onHoverState.IconRightImage = null;
+            this.btnExcel.OnIdleState.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnExcel.OnIdleState.BorderRadius = 1;
+            this.btnExcel.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnExcel.OnIdleState.BorderThickness = 1;
+            this.btnExcel.OnIdleState.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btnExcel.OnIdleState.ForeColor = System.Drawing.Color.White;
+            this.btnExcel.OnIdleState.IconLeftImage = null;
+            this.btnExcel.OnIdleState.IconRightImage = null;
+            this.btnExcel.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnExcel.OnPressedState.BorderRadius = 1;
+            this.btnExcel.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnExcel.OnPressedState.BorderThickness = 1;
+            this.btnExcel.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnExcel.OnPressedState.ForeColor = System.Drawing.Color.White;
+            this.btnExcel.OnPressedState.IconLeftImage = null;
+            this.btnExcel.OnPressedState.IconRightImage = null;
+            this.btnExcel.Size = new System.Drawing.Size(95, 44);
+            this.btnExcel.TabIndex = 20;
+            this.btnExcel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnExcel.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnExcel.TextMarginLeft = 0;
+            this.btnExcel.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnExcel.UseDefaultRadiusAndThickness = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
             // DepartmentView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -259,9 +408,9 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1117, 624);
             this.Controls.Add(this.btnExcel);
-            this.Controls.Add(this.cbStatus);
-            this.Controls.Add(this.cbDepartment);
             this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.cbAddress);
+            this.Controls.Add(this.cbDepartment);
             this.Controls.Add(this.dgvDepartmentList);
             this.Name = "DepartmentView";
             this.Text = "Quản lí phòng ban";
@@ -272,9 +421,8 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cbStatus;
+        private System.Windows.Forms.ComboBox cbAddress;
         private System.Windows.Forms.ComboBox cbDepartment;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnAdd;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvDepartmentList;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
@@ -287,7 +435,8 @@
         private System.Windows.Forms.DataGridViewImageColumn btnRead;
         private System.Windows.Forms.DataGridViewImageColumn btnEdit;
         private System.Windows.Forms.DataGridViewImageColumn btnDelete;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnExcel;
         private System.Windows.Forms.SaveFileDialog saveExcel;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnAdd;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnExcel;
     }
 }

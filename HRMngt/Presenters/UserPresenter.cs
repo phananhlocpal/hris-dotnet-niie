@@ -33,6 +33,7 @@ namespace HRMngt.Presenter
             this.view.LoadUserDialogToEditEvent += LoadUserDialogToEditEvent;
             this.view.DeleteEvent += DeleteUser;
             this.view.DeleteAll += DeleteAllUser;
+            
 
             LoadAllUserList();
             this.view.ShowUserList(userList);
@@ -64,6 +65,14 @@ namespace HRMngt.Presenter
         private void LoadUserDialogToEditEvent(object sender, EventArgs e)
         {
             dialog = view.ShowUserDialogToEdit(null);
+            IEnumerable<UserModel> userList;
+            List<string> departmentIDNameList = new List<string>();
+            userList = repository.GetAll();
+            departmentIDNameList = repository.GetDepartmentIDName();
+            
+            this.dialog.ShowDepartmentIdNName(departmentIDNameList);
+            dialog.ShowUserIDName(userList);
+
             DataGridViewRow selectedRow = view.dgvUserList.CurrentRow;
             string id = selectedRow.Cells[0].Value.ToString();
             UserModel user = new UserModel();
@@ -77,8 +86,8 @@ namespace HRMngt.Presenter
             dialog.Salary = user.Salary;
             dialog.Username = user.Username;
             dialog.Password = user.Password;
-            dialog.ManagerID = user.ManagerID;
-            dialog.DepartmentID = user.DepartmentID;
+            dialog.ManagerID = $"{user.ManagerID} - {repository.GetNameById(user.ManagerID)}";
+            dialog.DepartmentID = $"{user.DepartmentID} - {repository.GetNameDepartmentById(user.DepartmentID)}";
             dialog.On_boarding = user.On_boarding;
             dialog.Close_date = user.Close_date;
             dialog.Scan_contract = user.Scan_contract;
@@ -141,17 +150,58 @@ namespace HRMngt.Presenter
             dialog.CheckConditionEmail += CheckConditionEmail;
             dialog.CheckConditionName += CheckConditionName;
             dialog.CheckConditionDate += CheckConditionDate;
+            dialog.CheckConditionPhone += CheckConditionPhone;
             dialog.AddNewUserDialog += AddNewUserDialog;
+            dialog.ClearResultEvent += ClearEvent;
             dialog.GenerateRandomPassword += GenerateRandomPassword;
             dialog.CancleEvent += CancleEvent;
             dialog.ShowDialog();
+        }
+
+        private void ClearEvent(object sender, EventArgs e)
+        {
+            dialog.Name = "";
+            dialog.Email = "";
+            dialog.Phone = "";
+            dialog.Address = "";
+            dialog.Birthday = DateTime.Now;
+            dialog.Salary = "";
+            dialog.Username = "";
+            dialog.Password = "";
+            dialog.On_boarding = DateTime.Now;
+            dialog.Close_date = DateTime.Now;
+            dialog.Scan_contract = "";
+            dialog.Sex = "";
+            dialog.Status = "";
+            dialog.Position = "";
+            dialog.Roles = "";
+            dialog.ManagerID = "";
+            dialog.DepartmentID = "";
+        }
+
+        private void CheckConditionPhone(object sender, EventArgs e)
+        {
+            int phoneNumber = dialog.Phone.Length;
+            if (string.IsNullOrWhiteSpace(dialog.Phone))
+            {
+                MessageBox.Show("Số điện thoại không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            else if (dialog.Phone.Length > 10 || !dialog.Phone.All(char.IsDigit))
+            {
+                MessageBox.Show($"Số điện thoại dư {phoneNumber - 10} chữ số.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (dialog.Phone.Length < 10)
+            {
+                MessageBox.Show($"Số điện thoại thiếu {10 - phoneNumber} chữ số.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void CheckConditionDate(object sender, EventArgs e)
         {
             int currentYear = DateTime.Now.Year;
             int birthDay = dialog.Birthday.Year;
-            if(currentYear - birthDay <= 18)
+            if(currentYear - birthDay < 18)
             {
                 MessageBox.Show("Nhân viên phải trên 18 tuổi", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -163,6 +213,10 @@ namespace HRMngt.Presenter
             {
                 MessageBox.Show("Vui lòng không được để trống tên!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else
+            {
+                dialog.Email = "your_email@gmail.com";
+            }
         }
 
         private void CheckConditionEmail(object sender, EventArgs e)
@@ -171,10 +225,7 @@ namespace HRMngt.Presenter
             {
                 MessageBox.Show("Vui lòng nhập đúng định dạng email(@gmail.com)", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            /*if(dialog.Email.Length < 0)
-            {
-                MessageBox.Show("Vui lòng không để trống email!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
+            
         }
 
         private void CheckConditionSalary(object sender, EventArgs e)

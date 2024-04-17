@@ -17,7 +17,7 @@ namespace HRMngt._Repository
 {
     public class LoginRepository : ILoginRepository
     {
-        private string connectionString = BaseRepository.connectionString;
+        string connectionString = @"Data Source=localhost;Initial Catalog=HR;Integrated Security=True;Encrypt=False;";
 
         public LoginRepository()
         {

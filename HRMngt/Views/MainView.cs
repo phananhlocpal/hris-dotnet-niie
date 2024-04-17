@@ -17,12 +17,16 @@ using System.Xml.Linq;
 namespace HRMngt.View
 {
     public partial class MainView : Form, IMainView
-    {        
+    {
+        private UserModel currentUser;
         
-        public MainView()
+        
+        public MainView(UserModel user)
         {
+            currentUser = user;
             InitializeComponent();
-            //CheckRole();
+            CheckRole();
+            lblNavName.Text = currentUser.Name;
             RunEvent();
 
         }
@@ -44,21 +48,12 @@ namespace HRMngt.View
             btnEmployee.Click += delegate { ShowUserView?.Invoke(this, EventArgs.Empty); };
             btnHome.Click += delegate { ShowHomeView?.Invoke(this, EventArgs.Empty); };
             btnHelp.Click += delegate { ShowSupportView?.Invoke(this, EventArgs.Empty); };
-            btnSalary.Click += delegate { ShowIndividualSalaryView?.Invoke(this, EventArgs.Empty); };
+            btnSalary.Click += delegate { ShowSalaryView?.Invoke(this, EventArgs.Empty); };
             btnHiring.Click += delegate { ShowRecuitView?.Invoke(this, EventArgs.Empty); };
-            lblNavName.Click += delegate {
-                this.Hide();
-                ShowLoginEvent?.Invoke(this, EventArgs.Empty);
-                
-            };
+            lblNavName.Enabled = false;
             btnTimeKeeping.Click += delegate { ShowTimeKeepingView?.Invoke(this, EventArgs.Empty); };
             
 
-        }
-
-        private void MainView_Load(object sender, EventArgs e)
-        {
-            ShowHomeView?.Invoke(this, EventArgs.Empty);
         }
         private void txtNavSearch_MouseClick(object sender, MouseEventArgs e)
         {
@@ -86,20 +81,20 @@ namespace HRMngt.View
         {
 
         }
-        //public void CheckRole()
-        //{
-        //    if (currentUser.Roles != "Admin")
-        //    {
-        //        btnEmployee.Enabled = false;
-        //        btnSalary.Enabled = false;
-        //        btnDepartment.Enabled = false;
-        //    }
-        //}
+        public void CheckRole()
+        {
+            if (currentUser.Roles != "Admin")
+            {
+                btnEmployee.Enabled = false;
+                btnSalary.Enabled = false;
+                btnDepartment.Enabled = false;
+            }
+        }
 
-        //private void picNavAva_Click(object sender, EventArgs e)
-        //{
-        //    MainInvidiualView view = new MainInvidiualView(currentUser);
-        //    view.Show();
-        //}
+        private void picNavAva_Click(object sender, EventArgs e)
+        {
+            MainInvidiualView view = new MainInvidiualView(currentUser);
+            view.Show();
+        }
     }
 }

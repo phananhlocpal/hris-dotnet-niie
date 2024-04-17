@@ -78,5 +78,10 @@ namespace HRMngt.Views.Dialogs
             this.Hide();
             login.ShowDialog();
         }
+
+        private void bunifuPictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }       
 }

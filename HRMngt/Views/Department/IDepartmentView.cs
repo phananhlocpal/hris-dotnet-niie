@@ -13,7 +13,7 @@ namespace HRMngt.Views
     public interface IDepartmentView
     {
         ComboBox cbDepartment { get; }
-        ComboBox cbStatus { get; }
+        ComboBox cbAddress { get; }
         DataGridView dgvDepartmentList { get; }
 
         event EventHandler SearchEvent;
@@ -23,7 +23,8 @@ namespace HRMngt.Views
         event EventHandler ReadEvent;
         event EventHandler SaveEvent;
         event EventHandler CancelEvent;
-        event EventHandler SearchByUserId;
+        event EventHandler SearchByDepartmentName;
+        event EventHandler SearchByDepartmentAddress;
         event EventHandler LoadDepartmentDialogToAddEvent;
         event EventHandler LoadDepartmentDialogToEditEvent;
         event EventHandler AddNewDepartmentDialog;

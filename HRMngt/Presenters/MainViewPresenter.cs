@@ -1,10 +1,10 @@
 ﻿using HRMngt._Repository;
-using HRMngt._Repository.Calendar;
 using HRMngt._Repository.Home;
 using HRMngt._Repository.HR;
 using HRMngt._Repository.IndividualSalary;
 using HRMngt._Repository.Salary;
 using HRMngt._Repository.Support;
+using HRMngt._Repository.TimeKeeping;
 using HRMngt.Model;
 using HRMngt.Presenter;
 using HRMngt.View;
@@ -36,12 +36,11 @@ namespace HRMngt.Presenters
             mainView.ShowUserView += ShowUserView;
             mainView.ShowHomeView += ShowHomeView;
             mainView.ShowSupportView += ShowSupportView;
-            mainView.ShowIndividualSalaryView += ShowSalaryView;
+            mainView.ShowSalaryView += ShowSalaryView;
             mainView.ShowLoginEvent += ShowLoginView;
             mainView.ShowRecuitView += ShowRecuitView;
             mainView.ShowTimeKeepingView += ShowTimeKeepingView;
             mainView.ShowMainIndividualView += ShowMainIndividualView;
-            
             mainView.Show();
         }
 
@@ -55,16 +54,16 @@ namespace HRMngt.Presenters
         private void ShowTimeKeepingView(object sender, EventArgs e)
         {
             ITimeKeepingView view = TimeKeepingView.GetInstance((MainView)mainView);
-            ICalendarRepository repository = new CalendarRepository();
+            ITimeKeepingRepository repository = new TimeKeepingRepository();
 
-            new TimeKeepingPresenter(view, repository, userModel);
+            new TimeKeepingPresenter(view, repository);
 
         }
         private void ShowRecuitView(object sender, EventArgs e)
         {
-            IHRView view = HRView.GetInstance((MainView)mainView);
-            IHRRepository repository = new HRRepository();
-            new HRPresenter(view, repository);
+            IRecruitView view = RecruitView.GetInstance((MainView)mainView);
+            IRecruitRepository repository = new RecruitRepository();
+            new RecruitPresenter(view, repository);
         }
 
         private void ShowLoginView(object sender, EventArgs e)
@@ -76,10 +75,10 @@ namespace HRMngt.Presenters
 
         private void ShowSalaryView(object sender, EventArgs e)
         {
-            IIndividualSalaryView view = IndividualSalaryView.GetInstance((MainView)mainView);
-            IIndividualSalaryRepository repository = new IndividualSalaryRepository();
+            ISalaryView view = SalaryView.GetInstance((MainView)mainView);
+            ISalaryRepository repository = new SalaryRepository();
 
-            new IndividualSalaryPresenter(view, repository, this.userModel);
+            new SalaryPresenter(view, repository);
         }
 
         private void ShowSupportView(object sender, EventArgs e)
@@ -109,7 +108,7 @@ namespace HRMngt.Presenters
             IDepartmentView view = DepartmentView.GetInstance((MainView) mainView);
 
             IDepartmentRepository repository = new DepartmentRepository();
-            new MainDepartmentPresenter(view, repository);
+            new DepartmentPresenter(view, repository);
         }
         private void ShowThumbTicketView(object sender, EventArgs e)
         {

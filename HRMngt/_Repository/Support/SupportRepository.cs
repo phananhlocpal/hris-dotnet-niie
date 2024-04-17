@@ -14,8 +14,8 @@ namespace HRMngt._Repository.Support
 {
     public class SupportRepository : ISupportRepository
     {
-        private string connectionString = BaseRepository.connectionString;
-
+        private string connectionString = @"Data Source=localhost;Initial Catalog=HR;Integrated Security=True;";
+        
         public SupportRepository()
         {
 

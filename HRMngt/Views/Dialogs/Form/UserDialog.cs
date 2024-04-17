@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HRMngt.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,12 +39,12 @@ namespace HRMngt.Views.Dialogs
         {
             if (btnAdd.Text == "Thêm")
             {
-                btnAdd.Click += delegate 
+                btnAdd.Click += delegate
                 {
                     AddNewUserDialog?.Invoke(this, EventArgs.Empty);
                     SendPasswordToMail?.Invoke(this, EventArgs.Empty);
                 };
-                
+
             }
             else if (btnAdd.Text == "Sửa")
             {
@@ -55,6 +56,8 @@ namespace HRMngt.Views.Dialogs
             txtPhone.Click += delegate { CheckConditionEmail?.Invoke(this, EventArgs.Empty); };
             txtEmail.Click += delegate { CheckConditionName?.Invoke(this, EventArgs.Empty); };
             txtSalary.Click += delegate { CheckConditionDate?.Invoke(this, EventArgs.Empty); };
+            txtAddress.Click += delegate { CheckConditionPhone?.Invoke(this, EventArgs.Empty); };
+            btnClear.Click += delegate { ClearResultEvent?.Invoke(this, EventArgs.Empty); };
         }
 
         public string ID { get => lbID.Text; set => lbID.Text = value; }
@@ -143,14 +146,9 @@ namespace HRMngt.Views.Dialogs
         public event EventHandler CheckConditionEmail;
         public event EventHandler CheckConditionName;
         public event EventHandler CheckConditionDate;
+        public event EventHandler CheckConditionPhone;
+        public event EventHandler ClearResultEvent;
 
-        private void EmailUser(object sender, EventArgs e)
-        {
-            if (txtName.Text.Trim().Length > 0)
-            {
-                txtEmail.Text = GenerateDepartmentID(txtName.Text) + "@gmail.com";
-            }
-        }
         private void UserName(object sender, EventArgs e)
         {
             if (txtName.Text.Trim().Length > 0)
@@ -219,6 +217,7 @@ namespace HRMngt.Views.Dialogs
             {
                 cbManagerId.Items.Add(item);
                 
+                
             }
         }
         public string ExtractIdFromName(string nameWithId)
@@ -235,22 +234,6 @@ namespace HRMngt.Views.Dialogs
             }
         }
 
-        
-
-        private void txtAddress_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtPhone.Text))
-            {
-                MessageBox.Show("Số điện thoại không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
-            }
-
-            if (txtPhone.Text.Length != 10 || !txtPhone.Text.All(char.IsDigit))
-            {
-                MessageBox.Show("Số điện thoại phải gồm 10 chữ số.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
-            }
-        }
 
         public void ShowDepartmentIdNName(List<string> departmentIDNameList)
         {
@@ -273,6 +256,20 @@ namespace HRMngt.Views.Dialogs
             }
         }
 
-       
+        private void bunifuPictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        public void ShowUserIDName(IEnumerable<UserModel> users)
+        {
+            foreach(var user in users)
+            {
+                if(user.Roles == "Admin" && users != null)
+                {
+                    cbManagerId.Items.Add($"{user.Id} - {user.Name}");
+                }
+            }
+        }
     }
 }

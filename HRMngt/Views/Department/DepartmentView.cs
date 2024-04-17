@@ -28,7 +28,7 @@ namespace HRMngt.Views
 
         ComboBox IDepartmentView.cbDepartment => cbDepartment;
 
-        ComboBox IDepartmentView.cbStatus => cbStatus;
+        ComboBox IDepartmentView.cbAddress => cbAddress;
 
         DataGridView IDepartmentView.dgvDepartmentList => dgvDepartmentList;
 
@@ -38,15 +38,16 @@ namespace HRMngt.Views
         public event EventHandler EditEvent;
         public event EventHandler SaveEvent;
         public event EventHandler CancelEvent;
-        public event EventHandler SearchByUserId;
         public event EventHandler LoadDepartmentDialogToAddEvent;
         public event EventHandler LoadDepartmentDialogToEditEvent;
         public event EventHandler AddNewDepartmentDialog;
         public event EventHandler ReadEvent;
+        public event EventHandler SearchByDepartmentName;
+        public event EventHandler SearchByDepartmentAddress;
 
         private void RunEvent()
         {
-            btnAdd.Click += delegate { LoadDepartmentDialogToAddEvent?.Invoke(this, EventArgs.Empty); };
+            btnExcel.Click += delegate { LoadDepartmentDialogToAddEvent?.Invoke(this, EventArgs.Empty); };
             dgvDepartmentList.CellContentClick += (sender, e) =>
             {
                 if (e.RowIndex >= 0 && e.ColumnIndex == dgvDepartmentList.Columns[6].Index)
@@ -69,6 +70,8 @@ namespace HRMngt.Views
                     ReadEvent?.Invoke(this, EventArgs.Empty);
                 }
             };
+            cbDepartment.SelectedIndexChanged += delegate { SearchByDepartmentName?.Invoke(this, EventArgs.Empty); };
+            cbAddress.SelectedIndexChanged += delegate { SearchByDepartmentAddress?.Invoke(this, EventArgs.Empty); };
 
         }
         public void ShowDepartmentList(IEnumerable<DepartmentModel> departments)
@@ -116,7 +119,7 @@ namespace HRMngt.Views
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "Select name from department ";
+                command.CommandText = "Select distinct name from department ";
                 List<string> items = new List<string>();
                 using (var reader = command.ExecuteReader())
                 {
@@ -139,7 +142,7 @@ namespace HRMngt.Views
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "Select location from department ";
+                command.CommandText = "Select distinct location from department ";
                 List<string> items = new List<string>();
                 using (var reader = command.ExecuteReader())
                 {
@@ -148,9 +151,9 @@ namespace HRMngt.Views
                         items.Add(reader[0].ToString());
                     }
                 }
-                cbStatus.DataSource = items;
-                cbStatus.DisplayMember = "Name";
-                cbStatus.Refresh();
+                cbAddress.DataSource = items;
+                cbAddress.DisplayMember = "Name";
+                cbAddress.Refresh();
                 connection.Close();
             }
         }
@@ -180,13 +183,15 @@ namespace HRMngt.Views
                 workbook = excel.Workbooks.Add(Type.Missing);
                 worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets["Sheet1"];
                 worksheet.Name = "Quản lý phòng ban";
+                // Xuất tiêu đề cột
                 for (int i = 0; i < dataGridView1.ColumnCount; i++)
                 {
                     worksheet.Cells[1, i + 1] = dataGridView1.Columns[i].HeaderText;
                 }
+                // Xuất dữ liệu từ DataGridView
                 for (int i = 0; i < dataGridView1.RowCount; i++)
                 {
-                    for (int j = 0; j < dataGridView1.ColumnCount; j++)
+                    for (int j = 0; j < 5; j++) // Chỉ xuất 5 cột đầu
                     {
                         worksheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
                     }
@@ -206,6 +211,7 @@ namespace HRMngt.Views
                 worksheet = null;
             }
         }
+
 
         private void btnExcel_Click(object sender, EventArgs e)
         {

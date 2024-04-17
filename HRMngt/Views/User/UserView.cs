@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,8 @@ namespace HRMngt.Views.User
         {
             InitializeComponent();
             RunEvent();
+            GetNameDepartmentFilter();
+            GetStatusFilter();
         }
 
         public void RunEvent()
@@ -26,14 +29,14 @@ namespace HRMngt.Views.User
             btnAdd.Click += delegate { LoadUserDialogToAddEvent?.Invoke(this, EventArgs.Empty); };
             dgvUserList.CellContentClick += (sender, e) =>
             {
-                if (e.RowIndex >= 0 && e.ColumnIndex == dgvUserList.Columns[7].Index)
+                if (e.RowIndex >= 0 && e.ColumnIndex == dgvUserList.Columns[8].Index)
                 {
                     LoadUserDialogToEditEvent?.Invoke(this, EventArgs.Empty);
                 }
             };
             dgvUserList.CellContentClick += (sender, e) =>
             {
-                if (e.RowIndex >= 0 && e.ColumnIndex == dgvUserList.Columns[8].Index)
+                if (e.RowIndex >= 0 && e.ColumnIndex == dgvUserList.Columns[9].Index)
                 {
                     DeleteEvent?.Invoke(this, EventArgs.Empty);
                 }
@@ -80,7 +83,74 @@ namespace HRMngt.Views.User
             }
             return instance;
         }
-
+        private void GetNameDepartmentFilter()
+        {
+            string connectionString = "Data Source=localhost;Initial Catalog=HR;Integrated Security=True;Encrypt=False";
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "Select distinct name from department ";
+                List<string> items = new List<string>();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        items.Add(reader[0].ToString());
+                    }
+                }
+                cbDepartment.DataSource = items;
+                cbDepartment.DisplayMember = "Name";
+                cbDepartment.Refresh();
+                connection.Close();
+            }
+        }
+        private void GetStatusFilter()
+        {
+            string connectionString = "Data Source=localhost;Initial Catalog=HR;Integrated Security=True;Encrypt=False";
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "Select distinct status from users ";
+                List<string> items = new List<string>();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        items.Add(reader[0].ToString());
+                    }
+                }
+                cbStatus.DataSource = items;
+                cbStatus.DisplayMember = "Name";
+                cbStatus.Refresh();
+                connection.Close();
+            }
+        }
+        private string GetNameDepartment(string id)
+        {
+            string name = "";
+            string connectionString = "Data Source=localhost;Initial Catalog=HR;Integrated Security=True;Encrypt=False";
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "Select distinct name from department where departmentID = @Id";
+                command.Parameters.Add("@Id", SqlDbType.Char).Value = id;
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        name = reader[0].ToString();
+                    }
+                }
+               
+            }
+            return name;
+        }
         
 
         public void ShowUserList(IEnumerable<UserModel> userList)
@@ -94,17 +164,18 @@ namespace HRMngt.Views.User
                     int rowIndex = dgvUserList.Rows.Add();
                     dgvUserList.Rows[rowIndex].Cells[0].Value = user.Id;
                     dgvUserList.Rows[rowIndex].Cells[1].Value = user.Name;
-                    dgvUserList.Rows[rowIndex].Cells[2].Value = user.Contract_type;
-                    dgvUserList.Rows[rowIndex].Cells[3].Value = user.Position;
-                    dgvUserList.Rows[rowIndex].Cells[4].Value = "• " + user.Status;
-                    dgvUserList.Rows[rowIndex].Cells[5].Value = user.Roles;
+                    dgvUserList.Rows[rowIndex].Cells[2].Value = GetNameDepartment(user.DepartmentID);
+                    dgvUserList.Rows[rowIndex].Cells[3].Value = user.Contract_type;
+                    dgvUserList.Rows[rowIndex].Cells[4].Value = user.Position;
+                    dgvUserList.Rows[rowIndex].Cells[5].Value = "• " + user.Status;
+                    dgvUserList.Rows[rowIndex].Cells[6].Value = user.Roles;
                     if (user.Status == "Đang làm")
                     {
-                        dgvUserList.Rows[rowIndex].Cells[4].Style.ForeColor = Color.FromArgb(69, 158, 26);
+                        dgvUserList.Rows[rowIndex].Cells[5].Style.ForeColor = Color.FromArgb(69, 158, 26);
                     }
                     else
                     {
-                        dgvUserList.Rows[rowIndex].Cells[4].Style.ForeColor = Color.Red;
+                        dgvUserList.Rows[rowIndex].Cells[5].Style.ForeColor = Color.FromArgb(255, 212, 59);
                     }
                 }
             }
@@ -168,6 +239,11 @@ namespace HRMngt.Views.User
             {
                 ToExcel(dgvUserList, saveFileDialog1.FileName);
             }
+        }
+
+        private void UserView_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HRMngt.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,7 @@ namespace HRMngt.Views.Dialogs
         event EventHandler AddNewUserDialog;
         event EventHandler EditUserDialog;
         event EventHandler CancleEvent;
+        event EventHandler ClearResultEvent;
         event EventHandler GeneratedEventLoadEmail;
         event EventHandler GenerateRandomPassword;
         event EventHandler SendPasswordToMail;
@@ -40,7 +42,8 @@ namespace HRMngt.Views.Dialogs
         event EventHandler CheckConditionEmail;
         event EventHandler CheckConditionName;
         event EventHandler CheckConditionDate;
-        void ShowUserIdNName(List<string> userIdNNameList);
+        event EventHandler CheckConditionPhone;
+        void ShowUserIDName(IEnumerable<UserModel> users);
         void ShowDepartmentIdNName(List<string> departmentIDNameList);
         
         
