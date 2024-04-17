@@ -39,8 +39,6 @@
     <StartupObject>HRMngt.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-<<<<<<< HEAD
-=======
     <Reference Include="Bunifu.Licensing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=f89b4760ba7dcb6b, processorArchitecture=MSIL">
       <HintPath>..\packages\Bunifu.Licensing.6.0.2\lib\net48\Bunifu.Licensing.dll</HintPath>
     </Reference>
@@ -50,7 +48,6 @@
     <Reference Include="Bunifu_UI_v1.52">
       <HintPath>..\..\..\Bunifu - laptrinhlibrary\Bunifu_UI_v1.52.dll</HintPath>
     </Reference>
->>>>>>> minhhieu
     <Reference Include="ComponentFactory.Krypton.Docking">
       <HintPath>..\..\..\..\Downloads\Krypton-master\Krypton-master\Bin\ComponentFactory.Krypton.Docking.dll</HintPath>
     </Reference>
@@ -63,12 +60,9 @@
     <Reference Include="CustomControlUsingPalettes">
       <HintPath>..\..\..\..\Downloads\Krypton-master\Krypton-master\Bin\CustomControlUsingPalettes.exe</HintPath>
     </Reference>
-<<<<<<< HEAD
-=======
     <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net48\Guna.UI2.dll</HintPath>
     </Reference>
->>>>>>> minhhieu
     <Reference Include="MaterialSkin, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialSkin.2.2.3.1\lib\net48\MaterialSkin.dll</HintPath>
     </Reference>
@@ -81,13 +75,6 @@
     <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
     </Reference>
-<<<<<<< HEAD
-    <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="ReaLTaiizor, Version=3.8.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ReaLTaiizor.3.8.0.2\lib\net48\ReaLTaiizor.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-=======
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -108,14 +95,11 @@
     <Reference Include="System.CodeDom, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.CodeDom.8.0.0\lib\net462\System.CodeDom.dll</HintPath>
     </Reference>
->>>>>>> minhhieu
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Management" />
-<<<<<<< HEAD
-=======
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -138,7 +122,6 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
->>>>>>> minhhieu
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -153,16 +136,6 @@
   <ItemGroup>
     <Compile Include="Models\CalendarModel.cs" />
     <Compile Include="Models\DepartmentModel.cs" />
-<<<<<<< HEAD
-    <Compile Include="Models\SalaryListModel.cs" />
-    <Compile Include="Models\SalaryModel.cs" />
-    <Compile Include="Presenters\HomePresenter.cs" />
-    <Compile Include="Presenters\HRPresenter.cs" />
-    <Compile Include="Presenters\IndividualCalendarPresenter.cs" />
-    <Compile Include="Presenters\IndividualSalaryPresenter.cs" />
-    <Compile Include="Presenters\LoginPresenter.cs" />
-    <Compile Include="Presenters\MainDepartmentPresenter.cs" />
-=======
     <Compile Include="Models\RecruitModel.cs" />
     <Compile Include="Models\SalaryListModel.cs" />
     <Compile Include="Models\SalaryModel.cs" />
@@ -172,7 +145,6 @@
     <Compile Include="Presenters\IndividualSalaryPresenter.cs" />
     <Compile Include="Presenters\LoginPresenter.cs" />
     <Compile Include="Presenters\DepartmentPresenter.cs" />
->>>>>>> minhhieu
     <Compile Include="Presenters\MainIndividualPresenter.cs" />
     <Compile Include="Presenters\MainViewPresenter.cs" />
     <Compile Include="Presenters\SalaryPresenter.cs" />
@@ -184,15 +156,12 @@
     <Compile Include="Views\Department\DepartmentView.Designer.cs">
       <DependentUpon>DepartmentView.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-=======
     <Compile Include="Views\Dialogs\Form\CheckinDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Dialogs\Form\CheckinDialog.Designer.cs">
       <DependentUpon>CheckinDialog.cs</DependentUpon>
     </Compile>
->>>>>>> minhhieu
     <Compile Include="Views\Dialogs\Form\DepartmentDiaglog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,19 +174,6 @@
     <Compile Include="Views\Dialogs\Form\ForgotPassword.Designer.cs">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-    <Compile Include="Views\Dialogs\Form\HRDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Dialogs\Form\HRDialog.Designer.cs">
-      <DependentUpon>HRDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Dialogs\Interface\IDepartmentDialog.cs" />
-    <Compile Include="Views\Dialogs\Interface\IHRDialog.cs" />
-    <Compile Include="Views\Dialogs\Interface\IIndividualCalendarDialogForAdding.cs" />
-    <Compile Include="Views\Dialogs\Interface\IIndividualCalendarDialogForEditting.cs" />
-    <Compile Include="Views\IndividualCalendar\IIndividualCalendarView.cs" />
-=======
     <Compile Include="Views\Dialogs\Form\RecruitDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,8 +184,7 @@
     <Compile Include="Views\Dialogs\Interface\IRecruitViewDialog.cs" />
     <Compile Include="Views\Dialogs\Interface\IIndividualCalendarDialogForAdding.cs" />
     <Compile Include="Views\Dialogs\Interface\IIndividualCalendarDialogForEditting.cs" />
-    <Compile Include="Views\Dialogs\Interface\IIndividualCalendarView.cs" />
->>>>>>> minhhieu
+    <Compile Include="Views\IndividualCalendar\IIndividualCalendarView.cs" />
     <Compile Include="Views\Dialogs\Interface\IIndividualSalaryDialog.cs" />
     <Compile Include="Views\Dialogs\Interface\IIndividualSalaryView.cs" />
     <Compile Include="Views\Dialogs\Form\IndividualCalendarDialogForAdding.cs">
@@ -244,17 +199,10 @@
     <Compile Include="Views\Dialogs\Form\IndividualCalendarDialogForEditting.Designer.cs">
       <DependentUpon>IndividualCalendarDialogForEditting.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Views\IndividualCalendar\IndividualCalendarView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\IndividualCalendar\IndividualCalendarView.Designer.cs">
-=======
-    <Compile Include="Views\Dialogs\Form\IndividualCalendarView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Dialogs\Form\IndividualCalendarView.Designer.cs">
->>>>>>> minhhieu
       <DependentUpon>IndividualCalendarView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Dialogs\Form\IndividualSalaryDialog.cs">
@@ -270,8 +218,6 @@
       <DependentUpon>IndividualSalaryView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Dialogs\Interface\ISupport.cs" />
-<<<<<<< HEAD
-=======
     <Compile Include="Views\ClockCountdown.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -284,7 +230,6 @@
     <Compile Include="Views\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
->>>>>>> minhhieu
     <Compile Include="Views\MainInvidiualView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -325,15 +270,6 @@
     </Compile>
     <Compile Include="Views\Department\IDepartmentView.cs" />
     <Compile Include="Views\Home\IHomeView.cs" />
-<<<<<<< HEAD
-    <Compile Include="Views\HR\HRView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\HR\HRView.Designer.cs">
-      <DependentUpon>HRView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\HR\IHRView.cs" />
-=======
     <Compile Include="Views\Recruit\RecruitView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -341,7 +277,6 @@
       <DependentUpon>RecruitView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Recruit\IRecruitView.cs" />
->>>>>>> minhhieu
     <Compile Include="Views\Login\ILoginView.cs" />
     <Compile Include="Views\IMainView.cs" />
     <Compile Include="Views\IProfileView.cs" />
@@ -372,21 +307,13 @@
     </Compile>
     <Compile Include="_Repository\Calendar\CalendarRepository.cs" />
     <Compile Include="_Repository\Calendar\ICalendarRepository.cs" />
-<<<<<<< HEAD
     <Compile Include="_Repository\BaseRepository.cs" />
-=======
->>>>>>> minhhieu
     <Compile Include="_Repository\Department\DepartmentRepository.cs" />
     <Compile Include="_Repository\Department\IDepartmentRepository.cs" />
     <Compile Include="_Repository\Home\HomeRepository.cs" />
     <Compile Include="_Repository\Home\IHomeRepository.cs" />
-<<<<<<< HEAD
-    <Compile Include="_Repository\HR\HRRepository.cs" />
-    <Compile Include="_Repository\HR\IHRRepository.cs" />
-=======
     <Compile Include="_Repository\Recruit\RecruitRepository.cs" />
     <Compile Include="_Repository\Recruit\IRecruitRepository.cs" />
->>>>>>> minhhieu
     <Compile Include="_Repository\IndividualSalary\IIndividualSalaryRepository.cs" />
     <Compile Include="_Repository\IndividualSalary\IndividualSalaryRepository.cs" />
     <Compile Include="_Repository\Login\ILoginRepository.cs" />
@@ -394,13 +321,7 @@
     <Compile Include="_Repository\Salary\SalaryRepository.cs" />
     <Compile Include="_Repository\Support\ISupportRepository.cs" />
     <Compile Include="_Repository\Support\SupportRepository.cs" />
-<<<<<<< HEAD
     <Compile Include="_Repository\ThumbTicket\IThumbTicketRepository.cs" />
-=======
-    <Compile Include="_Repository\Thumb\IThumbTicketRepository.cs" />
-    <Compile Include="_Repository\TimeKeeping\ITimeKeepingRepository.cs" />
-    <Compile Include="_Repository\TimeKeeping\TimeKeepingRepository.cs" />
->>>>>>> minhhieu
     <Compile Include="_Repository\User\IUserRepository.cs" />
     <Compile Include="Models\ThumbTicketModel.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -448,34 +369,22 @@
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
     <Compile Include="_Repository\Login\LoginRepository.cs" />
-<<<<<<< HEAD
     <Compile Include="_Repository\ThumbTicket\ThumbTicketRepository.cs" />
-=======
-    <Compile Include="_Repository\Thumb\ThumbTicketRepository.cs" />
->>>>>>> minhhieu
     <Compile Include="_Repository\User\UserRepository.cs" />
     <EmbeddedResource Include="Views\Department\DepartmentView.resx">
       <DependentUpon>DepartmentView.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
-=======
     <EmbeddedResource Include="Views\Dialogs\Form\CheckinDialog.resx">
       <DependentUpon>CheckinDialog.cs</DependentUpon>
     </EmbeddedResource>
->>>>>>> minhhieu
     <EmbeddedResource Include="Views\Dialogs\Form\DepartmentDiaglog.resx">
       <DependentUpon>DepartmentDiaglog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Dialogs\Form\ForgotPassword.resx">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
-    <EmbeddedResource Include="Views\Dialogs\Form\HRDialog.resx">
-      <DependentUpon>HRDialog.cs</DependentUpon>
-=======
     <EmbeddedResource Include="Views\Dialogs\Form\RecruitDialog.resx">
       <DependentUpon>RecruitDialog.cs</DependentUpon>
->>>>>>> minhhieu
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Dialogs\Form\IndividualCalendarDialogForAdding.resx">
       <DependentUpon>IndividualCalendarDialogForAdding.cs</DependentUpon>
@@ -483,11 +392,7 @@
     <EmbeddedResource Include="Views\Dialogs\Form\IndividualCalendarDialogForEditting.resx">
       <DependentUpon>IndividualCalendarDialogForEditting.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
     <EmbeddedResource Include="Views\IndividualCalendar\IndividualCalendarView.resx">
-=======
-    <EmbeddedResource Include="Views\Dialogs\Form\IndividualCalendarView.resx">
->>>>>>> minhhieu
       <DependentUpon>IndividualCalendarView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Dialogs\Form\IndividualSalaryDialog.resx">
@@ -502,15 +407,12 @@
     <EmbeddedResource Include="Views\Dialogs\Form\Support.resx">
       <DependentUpon>Support.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
-=======
     <EmbeddedResource Include="Views\ClockCountdown.resx">
       <DependentUpon>ClockCountdown.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
->>>>>>> minhhieu
     <EmbeddedResource Include="Views\MainInvidiualView.resx">
       <DependentUpon>MainInvidiualView.cs</DependentUpon>
     </EmbeddedResource>
@@ -523,13 +425,8 @@
     <EmbeddedResource Include="Views\Home\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
-    <EmbeddedResource Include="Views\HR\HRView.resx">
-      <DependentUpon>HRView.cs</DependentUpon>
-=======
     <EmbeddedResource Include="Views\Recruit\RecruitView.resx">
       <DependentUpon>RecruitView.cs</DependentUpon>
->>>>>>> minhhieu
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Login\LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>
@@ -659,15 +556,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
-<<<<<<< HEAD
-=======
     <None Include="Resources\New Project %283%29.jpg" />
     <None Include="Resources\textbox_user_241.jpg" />
     <None Include="Resources\debut.JPG" />
     <None Include="Resources\hide1.png" />
     <None Include="Resources\show1.png" />
     <None Include="Resources\2302_q891_009_f_m004_c5_software_development_flat_line.jpg" />
->>>>>>> minhhieu
     <None Include="Resources\source.gif" />
     <None Include="Resources\no-image.jpg" />
     <None Include="Resources\check.png" />
