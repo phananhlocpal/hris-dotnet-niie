@@ -1,4 +1,5 @@
 ﻿using HRMngt._Repository;
+using HRMngt._Repository.Communicate;
 using HRMngt._Repository.Home;
 using HRMngt._Repository.HR;
 using HRMngt._Repository.IndividualSalary;
@@ -9,6 +10,7 @@ using HRMngt.Model;
 using HRMngt.Presenter;
 using HRMngt.View;
 using HRMngt.Views;
+using HRMngt.Views.Client;
 using HRMngt.Views.Dialogs;
 using HRMngt.Views.HR;
 using HRMngt.Views.Salary;
@@ -41,7 +43,16 @@ namespace HRMngt.Presenters
             mainView.ShowRecuitView += ShowRecuitView;
             mainView.ShowTimeKeepingView += ShowTimeKeepingView;
             mainView.ShowMainIndividualView += ShowMainIndividualView;
+            mainView.ShowCommunicateView += ShowCommunicateView;
             mainView.Show();
+        }
+
+        private void ShowCommunicateView(object sender, EventArgs e)
+        {
+            IClientView view = ClientView.GetInstance((MainView)mainView);
+            ICommunicateRepository repository = new CommunicateRepository();
+
+            new CommunicatePresenter(view, repository);
         }
 
         private void ShowMainIndividualView(object sender, EventArgs e)

@@ -118,6 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="bunifuPanel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAIcAAAAsCAYAAABPPKsnAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACgSURBVHhe7dRBCsMwEARB/f89+l+CDwoTzOC9uwoMXp2b
+        WfBo7/05n9v9c3uAQxykvx7EQdIDleVgRhwky0GlByrLwYw4SJaDSg9UloMZcZAsB5UeqCwHM+IgWQ4q
+        PVBZDmbEQbIcVHqgshzMiINkOaj0QGU5mBEHyXJQ6YHKcjAjDpLloNIDleVgRhwky0GlB6pbHNfDeTz/
+        7nfe8GCtL0ETHkkS0uK0AAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEA2lkAAAEAIAAMOQEAFgAAACgAAADaAAAAsgAAAAEAIAAAAAAAKC8BAAAAAAAAAAAAAAAAAAAA

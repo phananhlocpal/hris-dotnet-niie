@@ -27,6 +27,8 @@ namespace HRMngt.Model
         void SendMail(string password, string userID);
 
         void DeleteAll();
+
+
         
     }
 }

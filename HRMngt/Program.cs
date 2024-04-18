@@ -26,13 +26,17 @@ namespace HRMngt
                 SetProcessDPIAware();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Form chatServerForm = new ChatServer();
             ILoginRepository loginRepository = new LoginRepository();
             ILoginView loginView = new LoginView();
             new LoginPresenter(loginView, loginRepository);
+            Application.Run(chatServerForm);
+            
             Application.Run((Form)loginView);
 
 
         }
+
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern bool SetProcessDPIAware();
     }

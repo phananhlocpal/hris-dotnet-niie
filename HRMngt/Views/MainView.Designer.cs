@@ -36,31 +36,31 @@
             this.pnlSearch = new System.Windows.Forms.Panel();
             this.txtNavSearch = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.pnlLogo = new System.Windows.Forms.Panel();
+            this.pnlHome = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.pnlHR = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.pnlSalary = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.pnlHire = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.pnlTimeKeeping = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.pnlDepartment = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.pnlSupport = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.pnlNavBar = new System.Windows.Forms.Panel();
+            this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
+            this.btnMessage = new System.Windows.Forms.Button();
+            this.btnHelp = new System.Windows.Forms.Button();
+            this.btnDepartment = new System.Windows.Forms.Button();
+            this.btnTimeKeeping = new System.Windows.Forms.Button();
+            this.btnHiring = new System.Windows.Forms.Button();
+            this.btnSalary = new System.Windows.Forms.Button();
+            this.btnEmployee = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
             this.btnNoti = new System.Windows.Forms.Button();
             this.picNavAva = new System.Windows.Forms.PictureBox();
             this.picLogo = new System.Windows.Forms.PictureBox();
-            this.pnlHome = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.btnHome = new System.Windows.Forms.Button();
-            this.pnlHR = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.btnEmployee = new System.Windows.Forms.Button();
-            this.pnlSalary = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.btnSalary = new System.Windows.Forms.Button();
-            this.pnlHire = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.btnHiring = new System.Windows.Forms.Button();
-            this.pnlTimeKeeping = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.btnTimeKeeping = new System.Windows.Forms.Button();
-            this.pnlDepartment = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.btnDepartment = new System.Windows.Forms.Button();
-            this.pnlSupport = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.btnHelp = new System.Windows.Forms.Button();
-            this.pnlNavBar = new System.Windows.Forms.Panel();
             this.pnlHeader.SuspendLayout();
             this.pnlmainHeader.SuspendLayout();
             this.pnlIndividualHeader.SuspendLayout();
             this.pnlSearch.SuspendLayout();
             this.pnlLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picNavAva)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlHome)).BeginInit();
             this.pnlHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlHR)).BeginInit();
@@ -76,6 +76,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlSupport)).BeginInit();
             this.pnlSupport.SuspendLayout();
             this.pnlNavBar.SuspendLayout();
+            this.bunifuPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picNavAva)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlHeader
@@ -167,6 +170,246 @@
             this.pnlLogo.Size = new System.Drawing.Size(156, 62);
             this.pnlLogo.TabIndex = 5;
             // 
+            // pnlHome
+            // 
+            this.pnlHome.Controls.Add(this.btnHome);
+            this.pnlHome.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHome.Location = new System.Drawing.Point(0, 0);
+            this.pnlHome.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlHome.Name = "pnlHome";
+            this.pnlHome.Size = new System.Drawing.Size(141, 50);
+            this.pnlHome.StateCommon.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.pnlHome.StateCommon.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.pnlHome.StateCommon.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.TopLeft;
+            this.pnlHome.TabIndex = 1;
+            // 
+            // pnlHR
+            // 
+            this.pnlHR.Controls.Add(this.btnEmployee);
+            this.pnlHR.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHR.Location = new System.Drawing.Point(0, 50);
+            this.pnlHR.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlHR.Name = "pnlHR";
+            this.pnlHR.Size = new System.Drawing.Size(141, 50);
+            this.pnlHR.StateCommon.Color1 = System.Drawing.Color.White;
+            this.pnlHR.StateCommon.Color2 = System.Drawing.Color.White;
+            this.pnlHR.TabIndex = 2;
+            // 
+            // pnlSalary
+            // 
+            this.pnlSalary.Controls.Add(this.btnSalary);
+            this.pnlSalary.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSalary.Location = new System.Drawing.Point(0, 100);
+            this.pnlSalary.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlSalary.Name = "pnlSalary";
+            this.pnlSalary.Size = new System.Drawing.Size(141, 50);
+            this.pnlSalary.StateCommon.Color1 = System.Drawing.Color.White;
+            this.pnlSalary.StateCommon.Color2 = System.Drawing.Color.White;
+            this.pnlSalary.TabIndex = 3;
+            // 
+            // pnlHire
+            // 
+            this.pnlHire.Controls.Add(this.btnHiring);
+            this.pnlHire.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHire.Location = new System.Drawing.Point(0, 150);
+            this.pnlHire.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlHire.Name = "pnlHire";
+            this.pnlHire.Size = new System.Drawing.Size(141, 50);
+            this.pnlHire.StateCommon.Color1 = System.Drawing.Color.White;
+            this.pnlHire.StateCommon.Color2 = System.Drawing.Color.White;
+            this.pnlHire.TabIndex = 4;
+            // 
+            // pnlTimeKeeping
+            // 
+            this.pnlTimeKeeping.Controls.Add(this.btnTimeKeeping);
+            this.pnlTimeKeeping.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTimeKeeping.Location = new System.Drawing.Point(0, 200);
+            this.pnlTimeKeeping.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlTimeKeeping.Name = "pnlTimeKeeping";
+            this.pnlTimeKeeping.Size = new System.Drawing.Size(141, 50);
+            this.pnlTimeKeeping.StateCommon.Color1 = System.Drawing.Color.White;
+            this.pnlTimeKeeping.StateCommon.Color2 = System.Drawing.Color.White;
+            this.pnlTimeKeeping.TabIndex = 5;
+            // 
+            // pnlDepartment
+            // 
+            this.pnlDepartment.Controls.Add(this.btnDepartment);
+            this.pnlDepartment.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlDepartment.Location = new System.Drawing.Point(0, 250);
+            this.pnlDepartment.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlDepartment.Name = "pnlDepartment";
+            this.pnlDepartment.Size = new System.Drawing.Size(141, 50);
+            this.pnlDepartment.StateCommon.Color1 = System.Drawing.Color.White;
+            this.pnlDepartment.StateCommon.Color2 = System.Drawing.Color.White;
+            this.pnlDepartment.TabIndex = 6;
+            // 
+            // pnlSupport
+            // 
+            this.pnlSupport.Controls.Add(this.btnHelp);
+            this.pnlSupport.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSupport.Location = new System.Drawing.Point(0, 300);
+            this.pnlSupport.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlSupport.Name = "pnlSupport";
+            this.pnlSupport.Size = new System.Drawing.Size(141, 50);
+            this.pnlSupport.StateCommon.Color1 = System.Drawing.Color.White;
+            this.pnlSupport.StateCommon.Color2 = System.Drawing.Color.White;
+            this.pnlSupport.TabIndex = 7;
+            // 
+            // pnlNavBar
+            // 
+            this.pnlNavBar.AutoSize = true;
+            this.pnlNavBar.Controls.Add(this.bunifuPanel1);
+            this.pnlNavBar.Controls.Add(this.pnlSupport);
+            this.pnlNavBar.Controls.Add(this.pnlDepartment);
+            this.pnlNavBar.Controls.Add(this.pnlTimeKeeping);
+            this.pnlNavBar.Controls.Add(this.pnlHire);
+            this.pnlNavBar.Controls.Add(this.pnlSalary);
+            this.pnlNavBar.Controls.Add(this.pnlHR);
+            this.pnlNavBar.Controls.Add(this.pnlHome);
+            this.pnlNavBar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlNavBar.Location = new System.Drawing.Point(0, 62);
+            this.pnlNavBar.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlNavBar.MinimumSize = new System.Drawing.Size(138, 0);
+            this.pnlNavBar.Name = "pnlNavBar";
+            this.pnlNavBar.Size = new System.Drawing.Size(141, 677);
+            this.pnlNavBar.TabIndex = 1;
+            // 
+            // bunifuPanel1
+            // 
+            this.bunifuPanel1.BackgroundColor = System.Drawing.Color.Transparent;
+            this.bunifuPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuPanel1.BackgroundImage")));
+            this.bunifuPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuPanel1.BorderColor = System.Drawing.Color.Transparent;
+            this.bunifuPanel1.BorderRadius = 3;
+            this.bunifuPanel1.BorderThickness = 1;
+            this.bunifuPanel1.Controls.Add(this.btnMessage);
+            this.bunifuPanel1.Location = new System.Drawing.Point(3, 355);
+            this.bunifuPanel1.Name = "bunifuPanel1";
+            this.bunifuPanel1.ShowBorders = true;
+            this.bunifuPanel1.Size = new System.Drawing.Size(135, 44);
+            this.bunifuPanel1.TabIndex = 8;
+            // 
+            // btnMessage
+            // 
+            this.btnMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMessage.Image = global::HRMngt.Properties.Resources.image_231;
+            this.btnMessage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMessage.Location = new System.Drawing.Point(-15, -10);
+            this.btnMessage.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMessage.Name = "btnMessage";
+            this.btnMessage.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
+            this.btnMessage.Size = new System.Drawing.Size(153, 64);
+            this.btnMessage.TabIndex = 5;
+            this.btnMessage.Text = "           Trò chuyện";
+            this.btnMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMessage.UseVisualStyleBackColor = true;
+            // 
+            // btnHelp
+            // 
+            this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.Image = global::HRMngt.Properties.Resources.image_22;
+            this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHelp.Location = new System.Drawing.Point(-11, -7);
+            this.btnHelp.Margin = new System.Windows.Forms.Padding(2);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
+            this.btnHelp.Size = new System.Drawing.Size(151, 64);
+            this.btnHelp.TabIndex = 4;
+            this.btnHelp.Text = "           Trợ giúp";
+            this.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHelp.UseVisualStyleBackColor = true;
+            // 
+            // btnDepartment
+            // 
+            this.btnDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDepartment.Image = global::HRMngt.Properties.Resources.image_27;
+            this.btnDepartment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDepartment.Location = new System.Drawing.Point(-12, -7);
+            this.btnDepartment.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDepartment.Name = "btnDepartment";
+            this.btnDepartment.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
+            this.btnDepartment.Size = new System.Drawing.Size(151, 64);
+            this.btnDepartment.TabIndex = 3;
+            this.btnDepartment.Text = "           Phòng ban";
+            this.btnDepartment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDepartment.UseVisualStyleBackColor = true;
+            this.btnDepartment.Click += new System.EventHandler(this.btnDepartment_Click);
+            // 
+            // btnTimeKeeping
+            // 
+            this.btnTimeKeeping.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTimeKeeping.Image = global::HRMngt.Properties.Resources.image_20;
+            this.btnTimeKeeping.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTimeKeeping.Location = new System.Drawing.Point(-11, -6);
+            this.btnTimeKeeping.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTimeKeeping.Name = "btnTimeKeeping";
+            this.btnTimeKeeping.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
+            this.btnTimeKeeping.Size = new System.Drawing.Size(151, 64);
+            this.btnTimeKeeping.TabIndex = 2;
+            this.btnTimeKeeping.Text = "           Công";
+            this.btnTimeKeeping.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTimeKeeping.UseVisualStyleBackColor = true;
+            // 
+            // btnHiring
+            // 
+            this.btnHiring.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHiring.Image = global::HRMngt.Properties.Resources.image_19;
+            this.btnHiring.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHiring.Location = new System.Drawing.Point(-11, -8);
+            this.btnHiring.Margin = new System.Windows.Forms.Padding(2);
+            this.btnHiring.Name = "btnHiring";
+            this.btnHiring.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
+            this.btnHiring.Size = new System.Drawing.Size(151, 64);
+            this.btnHiring.TabIndex = 1;
+            this.btnHiring.Text = "           Tuyển dụng";
+            this.btnHiring.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHiring.UseVisualStyleBackColor = true;
+            // 
+            // btnSalary
+            // 
+            this.btnSalary.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalary.Image = global::HRMngt.Properties.Resources.image_18;
+            this.btnSalary.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalary.Location = new System.Drawing.Point(-12, -8);
+            this.btnSalary.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSalary.Name = "btnSalary";
+            this.btnSalary.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
+            this.btnSalary.Size = new System.Drawing.Size(151, 64);
+            this.btnSalary.TabIndex = 1;
+            this.btnSalary.Text = "           Lương";
+            this.btnSalary.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalary.UseVisualStyleBackColor = true;
+            // 
+            // btnEmployee
+            // 
+            this.btnEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployee.Image = global::HRMngt.Properties.Resources.image_15;
+            this.btnEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEmployee.Location = new System.Drawing.Point(-11, -8);
+            this.btnEmployee.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEmployee.Name = "btnEmployee";
+            this.btnEmployee.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
+            this.btnEmployee.Size = new System.Drawing.Size(151, 64);
+            this.btnEmployee.TabIndex = 1;
+            this.btnEmployee.Text = "           Nhân viên";
+            this.btnEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEmployee.UseVisualStyleBackColor = true;
+            // 
+            // btnHome
+            // 
+            this.btnHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHome.Image = global::HRMngt.Properties.Resources.image_14;
+            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.Location = new System.Drawing.Point(-11, -7);
+            this.btnHome.Margin = new System.Windows.Forms.Padding(2);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
+            this.btnHome.Size = new System.Drawing.Size(151, 64);
+            this.btnHome.TabIndex = 0;
+            this.btnHome.Text = "           Trang chủ";
+            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.UseVisualStyleBackColor = true;
+            // 
             // btnNoti
             // 
             this.btnNoti.BackColor = System.Drawing.Color.White;
@@ -204,215 +447,6 @@
             this.picLogo.TabIndex = 0;
             this.picLogo.TabStop = false;
             // 
-            // pnlHome
-            // 
-            this.pnlHome.Controls.Add(this.btnHome);
-            this.pnlHome.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHome.Location = new System.Drawing.Point(0, 0);
-            this.pnlHome.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlHome.Name = "pnlHome";
-            this.pnlHome.Size = new System.Drawing.Size(138, 50);
-            this.pnlHome.StateCommon.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.pnlHome.StateCommon.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.pnlHome.StateCommon.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.TopLeft;
-            this.pnlHome.TabIndex = 1;
-            // 
-            // btnHome
-            // 
-            this.btnHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHome.Image = global::HRMngt.Properties.Resources.image_14;
-            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHome.Location = new System.Drawing.Point(-11, -7);
-            this.btnHome.Margin = new System.Windows.Forms.Padding(2);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
-            this.btnHome.Size = new System.Drawing.Size(151, 64);
-            this.btnHome.TabIndex = 0;
-            this.btnHome.Text = "           Trang chủ";
-            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHome.UseVisualStyleBackColor = true;
-            // 
-            // pnlHR
-            // 
-            this.pnlHR.Controls.Add(this.btnEmployee);
-            this.pnlHR.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHR.Location = new System.Drawing.Point(0, 50);
-            this.pnlHR.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlHR.Name = "pnlHR";
-            this.pnlHR.Size = new System.Drawing.Size(138, 50);
-            this.pnlHR.StateCommon.Color1 = System.Drawing.Color.White;
-            this.pnlHR.StateCommon.Color2 = System.Drawing.Color.White;
-            this.pnlHR.TabIndex = 2;
-            // 
-            // btnEmployee
-            // 
-            this.btnEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmployee.Image = global::HRMngt.Properties.Resources.image_15;
-            this.btnEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEmployee.Location = new System.Drawing.Point(-11, -8);
-            this.btnEmployee.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEmployee.Name = "btnEmployee";
-            this.btnEmployee.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
-            this.btnEmployee.Size = new System.Drawing.Size(151, 64);
-            this.btnEmployee.TabIndex = 1;
-            this.btnEmployee.Text = "           Nhân viên";
-            this.btnEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEmployee.UseVisualStyleBackColor = true;
-            // 
-            // pnlSalary
-            // 
-            this.pnlSalary.Controls.Add(this.btnSalary);
-            this.pnlSalary.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSalary.Location = new System.Drawing.Point(0, 100);
-            this.pnlSalary.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlSalary.Name = "pnlSalary";
-            this.pnlSalary.Size = new System.Drawing.Size(138, 50);
-            this.pnlSalary.StateCommon.Color1 = System.Drawing.Color.White;
-            this.pnlSalary.StateCommon.Color2 = System.Drawing.Color.White;
-            this.pnlSalary.TabIndex = 3;
-            // 
-            // btnSalary
-            // 
-            this.btnSalary.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalary.Image = global::HRMngt.Properties.Resources.image_18;
-            this.btnSalary.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalary.Location = new System.Drawing.Point(-12, -8);
-            this.btnSalary.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSalary.Name = "btnSalary";
-            this.btnSalary.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
-            this.btnSalary.Size = new System.Drawing.Size(151, 64);
-            this.btnSalary.TabIndex = 1;
-            this.btnSalary.Text = "           Lương";
-            this.btnSalary.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalary.UseVisualStyleBackColor = true;
-            // 
-            // pnlHire
-            // 
-            this.pnlHire.Controls.Add(this.btnHiring);
-            this.pnlHire.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHire.Location = new System.Drawing.Point(0, 150);
-            this.pnlHire.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlHire.Name = "pnlHire";
-            this.pnlHire.Size = new System.Drawing.Size(138, 50);
-            this.pnlHire.StateCommon.Color1 = System.Drawing.Color.White;
-            this.pnlHire.StateCommon.Color2 = System.Drawing.Color.White;
-            this.pnlHire.TabIndex = 4;
-            // 
-            // btnHiring
-            // 
-            this.btnHiring.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHiring.Image = global::HRMngt.Properties.Resources.image_19;
-            this.btnHiring.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHiring.Location = new System.Drawing.Point(-11, -8);
-            this.btnHiring.Margin = new System.Windows.Forms.Padding(2);
-            this.btnHiring.Name = "btnHiring";
-            this.btnHiring.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
-            this.btnHiring.Size = new System.Drawing.Size(151, 64);
-            this.btnHiring.TabIndex = 1;
-            this.btnHiring.Text = "           Tuyển dụng";
-            this.btnHiring.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHiring.UseVisualStyleBackColor = true;
-            // 
-            // pnlTimeKeeping
-            // 
-            this.pnlTimeKeeping.Controls.Add(this.btnTimeKeeping);
-            this.pnlTimeKeeping.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTimeKeeping.Location = new System.Drawing.Point(0, 200);
-            this.pnlTimeKeeping.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlTimeKeeping.Name = "pnlTimeKeeping";
-            this.pnlTimeKeeping.Size = new System.Drawing.Size(138, 50);
-            this.pnlTimeKeeping.StateCommon.Color1 = System.Drawing.Color.White;
-            this.pnlTimeKeeping.StateCommon.Color2 = System.Drawing.Color.White;
-            this.pnlTimeKeeping.TabIndex = 5;
-            // 
-            // btnTimeKeeping
-            // 
-            this.btnTimeKeeping.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimeKeeping.Image = global::HRMngt.Properties.Resources.image_20;
-            this.btnTimeKeeping.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTimeKeeping.Location = new System.Drawing.Point(-11, -6);
-            this.btnTimeKeeping.Margin = new System.Windows.Forms.Padding(2);
-            this.btnTimeKeeping.Name = "btnTimeKeeping";
-            this.btnTimeKeeping.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
-            this.btnTimeKeeping.Size = new System.Drawing.Size(151, 64);
-            this.btnTimeKeeping.TabIndex = 2;
-            this.btnTimeKeeping.Text = "           Công";
-            this.btnTimeKeeping.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTimeKeeping.UseVisualStyleBackColor = true;
-            // 
-            // pnlDepartment
-            // 
-            this.pnlDepartment.Controls.Add(this.btnDepartment);
-            this.pnlDepartment.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlDepartment.Location = new System.Drawing.Point(0, 250);
-            this.pnlDepartment.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlDepartment.Name = "pnlDepartment";
-            this.pnlDepartment.Size = new System.Drawing.Size(138, 50);
-            this.pnlDepartment.StateCommon.Color1 = System.Drawing.Color.White;
-            this.pnlDepartment.StateCommon.Color2 = System.Drawing.Color.White;
-            this.pnlDepartment.TabIndex = 6;
-            // 
-            // btnDepartment
-            // 
-            this.btnDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDepartment.Image = global::HRMngt.Properties.Resources.image_27;
-            this.btnDepartment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDepartment.Location = new System.Drawing.Point(-12, -7);
-            this.btnDepartment.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDepartment.Name = "btnDepartment";
-            this.btnDepartment.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
-            this.btnDepartment.Size = new System.Drawing.Size(151, 64);
-            this.btnDepartment.TabIndex = 3;
-            this.btnDepartment.Text = "           Phòng ban";
-            this.btnDepartment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDepartment.UseVisualStyleBackColor = true;
-            this.btnDepartment.Click += new System.EventHandler(this.btnDepartment_Click);
-            // 
-            // pnlSupport
-            // 
-            this.pnlSupport.Controls.Add(this.btnHelp);
-            this.pnlSupport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSupport.Location = new System.Drawing.Point(0, 300);
-            this.pnlSupport.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlSupport.Name = "pnlSupport";
-            this.pnlSupport.Size = new System.Drawing.Size(138, 50);
-            this.pnlSupport.StateCommon.Color1 = System.Drawing.Color.White;
-            this.pnlSupport.StateCommon.Color2 = System.Drawing.Color.White;
-            this.pnlSupport.TabIndex = 7;
-            // 
-            // btnHelp
-            // 
-            this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.Image = global::HRMngt.Properties.Resources.image_22;
-            this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHelp.Location = new System.Drawing.Point(-11, -7);
-            this.btnHelp.Margin = new System.Windows.Forms.Padding(2);
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
-            this.btnHelp.Size = new System.Drawing.Size(151, 64);
-            this.btnHelp.TabIndex = 4;
-            this.btnHelp.Text = "           Trợ giúp";
-            this.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHelp.UseVisualStyleBackColor = true;
-            // 
-            // pnlNavBar
-            // 
-            this.pnlNavBar.AutoSize = true;
-            this.pnlNavBar.Controls.Add(this.pnlSupport);
-            this.pnlNavBar.Controls.Add(this.pnlDepartment);
-            this.pnlNavBar.Controls.Add(this.pnlTimeKeeping);
-            this.pnlNavBar.Controls.Add(this.pnlHire);
-            this.pnlNavBar.Controls.Add(this.pnlSalary);
-            this.pnlNavBar.Controls.Add(this.pnlHR);
-            this.pnlNavBar.Controls.Add(this.pnlHome);
-            this.pnlNavBar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlNavBar.Location = new System.Drawing.Point(0, 62);
-            this.pnlNavBar.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlNavBar.MinimumSize = new System.Drawing.Size(138, 0);
-            this.pnlNavBar.Name = "pnlNavBar";
-            this.pnlNavBar.Size = new System.Drawing.Size(138, 677);
-            this.pnlNavBar.TabIndex = 1;
-            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -433,8 +467,6 @@
             this.pnlSearch.ResumeLayout(false);
             this.pnlSearch.PerformLayout();
             this.pnlLogo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picNavAva)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlHome)).EndInit();
             this.pnlHome.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlHR)).EndInit();
@@ -450,6 +482,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlSupport)).EndInit();
             this.pnlSupport.ResumeLayout(false);
             this.pnlNavBar.ResumeLayout(false);
+            this.bunifuPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picNavAva)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -468,19 +503,21 @@
         private System.Windows.Forms.Button btnNoti;
         private System.Windows.Forms.Label lblNavName;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel pnlHome;
-        private System.Windows.Forms.Button btnHome;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel pnlHR;
-        private System.Windows.Forms.Button btnEmployee;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel pnlSalary;
-        private System.Windows.Forms.Button btnSalary;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel pnlHire;
-        private System.Windows.Forms.Button btnHiring;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel pnlTimeKeeping;
-        private System.Windows.Forms.Button btnTimeKeeping;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel pnlDepartment;
-        private System.Windows.Forms.Button btnDepartment;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel pnlSupport;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Panel pnlNavBar;
+        private System.Windows.Forms.Button btnHome;
+        private System.Windows.Forms.Button btnEmployee;
+        private System.Windows.Forms.Button btnSalary;
+        private System.Windows.Forms.Button btnHiring;
+        private System.Windows.Forms.Button btnTimeKeeping;
+        private System.Windows.Forms.Button btnDepartment;
+        private Bunifu.UI.WinForms.BunifuPanel bunifuPanel1;
+        private System.Windows.Forms.Button btnMessage;
     }
 }

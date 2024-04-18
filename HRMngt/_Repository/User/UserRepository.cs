@@ -22,8 +22,11 @@ namespace HRMngt._Repository
         {
             
         }
+
         public void Add(UserModel userModel)
         {
+            string salt = BCrypt.Net.BCrypt.GenerateSalt();
+            string hash = BCrypt.Net.BCrypt.HashPassword(userModel.Password, salt);
             try
             {
                 using (var connection = new SqlConnection(connectionString))
@@ -40,7 +43,7 @@ namespace HRMngt._Repository
                     command.Parameters.Add("@Birthday", SqlDbType.DateTime).Value = userModel.Birthday;
                     command.Parameters.Add("@Deal_salary", SqlDbType.Int).Value = userModel.Salary;
                     command.Parameters.Add("@Username", SqlDbType.VarChar).Value = userModel.Username;
-                    command.Parameters.Add("@Password", SqlDbType.VarChar).Value = userModel.Password;
+                    command.Parameters.Add("@Password", SqlDbType.VarChar).Value = hash;
                     command.Parameters.Add("@ManagerID", SqlDbType.Char).Value = userModel.ManagerID;
                     command.Parameters.Add("@DepartmentID", SqlDbType.Char).Value = userModel.DepartmentID;
                     command.Parameters.Add("@On_boarding", SqlDbType.DateTime).Value = userModel.On_boarding;
@@ -58,9 +61,10 @@ namespace HRMngt._Repository
                     connection.Close();
                 }
             }
-            catch
+            catch(Exception e)
             {
-                MessageBox.Show("Thêm nhân viên hiện tại đang gặp sự cố!, vui lòng thử lại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                /*MessageBox.Show("Thêm nhân viên hiện tại đang gặp sự cố!, vui lòng thử lại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);*/
+                MessageBox.Show(e.ToString());
             }
         }
 
@@ -89,6 +93,8 @@ namespace HRMngt._Repository
 
         public void Update(UserModel userModel)
         {
+            string salt = BCrypt.Net.BCrypt.GenerateSalt();
+            string hash = BCrypt.Net.BCrypt.HashPassword(userModel.Password, salt);
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
             {
@@ -105,7 +111,7 @@ namespace HRMngt._Repository
                 command.Parameters.Add("@Birthday", SqlDbType.DateTime).Value = userModel.Birthday;
                 command.Parameters.Add("@Deal_salary", SqlDbType.Int).Value = userModel.Salary;
                 command.Parameters.Add("@Username", SqlDbType.VarChar).Value = userModel.Username;
-                command.Parameters.Add("@Password", SqlDbType.VarChar).Value = userModel.Password;
+                command.Parameters.Add("@Password", SqlDbType.VarChar).Value = hash;
                 command.Parameters.Add("@ManagerID", SqlDbType.Char).Value = userModel.ManagerID;
                 command.Parameters.Add("@DepartmentID", SqlDbType.Char).Value = userModel.DepartmentID;
                 command.Parameters.Add("@On_boarding", SqlDbType.DateTime).Value = userModel.On_boarding;

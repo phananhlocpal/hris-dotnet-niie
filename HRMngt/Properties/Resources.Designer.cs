@@ -83,6 +83,16 @@ namespace HRMngt.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap chat {
+            get {
+                object obj = ResourceManager.GetObject("chat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap check {
             get {
                 object obj = ResourceManager.GetObject("check", resourceCulture);
@@ -226,6 +236,16 @@ namespace HRMngt.Properties {
         internal static System.Drawing.Bitmap image_23 {
             get {
                 object obj = ResourceManager.GetObject("image 23", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap image_231 {
+            get {
+                object obj = ResourceManager.GetObject("image 231", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

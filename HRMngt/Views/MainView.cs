@@ -1,6 +1,7 @@
 ﻿using HRMngt.Model;
 using HRMngt.Views;
 using Microsoft.VisualBasic.ApplicationServices;
+using ReaLTaiizor.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace HRMngt.View
 {
     public partial class MainView : Form, IMainView
     {
+        private bool formOpened = false;
         private UserModel currentUser;
         
         
@@ -41,6 +43,7 @@ namespace HRMngt.View
         public event EventHandler ShowTimeKeepingView;
         public event EventHandler ShowIndividualSalaryView;
         public event EventHandler ShowMainIndividualView;
+        public event EventHandler ShowCommunicateView;
 
         public void RunEvent()
         {
@@ -52,7 +55,9 @@ namespace HRMngt.View
             btnHiring.Click += delegate { ShowRecuitView?.Invoke(this, EventArgs.Empty); };
             lblNavName.Enabled = false;
             btnTimeKeeping.Click += delegate { ShowTimeKeepingView?.Invoke(this, EventArgs.Empty); };
-            
+            btnMessage.Click += delegate {
+                ShowCommunicateView?.Invoke(this, EventArgs.Empty); 
+            };
 
         }
         private void txtNavSearch_MouseClick(object sender, MouseEventArgs e)
@@ -72,11 +77,6 @@ namespace HRMngt.View
                 txtNavSearch.ForeColor = Color.Black;
             }
         }
-
-       
-
-        
-        
         private void btnDepartment_Click(object sender, EventArgs e)
         {
 
@@ -86,8 +86,8 @@ namespace HRMngt.View
             if (currentUser.Roles != "Admin")
             {
                 btnEmployee.Enabled = false;
-                btnSalary.Enabled = false;
                 btnDepartment.Enabled = false;
+                btnSalary.Enabled = false;
             }
         }
 
