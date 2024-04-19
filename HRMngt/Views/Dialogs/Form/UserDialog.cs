@@ -1,4 +1,5 @@
 ﻿using HRMngt.Model;
+using HRMngt.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -109,7 +110,7 @@ namespace HRMngt.Views.Dialogs
         }
         public string Contract_type { get => cbContractType.Text; set => cbContractType.Text = value; }
         public DateTime On_boarding { get => dtOnBoarding.Value; set => dtOnBoarding.Value = value; }
-        public DateTime Close_date { get => dtClosedate.Value; set => dtClosedate.Value = value; }
+        public DateTime? Close_date { get => dtClosedate.Value; set => dtClosedate.Value = (DateTime)value; }
         public string Scan_contract { get => txtScanContract.Text; set => txtScanContract.Text = value; }
         
         public string Avatar { get => txtAvatar.Text; set => txtAvatar.Text = value; }
@@ -209,14 +210,13 @@ namespace HRMngt.Views.Dialogs
             }
         }
 
-        public void ShowUserIdNName(List<string> userIdNNameList)
+        public void ShowManagerComboBox(IEnumerable<UserModel> userList)
         {
             cbManagerId.Items.Clear();
 
-            foreach (string item in userIdNNameList)
+            foreach (var userModel in userList)
             {
-                cbManagerId.Items.Add(item);
-                
+                cbManagerId.Items.Add($"{userModel.Id} - {userModel.Name}");
                 
             }
         }
@@ -235,14 +235,12 @@ namespace HRMngt.Views.Dialogs
         }
 
 
-        public void ShowDepartmentIdNName(List<string> departmentIDNameList)
+        public void ShowDepartmentIdNName(IEnumerable<DepartmentModel> departmentList)
         {
             cbDepartmentId.Items.Clear();
-
-            foreach (string item in departmentIDNameList)
+            foreach (var departmentModel in departmentList)
             {
-                cbDepartmentId.Items.Add(item);
-
+                cbDepartmentId.Items.Add($"{ departmentModel.Id} - {departmentModel.Name}");
             }
         }
 

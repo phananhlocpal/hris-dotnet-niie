@@ -13,20 +13,15 @@ namespace HRMngt.Model
         void Add(UserModel userModel);
         void Update(UserModel userModel);
         void Delete(string id);
-        IEnumerable<UserModel> GetAll();
-        IEnumerable<UserModel> GetByValue(); // Search
-        List<string> GetUserIdNName();
-        List<string> GetDepartmentIDName();// Get "ID - Name"
-        string GetNameById(string id);
-        
-        UserModel GetById(string id);
-
         string RandomPasswords();
-        string GetNameDepartmentById(string id);
+        IEnumerable<UserModel> GetAll();
+        UserModel Authenticator(string username, string password);
+
+        // LINQ
+        UserModel LINQ_GetModelById(IEnumerable<UserModel> userList, string id);
+        IEnumerable<UserModel> LINQ_GetManagerList(IEnumerable<UserModel> userList);
 
         void SendMail(string password, string userID);
-
-        void DeleteAll();
         
     }
 }

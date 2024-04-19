@@ -121,9 +121,8 @@
             this.lblHeader.Controls.Add(this.pnlHeader);
             this.lblHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblHeader.Location = new System.Drawing.Point(0, 0);
-            this.lblHeader.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(959, 62);
+            this.lblHeader.Size = new System.Drawing.Size(1869, 99);
             this.lblHeader.TabIndex = 0;
             // 
             // pnlHeader
@@ -133,9 +132,8 @@
             this.pnlHeader.Controls.Add(this.pnlLogo);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlHeader.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(959, 62);
+            this.pnlHeader.Size = new System.Drawing.Size(1869, 99);
             this.pnlHeader.TabIndex = 1;
             // 
             // pnlIndividualHeader
@@ -144,20 +142,18 @@
             this.pnlIndividualHeader.Controls.Add(this.btnNoti);
             this.pnlIndividualHeader.Controls.Add(this.picNavAva);
             this.pnlIndividualHeader.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlIndividualHeader.Location = new System.Drawing.Point(771, 0);
-            this.pnlIndividualHeader.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlIndividualHeader.Location = new System.Drawing.Point(1568, 0);
             this.pnlIndividualHeader.Name = "pnlIndividualHeader";
-            this.pnlIndividualHeader.Size = new System.Drawing.Size(188, 62);
+            this.pnlIndividualHeader.Size = new System.Drawing.Size(301, 99);
             this.pnlIndividualHeader.TabIndex = 7;
             // 
             // lblNavName
             // 
             this.lblNavName.AutoSize = true;
             this.lblNavName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNavName.Location = new System.Drawing.Point(80, 26);
-            this.lblNavName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNavName.Location = new System.Drawing.Point(128, 42);
             this.lblNavName.Name = "lblNavName";
-            this.lblNavName.Size = new System.Drawing.Size(71, 17);
+            this.lblNavName.Size = new System.Drawing.Size(109, 25);
             this.lblNavName.TabIndex = 5;
             this.lblNavName.Text = "Minh Hiếu";
             // 
@@ -167,20 +163,18 @@
             this.btnNoti.FlatAppearance.BorderSize = 0;
             this.btnNoti.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNoti.Image = global::HRMngt.Properties.Resources.image_37;
-            this.btnNoti.Location = new System.Drawing.Point(2, 17);
-            this.btnNoti.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNoti.Location = new System.Drawing.Point(3, 27);
             this.btnNoti.Name = "btnNoti";
-            this.btnNoti.Size = new System.Drawing.Size(32, 32);
+            this.btnNoti.Size = new System.Drawing.Size(51, 51);
             this.btnNoti.TabIndex = 0;
             this.btnNoti.UseVisualStyleBackColor = false;
             // 
             // picNavAva
             // 
             this.picNavAva.Image = global::HRMngt.Properties.Resources.image_38;
-            this.picNavAva.Location = new System.Drawing.Point(38, 17);
-            this.picNavAva.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picNavAva.Location = new System.Drawing.Point(61, 27);
             this.picNavAva.Name = "picNavAva";
-            this.picNavAva.Size = new System.Drawing.Size(38, 31);
+            this.picNavAva.Size = new System.Drawing.Size(61, 50);
             this.picNavAva.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picNavAva.TabIndex = 4;
             this.picNavAva.TabStop = false;
@@ -189,10 +183,9 @@
             // 
             this.pnlSearch.Controls.Add(this.txtNavSearch);
             this.pnlSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSearch.Location = new System.Drawing.Point(156, 0);
-            this.pnlSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlSearch.Location = new System.Drawing.Point(250, 0);
             this.pnlSearch.Name = "pnlSearch";
-            this.pnlSearch.Size = new System.Drawing.Size(803, 62);
+            this.pnlSearch.Size = new System.Drawing.Size(1619, 99);
             this.pnlSearch.TabIndex = 6;
             // 
             // txtNavSearch
@@ -200,10 +193,9 @@
             this.txtNavSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNavSearch.Location = new System.Drawing.Point(28, 17);
-            this.txtNavSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNavSearch.Location = new System.Drawing.Point(45, 27);
             this.txtNavSearch.Name = "txtNavSearch";
-            this.txtNavSearch.Size = new System.Drawing.Size(562, 41);
+            this.txtNavSearch.Size = new System.Drawing.Size(1233, 50);
             this.txtNavSearch.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             this.txtNavSearch.StateCommon.Border.Color1 = System.Drawing.Color.Silver;
             this.txtNavSearch.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -224,19 +216,17 @@
             this.pnlLogo.Controls.Add(this.picLogo);
             this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLogo.Location = new System.Drawing.Point(0, 0);
-            this.pnlLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(156, 62);
+            this.pnlLogo.Size = new System.Drawing.Size(250, 99);
             this.pnlLogo.TabIndex = 5;
             // 
             // picLogo
             // 
             this.picLogo.BackColor = System.Drawing.Color.Transparent;
             this.picLogo.Image = global::HRMngt.Properties.Resources.logo;
-            this.picLogo.Location = new System.Drawing.Point(18, 7);
-            this.picLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picLogo.Location = new System.Drawing.Point(29, 11);
             this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(122, 47);
+            this.picLogo.Size = new System.Drawing.Size(195, 75);
             this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picLogo.TabIndex = 0;
             this.picLogo.TabStop = false;
@@ -264,10 +254,9 @@
             this.pnlIndividualInfo.Controls.Add(this.lblUserId);
             this.pnlIndividualInfo.Controls.Add(this.lblIndividualName);
             this.pnlIndividualInfo.Controls.Add(this.picIndividualAva);
-            this.pnlIndividualInfo.Location = new System.Drawing.Point(15, 14);
-            this.pnlIndividualInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlIndividualInfo.Location = new System.Drawing.Point(24, 22);
             this.pnlIndividualInfo.Name = "pnlIndividualInfo";
-            this.pnlIndividualInfo.Size = new System.Drawing.Size(250, 518);
+            this.pnlIndividualInfo.Size = new System.Drawing.Size(400, 1032);
             this.pnlIndividualInfo.StateNormal.Color1 = System.Drawing.Color.White;
             this.pnlIndividualInfo.TabIndex = 0;
             // 
@@ -276,10 +265,9 @@
             this.lblPlaceInfo.AutoSize = true;
             this.lblPlaceInfo.BackColor = System.Drawing.Color.White;
             this.lblPlaceInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlaceInfo.Location = new System.Drawing.Point(81, 392);
-            this.lblPlaceInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPlaceInfo.Location = new System.Drawing.Point(130, 627);
             this.lblPlaceInfo.Name = "lblPlaceInfo";
-            this.lblPlaceInfo.Size = new System.Drawing.Size(90, 17);
+            this.lblPlaceInfo.Size = new System.Drawing.Size(138, 25);
             this.lblPlaceInfo.TabIndex = 17;
             this.lblPlaceInfo.Text = "Cục cảnh sát";
             // 
@@ -289,10 +277,9 @@
             this.label5.BackColor = System.Drawing.Color.White;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label5.Location = new System.Drawing.Point(19, 392);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(30, 627);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 17);
+            this.label5.Size = new System.Drawing.Size(91, 25);
             this.label5.TabIndex = 16;
             this.label5.Text = "Nơi cấp:";
             // 
@@ -301,10 +288,9 @@
             this.lblDateInfo.AutoSize = true;
             this.lblDateInfo.BackColor = System.Drawing.Color.White;
             this.lblDateInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateInfo.Location = new System.Drawing.Point(79, 357);
-            this.lblDateInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDateInfo.Location = new System.Drawing.Point(126, 571);
             this.lblDateInfo.Name = "lblDateInfo";
-            this.lblDateInfo.Size = new System.Drawing.Size(80, 17);
+            this.lblDateInfo.Size = new System.Drawing.Size(120, 25);
             this.lblDateInfo.TabIndex = 15;
             this.lblDateInfo.Text = "11/12/2023";
             // 
@@ -314,10 +300,9 @@
             this.label12.BackColor = System.Drawing.Color.White;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label12.Location = new System.Drawing.Point(10, 357);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Location = new System.Drawing.Point(16, 571);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(72, 17);
+            this.label12.Size = new System.Drawing.Size(109, 25);
             this.label12.TabIndex = 14;
             this.label12.Text = "Ngày cấp:";
             // 
@@ -326,10 +311,9 @@
             this.lblPersonID.AutoSize = true;
             this.lblPersonID.BackColor = System.Drawing.Color.White;
             this.lblPersonID.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPersonID.Location = new System.Drawing.Point(79, 320);
-            this.lblPersonID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPersonID.Location = new System.Drawing.Point(126, 512);
             this.lblPersonID.Name = "lblPersonID";
-            this.lblPersonID.Size = new System.Drawing.Size(96, 17);
+            this.lblPersonID.Size = new System.Drawing.Size(144, 25);
             this.lblPersonID.TabIndex = 13;
             this.lblPersonID.Text = "12345678910";
             // 
@@ -339,10 +323,9 @@
             this.label10.BackColor = System.Drawing.Color.White;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label10.Location = new System.Drawing.Point(27, 320);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Location = new System.Drawing.Point(43, 512);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 17);
+            this.label10.Size = new System.Drawing.Size(78, 25);
             this.label10.TabIndex = 12;
             this.label10.Text = "CCCD:";
             // 
@@ -351,10 +334,9 @@
             this.lblGender.AutoSize = true;
             this.lblGender.BackColor = System.Drawing.Color.White;
             this.lblGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGender.Location = new System.Drawing.Point(79, 286);
-            this.lblGender.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblGender.Location = new System.Drawing.Point(126, 458);
             this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(37, 17);
+            this.lblGender.Size = new System.Drawing.Size(56, 25);
             this.lblGender.TabIndex = 11;
             this.lblGender.Text = "Nam";
             // 
@@ -364,10 +346,9 @@
             this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label8.Location = new System.Drawing.Point(18, 286);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Location = new System.Drawing.Point(29, 458);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(64, 17);
+            this.label8.Size = new System.Drawing.Size(97, 25);
             this.label8.TabIndex = 10;
             this.label8.Text = "Giới tính:";
             // 
@@ -376,10 +357,9 @@
             this.lblDepartmentInfo.AutoSize = true;
             this.lblDepartmentInfo.BackColor = System.Drawing.Color.White;
             this.lblDepartmentInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDepartmentInfo.Location = new System.Drawing.Point(81, 254);
-            this.lblDepartmentInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDepartmentInfo.Location = new System.Drawing.Point(130, 406);
             this.lblDepartmentInfo.Name = "lblDepartmentInfo";
-            this.lblDepartmentInfo.Size = new System.Drawing.Size(80, 17);
+            this.lblDepartmentInfo.Size = new System.Drawing.Size(121, 25);
             this.lblDepartmentInfo.TabIndex = 9;
             this.lblDepartmentInfo.Text = "Kinh doanh";
             // 
@@ -389,10 +369,9 @@
             this.label6.BackColor = System.Drawing.Color.White;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label6.Location = new System.Drawing.Point(2, 254);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(3, 406);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(81, 17);
+            this.label6.Size = new System.Drawing.Size(122, 25);
             this.label6.TabIndex = 8;
             this.label6.Text = "Phòng ban:";
             // 
@@ -401,10 +380,9 @@
             this.lblPhoneInfo.AutoSize = true;
             this.lblPhoneInfo.BackColor = System.Drawing.Color.White;
             this.lblPhoneInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhoneInfo.Location = new System.Drawing.Point(81, 221);
-            this.lblPhoneInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPhoneInfo.Location = new System.Drawing.Point(130, 354);
             this.lblPhoneInfo.Name = "lblPhoneInfo";
-            this.lblPhoneInfo.Size = new System.Drawing.Size(88, 17);
+            this.lblPhoneInfo.Size = new System.Drawing.Size(132, 25);
             this.lblPhoneInfo.TabIndex = 7;
             this.lblPhoneInfo.Text = "0345654280";
             // 
@@ -414,10 +392,9 @@
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label4.Location = new System.Drawing.Point(39, 221);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(62, 354);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 17);
+            this.label4.Size = new System.Drawing.Size(60, 25);
             this.label4.TabIndex = 6;
             this.label4.Text = "SĐT:";
             // 
@@ -427,10 +404,9 @@
             this.lblStatus.BackColor = System.Drawing.Color.White;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(158)))), ((int)(((byte)(26)))));
-            this.lblStatus.Location = new System.Drawing.Point(71, 143);
-            this.lblStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblStatus.Location = new System.Drawing.Point(114, 229);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(106, 17);
+            this.lblStatus.Size = new System.Drawing.Size(161, 25);
             this.lblStatus.TabIndex = 5;
             this.lblStatus.Text = "• Đang làm việc";
             // 
@@ -439,10 +415,9 @@
             this.lblEmailInfo.AutoSize = true;
             this.lblEmailInfo.BackColor = System.Drawing.Color.White;
             this.lblEmailInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmailInfo.Location = new System.Drawing.Point(81, 189);
-            this.lblEmailInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEmailInfo.Location = new System.Drawing.Point(130, 302);
             this.lblEmailInfo.Name = "lblEmailInfo";
-            this.lblEmailInfo.Size = new System.Drawing.Size(151, 17);
+            this.lblEmailInfo.Size = new System.Drawing.Size(230, 25);
             this.lblEmailInfo.TabIndex = 4;
             this.lblEmailInfo.Text = "anhloc280@gmail.com";
             // 
@@ -452,10 +427,9 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(32, 189);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(51, 302);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.Size = new System.Drawing.Size(71, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "Email:";
             // 
@@ -465,11 +439,10 @@
             this.lblUserId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             this.lblUserId.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserId.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblUserId.Location = new System.Drawing.Point(67, 110);
-            this.lblUserId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblUserId.Location = new System.Drawing.Point(107, 176);
             this.lblUserId.Name = "lblUserId";
-            this.lblUserId.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.lblUserId.Size = new System.Drawing.Size(113, 29);
+            this.lblUserId.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.lblUserId.Size = new System.Drawing.Size(174, 45);
             this.lblUserId.TabIndex = 2;
             this.lblUserId.Text = "Mã NV: NV123";
             this.lblUserId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -479,10 +452,9 @@
             this.lblIndividualName.AutoSize = true;
             this.lblIndividualName.BackColor = System.Drawing.Color.White;
             this.lblIndividualName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIndividualName.Location = new System.Drawing.Point(84, 89);
-            this.lblIndividualName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblIndividualName.Location = new System.Drawing.Point(134, 142);
             this.lblIndividualName.Name = "lblIndividualName";
-            this.lblIndividualName.Size = new System.Drawing.Size(80, 17);
+            this.lblIndividualName.Size = new System.Drawing.Size(118, 25);
             this.lblIndividualName.TabIndex = 1;
             this.lblIndividualName.Text = "Minh Hiếu";
             this.lblIndividualName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -491,10 +463,9 @@
             // 
             this.picIndividualAva.BackColor = System.Drawing.Color.White;
             this.picIndividualAva.Image = global::HRMngt.Properties.Resources.image_38;
-            this.picIndividualAva.Location = new System.Drawing.Point(90, 18);
-            this.picIndividualAva.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picIndividualAva.Location = new System.Drawing.Point(144, 29);
             this.picIndividualAva.Name = "picIndividualAva";
-            this.picIndividualAva.Size = new System.Drawing.Size(62, 62);
+            this.picIndividualAva.Size = new System.Drawing.Size(99, 99);
             this.picIndividualAva.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picIndividualAva.TabIndex = 0;
             this.picIndividualAva.TabStop = false;
@@ -510,21 +481,19 @@
             this.pnlNavbar.Controls.Add(this.pnlHR);
             this.pnlNavbar.Controls.Add(this.pnlHome);
             this.pnlNavbar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlNavbar.Location = new System.Drawing.Point(0, 62);
-            this.pnlNavbar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pnlNavbar.MinimumSize = new System.Drawing.Size(56, 0);
+            this.pnlNavbar.Location = new System.Drawing.Point(0, 99);
+            this.pnlNavbar.MinimumSize = new System.Drawing.Size(90, 0);
             this.pnlNavbar.Name = "pnlNavbar";
-            this.pnlNavbar.Size = new System.Drawing.Size(56, 550);
+            this.pnlNavbar.Size = new System.Drawing.Size(90, 1083);
             this.pnlNavbar.TabIndex = 1;
             // 
             // pnlSupport
             // 
             this.pnlSupport.Controls.Add(this.btnHelp);
             this.pnlSupport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSupport.Location = new System.Drawing.Point(0, 300);
-            this.pnlSupport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlSupport.Location = new System.Drawing.Point(0, 480);
             this.pnlSupport.Name = "pnlSupport";
-            this.pnlSupport.Size = new System.Drawing.Size(56, 50);
+            this.pnlSupport.Size = new System.Drawing.Size(90, 80);
             this.pnlSupport.StateCommon.Color1 = System.Drawing.Color.White;
             this.pnlSupport.StateCommon.Color2 = System.Drawing.Color.White;
             this.pnlSupport.TabIndex = 7;
@@ -534,11 +503,10 @@
             this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHelp.Image = global::HRMngt.Properties.Resources.image_22;
             this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHelp.Location = new System.Drawing.Point(-11, -7);
-            this.btnHelp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnHelp.Location = new System.Drawing.Point(-18, -11);
             this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
-            this.btnHelp.Size = new System.Drawing.Size(151, 64);
+            this.btnHelp.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.btnHelp.Size = new System.Drawing.Size(242, 102);
             this.btnHelp.TabIndex = 4;
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHelp.UseVisualStyleBackColor = true;
@@ -547,10 +515,9 @@
             // 
             this.pnlDepartment.Controls.Add(this.btnDepartment);
             this.pnlDepartment.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlDepartment.Location = new System.Drawing.Point(0, 250);
-            this.pnlDepartment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlDepartment.Location = new System.Drawing.Point(0, 400);
             this.pnlDepartment.Name = "pnlDepartment";
-            this.pnlDepartment.Size = new System.Drawing.Size(56, 50);
+            this.pnlDepartment.Size = new System.Drawing.Size(90, 80);
             this.pnlDepartment.StateCommon.Color1 = System.Drawing.Color.White;
             this.pnlDepartment.StateCommon.Color2 = System.Drawing.Color.White;
             this.pnlDepartment.TabIndex = 6;
@@ -560,11 +527,10 @@
             this.btnDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDepartment.Image = global::HRMngt.Properties.Resources.image_27;
             this.btnDepartment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDepartment.Location = new System.Drawing.Point(-12, -7);
-            this.btnDepartment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDepartment.Location = new System.Drawing.Point(-19, -11);
             this.btnDepartment.Name = "btnDepartment";
-            this.btnDepartment.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
-            this.btnDepartment.Size = new System.Drawing.Size(151, 64);
+            this.btnDepartment.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.btnDepartment.Size = new System.Drawing.Size(242, 102);
             this.btnDepartment.TabIndex = 3;
             this.btnDepartment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDepartment.UseVisualStyleBackColor = true;
@@ -573,10 +539,9 @@
             // 
             this.pnlTimeKeeping.Controls.Add(this.btnTimeKeeping);
             this.pnlTimeKeeping.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTimeKeeping.Location = new System.Drawing.Point(0, 200);
-            this.pnlTimeKeeping.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlTimeKeeping.Location = new System.Drawing.Point(0, 320);
             this.pnlTimeKeeping.Name = "pnlTimeKeeping";
-            this.pnlTimeKeeping.Size = new System.Drawing.Size(56, 50);
+            this.pnlTimeKeeping.Size = new System.Drawing.Size(90, 80);
             this.pnlTimeKeeping.StateCommon.Color1 = System.Drawing.Color.White;
             this.pnlTimeKeeping.StateCommon.Color2 = System.Drawing.Color.White;
             this.pnlTimeKeeping.TabIndex = 5;
@@ -586,11 +551,10 @@
             this.btnTimeKeeping.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTimeKeeping.Image = global::HRMngt.Properties.Resources.image_20;
             this.btnTimeKeeping.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTimeKeeping.Location = new System.Drawing.Point(-11, -6);
-            this.btnTimeKeeping.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTimeKeeping.Location = new System.Drawing.Point(-18, -10);
             this.btnTimeKeeping.Name = "btnTimeKeeping";
-            this.btnTimeKeeping.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
-            this.btnTimeKeeping.Size = new System.Drawing.Size(151, 64);
+            this.btnTimeKeeping.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.btnTimeKeeping.Size = new System.Drawing.Size(242, 102);
             this.btnTimeKeeping.TabIndex = 2;
             this.btnTimeKeeping.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTimeKeeping.UseVisualStyleBackColor = true;
@@ -599,10 +563,9 @@
             // 
             this.pnlHire.Controls.Add(this.btnHiring);
             this.pnlHire.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHire.Location = new System.Drawing.Point(0, 150);
-            this.pnlHire.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlHire.Location = new System.Drawing.Point(0, 240);
             this.pnlHire.Name = "pnlHire";
-            this.pnlHire.Size = new System.Drawing.Size(56, 50);
+            this.pnlHire.Size = new System.Drawing.Size(90, 80);
             this.pnlHire.StateCommon.Color1 = System.Drawing.Color.White;
             this.pnlHire.StateCommon.Color2 = System.Drawing.Color.White;
             this.pnlHire.TabIndex = 4;
@@ -612,11 +575,10 @@
             this.btnHiring.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHiring.Image = global::HRMngt.Properties.Resources.image_19;
             this.btnHiring.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHiring.Location = new System.Drawing.Point(-11, -8);
-            this.btnHiring.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnHiring.Location = new System.Drawing.Point(-18, -13);
             this.btnHiring.Name = "btnHiring";
-            this.btnHiring.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
-            this.btnHiring.Size = new System.Drawing.Size(151, 64);
+            this.btnHiring.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.btnHiring.Size = new System.Drawing.Size(242, 102);
             this.btnHiring.TabIndex = 1;
             this.btnHiring.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHiring.UseVisualStyleBackColor = true;
@@ -625,10 +587,9 @@
             // 
             this.pnlSalary.Controls.Add(this.btnSalary);
             this.pnlSalary.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSalary.Location = new System.Drawing.Point(0, 100);
-            this.pnlSalary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlSalary.Location = new System.Drawing.Point(0, 160);
             this.pnlSalary.Name = "pnlSalary";
-            this.pnlSalary.Size = new System.Drawing.Size(56, 50);
+            this.pnlSalary.Size = new System.Drawing.Size(90, 80);
             this.pnlSalary.StateCommon.Color1 = System.Drawing.Color.White;
             this.pnlSalary.StateCommon.Color2 = System.Drawing.Color.White;
             this.pnlSalary.TabIndex = 3;
@@ -638,11 +599,10 @@
             this.btnSalary.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalary.Image = global::HRMngt.Properties.Resources.image_18;
             this.btnSalary.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalary.Location = new System.Drawing.Point(-12, -8);
-            this.btnSalary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSalary.Location = new System.Drawing.Point(-19, -13);
             this.btnSalary.Name = "btnSalary";
-            this.btnSalary.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
-            this.btnSalary.Size = new System.Drawing.Size(151, 64);
+            this.btnSalary.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.btnSalary.Size = new System.Drawing.Size(242, 102);
             this.btnSalary.TabIndex = 1;
             this.btnSalary.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSalary.UseVisualStyleBackColor = true;
@@ -651,10 +611,9 @@
             // 
             this.pnlHR.Controls.Add(this.btnEmployee);
             this.pnlHR.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHR.Location = new System.Drawing.Point(0, 50);
-            this.pnlHR.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlHR.Location = new System.Drawing.Point(0, 80);
             this.pnlHR.Name = "pnlHR";
-            this.pnlHR.Size = new System.Drawing.Size(56, 50);
+            this.pnlHR.Size = new System.Drawing.Size(90, 80);
             this.pnlHR.StateCommon.Color1 = System.Drawing.Color.White;
             this.pnlHR.StateCommon.Color2 = System.Drawing.Color.White;
             this.pnlHR.TabIndex = 2;
@@ -664,11 +623,10 @@
             this.btnEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmployee.Image = global::HRMngt.Properties.Resources.image_15;
             this.btnEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEmployee.Location = new System.Drawing.Point(-11, -8);
-            this.btnEmployee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEmployee.Location = new System.Drawing.Point(-18, -13);
             this.btnEmployee.Name = "btnEmployee";
-            this.btnEmployee.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
-            this.btnEmployee.Size = new System.Drawing.Size(151, 64);
+            this.btnEmployee.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.btnEmployee.Size = new System.Drawing.Size(242, 102);
             this.btnEmployee.TabIndex = 1;
             this.btnEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEmployee.UseVisualStyleBackColor = true;
@@ -678,9 +636,8 @@
             this.pnlHome.Controls.Add(this.btnHome);
             this.pnlHome.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHome.Location = new System.Drawing.Point(0, 0);
-            this.pnlHome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlHome.Name = "pnlHome";
-            this.pnlHome.Size = new System.Drawing.Size(56, 50);
+            this.pnlHome.Size = new System.Drawing.Size(90, 80);
             this.pnlHome.StateCommon.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.pnlHome.StateCommon.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.pnlHome.StateCommon.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.TopLeft;
@@ -691,11 +648,10 @@
             this.btnHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHome.Image = global::HRMngt.Properties.Resources.image_14;
             this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHome.Location = new System.Drawing.Point(-11, -7);
-            this.btnHome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnHome.Location = new System.Drawing.Point(-18, -11);
             this.btnHome.Name = "btnHome";
-            this.btnHome.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
-            this.btnHome.Size = new System.Drawing.Size(151, 64);
+            this.btnHome.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.btnHome.Size = new System.Drawing.Size(242, 102);
             this.btnHome.TabIndex = 0;
             this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHome.UseVisualStyleBackColor = true;
@@ -705,10 +661,9 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             this.panel1.Controls.Add(this.pnlIndividualInfo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(56, 62);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Location = new System.Drawing.Point(90, 99);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(281, 550);
+            this.panel1.Size = new System.Drawing.Size(450, 1083);
             this.panel1.TabIndex = 4;
             // 
             // tableLayoutPanel1
@@ -721,12 +676,11 @@
             this.tableLayoutPanel1.Controls.Add(this.pnlCalendar, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.pnlThumbTicket, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(337, 62);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(540, 99);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(622, 62);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1329, 99);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
             // pnlSalaryDetail
@@ -734,20 +688,18 @@
             this.pnlSalaryDetail.Controls.Add(this.panel3);
             this.pnlSalaryDetail.Controls.Add(this.btnSalaryDetail);
             this.pnlSalaryDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSalaryDetail.Location = new System.Drawing.Point(416, 2);
-            this.pnlSalaryDetail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlSalaryDetail.Location = new System.Drawing.Point(889, 3);
             this.pnlSalaryDetail.Name = "pnlSalaryDetail";
-            this.pnlSalaryDetail.Size = new System.Drawing.Size(204, 58);
+            this.pnlSalaryDetail.Size = new System.Drawing.Size(437, 93);
             this.pnlSalaryDetail.TabIndex = 2;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 55);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Location = new System.Drawing.Point(0, 88);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(204, 3);
+            this.panel3.Size = new System.Drawing.Size(437, 5);
             this.panel3.TabIndex = 5;
             // 
             // btnSalaryDetail
@@ -756,10 +708,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSalaryDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalaryDetail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(111)))), ((int)(((byte)(111)))));
-            this.btnSalaryDetail.Location = new System.Drawing.Point(-6, -9);
-            this.btnSalaryDetail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSalaryDetail.Location = new System.Drawing.Point(-10, -14);
             this.btnSalaryDetail.Name = "btnSalaryDetail";
-            this.btnSalaryDetail.Size = new System.Drawing.Size(221, 76);
+            this.btnSalaryDetail.Size = new System.Drawing.Size(465, 122);
             this.btnSalaryDetail.TabIndex = 3;
             this.btnSalaryDetail.Text = "Bảng lương";
             this.btnSalaryDetail.UseVisualStyleBackColor = false;
@@ -769,20 +720,18 @@
             this.pnlCalendar.Controls.Add(this.panel2);
             this.pnlCalendar.Controls.Add(this.btnCalendar);
             this.pnlCalendar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCalendar.Location = new System.Drawing.Point(2, 2);
-            this.pnlCalendar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlCalendar.Location = new System.Drawing.Point(3, 3);
             this.pnlCalendar.Name = "pnlCalendar";
-            this.pnlCalendar.Size = new System.Drawing.Size(203, 58);
+            this.pnlCalendar.Size = new System.Drawing.Size(437, 93);
             this.pnlCalendar.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 55);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Location = new System.Drawing.Point(0, 88);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(203, 3);
+            this.panel2.Size = new System.Drawing.Size(437, 5);
             this.panel2.TabIndex = 4;
             // 
             // btnCalendar
@@ -791,10 +740,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCalendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(111)))), ((int)(((byte)(111)))));
-            this.btnCalendar.Location = new System.Drawing.Point(-12, -2);
-            this.btnCalendar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCalendar.Location = new System.Drawing.Point(-19, -3);
             this.btnCalendar.Name = "btnCalendar";
-            this.btnCalendar.Size = new System.Drawing.Size(224, 64);
+            this.btnCalendar.Size = new System.Drawing.Size(470, 102);
             this.btnCalendar.TabIndex = 1;
             this.btnCalendar.Text = "Lịch làm";
             this.btnCalendar.UseVisualStyleBackColor = false;
@@ -804,20 +752,18 @@
             this.pnlThumbTicket.Controls.Add(this.panel4);
             this.pnlThumbTicket.Controls.Add(this.btnThumbTicket);
             this.pnlThumbTicket.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlThumbTicket.Location = new System.Drawing.Point(209, 2);
-            this.pnlThumbTicket.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlThumbTicket.Location = new System.Drawing.Point(446, 3);
             this.pnlThumbTicket.Name = "pnlThumbTicket";
-            this.pnlThumbTicket.Size = new System.Drawing.Size(203, 58);
+            this.pnlThumbTicket.Size = new System.Drawing.Size(437, 93);
             this.pnlThumbTicket.TabIndex = 1;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(158)))), ((int)(((byte)(26)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 55);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Location = new System.Drawing.Point(0, 88);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(203, 3);
+            this.panel4.Size = new System.Drawing.Size(437, 5);
             this.panel4.TabIndex = 3;
             // 
             // btnThumbTicket
@@ -827,27 +773,25 @@
             this.btnThumbTicket.BackColor = System.Drawing.Color.White;
             this.btnThumbTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThumbTicket.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(158)))), ((int)(((byte)(26)))));
-            this.btnThumbTicket.Location = new System.Drawing.Point(-6, -6);
-            this.btnThumbTicket.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThumbTicket.Location = new System.Drawing.Point(-10, -10);
             this.btnThumbTicket.Name = "btnThumbTicket";
-            this.btnThumbTicket.Size = new System.Drawing.Size(218, 73);
+            this.btnThumbTicket.Size = new System.Drawing.Size(461, 117);
             this.btnThumbTicket.TabIndex = 2;
             this.btnThumbTicket.Text = "Khen thưởng/Kỷ luật";
             this.btnThumbTicket.UseVisualStyleBackColor = false;
             // 
             // MainInvidiualView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(959, 612);
+            this.ClientSize = new System.Drawing.Size(1869, 1182);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlNavbar);
             this.Controls.Add(this.lblHeader);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainInvidiualView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.MainIndividualView_Load);

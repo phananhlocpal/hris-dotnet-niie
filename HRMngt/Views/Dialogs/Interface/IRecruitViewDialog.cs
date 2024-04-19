@@ -34,14 +34,9 @@ namespace HRMngt.Views.Dialogs
         event EventHandler CheckConditionBirthday;
         event EventHandler CheckConditionPhone;
         event EventHandler CheckConditionEmail;
+        event EventHandler CloseEvent;
         void Show();
         void ShowRecruitList(IEnumerable<UserModel> recruits);
-
         void ShowUserIDName(IEnumerable<UserModel> users);
-        void ShowDepartmentIdNName(List<string> departmentIDNameList);
-
-
-
-
     }
 }

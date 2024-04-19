@@ -23,8 +23,9 @@ namespace HRMngt.Views.HR
         event EventHandler LoadHRToEdit;
         
         void Show();
-        void ShowHRList(IEnumerable<RecruitModel> recuitList);
+        void ShowCmbDepartment(IEnumerable<DepartmentModel> departmentList);
+        void ShowHRList(IEnumerable<UserModel> userList);
         RecruitDialog ShowDialogToAdd();
-        RecruitDialog ShowDialogToEdit(string id);
+        RecruitDialog ShowDialogToEdit();
     }
 }

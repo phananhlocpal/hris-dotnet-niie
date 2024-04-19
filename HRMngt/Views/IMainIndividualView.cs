@@ -23,5 +23,7 @@ namespace HRMngt.Views
         event EventHandler ShowTimeKeepingView;
 
         void ShowUserList(IEnumerable<UserModel> userList);
+
+        void Show();
     }
 }

@@ -20,8 +20,6 @@ namespace HRMngt.Views.User
         {
             InitializeComponent();
             RunEvent();
-            GetNameDepartmentFilter();
-            GetStatusFilter();
         }
 
         public void RunEvent()
@@ -41,7 +39,6 @@ namespace HRMngt.Views.User
                     DeleteEvent?.Invoke(this, EventArgs.Empty);
                 }
             };
-            btnDeleteAll.Click += delegate { DeleteAll?.Invoke(this, EventArgs.Empty); };
             
            
         }
@@ -83,75 +80,7 @@ namespace HRMngt.Views.User
             }
             return instance;
         }
-        private void GetNameDepartmentFilter()
-        {
-            string connectionString = "Data Source=localhost;Initial Catalog=HR;Integrated Security=True;Encrypt=False";
-            using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand())
-            {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = "Select distinct name from department ";
-                List<string> items = new List<string>();
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        items.Add(reader[0].ToString());
-                    }
-                }
-                cbDepartment.DataSource = items;
-                cbDepartment.DisplayMember = "Name";
-                cbDepartment.Refresh();
-                connection.Close();
-            }
-        }
-        private void GetStatusFilter()
-        {
-            string connectionString = "Data Source=localhost;Initial Catalog=HR;Integrated Security=True;Encrypt=False";
-            using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand())
-            {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = "Select distinct status from users ";
-                List<string> items = new List<string>();
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        items.Add(reader[0].ToString());
-                    }
-                }
-                cbStatus.DataSource = items;
-                cbStatus.DisplayMember = "Name";
-                cbStatus.Refresh();
-                connection.Close();
-            }
-        }
-        private string GetNameDepartment(string id)
-        {
-            string name = "";
-            string connectionString = "Data Source=localhost;Initial Catalog=HR;Integrated Security=True;Encrypt=False";
-            using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand())
-            {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = "Select distinct name from department where departmentID = @Id";
-                command.Parameters.Add("@Id", SqlDbType.Char).Value = id;
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        name = reader[0].ToString();
-                    }
-                }
-               
-            }
-            return name;
-        }
-        
+       
 
         public void ShowUserList(IEnumerable<UserModel> userList)
         {
@@ -164,7 +93,7 @@ namespace HRMngt.Views.User
                     int rowIndex = dgvUserList.Rows.Add();
                     dgvUserList.Rows[rowIndex].Cells[0].Value = user.Id;
                     dgvUserList.Rows[rowIndex].Cells[1].Value = user.Name;
-                    dgvUserList.Rows[rowIndex].Cells[2].Value = GetNameDepartment(user.DepartmentID);
+                    dgvUserList.Rows[rowIndex].Cells[2].Value = user.DepartmentID;
                     dgvUserList.Rows[rowIndex].Cells[3].Value = user.Contract_type;
                     dgvUserList.Rows[rowIndex].Cells[4].Value = user.Position;
                     dgvUserList.Rows[rowIndex].Cells[5].Value = "• " + user.Status;
@@ -188,7 +117,7 @@ namespace HRMngt.Views.User
             return dialog;
         }
 
-        public UserDialog ShowUserDialogToEdit(string id)
+        public UserDialog ShowUserDialogToEdit()
         {
             UserDialog dialog = new UserDialog("Sửa");
             return dialog;

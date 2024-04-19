@@ -29,6 +29,6 @@ namespace HRMngt.View
         event EventHandler ComplainEvent;
         event EventHandler ResponseEvent;
 
-        void ShowUserIdNName(List<string> userIdNNameList);
+        void ShowUserIdNName(IEnumerable<UserModel> userList);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HRMngt.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,5 +21,7 @@ namespace HRMngt.Views
         event EventHandler ShowIndividualSalaryView;
         event EventHandler ShowMainIndividualView;
         void Show();
+        void ShowUserInformation(UserModel userModel);
+        void Hide();
     }
 }

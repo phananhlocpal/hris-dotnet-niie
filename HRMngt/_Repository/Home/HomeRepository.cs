@@ -8,7 +8,7 @@ namespace HRMngt._Repository.Home
 {
     public class HomeRepository : IHomeRepository
     {
-        private string connectionString = @"Data Source=localhost;Initial Catalog=HR;Integrated Security=True;";
+        private string connectionString = BaseRepository.connectionString;
 
         public HomeRepository()
         {

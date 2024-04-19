@@ -100,7 +100,6 @@ namespace HRMngt._Repository
             return ThumbTicketList;
         }
 
-
         public ThumbTicketModel GetById(string id)
         {
             var thumbTicketModel = new ThumbTicketModel();

@@ -118,7 +118,7 @@ namespace HRMngt.Views.Dialogs
             cmbStatus.SelectedIndex = 0;
         }
 
-        private static TimeKeepingView instance;
+        
 
         DateTimePicker ITimeKeepingView.dtpStart 
         {
@@ -156,6 +156,7 @@ namespace HRMngt.Views.Dialogs
             set => throw new NotImplementedException(); 
         }
 
+        private static TimeKeepingView instance;
         public static TimeKeepingView GetInstance(Form parentContainer)
         {
             if (instance == null || instance.IsDisposed)

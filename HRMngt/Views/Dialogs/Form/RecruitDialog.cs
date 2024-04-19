@@ -1,4 +1,5 @@
 ﻿using HRMngt.Model;
+using HRMngt.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,10 +20,10 @@ namespace HRMngt.Views.Dialogs
             this.type = type;
             InitializeComponent();
             
-            if(type == "Thêm")
+            if(type == "Add")
             {
                 btnAdd.Text = "Thêm";
-            }else if(type == "Sửa")
+            }else if(type == "Edit")
             {
                 btnAdd.Text = "Sửa";
             }
@@ -31,24 +32,25 @@ namespace HRMngt.Views.Dialogs
         }
         private void RunEvent()
         {
-            if (btnAdd.Text == "Thêm")
+            if (btnAdd.Text == "Add")
             {
                 btnAdd.Click += delegate
                 {
                     AddNewDialog?.Invoke(this, EventArgs.Empty);
                 };
             }
-            else if (btnAdd.Text == "Sửa")
+            else if (btnAdd.Text == "Update")
             {
                 btnAdd.Click += delegate { EditNewDialog?.Invoke(this, EventArgs.Empty); };
             }
+            btnClose.Click += delegate { CloseEvent?.Invoke(this, EventArgs.Empty); };
             txtEmail.Click += delegate { CheckConditionBirthday?.Invoke(this, EventArgs.Empty); };
             txtPhone.Click += delegate { CheckConditionEmail?.Invoke(this, EventArgs.Empty); };
             cbRoles.Click += delegate { CheckConditionPhone?.Invoke(this, EventArgs.Empty); };
             btnClear.Click += delegate { ClearTextForm?.Invoke(this, EventArgs.Empty); };
-            
-
         }
+        
+        // Get, set method
         public string ID { get => lbID.Text; set => lbID.Text = value; }
         public string NameCadidate { get => txtName.Text; set => txtName.Text = value; }
         public string Email { get => txtEmail.Text; set => txtEmail.Text = value; }
@@ -59,7 +61,6 @@ namespace HRMngt.Views.Dialogs
         public string Note { get => txtNote.Text; set => txtNote.Text = value; }
         public DateTime Birthday { get => birthday.Value; set => birthday.Value=value; }
         public string Sex { get => cbSex.Text; set => cbSex.Text = value; }
-       
         public string Contract_type { get => cbContractType.Text; set => cbContractType.Text = value; }
         public string Status { get => cbStatus.Text; set => cbStatus.Text = value; }
         public string DepartmentName {
@@ -93,6 +94,7 @@ namespace HRMngt.Views.Dialogs
 
         }
 
+        // Event Handler
         public event EventHandler AddNewDialog;
         public event EventHandler EditNewDialog;
         public event EventHandler CheckConditionBirthday;
@@ -100,21 +102,13 @@ namespace HRMngt.Views.Dialogs
         public event EventHandler CheckConditionEmail;
         public event EventHandler ClearTextForm;
         public event EventHandler CloseForm;
+        public event EventHandler CloseEvent;
 
         public void ShowRecruitList(IEnumerable<UserModel> recruits)
         {
             throw new NotImplementedException();
         }
 
-        private void HRDialog_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bunifuPictureBox1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
         public void ShowUserIDName(IEnumerable<UserModel> users)
         {
             cbManager.Items.Clear();
@@ -135,13 +129,13 @@ namespace HRMngt.Views.Dialogs
                 cbManager.Items.Add(item);
             }
         }
-        public void ShowDepartmentIdNName(List<string> departmentIDNameList)
+        public void ShowDepartmentIdNName(IEnumerable<DepartmentModel> departmentList)
         {
            cbDepartment.Items.Clear();
 
-            foreach (string item in departmentIDNameList)
+            foreach (var departmentModel in departmentList)
             {
-                cbDepartment.Items.Add(item);
+                cbDepartment.Items.Add($"{departmentModel.Id} - {department.Name}");
 
             }
         }

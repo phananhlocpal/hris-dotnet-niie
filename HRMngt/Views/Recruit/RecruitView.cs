@@ -24,7 +24,9 @@ namespace HRMngt.Views.HR
 
         public void RunEvent()
         {
+            // Add event
             btnAdd.Click += delegate { LoadHRToAdd?.Invoke(this, EventArgs.Empty); };
+            // Edit event
             dgvHRList.CellContentClick += (sender, e) =>
             {
                 if (e.RowIndex >= 0 && e.ColumnIndex == dgvHRList.Columns[7].Index)
@@ -32,6 +34,7 @@ namespace HRMngt.Views.HR
                     LoadHRToEdit?.Invoke(this, EventArgs.Empty);
                 }
             };
+            // Delete event
             dgvHRList.CellContentClick += (sender, e) =>
             {
                 if (e.RowIndex >= 0 && e.ColumnIndex == dgvHRList.Columns[8].Index)
@@ -39,22 +42,20 @@ namespace HRMngt.Views.HR
                     DeleteHR?.Invoke(this, EventArgs.Empty);
                 }
             };
-            
         }
 
+        // Get method
         ComboBox IRecruitView.cbDepartment => cbDepartment;
-
         ComboBox IRecruitView.cbStatus => cbStatus;
-
         KryptonDataGridView IRecruitView.dgvHRList => dgvHRList;
-
         SaveFileDialog IRecruitView.saveFile => saveFile;
 
+        // Event Handler
         public event EventHandler DeleteHR;
         public event EventHandler LoadHRToAdd;
         public event EventHandler LoadHRToEdit;
-       
 
+        // MDI Processing
         private static RecruitView instance;
         public static RecruitView GetInstance(Form parentContainer)
         {
@@ -73,18 +74,15 @@ namespace HRMngt.Views.HR
             }
             return instance;
         }
-        public void ShowHRList()
-        {
-            throw new NotImplementedException();
-        }
+       
 
-        public void ShowHRList(IEnumerable<RecruitModel> recuitList)
+        public void ShowHRList(IEnumerable<UserModel> userList)
         {
-            if (recuitList != null)
+            if (userList != null)
             {
                 dgvHRList.Rows.Clear();
 
-                foreach (var recruit in recuitList)
+                foreach (var recruit in userList)
                 {
                     int rowIndex = dgvHRList.Rows.Add();
                     dgvHRList.Rows[rowIndex].Cells[0].Value = recruit.Id;
@@ -111,16 +109,25 @@ namespace HRMngt.Views.HR
             else dgvHRList.Rows.Clear();
         }
 
+        public void ShowCmbDepartment(IEnumerable<DepartmentModel> departmentList)
+        {
+            cbDepartment.Items.Clear();
+            foreach (var item in departmentList)
+            {
+                cbDepartment.Items.Add($"{item.Id} - {item.Name}");
+            }    
+        }
+
         public RecruitDialog ShowDialogToAdd()
         {
 
-            RecruitDialog dialog = new RecruitDialog("Thêm");
+            RecruitDialog dialog = new RecruitDialog("Add");
             return dialog;
         }
 
-        public RecruitDialog ShowDialogToEdit(string id)
+        public RecruitDialog ShowDialogToEdit()
         {
-            RecruitDialog dialog = new RecruitDialog("Sửa");
+            RecruitDialog dialog = new RecruitDialog("Edit");
             return dialog;
         }
         private void ToExcel(DataGridView dataGridView1, string fileName)
@@ -162,8 +169,6 @@ namespace HRMngt.Views.HR
                 worksheet = null;
             }
         }
-
-       
 
         private void btnExcel_Click(object sender, EventArgs e)
         {

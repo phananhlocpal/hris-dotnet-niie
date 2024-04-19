@@ -63,6 +63,7 @@ namespace HRMngt.Presenters
                 // Save the added content to thumbticket model 
                 CalendarModel calendarModel = new CalendarModel();
                 calendarModel = dialog.getCalendarInfo();
+                calendarModel.UserId = userModel.Id;
 
                 if (repository.LINQ_checkExistDate(calendarList, calendarModel.Date) == true)
                 {
@@ -120,6 +121,7 @@ namespace HRMngt.Presenters
                 // Save the added content to thumbticket model 
                 CalendarModel calendarModel = new CalendarModel();
                 calendarModel = dialog.GetUpdatedInfo();
+                calendarModel.UserId = userModel.Id;
                 repository.Update(calendarModel);
                 calendarList = repository.GetAll();
 
@@ -161,7 +163,7 @@ namespace HRMngt.Presenters
         // Read
         private void ReadPermit()
         {
-            if (userModel.Position == "Admin" || userModel.Position == "HR")
+            if (this.userModel.Roles == "Admin" || userModel.Roles == "HR")
             {
                 DateTime selectedDate = view.dtpChoosePeriod.Value;
                 DateTime monday = selectedDate.AddDays(DayOfWeek.Monday - selectedDate.DayOfWeek);
@@ -170,11 +172,11 @@ namespace HRMngt.Presenters
                 IEnumerable<CalendarModel> showedCalendarList = repository.LINQ_GetListByUserIDNPeriod(calendarList, userModel.Id, monday, sunday);
                 this.view.ShowCalendarList(showedCalendarList);
             }
-            else if (userModel.Position == "User")
+            else if (userModel.Roles == "User")
             {
 
             }
-            else if (userModel.Position == "Manager")
+            else if (userModel.Roles == "Manager")
             {
 
             }

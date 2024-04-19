@@ -28,15 +28,12 @@ namespace HRMngt
                 SetProcessDPIAware();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //ILoginRepository loginRepository = new LoginRepository();
-            //ILoginView loginView = new LoginView();
-            //new LoginPresenter(loginView, loginRepository);
-
 
             UserModel userModel = new UserModel();
             userModel.Id = "NV001";
             userModel.Name = "Phan Anh Loc";
             userModel.Position = "Admin";
+            userModel.Roles = "Manager";
             //ITimeKeepingView view = new TimeKeepingView();
             //ICalendarRepository repository = new CalendarRepository();
             //new TimeKeepingPresenter(view, repository, userModel);
@@ -44,9 +41,12 @@ namespace HRMngt
             //IMainIndividualView view1 = new MainInvidiualView(userModel);
             //new MainIndividualPresenter(view1,userModel);
 
-            IMainView view = new MainView();
-            new MainViewPresenter(view, userModel);
+            //IMainView view = new MainView();
+            //new MainViewPresenter(view, userModel);
 
+            ILoginView view = new LoginView();
+            IUserRepository repository = new UserRepository();
+            new LoginPresenter(view, repository);
 
             Application.Run((Form)view);
         }

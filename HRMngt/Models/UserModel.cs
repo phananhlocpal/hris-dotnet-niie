@@ -27,7 +27,7 @@ namespace HRMngt.Model
         private string departmentID;
         private string contract_type;
         private DateTime on_boarding;
-        private DateTime close_date;
+        private DateTime? close_date;
         private string scan_contract;
         private string note;
         private string ava;
@@ -51,7 +51,7 @@ namespace HRMngt.Model
         public string DepartmentID { get => departmentID; set => departmentID = value; }
         public string Contract_type { get => contract_type; set => contract_type = value; }
         public DateTime On_boarding { get => on_boarding; set => on_boarding = value; }
-        public DateTime Close_date { get => close_date; set => close_date = value; }
+        public DateTime? Close_date { get => close_date; set => close_date = value; }
         public string Scan_contract { get => scan_contract; set => scan_contract = value; }
         public string Note { get => note; set => note = value; }
         public string Ava { get => ava; set => ava = value; }

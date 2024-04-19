@@ -186,7 +186,7 @@
     <Compile Include="Views\Dialogs\Interface\IIndividualCalendarDialogForEditting.cs" />
     <Compile Include="Views\IndividualCalendar\IIndividualCalendarView.cs" />
     <Compile Include="Views\Dialogs\Interface\IIndividualSalaryDialog.cs" />
-    <Compile Include="Views\Dialogs\Interface\IIndividualSalaryView.cs" />
+    <Compile Include="Views\IndividualSalary\IIndividualSalaryView.cs" />
     <Compile Include="Views\Dialogs\Form\IndividualCalendarDialogForAdding.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,10 +211,10 @@
     <Compile Include="Views\Dialogs\Form\IndividualSalaryDialog.Designer.cs">
       <DependentUpon>IndividualSalaryDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\IndividualSalaryView.cs">
+    <Compile Include="Views\IndividualSalary\IndividualSalaryView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\IndividualSalaryView.Designer.cs">
+    <Compile Include="Views\IndividualSalary\IndividualSalaryView.Designer.cs">
       <DependentUpon>IndividualSalaryView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Dialogs\Interface\ISupport.cs" />
@@ -223,12 +223,6 @@
     </Compile>
     <Compile Include="Views\ClockCountdown.Designer.cs">
       <DependentUpon>ClockCountdown.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Main.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\MainInvidiualView.cs">
       <SubType>Form</SubType>
@@ -312,8 +306,6 @@
     <Compile Include="_Repository\Department\IDepartmentRepository.cs" />
     <Compile Include="_Repository\Home\HomeRepository.cs" />
     <Compile Include="_Repository\Home\IHomeRepository.cs" />
-    <Compile Include="_Repository\Recruit\RecruitRepository.cs" />
-    <Compile Include="_Repository\Recruit\IRecruitRepository.cs" />
     <Compile Include="_Repository\IndividualSalary\IIndividualSalaryRepository.cs" />
     <Compile Include="_Repository\IndividualSalary\IndividualSalaryRepository.cs" />
     <Compile Include="_Repository\Login\ILoginRepository.cs" />
@@ -398,7 +390,7 @@
     <EmbeddedResource Include="Views\Dialogs\Form\IndividualSalaryDialog.resx">
       <DependentUpon>IndividualSalaryDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Dialogs\Form\IndividualSalaryView.resx">
+    <EmbeddedResource Include="Views\IndividualSalary\IndividualSalaryView.resx">
       <DependentUpon>IndividualSalaryView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Dialogs\Form\ResetPassword.resx">
@@ -409,9 +401,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ClockCountdown.resx">
       <DependentUpon>ClockCountdown.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainInvidiualView.resx">
       <DependentUpon>MainInvidiualView.cs</DependentUpon>

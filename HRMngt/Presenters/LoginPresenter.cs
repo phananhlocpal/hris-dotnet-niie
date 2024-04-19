@@ -15,37 +15,37 @@ namespace HRMngt.Presenters
 {
     public class LoginPresenter
     {
-        private string connectionString = @"Data Source=localhost;Initial Catalog=HR;Integrated Security=True;";
         private ILoginView view;
-        private ILoginRepository repository;
-        public static string ID_USER = "";
-        private MainViewPresenter presenter;
-        public LoginPresenter(ILoginView view, ILoginRepository repository)
+        private IUserRepository repository;
+        private int count = 0;
+
+        public LoginPresenter(ILoginView view, IUserRepository repository)
         {
+            // Constructor
             this.view = view;
             this.repository = repository;
             
+            // Event Handler
             this.view.LoginEvent += LoginEvent;
             this.view.Show();
         }
 
         private void LoginEvent(object sender, EventArgs e)
         {
-            int count = Views.LoginView.count;
-            string name = view.username;
-            string pass = view.password;
-            ID_USER = repository.Login(name, pass);
-            if (ID_USER != "")
+            string username = view.username;
+            string password = view.password;
+            UserModel userModel = new UserModel();
+            userModel = repository.Authenticator(username, password);
+            // Check authenticator
+            if (userModel != null)
             {
-                UserModel user = repository.GetById(ID_USER);
-                IMainView main = new MainView(user);
+                IMainView main = new MainView();
+                new MainViewPresenter(main, userModel);
                 this.view.Hide();
-                
-                presenter = new MainViewPresenter(main, user);
-                MessageBox.Show("Đăng nhập thành công", "Thành công", MessageBoxButtons.OK);
+
             }
             else
-            {        
+            {
                 if (count == 3)
                 {
                     MessageBox.Show("Đã nhập sai quá nhiều lần. Vui lòng thử lại sau.", "Đăng nhập thất bại", MessageBoxButtons.OK);
@@ -53,11 +53,12 @@ namespace HRMngt.Presenters
                     ClockCountdown clock = new ClockCountdown();
                     clock.ShowDialog();
                     view.EnableLogin(true);
-                    Views.LoginView.count = 0;
+                    count = 0;
                 }
                 else
                 {
-                    MessageBox.Show("Tên người dùng hoặc mật khẩu không đúng. Vui lòng thử lại.", "Đăng nhập thất bại", MessageBoxButtons.OK);
+                    MessageBox.Show("Sai mật khẩu hoặc tên đăng nhập");
+                    count++;
                 }
             }
             

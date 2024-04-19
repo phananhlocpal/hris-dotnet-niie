@@ -1,5 +1,4 @@
 ﻿using HRMngt._Repository;
-using HRMngt._Repository.HR;
 using HRMngt.Model;
 using HRMngt.Models;
 using HRMngt.popup;
@@ -17,28 +16,33 @@ namespace HRMngt.Presenters
 {
     public class RecruitPresenter
     {
+        // Fields
         private IRecruitView view;
-        private IRecruitRepository repository;
-        private IEnumerable<RecruitModel> recuitList;
+        private IUserRepository repository;
+        private IEnumerable<UserModel> candidateList;
         private RecruitDialog dialog;
 
-        public RecruitPresenter(IRecruitView view, IRecruitRepository repository)
+        public RecruitPresenter(IRecruitView view, IUserRepository repository)
         {
+            // Contructors
             this.view = view;
             this.repository = repository;
 
-
+            // Event Handler
             this.view.LoadHRToAdd += LoadHRToAddRecuit;
             this.view.LoadHRToEdit += LoadRecruitToEdit;
             this.view.DeleteHR += DeleteHR;
-           
-            LoadAllRecuit();
-            this.view.ShowHRList(recuitList);
+
+            // Show view
+            candidateList = repository.GetAll();
+            this.view.ShowHRList(candidateList);
+            IDepartmentRepository departmentRepository = new DepartmentRepository();
+            IEnumerable<DepartmentModel> departmentList = departmentRepository.GetAll();
+            this.view.ShowCmbDepartment(departmentList);
             this.view.Show();
         }
 
-       
-
+        // Event Processing
         private void DeleteHR(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = view.dgvHRList.CurrentRow;
@@ -49,101 +53,102 @@ namespace HRMngt.Presenters
             {
                 repository.Delete(id);
                 SucessPopUp.ShowPopUp();
-                LoadAllRecuit();
-                view.ShowHRList(recuitList);
+                candidateList = repository.GetAll();
+                view.ShowHRList(candidateList);
                 SucessPopUp.ShowPopUp();
             }
         }
 
         private void LoadRecruitToEdit(object sender, EventArgs e)
         {
-            dialog = view.ShowDialogToEdit(null);
-            IEnumerable<UserModel> userList;
-            List<string> departmentIDNameList = new List<string>();
-            var repo = new UserRepository();
-            userList = repo.GetAll();
-            departmentIDNameList = repo.GetDepartmentIDName();
-            this.dialog.ShowDepartmentIdNName(departmentIDNameList);
-            dialog.ShowUserIDName(userList);
+            // Show Department information
+            IDepartmentRepository departmentRepository = new DepartmentRepository();
+            IEnumerable<DepartmentModel> departmentList;
+            departmentList = departmentRepository.GetAll();
+            this.dialog.ShowDepartmentIdNName(departmentList);
+
+            // Show Manager information
+            IUserRepository userRepository = new UserRepository();
+            IEnumerable<UserModel> userList = userRepository.GetAll();
+            userList = userRepository.LINQ_GetManagerList(userList);
+            this.dialog.ShowUserIDName(userList);
+
+            // Get id from table
             DataGridViewRow selectedRow = view.dgvHRList.CurrentRow;
             string id = selectedRow.Cells[0].Value.ToString();
-            RecruitModel recruit = new RecruitModel();
-            recruit = repository.GetById(id);
-            dialog.ID = recruit.Id;
-            dialog.NameCadidate = recruit.Name;
-            dialog.Email = recruit.Email;
-            dialog.Phone = recruit.Phone;
-            dialog.Address = recruit.Address;
-            dialog.Sex = recruit.Sex;
-            dialog.Birthday = recruit.Birthday;
-            dialog.Position = recruit.Position;
-            dialog.Roles = recruit.Roles;
-            dialog.Note = recruit.Note;
-            dialog.Status = recruit.Status;
-            dialog.Contract_type = recruit.Contract_type;
-            dialog.DepartmentName = recruit.DepartmentName;
-            dialog.ManagerName = recruit.ManagerName;
+            UserModel candidate = repository.LINQ_GetModelById(candidateList, id);
+
+            // Show information into form
+            dialog.ID = candidate.Id;
+            dialog.NameCadidate = candidate.Name;
+            dialog.Email = candidate.Email;
+            dialog.Phone = candidate.Phone;
+            dialog.Address = candidate.Address;
+            dialog.Sex = candidate.Sex;
+            dialog.Birthday = candidate.Birthday;
+            dialog.Position = candidate.Position;
+            dialog.Roles = candidate.Roles;
+            dialog.Note = candidate.Note;
+            dialog.Status = candidate.Status;
+            dialog.Contract_type = candidate.Contract_type;
+            //dialog.DepartmentName = candidate.DepartmentName;
+            //dialog.ManagerName = candidate.ManagerName;
             
+            // Show dialog and event handler
+            dialog = view.ShowDialogToEdit();
             dialog.EditNewDialog += EditRecruitDialog;
-            /*dialog.CancleEvent += CancleEvent;*/
+            dialog.CloseEvent += CloseDialog;
             dialog.ShowDialog();
+        }
+
+        private void CloseDialog(object sender, EventArgs e)
+        {
+            dialog.Close();
         }
 
         private void EditRecruitDialog(object sender, EventArgs e)
         {
-            RecruitModel recruit = new RecruitModel();
-            recruit.Id = dialog.ID;
-            recruit.Name = dialog.NameCadidate;
-            recruit.Email = dialog.Email;
-            recruit.Phone = dialog.Phone;
-            recruit.Address = dialog.Address;
-            recruit.Sex = dialog.Sex;
-            recruit.Birthday = dialog.Birthday;
-            recruit.Position = dialog.Position;
-            recruit.Roles = dialog.Roles;
-            recruit.Note = dialog.Note;
-            recruit.Status = dialog.Status;
-            recruit.Contract_type = dialog.Contract_type;
-            recruit.DepartmentName = dialog.DepartmentName;
-            recruit.ManagerName = dialog.ManagerName;
+            UserModel candidate = new UserModel();
+            candidate.Id = dialog.ID;
+            candidate.Name = dialog.NameCadidate;
+            candidate.Email = dialog.Email;
+            candidate.Phone = dialog.Phone;
+            candidate.Address = dialog.Address;
+            candidate.Sex = dialog.Sex;
+            candidate.Birthday = dialog.Birthday;
+            candidate.Position = dialog.Position;
+            candidate.Roles = dialog.Roles;
+            candidate.Note = dialog.Note;
+            candidate.Status = dialog.Status;
+            candidate.Contract_type = dialog.Contract_type;
 
-            repository.Edit(recruit);
-            UpdateUserIfOnboarding(recruit);
-            this.dialog.Close();
-            LoadAllRecuit();
-            view.ShowHRList(recuitList);
-            SucessPopUp.ShowPopUp();
-        }
-        private void UpdateUserIfOnboarding(RecruitModel recruit)
-        {
-            if (recruit.Status == "On-boarding")
+            if (candidate.Status == "On-boarding")
             {
-                repository.UpdateRecruitToUser(recruit);
+                candidate.On_boarding = DateTime.Now;
             }
-        }
-        private void LoadAllRecuit()
-        {
-            recuitList = repository.GetAll();
+            repository.Update(candidate);
+            this.dialog.Close();
+            candidateList = repository.GetAll();
+            view.ShowHRList(candidateList);
+            SucessPopUp.ShowPopUp();
         }
 
         private void LoadHRToAddRecuit(object sender, EventArgs e)
         {
             dialog = this.view.ShowDialogToAdd();
 
-            List<string> userIdNNameList = new List<string>();
-            List<string> departmentIDNameList = new List<string>();
-            var repo = new UserRepository();
-            DepartmentModel departmentModel = new DepartmentModel();
-            UserModel userModel = new UserModel();
-            userIdNNameList = repo.GetUserIdNName();
-            departmentIDNameList = repo.GetDepartmentIDName();
-            dialog.ManagerName = $"{userModel.Id} - {userModel.Name}";
-            dialog.DepartmentName = $"{departmentModel.Id} - {departmentModel.Name}";
-            // Add user to sender and receiver
-            dialog.ShowUserIdNName(userIdNNameList);
-            dialog.ShowDepartmentIdNName(departmentIDNameList);
+            // Show Department information
+            IDepartmentRepository departmentRepository = new DepartmentRepository();
+            IEnumerable<DepartmentModel> departmentList;
+            departmentList = departmentRepository.GetAll();
+            this.dialog.ShowDepartmentIdNName(departmentList);
 
-
+            // Show Manager information
+            IUserRepository userRepository = new UserRepository();
+            IEnumerable<UserModel> userList = userRepository.GetAll();
+            userList = userRepository.LINQ_GetManagerList(userList);
+            this.dialog.ShowUserIDName(userList);
+            
             dialog.AddNewDialog += AddRecuit;
             dialog.CheckConditionBirthday += CheckConditionBirthday;
             dialog.CheckConditionEmail += CheckConditionEmail;
@@ -211,25 +216,23 @@ namespace HRMngt.Presenters
 
         private void AddRecuit(object sender, EventArgs e)
         {
-            RecruitModel recruit = new RecruitModel();
-            recruit.Name = dialog.NameCadidate;
-            recruit.Email = dialog.Email;
-            recruit.Phone = dialog.Phone;
-            recruit.Address = dialog.Address;
-            recruit.Sex = dialog.Sex;
-            recruit.Birthday = dialog.Birthday;
-            recruit.Position = dialog.Position;
-            recruit.Roles = dialog.Roles;
-            recruit.Note = dialog.Note;
-            recruit.Status = dialog.Status;
-            recruit.Contract_type = dialog.Contract_type;
-            recruit.DepartmentName = dialog.DepartmentName;
-            recruit.ManagerName = dialog.ManagerName;
+            UserModel candidate = new UserModel();
+            candidate.Name = dialog.NameCadidate;
+            candidate.Email = dialog.Email;
+            candidate.Phone = dialog.Phone;
+            candidate.Address = dialog.Address;
+            candidate.Sex = dialog.Sex;
+            candidate.Birthday = dialog.Birthday;
+            candidate.Position = dialog.Position;
+            candidate.Roles = dialog.Roles;
+            candidate.Note = dialog.Note;
+            candidate.Status = dialog.Status;
+            candidate.Contract_type = dialog.Contract_type;
             
-            repository.Add(recruit);
+            repository.Add(candidate);
             this.dialog.Close();
-            LoadAllRecuit();
-            view.ShowHRList(recuitList);
+            candidateList = repository.GetAll();
+            view.ShowHRList(candidateList);
             SucessPopUp.ShowPopUp();
         }
     }

@@ -1,10 +1,9 @@
 ﻿using HRMngt._Repository;
+using HRMngt._Repository.Calendar;
 using HRMngt._Repository.Home;
-using HRMngt._Repository.HR;
 using HRMngt._Repository.IndividualSalary;
 using HRMngt._Repository.Salary;
 using HRMngt._Repository.Support;
-using HRMngt._Repository.TimeKeeping;
 using HRMngt.Model;
 using HRMngt.Presenter;
 using HRMngt.View;
@@ -41,6 +40,7 @@ namespace HRMngt.Presenters
             mainView.ShowRecuitView += ShowRecuitView;
             mainView.ShowTimeKeepingView += ShowTimeKeepingView;
             mainView.ShowMainIndividualView += ShowMainIndividualView;
+            mainView.ShowUserInformation(userModel);
             mainView.Show();
         }
 
@@ -48,28 +48,29 @@ namespace HRMngt.Presenters
         {
             IMainIndividualView view = new MainInvidiualView(userModel);
             new MainIndividualPresenter(view, userModel);
+            mainView.Hide();
             
         }
 
         private void ShowTimeKeepingView(object sender, EventArgs e)
         {
             ITimeKeepingView view = TimeKeepingView.GetInstance((MainView)mainView);
-            ITimeKeepingRepository repository = new TimeKeepingRepository();
+            ICalendarRepository repository = new CalendarRepository();
 
-            new TimeKeepingPresenter(view, repository);
+            new TimeKeepingPresenter(view, repository, userModel);
 
         }
         private void ShowRecuitView(object sender, EventArgs e)
         {
             IRecruitView view = RecruitView.GetInstance((MainView)mainView);
-            IRecruitRepository repository = new RecruitRepository();
+            IUserRepository repository = new UserRepository();
             new RecruitPresenter(view, repository);
         }
 
         private void ShowLoginView(object sender, EventArgs e)
         {
             ILoginView view = new Views.LoginView();
-            ILoginRepository repository = new LoginRepository();
+            IUserRepository repository = new UserRepository();
             new LoginPresenter(view, repository);
         }
 

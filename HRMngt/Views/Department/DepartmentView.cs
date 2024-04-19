@@ -21,8 +21,6 @@ namespace HRMngt.Views
         public DepartmentView()
         {
             InitializeComponent();
-            cbDepartment_SelectedIndexChanged();
-            cbAddress_Changed();
             RunEvent();
         }
 
@@ -111,55 +109,7 @@ namespace HRMngt.Views
             }
             return instance;
         }
-        private void cbDepartment_SelectedIndexChanged()
-        {
-            string connectionString = "Data Source=localhost;Initial Catalog=HR;Integrated Security=True;Encrypt=False";
-            using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand())
-            {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = "Select distinct name from department ";
-                List<string> items = new List<string>();
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        items.Add(reader[0].ToString());
-                    }
-                }
-                cbDepartment.DataSource = items;
-                cbDepartment.DisplayMember = "Name";
-                cbDepartment.Refresh();
-                connection.Close();
-            }
-        }
-        private void cbAddress_Changed()
-        {
-            string connectionString = "Data Source=localhost;Initial Catalog=HR;Integrated Security=True;Encrypt=False";
-            using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand())
-            {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = "Select distinct location from department ";
-                List<string> items = new List<string>();
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        items.Add(reader[0].ToString());
-                    }
-                }
-                cbAddress.DataSource = items;
-                cbAddress.DisplayMember = "Name";
-                cbAddress.Refresh();
-                connection.Close();
-            }
-        }
-
-       
-
+        
         public DepartmentDiaglog ShowDepartmentDialogToAdd()
         {
             DepartmentDiaglog diaglog = new DepartmentDiaglog("Thêm");

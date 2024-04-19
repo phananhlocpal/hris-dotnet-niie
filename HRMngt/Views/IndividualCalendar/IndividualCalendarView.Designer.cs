@@ -214,6 +214,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1420, 903);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.dtpChoosePeriod);

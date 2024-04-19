@@ -11,7 +11,7 @@ namespace HRMngt._Repository.Salary
 {
     public class SalaryRepository : ISalaryRepository
     {
-        private string connectionString = @"Data Source=localhost;Initial Catalog=HR;Integrated Security=True;";
+        private string connectionString = BaseRepository.connectionString;
         public SalaryRepository() { 
 
         }

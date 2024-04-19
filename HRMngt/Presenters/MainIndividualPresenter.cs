@@ -27,6 +27,8 @@ namespace HRMngt.Presenters
             this.mainIndividual.ShowIndividualSalaryView += ShowIndividualSalaryView;
             this.mainIndividual.ShowIndividualCalendarView += ShowIndividualCalendarView;
             this.mainIndividual.ShowTimeKeepingView += ShowTimeKeepingView;
+
+            mainIndividual.Show();
         }
 
         private void ShowTimeKeepingView(object sender, EventArgs e)

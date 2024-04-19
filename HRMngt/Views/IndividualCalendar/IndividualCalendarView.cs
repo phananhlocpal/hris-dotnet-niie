@@ -65,7 +65,6 @@ namespace HRMngt.Views.Dialogs
         public void ShowCalendarList(IEnumerable<CalendarModel> CalendarList)
         {
             dgvCalendarTable.Rows.Clear();
-
             if (CalendarList != null)
             {
                 foreach (var calendarModel in CalendarList)

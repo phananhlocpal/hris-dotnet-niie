@@ -1,4 +1,5 @@
 ﻿using HRMngt.Model;
+using HRMngt.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace HRMngt.Views.Dialogs
         string DepartmentID { get; set; }
         string Contract_type { get; set; }
         DateTime On_boarding { get; set; }
-        DateTime Close_date { get; set; }
+        DateTime? Close_date { get; set; }
         string Scan_contract { get; set; }
         string Avatar { get; set; }
         string Status { get; set; }
@@ -44,7 +45,7 @@ namespace HRMngt.Views.Dialogs
         event EventHandler CheckConditionDate;
         event EventHandler CheckConditionPhone;
         void ShowUserIDName(IEnumerable<UserModel> users);
-        void ShowDepartmentIdNName(List<string> departmentIDNameList);
+        void ShowDepartmentIdNName(IEnumerable<DepartmentModel> departmentList);
         
         
     }

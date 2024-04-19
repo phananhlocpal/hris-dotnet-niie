@@ -17,16 +17,11 @@ using System.Xml.Linq;
 namespace HRMngt.View
 {
     public partial class MainView : Form, IMainView
-    {
-        private UserModel currentUser;
+    {       
         
-        
-        public MainView(UserModel user)
+        public MainView()
         {
-            currentUser = user;
             InitializeComponent();
-            CheckRole();
-            lblNavName.Text = currentUser.Name;
             RunEvent();
 
         }
@@ -44,25 +39,49 @@ namespace HRMngt.View
 
         public void RunEvent()
         {
+            picNavAva.Click += delegate { ShowMainIndividualView?.Invoke(this, EventArgs.Empty); };
             btnDepartment.Click += delegate { ShowDepartmentView?.Invoke(this, EventArgs.Empty); };
             btnEmployee.Click += delegate { ShowUserView?.Invoke(this, EventArgs.Empty); };
             btnHome.Click += delegate { ShowHomeView?.Invoke(this, EventArgs.Empty); };
             btnHelp.Click += delegate { ShowSupportView?.Invoke(this, EventArgs.Empty); };
             btnSalary.Click += delegate { ShowSalaryView?.Invoke(this, EventArgs.Empty); };
             btnHiring.Click += delegate { ShowRecuitView?.Invoke(this, EventArgs.Empty); };
-            lblNavName.Enabled = false;
             btnTimeKeeping.Click += delegate { ShowTimeKeepingView?.Invoke(this, EventArgs.Empty); };
-            
-
         }
+        private void MainView_Load(object sender, EventArgs e)
+        {
+            ShowHomeView?.Invoke(this, EventArgs.Empty);
+        }
+
+ 
+        // Phân quyền
+        public void ShowUserInformation(UserModel userModel)
+        {
+            if (userModel.Roles == "Admin" || userModel.Roles == "HR")
+            {
+
+            }
+            else if (userModel.Roles == "Manager")
+            {
+                pnlSalary.Hide();
+                pnlHire.Hide();
+                pnlTimeKeeping.Hide();
+            }   
+            else
+            {
+
+            }
+            lblNavName.Text = userModel.Name;
+        }
+
         private void txtNavSearch_MouseClick(object sender, MouseEventArgs e)
         {
             if (txtNavSearch.Text == "Nhập tìm kiếm của bạn ...")
             {
                 txtNavSearch.Text = "";
                 txtNavSearch.ForeColor = Color.Black;
-            }    
-            
+            }
+
         }
         private void txtNavSearch_Leave(object sender, EventArgs e)
         {
@@ -71,30 +90,6 @@ namespace HRMngt.View
                 txtNavSearch.Text = "Nhập tìm kiếm của bạn ...";
                 txtNavSearch.ForeColor = Color.Black;
             }
-        }
-
-       
-
-        
-        
-        private void btnDepartment_Click(object sender, EventArgs e)
-        {
-
-        }
-        public void CheckRole()
-        {
-            if (currentUser.Roles != "Admin")
-            {
-                btnEmployee.Enabled = false;
-                btnSalary.Enabled = false;
-                btnDepartment.Enabled = false;
-            }
-        }
-
-        private void picNavAva_Click(object sender, EventArgs e)
-        {
-            MainInvidiualView view = new MainInvidiualView(currentUser);
-            view.Show();
         }
     }
 }

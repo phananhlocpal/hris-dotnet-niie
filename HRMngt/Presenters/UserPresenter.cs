@@ -32,19 +32,10 @@ namespace HRMngt.Presenter
             this.view.LoadUserDialogToAddEvent += LoadUserDialogToAddEvent;
             this.view.LoadUserDialogToEditEvent += LoadUserDialogToEditEvent;
             this.view.DeleteEvent += DeleteUser;
-            this.view.DeleteAll += DeleteAllUser;
-            
 
-            LoadAllUserList();
+            userList = repository.GetAll();
             this.view.ShowUserList(userList);
             this.view.Show();
-        }
-
-        private void DeleteAllUser(object sender, EventArgs e)
-        {
-            repository.DeleteAll();
-            LoadAllUserList();
-            view.ShowUserList(userList);
         }
 
         private void DeleteUser(object sender, EventArgs e)
@@ -57,48 +48,54 @@ namespace HRMngt.Presenter
             {
                 repository.Delete(id);
                 SucessPopUp.ShowPopUp();
-                LoadAllUserList();
+                userList = repository.GetAll();
                 view.ShowUserList(userList);
             }
         }
 
         private void LoadUserDialogToEditEvent(object sender, EventArgs e)
         {
-            dialog = view.ShowUserDialogToEdit(null);
-            IEnumerable<UserModel> userList;
-            List<string> departmentIDNameList = new List<string>();
-            userList = repository.GetAll();
-            departmentIDNameList = repository.GetDepartmentIDName();
-            
-            this.dialog.ShowDepartmentIdNName(departmentIDNameList);
-            dialog.ShowUserIDName(userList);
+            dialog = this.view.ShowUserDialogToEdit();
 
+            // Show Department information
+            IDepartmentRepository departmentRepository = new DepartmentRepository();
+            IEnumerable<DepartmentModel> departmentList;
+            departmentList = departmentRepository.GetAll();
+            this.dialog.ShowDepartmentIdNName(departmentList);
+
+            // Show Manager information
+            IUserRepository userRepository = new UserRepository();
+            IEnumerable<UserModel> userList = userRepository.GetAll();
+            userList = userRepository.LINQ_GetManagerList(userList);
+            this.dialog.ShowUserIDName(userList);
+
+            // Get id from table
             DataGridViewRow selectedRow = view.dgvUserList.CurrentRow;
             string id = selectedRow.Cells[0].Value.ToString();
             UserModel user = new UserModel();
-            user = repository.GetById(id);
+            user = repository.LINQ_GetModelById(userList, id);
+
+            // Show information into form
             dialog.ID = user.Id;
             dialog.Fullname = user.Name;
             dialog.Email = user.Email;
             dialog.Phone = user.Phone;
             dialog.Address = user.Address;
+            dialog.Sex = user.Sex;
             dialog.Birthday = user.Birthday;
+            dialog.Position = user.Position;
             dialog.Salary = user.Salary;
             dialog.Username = user.Username;
             dialog.Password = user.Password;
-            dialog.ManagerID = $"{user.ManagerID} - {repository.GetNameById(user.ManagerID)}";
-            dialog.DepartmentID = $"{user.DepartmentID} - {repository.GetNameDepartmentById(user.DepartmentID)}";
+            dialog.ManagerID = user.ManagerID;
             dialog.On_boarding = user.On_boarding;
             dialog.Close_date = user.Close_date;
-            dialog.Scan_contract = user.Scan_contract;
-            dialog.Avatar = user.Ava;
-            dialog.Sex = user.Sex;
-            dialog.Status = user.Status;
-            dialog.Position = user.Position;
-            dialog.Contract_type = user.Contract_type;
             dialog.Roles = user.Roles;
+            dialog.Status = user.Status;
+            dialog.Contract_type = user.Contract_type;
+
+            // Show dialog and event handler
             dialog.EditUserDialog += EditUserDialog;
-            dialog.CancleEvent += CancleEvent;
             dialog.ShowDialog();
         }
 
@@ -127,7 +124,7 @@ namespace HRMngt.Presenter
             user.Roles = dialog.Roles;
             repository.Update(user);
             this.dialog.Close();
-            LoadAllUserList();
+            userList = repository.GetAll();
             view.ShowUserList(userList);
             SucessPopUp.ShowPopUp();
         }
@@ -135,16 +132,18 @@ namespace HRMngt.Presenter
         private void LoadUserDialogToAddEvent(object sender, EventArgs e)
         {
             dialog = this.view.ShowUserDialogToAdd();
-            List<string> userIdNNameList = new List<string>();
-            List<string> departmentIDNameList = new List<string>();
-            DepartmentModel departmentModel = new DepartmentModel();
-            userIdNNameList = repository.GetUserIdNName();
-            departmentIDNameList = repository.GetDepartmentIDName();
-            // Add user to sender and receiver
-            dialog.ShowUserIdNName(userIdNNameList);
-            dialog.ShowDepartmentIdNName(departmentIDNameList);
-            dialog.ManagerID = $"{userModel.Id} - {userModel.Name}";
-            dialog.DepartmentID = $"{departmentModel.Id} - {departmentModel.Name}";
+
+            // Show Department information
+            IDepartmentRepository departmentRepository = new DepartmentRepository();
+            IEnumerable<DepartmentModel> departmentList;
+            departmentList = departmentRepository.GetAll();
+            this.dialog.ShowDepartmentIdNName(departmentList);
+
+            // Show Manager information
+            IUserRepository userRepository = new UserRepository();
+            IEnumerable<UserModel> userList = userRepository.GetAll();
+            userList = userRepository.LINQ_GetManagerList(userList);
+            this.dialog.ShowManagerComboBox(userList);
 
             dialog.CheckConditionSalary += CheckConditionSalary;
             dialog.CheckConditionEmail += CheckConditionEmail;
@@ -279,7 +278,7 @@ namespace HRMngt.Presenter
             user.Roles = dialog.Roles;
             repository.Add(user);
             this.dialog.Close();
-            LoadAllUserList();
+            userList = repository.GetAll();
             view.ShowUserList(userList);
             dialog.SendPasswordToMail += SendPassToMail;
             SucessPopUp.ShowPopUp();
@@ -292,9 +291,6 @@ namespace HRMngt.Presenter
             repository.SendMail(password, email);
         }
 
-        private void LoadAllUserList()
-        {
-            userList = repository.GetAll();
-        }
+
     }
 }

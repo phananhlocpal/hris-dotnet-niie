@@ -199,14 +199,13 @@ namespace HRMngt.View.Popup
             }
         }
 
-        public void ShowUserIdNName(List<string> userIdNNameList)
+        public void ShowUserIdNName(IEnumerable<UserModel> userList)
         {
             cmbSenderDetail.Items.Clear();
-
-            foreach (string item in userIdNNameList)
+            foreach (var userModel in userList)
             {
-                cmbSenderDetail.Items.Add(item);
-                cmbReceiverDetail.Items.Add(item);
+                cmbSenderDetail.Items.Add($"{userModel.Id} - {userModel.Name}");
+                cmbReceiverDetail.Items.Add($"{userModel.Id} - {userModel.Name}");
             }
         }
     }

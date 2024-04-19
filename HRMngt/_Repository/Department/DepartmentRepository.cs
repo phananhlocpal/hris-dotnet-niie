@@ -13,12 +13,7 @@ namespace HRMngt._Repository
 {
     public class DepartmentRepository : IDepartmentRepository
     {
-        private string connectionString = @"Data Source=localhost;Initial Catalog=HR;Integrated Security=True;";
-
-        public DepartmentRepository()
-        {
-
-        }
+        private string connectionString = BaseRepository.connectionString;
 
         public void Add(DepartmentModel department)
         {

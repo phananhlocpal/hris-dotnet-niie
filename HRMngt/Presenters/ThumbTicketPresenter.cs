@@ -19,23 +19,19 @@ namespace HRMngt.Presenter
     {
         //Fields
         private IThumbTicketView view;
-        private ThumbTicketDialog dialog;
         private UserModel userModel;
         private IThumbTicketRepository thumbTicketRepository;
+
+        private ThumbTicketDialog dialog;
         private IEnumerable<ThumbTicketModel> thumbTicketList;
-        private IEnumerable<ThumbTicketModel> thumbTicketFilter;
 
         public ThumbTicketPresenter(IThumbTicketView view, IThumbTicketRepository repository, UserModel userModel)
         {
-
-            this.thumbTicketList = new List<ThumbTicketModel>();
+            // Contructor
             this.view = view;
             this.thumbTicketRepository = repository;
             this.userModel = userModel;
             // Subscribe event handler methods to view events
-            this.view.SearchByMonthEvent += SearchByMonthEvent;
-            this.view.SearchByTypeEvent += SearchByTypeEvent;
-            this.view.SearchByUserId += SearchByUserId;
             this.view.LoadThumbTicketDialogToAddEvent += LoadThumbTicketDialogToAdd;
             this.view.LoadThumbTicketDialogToEditEvent += LoadThumbTicketDialogToEdit;
             this.view.DeleteEvent += DeleteSelectedThumbTicket;
@@ -45,73 +41,6 @@ namespace HRMngt.Presenter
 
             //Show view
             this.view.Show();
-        }
-
-        private void SearchByUserId(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void SearchByTypeEvent(object sender, EventArgs e)
-        {
-
-            ComboBox cmbChooseType = view.cmbChooseType;
-            string selectedType = cmbChooseType.SelectedItem?.ToString();
-
-            if (string.IsNullOrEmpty(selectedType))
-            {
-                return;
-            }
-
-            IEnumerable<ThumbTicketModel> filteredTickets;
-
-            if (thumbTicketFilter == null)
-            {
-                thumbTicketFilter = thumbTicketRepository.GetByType(selectedType);
-                this.view.ShowAllThumbTicketList(thumbTicketFilter);
-            }
-            else
-            {
-                // Create a temp filter
-                List<ThumbTicketModel> tempThumbTicketFilter = new List<ThumbTicketModel>(thumbTicketFilter);
-                // Tạo một bản sao của bộ lọc trước đó và áp dụng điều kiện mới
-                tempThumbTicketFilter = tempThumbTicketFilter.Where(thumbTicketModel => thumbTicketModel.Type == selectedType).ToList();
-                this.view.ShowAllThumbTicketList(tempThumbTicketFilter);
-            }
-
-        }
-
-
-        private void SearchByMonthEvent(object sender, EventArgs e)
-        {
-            ComboBox cmbChooseMonth = view.cmbChooseMonth;
-            string selectedMonth = cmbChooseMonth.SelectedItem?.ToString();
-
-            if (string.IsNullOrEmpty(selectedMonth))
-            {
-                return;
-            }
-
-            // Split month value from month string
-            string[] parts = selectedMonth.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            int monthValue = int.Parse(parts[1]);
-
-            IEnumerable<ThumbTicketModel> filteredTickets;
-
-            if (thumbTicketFilter == null)
-            {
-                thumbTicketFilter = thumbTicketRepository.GetByMonth(monthValue);
-                this.view.ShowAllThumbTicketList(thumbTicketFilter);
-            }
-            else
-            {
-                List<ThumbTicketModel> tempThumbTicketFilter = new List<ThumbTicketModel>(thumbTicketFilter);
-                // Tạo một bản sao của bộ lọc trước đó và áp dụng điều kiện mới
-                tempThumbTicketFilter = tempThumbTicketFilter.Where(thumbTicketModel => thumbTicketModel.Date.Month == monthValue).ToList();
-                this.view.ShowAllThumbTicketList(tempThumbTicketFilter);
-
-            }
-
         }
 
         private void DeleteSelectedThumbTicket(object sender, EventArgs e)
@@ -137,12 +66,12 @@ namespace HRMngt.Presenter
             dialog = this.view.ShowThumbTicketDialogToUpdate(null);
 
             // Get id for sender and receiver
-            List<string> userIdNNameList = new List<string>();
+            IEnumerable<UserModel> userList = new List<UserModel>();
             IUserRepository userRepository = new UserRepository();
-            userIdNNameList = userRepository.GetUserIdNName();
+            userList = userRepository.GetAll();
 
             // Add user to sender and receiver
-            this.dialog.ShowUserIdNName(userIdNNameList);
+            this.dialog.ShowUserIdNName(userList);
 
             // Get thumb/ticket ID from row 
             DataGridViewRow selectedRow = view.DataGridView.CurrentRow;
@@ -151,11 +80,16 @@ namespace HRMngt.Presenter
             // Get thumb/ticket model by id
             ThumbTicketModel thumbTicketModel = new ThumbTicketModel();
             thumbTicketModel = thumbTicketRepository.LINQ_GetModelById(thumbTicketList, id);
+            UserModel senderModel = new UserModel();
+            senderModel = userRepository.LINQ_GetModelById(userList, thumbTicketModel.Sender);
+            UserModel receierModel = new UserModel();
+            receierModel = userRepository.LINQ_GetModelById(userList, thumbTicketModel.Receiver);
+
             dialog.Id = thumbTicketModel.Id;
             dialog.Type = thumbTicketModel.Type;
             dialog.Date = thumbTicketModel.Date;
-            dialog.Sender = $"{thumbTicketModel.Sender} - {userRepository.GetNameById(thumbTicketModel.Sender)}";
-            dialog.Receiver = $"{thumbTicketModel.Receiver} - {userRepository.GetNameById(thumbTicketModel.Receiver)}";
+            dialog.Sender = $"{thumbTicketModel.Sender} - {senderModel.Name}";
+            dialog.Receiver = $"{thumbTicketModel.Receiver} - {receierModel.Name}";
             dialog.Reason = thumbTicketModel.Reason;
             dialog.Money = thumbTicketModel.Money;
             dialog.Response = thumbTicketModel.Response;
@@ -169,7 +103,6 @@ namespace HRMngt.Presenter
 
             // Show the dialog
             this.dialog.ShowDialog();
-
         }
 
         private void Dialog_SaveUpdateEvent(object sender, EventArgs e)
@@ -227,12 +160,13 @@ namespace HRMngt.Presenter
             dialog = this.view.ShowThumbTicketDialogToAdd();
 
             // Get id for sender and receiver
-            List<string> userIdNNameList = new List<string>();
+            // Get id for sender and receiver
+            IEnumerable<UserModel> userList = new List<UserModel>();
             IUserRepository userRepository = new UserRepository();
-            userIdNNameList = userRepository.GetUserIdNName();
+            userList = userRepository.GetAll();
 
             // Add user to sender and receiver
-            dialog.ShowUserIdNName(userIdNNameList);
+            dialog.ShowUserIdNName(userList);
             dialog.Sender = $"{this.userModel.Id} - {this.userModel.Name}";
             MessageBox.Show($"{this.userModel.Id} - {this.userModel.Name}");
             // Event Handle for Add ThumbTicket dialog

@@ -30,7 +30,6 @@ namespace HRMngt.Views.Dialogs
         public void RunEvent()
         {
             btnSend.Click += delegate { Send?.Invoke(this, EventArgs.Empty); };
-            btnOut.Click += delegate { Back?.Invoke(this, EventArgs.Empty); };
         }
         private void label2_Click(object sender, EventArgs e)
         {
