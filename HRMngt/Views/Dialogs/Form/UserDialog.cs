@@ -112,7 +112,7 @@ namespace HRMngt.Views.Dialogs
         public DateTime Close_date { get => dtClosedate.Value; set => dtClosedate.Value = value; }
         public string Scan_contract { get => txtScanContract.Text; set => txtScanContract.Text = value; }
         
-        public string Avatar { get => txtAvatar.Text; set => txtAvatar.Text = value; }
+        public string Note { get => txtNote.Text; set => txtNote.Text = value; }
         public string Status { get => cbStatus.Text; set => cbStatus.Text = value; }
         public byte[] Photo 
         {
@@ -128,6 +128,7 @@ namespace HRMngt.Views.Dialogs
         }
 
         public string Roles { get => cbRoles.Text; set => cbRoles.Text = value; }
+        public string Degree { get => cbDegree.Text; set => cbDegree.Text = value; }
 
         public byte[] getPhoto()
         {
@@ -220,6 +221,7 @@ namespace HRMngt.Views.Dialogs
                 
             }
         }
+
         public string ExtractIdFromName(string nameWithId)
         {
             if (!string.IsNullOrEmpty(nameWithId))
@@ -234,7 +236,6 @@ namespace HRMngt.Views.Dialogs
             }
         }
 
-
         public void ShowDepartmentIdNName(List<string> departmentIDNameList)
         {
             cbDepartmentId.Items.Clear();
@@ -245,7 +246,6 @@ namespace HRMngt.Views.Dialogs
 
             }
         }
-
         private void btnPicture_Click(object sender, EventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();

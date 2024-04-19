@@ -31,7 +31,7 @@ namespace HRMngt
             ILoginView loginView = new LoginView();
             new LoginPresenter(loginView, loginRepository);
             Application.Run(chatServerForm);
-            
+            chatServerForm.Hide();
             Application.Run((Form)loginView);
 
 

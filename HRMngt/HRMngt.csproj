@@ -63,6 +63,9 @@
     <Reference Include="CustomControlUsingPalettes">
       <HintPath>..\..\..\..\Downloads\Krypton-master\Krypton-master\Bin\CustomControlUsingPalettes.exe</HintPath>
     </Reference>
+    <Reference Include="Guna.UI">
+      <HintPath>..\..\..\GunaUI2-Cracked-2020-2021-main\GunaUI2-Cracked-2020-2021-main\Guna.UI WinForms\4.0\Guna.UI.dll</HintPath>
+    </Reference>
     <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net48\Guna.UI2.dll</HintPath>
     </Reference>
@@ -154,6 +157,9 @@
     <Compile Include="Presenters\SalaryPresenter.cs" />
     <Compile Include="Presenters\SupportPresenter.cs" />
     <Compile Include="Presenters\TimeKeepingPresenter.cs" />
+    <Compile Include="Views\AnimationButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Views\Client\ClientView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -385,6 +391,9 @@
     <Compile Include="_Repository\Login\LoginRepository.cs" />
     <Compile Include="_Repository\Thumb\ThumbTicketRepository.cs" />
     <Compile Include="_Repository\User\UserRepository.cs" />
+    <EmbeddedResource Include="Views\AnimationButton.resx">
+      <DependentUpon>AnimationButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Client\ClientView.resx">
       <DependentUpon>ClientView.cs</DependentUpon>
     </EmbeddedResource>
@@ -573,6 +582,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\messenger.png" />
     <None Include="Resources\image 231.png" />
     <None Include="Resources\chat.png" />
     <None Include="Resources\New Project %283%29.jpg" />

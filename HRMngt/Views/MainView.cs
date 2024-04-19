@@ -1,4 +1,5 @@
-﻿using HRMngt.Model;
+﻿using ComponentFactory.Krypton.Toolkit;
+using HRMngt.Model;
 using HRMngt.Views;
 using Microsoft.VisualBasic.ApplicationServices;
 using ReaLTaiizor.Controls;
@@ -19,10 +20,9 @@ namespace HRMngt.View
 {
     public partial class MainView : Form, IMainView
     {
-        private bool formOpened = false;
         private UserModel currentUser;
         
-        
+
         public MainView(UserModel user)
         {
             currentUser = user;
@@ -30,6 +30,7 @@ namespace HRMngt.View
             CheckRole();
             lblNavName.Text = currentUser.Name;
             RunEvent();
+           
 
         }
         public event EventHandler ShowDepartmentView;
@@ -96,5 +97,6 @@ namespace HRMngt.View
             MainInvidiualView view = new MainInvidiualView(currentUser);
             view.Show();
         }
+        
     }
 }

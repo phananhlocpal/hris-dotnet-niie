@@ -144,3 +144,5 @@ D:\hris-dotnet-mhieu\hris-dotnet-mhieu\HRMngt\bin\Debug\BCrypt.Net-Next.dll
 D:\hris-dotnet-mhieu\hris-dotnet-mhieu\HRMngt\bin\Debug\BCrypt.Net-Next.xml
 D:\hris-dotnet-mhieu\hris-dotnet-mhieu\HRMngt\obj\Debug\HRMngt.Views.ChatServer.resources
 D:\hris-dotnet-mhieu\hris-dotnet-mhieu\HRMngt\obj\Debug\HRMngt.Views.Client.ClientView.resources
+D:\hris-dotnet-mhieu\hris-dotnet-mhieu\HRMngt\bin\Debug\Guna.UI.dll
+D:\hris-dotnet-mhieu\hris-dotnet-mhieu\HRMngt\obj\Debug\HRMngt.Views.AnimationButton.resources

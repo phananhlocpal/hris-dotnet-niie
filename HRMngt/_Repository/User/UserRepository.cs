@@ -34,8 +34,8 @@ namespace HRMngt._Repository
                 {
                     connection.Open();
                     command.Connection = connection;
-                    command.CommandText = "insert into users (name, email, phone, address, birthday, deal_salary, username, password, managerID, departmentID, on_boarding, close_date, scan_contract, ava, sex, status, position, contract_type, photo, roles) " +
-                        "values(@Name, @Email, @Phone, @Address, @Birthday, @Deal_salary, @Username, @Password, @ManagerID, @DepartmentID, @On_boarding, @Close_date, @Scan_contract, @Ava, @Sex, @Status, @Position, @Contract_type, @Photo, @Roles)";
+                    command.CommandText = "insert into users (name, email, phone, address, birthday, deal_salary, username, password, managerID, departmentID, on_boarding, close_date, scan_contract, note, sex, status, position, contract_type, photo, roles, degree) " +
+                        "values(@Name, @Email, @Phone, @Address, @Birthday, @Deal_salary, @Username, @Password, @ManagerID, @DepartmentID, @On_boarding, @Close_date, @Scan_contract, @Note, @Sex, @Status, @Position, @Contract_type, @Photo, @Roles, @Degree)";
                     command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = userModel.Name;
                     command.Parameters.Add("@Email", SqlDbType.VarChar).Value = userModel.Email;
                     command.Parameters.Add("@Phone", SqlDbType.VarChar, 10).Value = userModel.Phone;
@@ -49,13 +49,14 @@ namespace HRMngt._Repository
                     command.Parameters.Add("@On_boarding", SqlDbType.DateTime).Value = userModel.On_boarding;
                     command.Parameters.Add("@Close_date", SqlDbType.DateTime).Value = userModel.Close_date;
                     command.Parameters.Add("@Scan_contract", SqlDbType.NVarChar).Value = userModel.Scan_contract;
-                    command.Parameters.Add("@Ava", SqlDbType.VarChar).Value = userModel.Ava;
+                    command.Parameters.Add("@Note", SqlDbType.VarChar).Value = userModel.Note;
                     command.Parameters.Add("@Sex", SqlDbType.NVarChar).Value = userModel.Sex;
                     command.Parameters.Add("@Status", SqlDbType.NVarChar).Value = userModel.Status;
                     command.Parameters.Add("@Position", SqlDbType.NVarChar).Value = userModel.Position;
                     command.Parameters.Add("@Contract_type", SqlDbType.NVarChar).Value = userModel.Contract_type;
                     command.Parameters.Add("@Photo", SqlDbType.Image).Value = userModel.Photo;
                     command.Parameters.Add("@Roles", SqlDbType.NVarChar).Value = userModel.Roles;
+                    command.Parameters.Add("@Degree", SqlDbType.NVarChar).Value = userModel.Degree;
 
                     command.ExecuteNonQuery();
                     connection.Close();
@@ -101,7 +102,7 @@ namespace HRMngt._Repository
                 connection.Open();
                 command.Connection = connection;
                 command.CommandText = "UPDATE users SET userID = @userID, name = @Name, email = @Email, phone = @Phone, address = @Address, birthday= @Birthday, deal_salary = @Deal_salary, username = @Username, password= @Password, managerID= @ManagerID, " +
-                    "departmentID= @DepartmentID, on_boarding = @On_boarding, close_date = @Close_date, scan_contract = @Scan_contract, ava = @Ava, sex = @Sex, status = @Status, position = @Position, contract_type =@Contract_type, roles = @Roles WHERE userID = @Id";
+                    "departmentID= @DepartmentID, on_boarding = @On_boarding, close_date = @Close_date, scan_contract = @Scan_contract, note = @Note, sex = @Sex, status = @Status, position = @Position, contract_type =@Contract_type, roles = @Roles, degree = @Degree WHERE userID = @Id";
                 command.Parameters.Add("@Id", SqlDbType.Char).Value = userModel.Id;
                 command.Parameters.Add("@userID", SqlDbType.Char).Value = userModel.Id;
                 command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = userModel.Name;
@@ -117,12 +118,13 @@ namespace HRMngt._Repository
                 command.Parameters.Add("@On_boarding", SqlDbType.DateTime).Value = userModel.On_boarding;
                 command.Parameters.Add("@Close_date", SqlDbType.DateTime).Value = userModel.Close_date;
                 command.Parameters.Add("@Scan_contract", SqlDbType.NVarChar).Value = userModel.Scan_contract;
-                command.Parameters.Add("@Ava", SqlDbType.VarChar).Value = userModel.Ava;
+                command.Parameters.Add("@Note", SqlDbType.VarChar).Value = userModel.Note;
                 command.Parameters.Add("@Sex", SqlDbType.NVarChar).Value = userModel.Sex;
                 command.Parameters.Add("@Status", SqlDbType.NVarChar).Value = userModel.Status;
                 command.Parameters.Add("@Position", SqlDbType.NVarChar).Value = userModel.Position;
                 command.Parameters.Add("@Contract_type", SqlDbType.NVarChar).Value = userModel.Contract_type;
                 command.Parameters.Add("@Roles", SqlDbType.NVarChar).Value = userModel.Roles;
+                command.Parameters.Add("@Degree", SqlDbType.NVarChar).Value = userModel.Degree;
 
                 command.ExecuteNonQuery();
                 connection.Close();
@@ -164,6 +166,7 @@ namespace HRMngt._Repository
                         userModel.Position = reader[18].ToString();
                         userModel.Contract_type = reader[19].ToString();
                         userModel.Roles = reader[21].ToString();
+                        userModel.Degree = reader[22].ToString();
                         userLists.Add(userModel);
                     }
                 }
@@ -285,6 +288,7 @@ namespace HRMngt._Repository
                         userModel.Position = reader[18].ToString();
                         userModel.Contract_type = reader[19].ToString();
                         userModel.Roles = reader[21].ToString();
+                        userModel.Degree = reader[22].ToString();
 
                     }
                 }

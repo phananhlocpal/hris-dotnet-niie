@@ -91,12 +91,13 @@ namespace HRMngt.Presenter
             dialog.On_boarding = user.On_boarding;
             dialog.Close_date = user.Close_date;
             dialog.Scan_contract = user.Scan_contract;
-            dialog.Avatar = user.Ava;
+            dialog.Note = user.Note;
             dialog.Sex = user.Sex;
             dialog.Status = user.Status;
             dialog.Position = user.Position;
             dialog.Contract_type = user.Contract_type;
             dialog.Roles = user.Roles;
+            dialog.Degree = user.Degree;
             dialog.EditUserDialog += EditUserDialog;
             dialog.CancleEvent += CancleEvent;
             dialog.ShowDialog();
@@ -119,12 +120,13 @@ namespace HRMngt.Presenter
             user.On_boarding = dialog.On_boarding;
             user.Close_date = dialog.Close_date;
             user.Scan_contract = dialog.Scan_contract;
-            user.Ava = dialog.Avatar;
+            user.Note = dialog.Note;
             user.Sex = dialog.Sex;
             user.Status = dialog.Status;
             user.Position = dialog.Position;
             user.Contract_type = dialog.Contract_type;
             user.Roles = dialog.Roles;
+            user.Degree = dialog.Degree;
             repository.Update(user);
             this.dialog.Close();
             LoadAllUserList();
@@ -177,6 +179,7 @@ namespace HRMngt.Presenter
             dialog.Roles = "";
             dialog.ManagerID = "";
             dialog.DepartmentID = "";
+            dialog.Degree = "";
         }
 
         private void CheckConditionPhone(object sender, EventArgs e)
@@ -270,13 +273,14 @@ namespace HRMngt.Presenter
             user.On_boarding = dialog.On_boarding;
             user.Close_date = dialog.Close_date;
             user.Scan_contract = dialog.Scan_contract;
-            user.Ava = dialog.Avatar;
+            user.Note = dialog.Note;
             user.Sex = dialog.Sex;
             user.Status = dialog.Status;
             user.Position = dialog.Position;
             user.Contract_type = dialog.Contract_type;
             user.Photo = dialog.Photo;
             user.Roles = dialog.Roles;
+            user.Degree = dialog.Degree;
             repository.Add(user);
             this.dialog.Close();
             LoadAllUserList();

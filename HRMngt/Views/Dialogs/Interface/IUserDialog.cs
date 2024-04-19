@@ -26,10 +26,11 @@ namespace HRMngt.Views.Dialogs
         DateTime On_boarding { get; set; }
         DateTime Close_date { get; set; }
         string Scan_contract { get; set; }
-        string Avatar { get; set; }
+        string Note { get; set; }
         string Status { get; set; }
         byte[] Photo { get; set; }
         string Roles { get; set; }
+        string Degree { get; set; }
 
         event EventHandler AddNewUserDialog;
         event EventHandler EditUserDialog;

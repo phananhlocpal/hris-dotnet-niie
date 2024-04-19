@@ -34,6 +34,7 @@ namespace HRMngt.Model
         private string status;
         private byte[] photo;
         private string roles;
+        private string degree;
 
         // Encapsulate fields
         public string Id { get => id; set => id = value; }
@@ -58,5 +59,6 @@ namespace HRMngt.Model
         public string Status { get => status; set => status = value; }
         public byte[] Photo { get => photo; set => photo = value; }
         public string Roles { get => roles; set => roles = value; }
+        public string Degree { get => degree; set => degree = value; }
     }
 }
