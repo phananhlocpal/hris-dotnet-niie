@@ -1,5 +1,5 @@
 ﻿using HRMngt._Repository;
-using HRMngt.Model;
+using HRMngt.Models;
 using HRMngt.Models;
 using HRMngt.popup;
 using HRMngt.Views.Dialogs;

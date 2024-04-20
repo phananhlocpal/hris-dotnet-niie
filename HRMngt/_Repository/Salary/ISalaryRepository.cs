@@ -16,5 +16,6 @@ namespace HRMngt._Repository.Salary
         IEnumerable<SalaryListModel> GetList();
 
         SalaryModel GetByID(string id);
+        SalaryModel GetByKey(string userId, int month, int year);
     }
 }

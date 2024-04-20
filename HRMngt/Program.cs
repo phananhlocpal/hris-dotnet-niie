@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Configuration;
 using HRMngt.Presenter;
-using HRMngt.Model;
+using HRMngt.Models;
 using HRMngt.Views;
 using HRMngt._Repository;
 using HRMngt.Presenters;

@@ -1,4 +1,5 @@
-﻿using HRMngt.Model;
+﻿using HRMngt._Repository;
+using HRMngt.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -262,5 +263,7 @@ namespace HRMngt._Repository
         {
             throw new NotImplementedException();
         }
+
+       
     }
 }

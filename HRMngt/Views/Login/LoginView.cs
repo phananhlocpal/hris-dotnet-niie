@@ -1,4 +1,4 @@
-﻿using HRMngt.Model;
+﻿using HRMngt.Models;
 using HRMngt.Presenters;
 using HRMngt.View;
 using HRMngt.Views.Dialogs;

@@ -16,11 +16,6 @@ namespace HRMngt._Repository.Support
     {
         private string connectionString = BaseRepository.connectionString;
 
-        public SupportRepository()
-        {
-
-        }
-
         public void Back()
         {
             throw new NotImplementedException();

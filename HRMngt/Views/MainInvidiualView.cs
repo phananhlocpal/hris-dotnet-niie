@@ -1,4 +1,4 @@
-﻿using HRMngt.Model;
+﻿using HRMngt.Models;
 using HRMngt.Views;
 using ReaLTaiizor.Controls;
 using System;

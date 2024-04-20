@@ -1,4 +1,4 @@
-﻿using HRMngt.Model;
+﻿using HRMngt.Models;
 using HRMngt.Models;
 using System;
 using System.Collections.Generic;
@@ -129,6 +129,7 @@ namespace HRMngt.Views.Dialogs
         }
 
         public string Roles { get => cbRoles.Text; set => cbRoles.Text = value; }
+        public string Degree { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public byte[] getPhoto()
         {

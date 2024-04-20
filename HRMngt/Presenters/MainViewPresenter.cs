@@ -1,11 +1,9 @@
 ﻿using HRMngt._Repository;
 using HRMngt._Repository.Calendar;
 using HRMngt._Repository.Communicate;
-using HRMngt._Repository.Home;
-using HRMngt._Repository.IndividualSalary;
 using HRMngt._Repository.Salary;
 using HRMngt._Repository.Support;
-using HRMngt.Model;
+using HRMngt.Models;
 using HRMngt.Presenter;
 using HRMngt.View;
 using HRMngt.Views;
@@ -103,7 +101,7 @@ namespace HRMngt.Presenters
         private void ShowHomeView(object sender, EventArgs e)
         {
             IHomeView view = Home.GetInstance((MainView)mainView);
-            IHomeRepository repository = new HomeRepository();
+            IUserRepository repository = new UserRepository();
             new HomePresenter(view, repository);
         }
 

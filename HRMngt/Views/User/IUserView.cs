@@ -1,4 +1,4 @@
-﻿using HRMngt.Model;
+﻿using HRMngt.Models;
 using HRMngt.Views.Dialogs;
 using System;
 using System.Collections.Generic;

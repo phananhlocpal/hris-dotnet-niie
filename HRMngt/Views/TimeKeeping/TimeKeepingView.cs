@@ -1,7 +1,6 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using HRMngt._Repository;
 using HRMngt._Repository.Calendar;
-using HRMngt.Model;
 using HRMngt.Models;
 using HRMngt.View;
 using System;

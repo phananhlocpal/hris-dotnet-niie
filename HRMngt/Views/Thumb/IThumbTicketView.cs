@@ -1,4 +1,4 @@
-﻿using HRMngt.Model;
+﻿using HRMngt.Models;
 using HRMngt.View.Popup;
 using System;
 using System.Collections.Generic;

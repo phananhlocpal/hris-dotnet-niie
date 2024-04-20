@@ -1,6 +1,6 @@
 ﻿using HRMngt._Repository.Calendar;
 using HRMngt._Repository;
-using HRMngt.Model;
+using HRMngt.Models;
 using HRMngt.Presenter;
 using HRMngt.View;
 using HRMngt.Views;
@@ -10,7 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HRMngt.Views.Dialogs;
-using HRMngt._Repository.IndividualSalary;
+using HRMngt._Repository;
+using HRMngt._Repository.Salary;
 
 namespace HRMngt.Presenters
 {
@@ -51,7 +52,7 @@ namespace HRMngt.Presenters
         private void ShowIndividualSalaryView(object sender, EventArgs e)
         {
             IIndividualSalaryView view = IndividualSalaryView.GetInstance((MainInvidiualView)mainIndividual);
-            IIndividualSalaryRepository repository = new IndividualSalaryRepository();
+            ISalaryRepository repository = new SalaryRepository();
 
             new IndividualSalaryPresenter(view, repository, this.userModel);
         }

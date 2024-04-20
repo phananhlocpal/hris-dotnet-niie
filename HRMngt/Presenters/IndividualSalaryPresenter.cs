@@ -1,6 +1,5 @@
 ﻿using HRMngt._Repository.Calendar;
-using HRMngt._Repository.IndividualSalary;
-using HRMngt.Model;
+using HRMngt._Repository.Salary;
 using HRMngt.Models;
 using HRMngt.Views.Dialogs;
 using System;
@@ -15,11 +14,11 @@ namespace HRMngt.Presenters
     {
         private UserModel userModel;
         private IIndividualSalaryView salaryView;
-        private IIndividualSalaryRepository salaryRepository;
+        private ISalaryRepository salaryRepository;
         private IIndividualSalaryDialog salaryDialog;
         private IEnumerable<CalendarModel> calendarList;
 
-        public IndividualSalaryPresenter(IIndividualSalaryView salaryView, IIndividualSalaryRepository salaryRepository, UserModel userModel)
+        public IndividualSalaryPresenter(IIndividualSalaryView salaryView, ISalaryRepository salaryRepository, UserModel userModel)
         {
             this.salaryView = salaryView;
             this.salaryRepository = salaryRepository;

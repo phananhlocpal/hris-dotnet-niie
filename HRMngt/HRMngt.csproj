@@ -142,7 +142,6 @@
   <ItemGroup>
     <Compile Include="Models\CalendarModel.cs" />
     <Compile Include="Models\DepartmentModel.cs" />
-    <Compile Include="Models\RecruitModel.cs" />
     <Compile Include="Models\SalaryListModel.cs" />
     <Compile Include="Models\SalaryModel.cs" />
     <Compile Include="Presenters\CommunicatePresenter.cs" />
@@ -329,15 +328,10 @@
     <Compile Include="_Repository\BaseRepository.cs" />
     <Compile Include="_Repository\Department\DepartmentRepository.cs" />
     <Compile Include="_Repository\Department\IDepartmentRepository.cs" />
-    <Compile Include="_Repository\Home\HomeRepository.cs" />
-    <Compile Include="_Repository\Home\IHomeRepository.cs" />
-    <Compile Include="_Repository\IndividualSalary\IIndividualSalaryRepository.cs" />
-    <Compile Include="_Repository\IndividualSalary\IndividualSalaryRepository.cs" />
-    <Compile Include="_Repository\Login\ILoginRepository.cs" />
     <Compile Include="_Repository\Salary\ISalaryRepository.cs" />
     <Compile Include="_Repository\Salary\SalaryRepository.cs" />
-    <Compile Include="_Repository\Support\ISupportRepository.cs" />
-    <Compile Include="_Repository\Support\SupportRepository.cs" />
+    <Compile Include="_Repository\OtherRepository\ISupportRepository.cs" />
+    <Compile Include="_Repository\OtherRepository\SupportRepository.cs" />
     <Compile Include="_Repository\ThumbTicket\IThumbTicketRepository.cs" />
     <Compile Include="_Repository\User\IUserRepository.cs" />
     <Compile Include="Models\ThumbTicketModel.cs" />
@@ -385,11 +379,11 @@
     <Compile Include="Views\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
-    <Compile Include="_Repository\Login\LoginRepository.cs" />
     <Compile Include="_Repository\ThumbTicket\ThumbTicketRepository.cs" />
     <Compile Include="_Repository\User\UserRepository.cs" />
     <EmbeddedResource Include="Views\AnimationButton.resx">
       <DependentUpon>AnimationButton.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Client\ClientView.resx">
       <DependentUpon>ClientView.cs</DependentUpon>

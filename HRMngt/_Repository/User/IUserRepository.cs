@@ -1,4 +1,5 @@
 ﻿using HRMngt.Models;
+using HRMngt.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HRMngt.Model
+namespace HRMngt._Repository
 {
     public interface IUserRepository
     {

@@ -1,5 +1,5 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
-using HRMngt.Model;
+using HRMngt.Models;
 using HRMngt.Views;
 using Microsoft.VisualBasic.ApplicationServices;
 using ReaLTaiizor.Controls;
@@ -51,6 +51,9 @@ namespace HRMngt.View
             btnSalary.Click += delegate { ShowSalaryView?.Invoke(this, EventArgs.Empty); };
             btnHiring.Click += delegate { ShowRecuitView?.Invoke(this, EventArgs.Empty); };
             btnTimeKeeping.Click += delegate { ShowTimeKeepingView?.Invoke(this, EventArgs.Empty); };
+            btnMessage.Click += delegate {
+                ShowCommunicateView?.Invoke(this, EventArgs.Empty);
+            };
         }
         private void MainView_Load(object sender, EventArgs e)
         {
@@ -78,11 +81,7 @@ namespace HRMngt.View
             lblNavName.Text = userModel.Name;
         }
 
-            btnMessage.Click += delegate {
-                ShowCommunicateView?.Invoke(this, EventArgs.Empty); 
-            };
 
-        }
         private void txtNavSearch_MouseClick(object sender, MouseEventArgs e)
         {
             if (txtNavSearch.Text == "Nhập tìm kiếm của bạn ...")
@@ -100,6 +99,6 @@ namespace HRMngt.View
                 txtNavSearch.ForeColor = Color.Black;
             }
         }
-        
+
     }
 }

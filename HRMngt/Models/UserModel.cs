@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using System.Drawing;
 
-namespace HRMngt.Model
+namespace HRMngt.Models
 {
     public class UserModel
     {

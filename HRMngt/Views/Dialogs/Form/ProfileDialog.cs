@@ -1,4 +1,4 @@
-﻿using HRMngt.Model;
+﻿using HRMngt.Models;
 using HRMngt.View;
 using Microsoft.VisualBasic.ApplicationServices;
 using System;

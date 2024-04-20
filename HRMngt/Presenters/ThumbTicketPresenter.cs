@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HRMngt._Repository;
-using HRMngt.Model;
+using HRMngt.Models;
 using HRMngt.popup;
 using HRMngt.View;
 using HRMngt.View.Popup;

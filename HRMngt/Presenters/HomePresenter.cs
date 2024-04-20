@@ -1,4 +1,5 @@
-﻿using HRMngt._Repository.Home;
+﻿using HRMngt._Repository;
+using HRMngt.Models;
 using HRMngt.Views;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,9 @@ namespace HRMngt.Presenters
     public class HomePresenter
     {
         private IHomeView view;
-        private IHomeRepository repository;
+        private IUserRepository repository;
 
-        public HomePresenter(IHomeView view, IHomeRepository repository)
+        public HomePresenter(IHomeView view, IUserRepository repository)
         {
             this.view = view;
             this.repository = repository;

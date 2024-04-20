@@ -1,6 +1,6 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using HRMngt._Repository;
-using HRMngt.Model;
+using HRMngt.Models;
 using HRMngt.View;
 using HRMngt.Views;
 using System;

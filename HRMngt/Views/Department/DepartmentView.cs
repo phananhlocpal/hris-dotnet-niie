@@ -1,5 +1,4 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
-using HRMngt.Model;
 using HRMngt.Models;
 using HRMngt.View;
 using HRMngt.Views.Dialogs;

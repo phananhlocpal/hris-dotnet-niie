@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic.ApplicationServices;
-using HRMngt.Model;
 using System.Windows.Forms;
 
 namespace HRMngt._Repository.Calendar

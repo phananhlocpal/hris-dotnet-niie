@@ -1,6 +1,5 @@
 ﻿using HRMngt._Repository;
 using HRMngt._Repository.Calendar;
-using HRMngt.Model;
 using HRMngt.Models;
 using HRMngt.popup;
 using HRMngt.Views.Dialogs;

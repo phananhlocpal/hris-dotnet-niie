@@ -1,4 +1,4 @@
-﻿using HRMngt.Model;
+﻿using HRMngt.Models;
 using HRMngt.popup;
 using HRMngt.View.Popup;
 using HRMngt.Views;

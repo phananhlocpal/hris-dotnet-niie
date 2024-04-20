@@ -5,9 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
-using HRMngt.Model;
-using System.Windows.Forms;
 using HRMngt.Models;
+using System.Windows.Forms;
 using System.Web.UI.WebControls;
 using System.Net.Mail;
 using System.Net;
@@ -147,19 +146,20 @@ namespace HRMngt._Repository
                         userModel.Sex = reader[6].ToString();
                         userModel.Position = reader[7].ToString().Trim();
                         userModel.Salary = reader[8].ToString();
-                        userModel.Username = reader[9].ToString();
-                        userModel.Password = reader[10].ToString();
-                        userModel.ManagerID = reader[11].ToString();
-                        userModel.DepartmentID = reader[12].ToString();
-                        userModel.Contract_type = reader[13].ToString();
-                        userModel.On_boarding = (DateTime)reader[14];
+                        userModel.ManagerID = reader[9].ToString();
+                        userModel.DepartmentID = reader[10].ToString();
+                        userModel.Contract_type = reader[11].ToString();
+                        userModel.On_boarding = (DateTime)reader[12];
                         if (reader[15] != DBNull.Value)
-                            userModel.Close_date = (DateTime)reader[15];
-                        userModel.Scan_contract = reader[16].ToString();
-                        userModel.Note = reader[17].ToString();
-                        userModel.Ava = reader[18].ToString();
-                        userModel.Status = reader[19].ToString();
-                        userModel.Roles = reader[20].ToString();
+                            userModel.Close_date = (DateTime)reader[13];
+                        userModel.Scan_contract = reader[14].ToString();
+                        userModel.Note = reader[15].ToString();
+                        userModel.Status = reader[16].ToString();
+                        userModel.Roles = reader[17].ToString();
+                        userModel.Username = reader[18].ToString();
+                        userModel.Password = reader[19].ToString();
+                        userModel.Ava = reader[20].ToString();
+                        
                         userLists.Add(userModel);
                     }
                 }
@@ -192,12 +192,12 @@ namespace HRMngt._Repository
                             userModel.Sex = reader[6].ToString();
                             userModel.Position = reader[7].ToString().Trim();
                             userModel.Salary = reader[8].ToString();
-                            userModel.Username = reader[9].ToString();
-                            userModel.Password = reader[10].ToString();
-                            userModel.ManagerID = reader[11].ToString();
-                            userModel.DepartmentID = reader[12].ToString();
-                            userModel.Contract_type = reader[13].ToString();
-                            userModel.On_boarding = (DateTime)reader[14];
+                            userModel.ManagerID = reader[9].ToString();
+                            userModel.DepartmentID = reader[10].ToString();
+                            userModel.Contract_type = reader[11].ToString();
+                            userModel.On_boarding = (DateTime)reader[12];
+                            userModel.Username = reader[13].ToString();
+                            userModel.Password = reader[14].ToString();
                             if (reader[15] != DBNull.Value)
                             {
                                 userModel.On_boarding = (DateTime)reader[15];
