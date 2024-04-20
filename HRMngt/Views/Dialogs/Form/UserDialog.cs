@@ -129,7 +129,6 @@ namespace HRMngt.Views.Dialogs
         }
 
         public string Roles { get => cbRoles.Text; set => cbRoles.Text = value; }
-        public string Degree { get => cbDegree.Text; set => cbDegree.Text = value; }
 
         public byte[] getPhoto()
         {
@@ -236,12 +235,8 @@ namespace HRMngt.Views.Dialogs
             }
         }
 
-<<<<<<< HEAD
 
         public void ShowDepartmentIdNName(IEnumerable<DepartmentModel> departmentList)
-=======
-        public void ShowDepartmentIdNName(List<string> departmentIDNameList)
->>>>>>> minhhieu
         {
             cbDepartmentId.Items.Clear();
             foreach (var departmentModel in departmentList)

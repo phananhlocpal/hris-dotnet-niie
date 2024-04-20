@@ -16,18 +16,8 @@ namespace HRMngt._Repository
 {
     public class UserRepository : IUserRepository
     {
-<<<<<<< HEAD
         private string connectionString = BaseRepository.connectionString;
  
-=======
-        string connectionString = "Data Source=localhost;Initial Catalog=HR;Integrated Security=True;Encrypt=False;";
-        // Contructor
-        public UserRepository()
-        {
-            
-        }
-
->>>>>>> minhhieu
         public void Add(UserModel userModel)
         {
             string salt = BCrypt.Net.BCrypt.GenerateSalt();
@@ -67,17 +57,10 @@ namespace HRMngt._Repository
                     connection.Close();
                 }
             }
-<<<<<<< HEAD
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                MessageBox.Show("Thêm nhân viên hiện tại đang gặp sự cố!, vui lòng thử lại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-=======
             catch(Exception e)
             {
                 /*MessageBox.Show("Thêm nhân viên hiện tại đang gặp sự cố!, vui lòng thử lại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);*/
                 MessageBox.Show(e.ToString());
->>>>>>> minhhieu
             }
         }
 
@@ -160,7 +143,6 @@ namespace HRMngt._Repository
                         userModel.Email = reader[2].ToString();
                         userModel.Phone = reader[3].ToString();
                         userModel.Address = reader[4].ToString();
-<<<<<<< HEAD
                         userModel.Birthday = (DateTime)reader[5];
                         userModel.Sex = reader[6].ToString();
                         userModel.Position = reader[7].ToString().Trim();
@@ -178,25 +160,6 @@ namespace HRMngt._Repository
                         userModel.Ava = reader[18].ToString();
                         userModel.Status = reader[19].ToString();
                         userModel.Roles = reader[20].ToString();
-=======
-                        userModel.Birthday =(DateTime) reader[5];
-                        userModel.Salary = reader[6].ToString();
-                        userModel.Username = reader[7].ToString();                    
-                        userModel.Password = reader[8].ToString();
-                        userModel.ManagerID = reader[9].ToString();
-                        userModel.DepartmentID = reader[10].ToString();
-                        userModel.On_boarding = (DateTime)reader[11];
-                        userModel.Close_date = (DateTime)reader[12];
-                        userModel.Scan_contract = reader[13].ToString();
-                        userModel.Note = reader[14].ToString();
-                        userModel.Ava = reader[15].ToString();
-                        userModel.Sex = reader[16].ToString();
-                        userModel.Status = reader[17].ToString();
-                        userModel.Position = reader[18].ToString();
-                        userModel.Contract_type = reader[19].ToString();
-                        userModel.Roles = reader[21].ToString();
-                        userModel.Degree = reader[22].ToString();
->>>>>>> minhhieu
                         userLists.Add(userModel);
                     }
                 }
@@ -218,7 +181,6 @@ namespace HRMngt._Repository
                     command.CommandText = "select * from users where username='" + username + "' and password='" + password + "'";
                     using (var reader = command.ExecuteReader())
                     {
-<<<<<<< HEAD
                         while (reader.Read())
                         {
                             userModel.Id = reader[0].ToString();
@@ -247,30 +209,6 @@ namespace HRMngt._Repository
                             userModel.Ava = reader[18].ToString();
                             userModel.Status = reader[19].ToString();
                             userModel.Roles = reader[20].ToString().Trim();
-=======
-                        userModel.Id = reader[0].ToString();
-                        userModel.Name = reader[1].ToString();
-                        userModel.Email = reader[2].ToString();
-                        userModel.Phone = reader[3].ToString();
-                        userModel.Address = reader[4].ToString();
-                        userModel.Birthday = (DateTime)reader[5];
-                        userModel.Salary = reader[6].ToString();
-                        userModel.Username = reader[7].ToString();
-                        userModel.Password = reader[8].ToString();
-                        userModel.ManagerID = reader[9].ToString();
-                        userModel.DepartmentID = reader[10].ToString();
-                        userModel.On_boarding = (DateTime)reader[11];
-                        userModel.Close_date = (DateTime)reader[12];
-                        userModel.Scan_contract = reader[13].ToString();
-                        userModel.Note = reader[14].ToString();
-                        userModel.Ava = reader[15].ToString();
-                        userModel.Sex = reader[16].ToString();
-                        userModel.Status = reader[17].ToString();
-                        userModel.Position = reader[18].ToString();
-                        userModel.Contract_type = reader[19].ToString();
-                        userModel.Roles = reader[21].ToString();
-                        userModel.Degree = reader[22].ToString();
->>>>>>> minhhieu
 
                         }
                     }

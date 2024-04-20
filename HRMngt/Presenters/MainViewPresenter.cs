@@ -1,9 +1,6 @@
 ﻿using HRMngt._Repository;
-<<<<<<< HEAD
 using HRMngt._Repository.Calendar;
-=======
 using HRMngt._Repository.Communicate;
->>>>>>> minhhieu
 using HRMngt._Repository.Home;
 using HRMngt._Repository.IndividualSalary;
 using HRMngt._Repository.Salary;
@@ -45,11 +42,8 @@ namespace HRMngt.Presenters
             mainView.ShowRecuitView += ShowRecuitView;
             mainView.ShowTimeKeepingView += ShowTimeKeepingView;
             mainView.ShowMainIndividualView += ShowMainIndividualView;
-<<<<<<< HEAD
-            mainView.ShowUserInformation(userModel);
-=======
             mainView.ShowCommunicateView += ShowCommunicateView;
->>>>>>> minhhieu
+            mainView.ShowUserInformation(userModel);
             mainView.Show();
         }
 

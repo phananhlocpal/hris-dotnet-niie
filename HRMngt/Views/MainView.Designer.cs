@@ -127,39 +127,21 @@
             this.btnNoti.FlatAppearance.BorderSize = 0;
             this.btnNoti.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNoti.Image = global::HRMngt.Properties.Resources.image_37;
-<<<<<<< HEAD
             this.btnNoti.Location = new System.Drawing.Point(3, 27);
             this.btnNoti.Name = "btnNoti";
             this.btnNoti.Size = new System.Drawing.Size(51, 51);
-=======
-            this.btnNoti.Location = new System.Drawing.Point(2, 17);
-            this.btnNoti.Margin = new System.Windows.Forms.Padding(2);
-            this.btnNoti.Name = "btnNoti";
-            this.btnNoti.Size = new System.Drawing.Size(32, 32);
->>>>>>> minhhieu
             this.btnNoti.TabIndex = 0;
             this.btnNoti.UseVisualStyleBackColor = false;
             // 
             // picNavAva
             // 
             this.picNavAva.Image = global::HRMngt.Properties.Resources.image_38;
-<<<<<<< HEAD
             this.picNavAva.Location = new System.Drawing.Point(61, 27);
             this.picNavAva.Name = "picNavAva";
             this.picNavAva.Size = new System.Drawing.Size(61, 50);
             this.picNavAva.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picNavAva.TabIndex = 4;
             this.picNavAva.TabStop = false;
-=======
-            this.picNavAva.Location = new System.Drawing.Point(38, 17);
-            this.picNavAva.Margin = new System.Windows.Forms.Padding(2);
-            this.picNavAva.Name = "picNavAva";
-            this.picNavAva.Size = new System.Drawing.Size(38, 31);
-            this.picNavAva.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picNavAva.TabIndex = 4;
-            this.picNavAva.TabStop = false;
-            this.picNavAva.Click += new System.EventHandler(this.picNavAva_Click);
->>>>>>> minhhieu
             // 
             // pnlSearch
             // 
@@ -481,9 +463,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonPanel pnlSupport;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Panel pnlNavBar;
-<<<<<<< HEAD
-        private System.Windows.Forms.PictureBox picNavAva;
-=======
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Button btnEmployee;
         private System.Windows.Forms.Button btnSalary;
@@ -491,6 +470,6 @@
         private System.Windows.Forms.Button btnTimeKeeping;
         private System.Windows.Forms.Button btnDepartment;
         private Guna.UI.WinForms.GunaPictureBox btnMessage;
->>>>>>> minhhieu
+        private System.Windows.Forms.PictureBox picNavAva;
     }
 }

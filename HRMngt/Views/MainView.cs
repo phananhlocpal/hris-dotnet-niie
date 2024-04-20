@@ -21,12 +21,7 @@ namespace HRMngt.View
     public partial class MainView : Form, IMainView
     {       
         
-<<<<<<< HEAD
         public MainView()
-=======
-
-        public MainView(UserModel user)
->>>>>>> minhhieu
         {
             InitializeComponent();
             RunEvent();
@@ -56,13 +51,6 @@ namespace HRMngt.View
             btnSalary.Click += delegate { ShowSalaryView?.Invoke(this, EventArgs.Empty); };
             btnHiring.Click += delegate { ShowRecuitView?.Invoke(this, EventArgs.Empty); };
             btnTimeKeeping.Click += delegate { ShowTimeKeepingView?.Invoke(this, EventArgs.Empty); };
-<<<<<<< HEAD
-=======
-            btnMessage.Click += delegate {
-                ShowCommunicateView?.Invoke(this, EventArgs.Empty); 
-            };
-
->>>>>>> minhhieu
         }
         private void MainView_Load(object sender, EventArgs e)
         {
@@ -90,6 +78,11 @@ namespace HRMngt.View
             lblNavName.Text = userModel.Name;
         }
 
+            btnMessage.Click += delegate {
+                ShowCommunicateView?.Invoke(this, EventArgs.Empty); 
+            };
+
+        }
         private void txtNavSearch_MouseClick(object sender, MouseEventArgs e)
         {
             if (txtNavSearch.Text == "Nhập tìm kiếm của bạn ...")
@@ -107,28 +100,6 @@ namespace HRMngt.View
                 txtNavSearch.ForeColor = Color.Black;
             }
         }
-<<<<<<< HEAD
-=======
-        private void btnDepartment_Click(object sender, EventArgs e)
-        {
-
-        }
-        public void CheckRole()
-        {
-            if (currentUser.Roles != "Admin")
-            {
-                btnEmployee.Enabled = false;
-                btnDepartment.Enabled = false;
-                btnSalary.Enabled = false;
-            }
-        }
-
-        private void picNavAva_Click(object sender, EventArgs e)
-        {
-            MainInvidiualView view = new MainInvidiualView(currentUser);
-            view.Show();
-        }
         
->>>>>>> minhhieu
     }
 }

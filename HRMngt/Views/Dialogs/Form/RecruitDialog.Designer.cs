@@ -928,12 +928,8 @@
             // label8
             // 
             this.label8.AutoSize = true;
-<<<<<<< HEAD
             this.label8.Location = new System.Drawing.Point(674, 536);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-=======
-            this.label8.Location = new System.Drawing.Point(447, 343);
->>>>>>> minhhieu
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 25);
             this.label8.TabIndex = 15;

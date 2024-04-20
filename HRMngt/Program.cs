@@ -28,16 +28,6 @@ namespace HRMngt
                 SetProcessDPIAware();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< HEAD
-=======
-            Form chatServerForm = new ChatServer();
-            ILoginRepository loginRepository = new LoginRepository();
-            ILoginView loginView = new LoginView();
-            new LoginPresenter(loginView, loginRepository);
-            Application.Run(chatServerForm);
-            chatServerForm.Hide();
-            Application.Run((Form)loginView);
->>>>>>> minhhieu
 
             UserModel userModel = new UserModel();
             userModel.Id = "NV001";

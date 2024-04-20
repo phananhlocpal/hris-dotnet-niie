@@ -90,22 +90,14 @@ namespace HRMngt.Presenter
             dialog.ManagerID = user.ManagerID;
             dialog.On_boarding = user.On_boarding;
             dialog.Close_date = user.Close_date;
-<<<<<<< HEAD
             dialog.Roles = user.Roles;
-            dialog.Status = user.Status;
-            dialog.Contract_type = user.Contract_type;
-
-            // Show dialog and event handler
-=======
             dialog.Scan_contract = user.Scan_contract;
             dialog.Note = user.Note;
             dialog.Sex = user.Sex;
             dialog.Status = user.Status;
-            dialog.Position = user.Position;
             dialog.Contract_type = user.Contract_type;
-            dialog.Roles = user.Roles;
-            dialog.Degree = user.Degree;
->>>>>>> minhhieu
+
+            // Show dialog and event handler
             dialog.EditUserDialog += EditUserDialog;
             dialog.ShowDialog();
         }
@@ -133,7 +125,6 @@ namespace HRMngt.Presenter
             user.Position = dialog.Position;
             user.Contract_type = dialog.Contract_type;
             user.Roles = dialog.Roles;
-            user.Degree = dialog.Degree;
             repository.Update(user);
             this.dialog.Close();
             userList = repository.GetAll();
@@ -188,7 +179,6 @@ namespace HRMngt.Presenter
             dialog.Roles = "";
             dialog.ManagerID = "";
             dialog.DepartmentID = "";
-            dialog.Degree = "";
         }
 
         private void CheckConditionPhone(object sender, EventArgs e)
@@ -289,7 +279,6 @@ namespace HRMngt.Presenter
             user.Contract_type = dialog.Contract_type;
             user.Photo = dialog.Photo;
             user.Roles = dialog.Roles;
-            user.Degree = dialog.Degree;
             repository.Add(user);
             this.dialog.Close();
             userList = repository.GetAll();

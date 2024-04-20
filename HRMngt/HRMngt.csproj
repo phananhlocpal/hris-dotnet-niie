@@ -324,12 +324,9 @@
     </Compile>
     <Compile Include="_Repository\Calendar\CalendarRepository.cs" />
     <Compile Include="_Repository\Calendar\ICalendarRepository.cs" />
-<<<<<<< HEAD
-    <Compile Include="_Repository\BaseRepository.cs" />
-=======
     <Compile Include="_Repository\Communicate\CommunicateRepository.cs" />
     <Compile Include="_Repository\Communicate\ICommunicateRepository.cs" />
->>>>>>> minhhieu
+    <Compile Include="_Repository\BaseRepository.cs" />
     <Compile Include="_Repository\Department\DepartmentRepository.cs" />
     <Compile Include="_Repository\Department\IDepartmentRepository.cs" />
     <Compile Include="_Repository\Home\HomeRepository.cs" />
