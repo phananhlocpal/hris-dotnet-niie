@@ -140,6 +140,7 @@ D:\hris-dotnet-mhieu\hris-dotnet-mhieu\HRMngt\bin\Debug\System.Threading.Tasks.E
 D:\hris-dotnet-mhieu\hris-dotnet-mhieu\HRMngt\bin\Debug\System.ValueTuple.xml
 D:\hris-dotnet-mhieu\hris-dotnet-mhieu\HRMngt\obj\Debug\HRMngt.Views.Dialogs.CheckinDialog.resources
 D:\hris-dotnet-mhieu\hris-dotnet-mhieu\HRMngt\bin\Debug\Bunifu_UI_v1.52.dll
+<<<<<<< HEAD
 D:\hris-dotnet-mhieu\hris-dotnet-mhieu\HRMngt\obj\Debug\HRMngt.Views.Main.resources
 C:\Users\Surface\source\repos\hris-dotnet-niie\HRMngt\obj\Debug\HRMngt.csproj.AssemblyReference.cache
 C:\Users\Surface\source\repos\hris-dotnet-niie\HRMngt\obj\Debug\HRMngt.csproj.ResolveComReference.cache
@@ -224,3 +225,11 @@ C:\Users\Surface\source\repos\hris-dotnet-niie\HRMngt\bin\Debug\System.Threading
 C:\Users\Surface\source\repos\hris-dotnet-niie\HRMngt\bin\Debug\System.ValueTuple.xml
 C:\Users\Surface\source\repos\hris-dotnet-niie\HRMngt\bin\Debug\ComponentFactory.Krypton.Workspace.pdb
 C:\Users\Surface\source\repos\hris-dotnet-niie\HRMngt\obj\Debug\HRMngt.csproj.Up2Date
+=======
+D:\hris-dotnet-mhieu\hris-dotnet-mhieu\HRMngt\bin\Debug\BCrypt.Net-Next.dll
+D:\hris-dotnet-mhieu\hris-dotnet-mhieu\HRMngt\bin\Debug\BCrypt.Net-Next.xml
+D:\hris-dotnet-mhieu\hris-dotnet-mhieu\HRMngt\obj\Debug\HRMngt.Views.ChatServer.resources
+D:\hris-dotnet-mhieu\hris-dotnet-mhieu\HRMngt\obj\Debug\HRMngt.Views.Client.ClientView.resources
+D:\hris-dotnet-mhieu\hris-dotnet-mhieu\HRMngt\bin\Debug\Guna.UI.dll
+D:\hris-dotnet-mhieu\hris-dotnet-mhieu\HRMngt\obj\Debug\HRMngt.Views.AnimationButton.resources
+>>>>>>> minhhieu

@@ -39,6 +39,9 @@
     <StartupObject>HRMngt.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net48\BCrypt.Net-Next.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu.Licensing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=f89b4760ba7dcb6b, processorArchitecture=MSIL">
       <HintPath>..\packages\Bunifu.Licensing.6.0.2\lib\net48\Bunifu.Licensing.dll</HintPath>
     </Reference>
@@ -59,6 +62,9 @@
     </Reference>
     <Reference Include="CustomControlUsingPalettes">
       <HintPath>..\..\..\..\Downloads\Krypton-master\Krypton-master\Bin\CustomControlUsingPalettes.exe</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI">
+      <HintPath>..\..\..\GunaUI2-Cracked-2020-2021-main\GunaUI2-Cracked-2020-2021-main\Guna.UI WinForms\4.0\Guna.UI.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net48\Guna.UI2.dll</HintPath>
@@ -139,6 +145,7 @@
     <Compile Include="Models\RecruitModel.cs" />
     <Compile Include="Models\SalaryListModel.cs" />
     <Compile Include="Models\SalaryModel.cs" />
+    <Compile Include="Presenters\CommunicatePresenter.cs" />
     <Compile Include="Presenters\HomePresenter.cs" />
     <Compile Include="Presenters\RecruitPresenter.cs" />
     <Compile Include="Presenters\IndividualCalendarPresenter.cs" />
@@ -150,6 +157,22 @@
     <Compile Include="Presenters\SalaryPresenter.cs" />
     <Compile Include="Presenters\SupportPresenter.cs" />
     <Compile Include="Presenters\TimeKeepingPresenter.cs" />
+    <Compile Include="Views\AnimationButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Client\ClientView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Client\ClientView.Designer.cs">
+      <DependentUpon>ClientView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Client\IClientView.cs" />
+    <Compile Include="Views\Server\ChatServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Server\ChatServer.Designer.cs">
+      <DependentUpon>ChatServer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Department\DepartmentView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -301,7 +324,12 @@
     </Compile>
     <Compile Include="_Repository\Calendar\CalendarRepository.cs" />
     <Compile Include="_Repository\Calendar\ICalendarRepository.cs" />
+<<<<<<< HEAD
     <Compile Include="_Repository\BaseRepository.cs" />
+=======
+    <Compile Include="_Repository\Communicate\CommunicateRepository.cs" />
+    <Compile Include="_Repository\Communicate\ICommunicateRepository.cs" />
+>>>>>>> minhhieu
     <Compile Include="_Repository\Department\DepartmentRepository.cs" />
     <Compile Include="_Repository\Department\IDepartmentRepository.cs" />
     <Compile Include="_Repository\Home\HomeRepository.cs" />
@@ -363,6 +391,15 @@
     <Compile Include="_Repository\Login\LoginRepository.cs" />
     <Compile Include="_Repository\ThumbTicket\ThumbTicketRepository.cs" />
     <Compile Include="_Repository\User\UserRepository.cs" />
+    <EmbeddedResource Include="Views\AnimationButton.resx">
+      <DependentUpon>AnimationButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Client\ClientView.resx">
+      <DependentUpon>ClientView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Server\ChatServer.resx">
+      <DependentUpon>ChatServer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Department\DepartmentView.resx">
       <DependentUpon>DepartmentView.cs</DependentUpon>
     </EmbeddedResource>
@@ -545,6 +582,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\messenger.png" />
+    <None Include="Resources\image 231.png" />
+    <None Include="Resources\chat.png" />
     <None Include="Resources\New Project %283%29.jpg" />
     <None Include="Resources\textbox_user_241.jpg" />
     <None Include="Resources\debut.JPG" />
@@ -565,5 +605,6 @@
     <None Include="Resources\checked.png" />
     <None Include="Resources\remove.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -22,6 +22,13 @@ namespace HRMngt.Model
         IEnumerable<UserModel> LINQ_GetManagerList(IEnumerable<UserModel> userList);
 
         void SendMail(string password, string userID);
+<<<<<<< HEAD
+=======
+
+        void DeleteAll();
+
+
+>>>>>>> minhhieu
         
     }
 }

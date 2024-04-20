@@ -1,6 +1,8 @@
-﻿using HRMngt.Model;
+﻿using ComponentFactory.Krypton.Toolkit;
+using HRMngt.Model;
 using HRMngt.Views;
 using Microsoft.VisualBasic.ApplicationServices;
+using ReaLTaiizor.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,10 +21,16 @@ namespace HRMngt.View
     public partial class MainView : Form, IMainView
     {       
         
+<<<<<<< HEAD
         public MainView()
+=======
+
+        public MainView(UserModel user)
+>>>>>>> minhhieu
         {
             InitializeComponent();
             RunEvent();
+           
 
         }
         public event EventHandler ShowDepartmentView;
@@ -36,6 +44,7 @@ namespace HRMngt.View
         public event EventHandler ShowTimeKeepingView;
         public event EventHandler ShowIndividualSalaryView;
         public event EventHandler ShowMainIndividualView;
+        public event EventHandler ShowCommunicateView;
 
         public void RunEvent()
         {
@@ -47,6 +56,13 @@ namespace HRMngt.View
             btnSalary.Click += delegate { ShowSalaryView?.Invoke(this, EventArgs.Empty); };
             btnHiring.Click += delegate { ShowRecuitView?.Invoke(this, EventArgs.Empty); };
             btnTimeKeeping.Click += delegate { ShowTimeKeepingView?.Invoke(this, EventArgs.Empty); };
+<<<<<<< HEAD
+=======
+            btnMessage.Click += delegate {
+                ShowCommunicateView?.Invoke(this, EventArgs.Empty); 
+            };
+
+>>>>>>> minhhieu
         }
         private void MainView_Load(object sender, EventArgs e)
         {
@@ -91,5 +107,28 @@ namespace HRMngt.View
                 txtNavSearch.ForeColor = Color.Black;
             }
         }
+<<<<<<< HEAD
+=======
+        private void btnDepartment_Click(object sender, EventArgs e)
+        {
+
+        }
+        public void CheckRole()
+        {
+            if (currentUser.Roles != "Admin")
+            {
+                btnEmployee.Enabled = false;
+                btnDepartment.Enabled = false;
+                btnSalary.Enabled = false;
+            }
+        }
+
+        private void picNavAva_Click(object sender, EventArgs e)
+        {
+            MainInvidiualView view = new MainInvidiualView(currentUser);
+            view.Show();
+        }
+        
+>>>>>>> minhhieu
     }
 }

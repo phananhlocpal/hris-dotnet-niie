@@ -54,6 +54,7 @@
             this.pnlSupport = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.btnHelp = new System.Windows.Forms.Button();
             this.pnlNavBar = new System.Windows.Forms.Panel();
+            this.btnMessage = new Guna.UI.WinForms.GunaPictureBox();
             this.pnlHeader.SuspendLayout();
             this.pnlmainHeader.SuspendLayout();
             this.pnlIndividualHeader.SuspendLayout();
@@ -76,6 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlSupport)).BeginInit();
             this.pnlSupport.SuspendLayout();
             this.pnlNavBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMessage)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlHeader
@@ -125,21 +127,39 @@
             this.btnNoti.FlatAppearance.BorderSize = 0;
             this.btnNoti.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNoti.Image = global::HRMngt.Properties.Resources.image_37;
+<<<<<<< HEAD
             this.btnNoti.Location = new System.Drawing.Point(3, 27);
             this.btnNoti.Name = "btnNoti";
             this.btnNoti.Size = new System.Drawing.Size(51, 51);
+=======
+            this.btnNoti.Location = new System.Drawing.Point(2, 17);
+            this.btnNoti.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNoti.Name = "btnNoti";
+            this.btnNoti.Size = new System.Drawing.Size(32, 32);
+>>>>>>> minhhieu
             this.btnNoti.TabIndex = 0;
             this.btnNoti.UseVisualStyleBackColor = false;
             // 
             // picNavAva
             // 
             this.picNavAva.Image = global::HRMngt.Properties.Resources.image_38;
+<<<<<<< HEAD
             this.picNavAva.Location = new System.Drawing.Point(61, 27);
             this.picNavAva.Name = "picNavAva";
             this.picNavAva.Size = new System.Drawing.Size(61, 50);
             this.picNavAva.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picNavAva.TabIndex = 4;
             this.picNavAva.TabStop = false;
+=======
+            this.picNavAva.Location = new System.Drawing.Point(38, 17);
+            this.picNavAva.Margin = new System.Windows.Forms.Padding(2);
+            this.picNavAva.Name = "picNavAva";
+            this.picNavAva.Size = new System.Drawing.Size(38, 31);
+            this.picNavAva.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picNavAva.TabIndex = 4;
+            this.picNavAva.TabStop = false;
+            this.picNavAva.Click += new System.EventHandler(this.picNavAva_Click);
+>>>>>>> minhhieu
             // 
             // pnlSearch
             // 
@@ -372,6 +392,7 @@
             // pnlNavBar
             // 
             this.pnlNavBar.AutoSize = true;
+            this.pnlNavBar.Controls.Add(this.btnMessage);
             this.pnlNavBar.Controls.Add(this.pnlSupport);
             this.pnlNavBar.Controls.Add(this.pnlDepartment);
             this.pnlNavBar.Controls.Add(this.pnlTimeKeeping);
@@ -385,6 +406,17 @@
             this.pnlNavBar.Name = "pnlNavBar";
             this.pnlNavBar.Size = new System.Drawing.Size(221, 1083);
             this.pnlNavBar.TabIndex = 1;
+            // 
+            // btnMessage
+            // 
+            this.btnMessage.BaseColor = System.Drawing.Color.White;
+            this.btnMessage.Image = global::HRMngt.Properties.Resources.messenger;
+            this.btnMessage.Location = new System.Drawing.Point(41, 613);
+            this.btnMessage.Name = "btnMessage";
+            this.btnMessage.Size = new System.Drawing.Size(40, 40);
+            this.btnMessage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnMessage.TabIndex = 8;
+            this.btnMessage.TabStop = false;
             // 
             // MainView
             // 
@@ -423,6 +455,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlSupport)).EndInit();
             this.pnlSupport.ResumeLayout(false);
             this.pnlNavBar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnMessage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -440,20 +473,24 @@
         private System.Windows.Forms.Button btnNoti;
         private System.Windows.Forms.Label lblNavName;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel pnlHome;
-        private System.Windows.Forms.Button btnHome;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel pnlHR;
-        private System.Windows.Forms.Button btnEmployee;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel pnlSalary;
-        private System.Windows.Forms.Button btnSalary;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel pnlHire;
-        private System.Windows.Forms.Button btnHiring;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel pnlTimeKeeping;
-        private System.Windows.Forms.Button btnTimeKeeping;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel pnlDepartment;
-        private System.Windows.Forms.Button btnDepartment;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel pnlSupport;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Panel pnlNavBar;
+<<<<<<< HEAD
         private System.Windows.Forms.PictureBox picNavAva;
+=======
+        private System.Windows.Forms.Button btnHome;
+        private System.Windows.Forms.Button btnEmployee;
+        private System.Windows.Forms.Button btnSalary;
+        private System.Windows.Forms.Button btnHiring;
+        private System.Windows.Forms.Button btnTimeKeeping;
+        private System.Windows.Forms.Button btnDepartment;
+        private Guna.UI.WinForms.GunaPictureBox btnMessage;
+>>>>>>> minhhieu
     }
 }

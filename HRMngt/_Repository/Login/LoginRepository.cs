@@ -65,26 +65,43 @@ namespace HRMngt._Repository
         public string Login(string username, string password)
         {
             string id = "";
-            if (password != string.Empty || username != string.Empty)
+            if (!string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(username))
             {
                 using (var connection = new SqlConnection(connectionString))
                 using (var command = new SqlCommand())
                 {
-                    connection.Open();
                     command.Connection = connection;
-                    command.CommandText = "select * from users where username='" + username + "' and password='" + password + "'";
+                    command.CommandText = "SELECT userID, password FROM users WHERE username = @Username";
+                    command.Parameters.AddWithValue("@Username", username);
+
+                    connection.Open();
                     using (var reader = command.ExecuteReader())
                     {
-                        while (reader.Read())
+                        if (reader.Read())
                         {
-                            id = reader[0].ToString();
+                            string hashedPasswordFromDatabase = reader["password"].ToString();
+
+                            // Giải mã mật khẩu từ cơ sở dữ liệu
+                            bool decryptedPassword = DecryptPassword(hashedPasswordFromDatabase, password);
+
+                            // So sánh mật khẩu
+                            if (decryptedPassword)
+                            {
+                                id = reader["userID"].ToString();
+                            }
                         }
                     }
-                    connection.Close();
                 }
             }
             return id;
         }
+
+        // Hàm để giải mã mật khẩu từ cơ sở dữ liệu
+        private bool DecryptPassword(string hashedPassword, string plainTextPassword)
+        {
+            return BCrypt.Net.BCrypt.Verify(plainTextPassword, hashedPassword);
+        }
+
     }
 }
       
