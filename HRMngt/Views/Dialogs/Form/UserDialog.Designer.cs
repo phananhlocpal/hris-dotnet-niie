@@ -116,8 +116,6 @@
             this.txtNote = new Bunifu.UI.WinForms.BunifuTextBox();
             this.btnClear = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.cbDegree = new System.Windows.Forms.ComboBox();
-            this.label21 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -244,11 +242,11 @@
             this.cbPosition.ForeColor = System.Drawing.Color.Gray;
             this.cbPosition.FormattingEnabled = true;
             this.cbPosition.Items.AddRange(new object[] {
-            "Nghiên cứu dữ liệu",
-            "Nhân viên Marketing",
-            "Phát triển phần mềm",
-            "Quản trị hệ thống",
-            "Chuyên viên tài chính"});
+            "Data Research",
+            "Marketing Executive",
+            "Software development",
+            "System Administration",
+            "Financial Specialist"});
             this.cbPosition.Location = new System.Drawing.Point(719, 384);
             this.cbPosition.Margin = new System.Windows.Forms.Padding(2);
             this.cbPosition.Name = "cbPosition";
@@ -384,7 +382,7 @@
             this.cbStatus.FormattingEnabled = true;
             this.cbStatus.Items.AddRange(new object[] {
             "On-boarding",
-            "Đang làm"});
+            "Doing"});
             this.cbStatus.Location = new System.Drawing.Point(719, 506);
             this.cbStatus.Margin = new System.Windows.Forms.Padding(2);
             this.cbStatus.Name = "cbStatus";
@@ -398,8 +396,8 @@
             this.cbContractType.ForeColor = System.Drawing.Color.Gray;
             this.cbContractType.FormattingEnabled = true;
             this.cbContractType.Items.AddRange(new object[] {
-            "Toàn thời gian",
-            "Thời vụ"});
+            "Full-time",
+            "Part-time"});
             this.cbContractType.Location = new System.Drawing.Point(719, 580);
             this.cbContractType.Margin = new System.Windows.Forms.Padding(2);
             this.cbContractType.Name = "cbContractType";
@@ -412,8 +410,8 @@
             this.cbSex.ForeColor = System.Drawing.Color.Gray;
             this.cbSex.FormattingEnabled = true;
             this.cbSex.Items.AddRange(new object[] {
-            "Nam",
-            "Nữ"});
+            "Male",
+            "Female"});
             this.cbSex.Location = new System.Drawing.Point(719, 465);
             this.cbSex.Margin = new System.Windows.Forms.Padding(2);
             this.cbSex.Name = "cbSex";
@@ -485,10 +483,10 @@
             this.cbRoles.ForeColor = System.Drawing.Color.Gray;
             this.cbRoles.FormattingEnabled = true;
             this.cbRoles.Items.AddRange(new object[] {
-            "Thực tập sinh",
+            "Employee",
             "Admin",
-            "Nhân viên",
-            "Quản lý"});
+            "HR",
+            "Manager"});
             this.cbRoles.Location = new System.Drawing.Point(719, 542);
             this.cbRoles.Margin = new System.Windows.Forms.Padding(2);
             this.cbRoles.Name = "cbRoles";
@@ -1465,38 +1463,12 @@
             this.pictureBox2.TabIndex = 133;
             this.pictureBox2.TabStop = false;
             // 
-            // cbDegree
-            // 
-            this.cbDegree.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDegree.ForeColor = System.Drawing.Color.Gray;
-            this.cbDegree.FormattingEnabled = true;
-            this.cbDegree.Items.AddRange(new object[] {
-            "Đại học",
-            "Cao đẳng"});
-            this.cbDegree.Location = new System.Drawing.Point(719, 620);
-            this.cbDegree.Margin = new System.Windows.Forms.Padding(2);
-            this.cbDegree.Name = "cbDegree";
-            this.cbDegree.Size = new System.Drawing.Size(343, 24);
-            this.cbDegree.TabIndex = 134;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(639, 620);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(65, 16);
-            this.label21.TabIndex = 135;
-            this.label21.Text = "Bằng cấp";
-            // 
             // UserDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1169, 734);
-            this.Controls.Add(this.label21);
-            this.Controls.Add(this.cbDegree);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.txtNote);
@@ -1550,6 +1522,7 @@
             this.Name = "UserDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thêm/Sửa nhân viên";
+            this.Load += new System.EventHandler(this.UserDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -1607,7 +1580,5 @@
         private Bunifu.UI.WinForms.BunifuTextBox txtNote;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnClear;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.ComboBox cbDegree;
-        private System.Windows.Forms.Label label21;
     }
 }

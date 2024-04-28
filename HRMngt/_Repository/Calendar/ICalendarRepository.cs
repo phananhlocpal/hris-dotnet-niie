@@ -14,8 +14,10 @@ namespace HRMngt._Repository.Calendar
         void Update(CalendarModel calendarModel);
         void Delete(string userID, DateTime date);
         IEnumerable<CalendarModel> GetAll();
+        string GetAddressDepartment(string userID);
 
         // LINQ
+       
         CalendarModel LINQ_GetModelByUserIdNDate(IEnumerable<CalendarModel> calendarList, string userId, DateTime date);
         IEnumerable<CalendarModel> LINQ_GetListByUserIDNPeriod(IEnumerable<CalendarModel> calendarList, string userId, DateTime monday, DateTime sunday);
         bool LINQ_checkExistDate(IEnumerable<CalendarModel> calendarList, DateTime date);

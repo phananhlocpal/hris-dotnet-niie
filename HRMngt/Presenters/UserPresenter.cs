@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,87 +22,126 @@ namespace HRMngt.Presenter
         private IUserRepository repository;
         private UserDialog dialog;
         private IEnumerable<UserModel> userList;
+        private IEnumerable<UserModel> filterUser;
         private UserModel userModel;
-        
+
 
         public UserPresenter(IUserView view, IUserRepository repository, UserModel userModel)
         {
-            this.view = view;  
+            this.view = view;
             this.repository = repository;
             this.userModel = userModel;
+            userList = repository.GetAll();
             this.view.LoadUserDialogToAddEvent += LoadUserDialogToAddEvent;
             this.view.LoadUserDialogToEditEvent += LoadUserDialogToEditEvent;
+            this.view.FilterUser += FilterUser;
             this.view.DeleteEvent += DeleteUser;
 
-            userList = repository.GetAll();
-            this.view.ShowUserList(userList);
+
+            SetRole(userModel);
             this.view.Show();
         }
+
+        private void FilterUser(object sender, EventArgs e)
+        {
+            string department = ExtractIdFromName(view.cbDepartment.Text);
+            string status = view.cbStatus.Text;
+            filterUser = repository.Filter(userList, department, status);
+            view.ShowUserList(filterUser);
+        }
+        public string ExtractIdFromName(string nameWithId)
+        {
+            if (!string.IsNullOrEmpty(nameWithId))
+            {
+                string[] parts = nameWithId.Split('-');
+                string id = parts[0].Trim();
+                return id;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
 
         private void DeleteUser(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = view.dgvUserList.CurrentRow;
-            string id = selectedRow.Cells[0].Value.ToString();
+            string id = selectedRow.Cells[1].Value.ToString();
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result = MessageBox.Show("Bạn có muốn xóa nhân viên này không?", "Xóa nhân viên", buttons);
             if (result == DialogResult.Yes)
             {
                 repository.Delete(id);
                 SucessPopUp.ShowPopUp();
-                userList = repository.GetAll();
+                /*LoadAllUserList();*/
+                SetRole(userModel);
                 view.ShowUserList(userList);
             }
         }
 
         private void LoadUserDialogToEditEvent(object sender, EventArgs e)
         {
-            dialog = this.view.ShowUserDialogToEdit();
+            dialog = view.ShowUserDialogToEdit(null);
+            IEnumerable<UserModel> userList;
+            List<string> departmentIDNameList = new List<string>();
+            userList = repository.GetAll();
+            departmentIDNameList = repository.GetDepartmentIDName();
 
-            // Show Department information
-            IDepartmentRepository departmentRepository = new DepartmentRepository();
-            IEnumerable<DepartmentModel> departmentList;
-            departmentList = departmentRepository.GetAll();
-            this.dialog.ShowDepartmentIdNName(departmentList);
+            this.dialog.ShowDepartmentIdNName(departmentIDNameList);
+            dialog.ShowUserIDName(userList);
 
-            // Show Manager information
-            IUserRepository userRepository = new UserRepository();
-            IEnumerable<UserModel> userList = userRepository.GetAll();
-            userList = userRepository.LINQ_GetManagerList(userList);
-            this.dialog.ShowUserIDName(userList);
-
-            // Get id from table
             DataGridViewRow selectedRow = view.dgvUserList.CurrentRow;
-            string id = selectedRow.Cells[0].Value.ToString();
-            UserModel user = new UserModel();
-            user = repository.LINQ_GetModelById(userList, id);
+            string id = selectedRow.Cells[1].Value.ToString();
+            UserModel user = repository.GetById(id);
 
-            // Show information into form
             dialog.ID = user.Id;
             dialog.Fullname = user.Name;
             dialog.Email = user.Email;
             dialog.Phone = user.Phone;
             dialog.Address = user.Address;
-            dialog.Sex = user.Sex;
             dialog.Birthday = user.Birthday;
-            dialog.Position = user.Position;
             dialog.Salary = user.Salary;
             dialog.Username = user.Username;
             dialog.Password = user.Password;
-            dialog.ManagerID = user.ManagerID;
+            dialog.ManagerID = $"{user.ManagerID} - {repository.GetNameById(user.ManagerID)}";
+            dialog.DepartmentID = $"{user.DepartmentID} - {repository.GetNameDepartmentById(user.DepartmentID)}";
             dialog.On_boarding = user.On_boarding;
             dialog.Close_date = user.Close_date;
-            dialog.Roles = user.Roles;
             dialog.Scan_contract = user.Scan_contract;
             dialog.Note = user.Note;
             dialog.Sex = user.Sex;
             dialog.Status = user.Status;
+            dialog.Position = user.Position;
             dialog.Contract_type = user.Contract_type;
 
-            // Show dialog and event handler
+            // Kiểm tra nếu trường Photo là null, thì sử dụng hình ảnh mặc định
+            if (user.Photo == null || user.Photo.Length == 0)
+            {
+                // Đường dẫn đến tệp hình ảnh mặc định
+                string defaultImagePath = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\HRMngt\Resources\no-image.jpg";
+                byte[] defaultImageBytes = File.ReadAllBytes(defaultImagePath);
+                dialog.Photo = ByteArrayToImage(defaultImageBytes);
+            }
+            else
+            {
+                dialog.Photo = ByteArrayToImage(user.Photo);
+            }
+
+            dialog.Roles = user.Roles;
             dialog.EditUserDialog += EditUserDialog;
+            dialog.CancleEvent += CancleEvent;
             dialog.ShowDialog();
         }
 
+        private Image ByteArrayToImage(byte[] byteArrayIn)
+        {
+            using (MemoryStream ms = new MemoryStream(byteArrayIn))
+            {
+                Image image = Image.FromStream(ms);
+                return image;
+            }
+        }
         private void EditUserDialog(object sender, EventArgs e)
         {
             UserModel user = new UserModel();
@@ -123,10 +164,12 @@ namespace HRMngt.Presenter
             user.Status = dialog.Status;
             user.Position = dialog.Position;
             user.Contract_type = dialog.Contract_type;
+            user.Photo = getPhoto();
             user.Roles = dialog.Roles;
             repository.Update(user);
             this.dialog.Close();
-            userList = repository.GetAll();
+            /*LoadAllUserList();*/
+            SetRole(userModel);
             view.ShowUserList(userList);
             SucessPopUp.ShowPopUp();
         }
@@ -134,18 +177,16 @@ namespace HRMngt.Presenter
         private void LoadUserDialogToAddEvent(object sender, EventArgs e)
         {
             dialog = this.view.ShowUserDialogToAdd();
-
-            // Show Department information
-            IDepartmentRepository departmentRepository = new DepartmentRepository();
-            IEnumerable<DepartmentModel> departmentList;
-            departmentList = departmentRepository.GetAll();
-            this.dialog.ShowDepartmentIdNName(departmentList);
-
-            // Show Manager information
-            IUserRepository userRepository = new UserRepository();
-            IEnumerable<UserModel> userList = userRepository.GetAll();
-            userList = userRepository.LINQ_GetManagerList(userList);
-            this.dialog.ShowManagerComboBox(userList);
+            List<string> userIdNNameList = new List<string>();
+            List<string> departmentIDNameList = new List<string>();
+            DepartmentModel departmentModel = new DepartmentModel();
+            userIdNNameList = repository.GetUserIdNName();
+            departmentIDNameList = repository.GetDepartmentIDName();
+            // Add user to sender and receiver
+            dialog.ShowUserIdNName(userIdNNameList);
+            dialog.ShowDepartmentIdNName(departmentIDNameList);
+            dialog.ManagerID = $"{userModel.Id} - {userModel.Name}";
+            dialog.DepartmentID = $"{departmentModel.Id} - {departmentModel.Name}";
 
             dialog.CheckConditionSalary += CheckConditionSalary;
             dialog.CheckConditionEmail += CheckConditionEmail;
@@ -202,7 +243,7 @@ namespace HRMngt.Presenter
         {
             int currentYear = DateTime.Now.Year;
             int birthDay = dialog.Birthday.Year;
-            if(currentYear - birthDay < 18)
+            if (currentYear - birthDay < 18)
             {
                 MessageBox.Show("Nhân viên phải trên 18 tuổi", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -226,18 +267,19 @@ namespace HRMngt.Presenter
             {
                 MessageBox.Show("Vui lòng nhập đúng định dạng email(@gmail.com)", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         private void CheckConditionSalary(object sender, EventArgs e)
         {
             try
             {
-                if(int.Parse(dialog.Salary) < 0)
+                if (int.Parse(dialog.Salary) < 0)
                 {
                     MessageBox.Show("Vui lòng nhập lương lớn hơn 0!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Vui lòng nhập lương là chữ số!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -257,7 +299,7 @@ namespace HRMngt.Presenter
         private void AddNewUserDialog(object sender, EventArgs e)
         {
             UserModel user = new UserModel();
-           
+
             user.Name = dialog.Fullname;
             user.Email = dialog.Email;
             user.Phone = dialog.Phone;
@@ -276,14 +318,21 @@ namespace HRMngt.Presenter
             user.Status = dialog.Status;
             user.Position = dialog.Position;
             user.Contract_type = dialog.Contract_type;
-            user.Photo = dialog.Photo;
+            user.Photo = getPhoto();
             user.Roles = dialog.Roles;
             repository.Add(user);
             this.dialog.Close();
-            userList = repository.GetAll();
+            /*LoadAllUserList();*/
+            SetRole(userModel);
             view.ShowUserList(userList);
             dialog.SendPasswordToMail += SendPassToMail;
             SucessPopUp.ShowPopUp();
+        }
+        public byte[] getPhoto()
+        {
+            MemoryStream stream = new MemoryStream();
+            dialog.Photo.Save(stream, dialog.Photo.RawFormat);
+            return stream.GetBuffer();
         }
 
         private void SendPassToMail(object sender, EventArgs e)
@@ -293,6 +342,37 @@ namespace HRMngt.Presenter
             repository.SendMail(password, email);
         }
 
+        private void LoadAllUserList()
+        {
+            userList = repository.GetAll();
+        }
 
+        private void SetRole(UserModel userModel)
+        {
+            if(userModel.Roles == "Manager")
+            {
+                MessageBox.Show(userModel.Roles);
+                view.ButtonAdd.Enabled = false;
+                view.ButtonEdit.Visible = false;
+                view.ButtonDelete.Visible = false;
+                userList = repository.LINQ_GetAllManager(userList, userModel.Id);
+                this.view.ShowUserList(userList);
+            }
+            else if(userModel.Roles == "Employee")
+            {
+                MessageBox.Show(userModel.Roles);
+                view.ButtonAdd.Enabled = false;
+                view.ButtonEdit.Visible = false;
+                view.ButtonDelete.Visible = false;
+                userList = repository.LINQ_GetAllUser(userList,userModel.DepartmentID);
+                this.view.ShowUserList(userList);
+            }
+            else
+            {
+                MessageBox.Show(userModel.Roles);
+                userList = repository.GetAll();
+                this.view.ShowUserList(userList);
+            }
+        }
     }
 }

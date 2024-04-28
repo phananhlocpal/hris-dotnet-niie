@@ -1,4 +1,5 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿using Bunifu.UI.WinForms.BunifuButton;
+using ComponentFactory.Krypton.Toolkit;
 using HRMngt.Models;
 using HRMngt.Views.Dialogs;
 using System;
@@ -17,14 +18,19 @@ namespace HRMngt.Views.HR
         KryptonDataGridView dgvHRList { get; }
         SaveFileDialog saveFile { get; }
 
+        BunifuButton2 ButtonAdd { get; }
+        DataGridViewImageColumn ButtonEdit { get; }
+        DataGridViewImageColumn ButtonDelete { get; }
+        DataGridViewImageColumn ButtonRead { get; }
+
         event EventHandler DeleteHR;
         event EventHandler LoadHRToAdd;
         event EventHandler LoadHRToEdit;
-        
+        event EventHandler FilterRecruitment;
+
         void Show();
-        void ShowCmbDepartment(IEnumerable<DepartmentModel> departmentList);
-        void ShowHRList(IEnumerable<UserModel> userList);
+        void ShowHRList(IEnumerable<UserModel> recuitList);
         RecruitDialog ShowDialogToAdd();
-        RecruitDialog ShowDialogToEdit();
+        RecruitDialog ShowDialogToEdit(string id);
     }
 }

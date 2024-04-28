@@ -1,6 +1,5 @@
 ﻿using HRMngt._Repository;
 using HRMngt.Models;
-using HRMngt.Models;
 using HRMngt.popup;
 using HRMngt.View;
 using HRMngt.View.Popup;
@@ -18,82 +17,59 @@ namespace HRMngt.Presenters
     public class DepartmentPresenter
     {
         private IDepartmentView view;
-        
+
         private IDepartmentRepository repository;
         private DepartmentDiaglog dialog;
         private IEnumerable<DepartmentModel> departments;
         private IEnumerable<DepartmentModel> departmentFilter;
+        private UserModel userModel;
 
 
-        public DepartmentPresenter(IDepartmentView view, IDepartmentRepository repository)
+        public DepartmentPresenter(IDepartmentView view, IDepartmentRepository repository, UserModel userModel)
         {
             this.view = view;
+            this.userModel = userModel;
             this.repository = repository;
             this.view.DeleteEvent += DeleteDepartment;
             this.view.LoadDepartmentDialogToAddEvent += LoadDepartmentDialogToAddEvent;
             this.view.LoadDepartmentDialogToEditEvent += LoadDepartmentDialogToEditEvent;
-            this.view.SearchByDepartmentName += SearchByDepartmentName;
-            this.view.SearchByDepartmentAddress += SearchByDepartmentAddress;
+            this.view.FiterDepartment += FilterDepartment;
             LoadAllDepartmentList();
+            SetRole(userModel);
             this.view.ShowDepartmentList(departments);
             this.view.Show();
+            
         }
 
-        private void SearchByDepartmentAddress(object sender, EventArgs e)
+        private void FilterDepartment(object sender, EventArgs e)
         {
-            ComboBox cbChooseDepartmentAddress = view.cbAddress;
-            string selectedAddress = cbChooseDepartmentAddress.SelectedItem?.ToString();
-
-            if (string.IsNullOrEmpty(selectedAddress))
+            string manager = ExtractIdFromName(view.cbManager.Text);
+            string location = view.cbAddress.Text;
+            if (view.dgvDepartmentList == null)
             {
-                return;
-            }
-
-            IEnumerable<DepartmentModel> filteredDepartments;
-
-            if (departmentFilter == null)
-            {
-                // If departmentFilter is null, fetch departments from the repository based on the selected name
-                filteredDepartments = repository.GetByAddress(selectedAddress);
+                departmentFilter = repository.LINQ_Filter(departments, manager, location);
+                this.view.ShowDepartmentList(departmentFilter);
             }
             else
             {
-                // If departmentFilter is not null, filter the existing departments
-                filteredDepartments = departmentFilter.Where(department => department.Location == selectedAddress);
+                departmentFilter = repository.LINQ_Filter(departments, manager, location);
+                this.view.ShowDepartmentList(departmentFilter);
             }
 
-            // Update the view to display the filtered departments
-            this.view.ShowDepartmentList(filteredDepartments.ToList());
         }
-
-        private void SearchByDepartmentName(object sender, EventArgs e)
+        public string ExtractIdFromName(string nameWithId)
         {
-            ComboBox cbChooseDepartmentName = view.cbDepartment;
-            string selectedName = cbChooseDepartmentName.SelectedItem?.ToString();
-
-            if (string.IsNullOrEmpty(selectedName))
+            if (!string.IsNullOrEmpty(nameWithId))
             {
-                return;
-            }
-
-            IEnumerable<DepartmentModel> filteredDepartments;
-
-            if (departmentFilter == null)
-            {
-                // If departmentFilter is null, fetch departments from the repository based on the selected name
-                filteredDepartments = repository.GetByDepartmentName(selectedName);
+                string[] parts = nameWithId.Split('-');
+                string id = parts[0].Trim();
+                return id;
             }
             else
             {
-                // If departmentFilter is not null, filter the existing departments
-                filteredDepartments = departmentFilter.Where(department => department.Name == selectedName);
+                return null;
             }
-
-            // Update the view to display the filtered departments
-            this.view.ShowDepartmentList(filteredDepartments.ToList());
-
         }
-
         private void DeleteDepartment(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = view.dgvDepartmentList.CurrentRow;
@@ -117,7 +93,7 @@ namespace HRMngt.Presenters
             DataGridViewRow selectedRow = view.dgvDepartmentList.CurrentRow;
             string id = selectedRow.Cells[0].Value.ToString();
             DepartmentModel department = new DepartmentModel();
-            department = repository.GetById(id);
+            department = repository.LINQ_GetById(departments, id);
             dialog.DepartmentID = department.Id;
             dialog.DepartmentName = department.Name;
             dialog.Phone = department.Phone;
@@ -167,6 +143,16 @@ namespace HRMngt.Presenters
             LoadAllDepartmentList();
             view.ShowDepartmentList(departments);
             SucessPopUp.ShowPopUp();
+        }
+
+        private void SetRole(UserModel user)
+        {
+            if(user.Roles != "Admin")
+            {
+                view.buttonAdd.Enabled = false;
+                view.buttonEdit.Visible = false;
+                view.buttonDelete.Visible = false;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using HRMngt.Models;
+﻿using Bunifu.UI.WinForms.BunifuButton;
+using HRMngt.Models;
 using HRMngt.View;
 using HRMngt.Views.Dialogs;
 using System;
@@ -7,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +22,8 @@ namespace HRMngt.Views.User
         {
             InitializeComponent();
             RunEvent();
+            GetNameDepartmentFilter();
+            GetStatusFilter();
         }
 
         public void RunEvent()
@@ -27,20 +31,22 @@ namespace HRMngt.Views.User
             btnAdd.Click += delegate { LoadUserDialogToAddEvent?.Invoke(this, EventArgs.Empty); };
             dgvUserList.CellContentClick += (sender, e) =>
             {
-                if (e.RowIndex >= 0 && e.ColumnIndex == dgvUserList.Columns[8].Index)
+                if (e.RowIndex >= 0 && e.ColumnIndex == dgvUserList.Columns[9].Index)
                 {
                     LoadUserDialogToEditEvent?.Invoke(this, EventArgs.Empty);
                 }
             };
             dgvUserList.CellContentClick += (sender, e) =>
             {
-                if (e.RowIndex >= 0 && e.ColumnIndex == dgvUserList.Columns[9].Index)
+                if (e.RowIndex >= 0 && e.ColumnIndex == dgvUserList.Columns[10].Index)
                 {
                     DeleteEvent?.Invoke(this, EventArgs.Empty);
                 }
             };
-            
-           
+            cbDepartment.SelectedValueChanged += delegate { FilterUser?.Invoke(this, EventArgs.Empty); };
+            cbStatus.SelectedValueChanged += delegate { FilterUser?.Invoke(this, EventArgs.Empty); };
+
+
         }
         private static UserView instance;
         ComboBox IUserView.cbDepartment => cbDepartment;
@@ -48,6 +54,14 @@ namespace HRMngt.Views.User
         ComboBox IUserView.cbStatus => cbStatus;
 
         DataGridView IUserView.dgvUserList => dgvUserList;
+
+        public BunifuButton2 ButtonAdd => btnAdd;
+
+        public DataGridViewImageColumn ButtonEdit => btnEdit;
+
+        public DataGridViewImageColumn ButtonDelete => btnDelete;
+
+        public DataGridViewImageColumn ButtonRead => btnRead;
 
         public event EventHandler SearchEvent;
         public event EventHandler AddNewEvent;
@@ -62,6 +76,7 @@ namespace HRMngt.Views.User
         public event EventHandler AddNewDepartmentDialog;
         public event EventHandler GeneratedEventLoadEmail;
         public event EventHandler DeleteAll;
+        public event EventHandler FilterUser;
 
         public static UserView GetInstance(Form parentContainer)
         {
@@ -80,7 +95,75 @@ namespace HRMngt.Views.User
             }
             return instance;
         }
-       
+        private void GetNameDepartmentFilter()
+        {
+            string connectionString = "Data Source=localhost;Initial Catalog=hris;Integrated Security=True;Encrypt=False";
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "Select distinct departmentID, name from department ";
+                List<string> items = new List<string>();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        items.Add($"{reader[0]} - {reader[1]}");
+                    }
+                }
+                cbDepartment.DataSource = items;
+                cbDepartment.DisplayMember = "Name";
+                cbDepartment.Refresh();
+                connection.Close();
+            }
+        }
+        private void GetStatusFilter()
+        {
+            string connectionString = "Data Source=localhost;Initial Catalog=hris;Integrated Security=True;Encrypt=False";
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "Select distinct status from users ";
+                List<string> items = new List<string>();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        items.Add(reader["status"].ToString());
+                    }
+                }
+                cbStatus.DataSource = items;
+                cbStatus.DisplayMember = "Name";
+                cbStatus.Refresh();
+                connection.Close();
+            }
+        }
+        private string GetNameDepartment(string id)
+        {
+            string name = "";
+            string connectionString = "Data Source=localhost;Initial Catalog=hris;Integrated Security=True;Encrypt=False";
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "Select distinct name from department where departmentID = @Id";
+                command.Parameters.Add("@Id", SqlDbType.Char).Value = id;
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        name = reader[0].ToString();
+                    }
+                }
+
+            }
+            return name;
+        }
+
 
         public void ShowUserList(IEnumerable<UserModel> userList)
         {
@@ -90,26 +173,56 @@ namespace HRMngt.Views.User
 
                 foreach (var user in userList)
                 {
-                    int rowIndex = dgvUserList.Rows.Add();
-                    dgvUserList.Rows[rowIndex].Cells[0].Value = user.Id;
-                    dgvUserList.Rows[rowIndex].Cells[1].Value = user.Name;
-                    dgvUserList.Rows[rowIndex].Cells[2].Value = user.DepartmentID;
-                    dgvUserList.Rows[rowIndex].Cells[3].Value = user.Contract_type;
-                    dgvUserList.Rows[rowIndex].Cells[4].Value = user.Position;
-                    dgvUserList.Rows[rowIndex].Cells[5].Value = "• " + user.Status;
-                    dgvUserList.Rows[rowIndex].Cells[6].Value = user.Roles;
-                    if (user.Status == "Đang làm")
+                    
+                    if (user.Status == "On-boarding" || user.Status == "Doing")
                     {
-                        dgvUserList.Rows[rowIndex].Cells[5].Style.ForeColor = Color.FromArgb(69, 158, 26);
-                    }
-                    else
-                    {
-                        dgvUserList.Rows[rowIndex].Cells[5].Style.ForeColor = Color.FromArgb(255, 212, 59);
+                        int rowIndex = dgvUserList.Rows.Add();
+
+                        // Thêm hình ảnh từ mảng byte vào cột hình ảnh
+                        if (user.Photo != null && user.Photo.Length > 0)
+                        {
+                            // Chuyển đổi mảng byte thành hình ảnh
+                            Image image = ImageFromByteArray(user.Photo);
+                            // Gán hình ảnh vào cột hình ảnh đầu tiên
+                            dgvUserList.Rows[rowIndex].Cells[0].Value = image;
+                        }
+                        // Tiếp tục gán các giá trị khác vào các cột khác
+                        dgvUserList.Rows[rowIndex].Cells[1].Value = user.Id;
+                        dgvUserList.Rows[rowIndex].Cells[2].Value = user.Name;
+                        dgvUserList.Rows[rowIndex].Cells[3].Value = GetNameDepartment(user.DepartmentID);
+                        dgvUserList.Rows[rowIndex].Cells[4].Value = user.Contract_type;
+                        dgvUserList.Rows[rowIndex].Cells[5].Value = user.Position;
+                        dgvUserList.Rows[rowIndex].Cells[6].Value = "• " + user.Status;
+                        dgvUserList.Rows[rowIndex].Cells[7].Value = user.Roles;
+
+                        // Thiết lập màu sắc dựa trên trạng thái
+                        if (user.Status == "Doing")
+                        {
+                            dgvUserList.Rows[rowIndex].Cells[6].Style.ForeColor = Color.FromArgb(69, 158, 26);
+                        }
+                        else
+                        {
+                            dgvUserList.Rows[rowIndex].Cells[6].Style.ForeColor = Color.FromArgb(255, 212, 59);
+                        }
                     }
                 }
             }
-            else dgvUserList.Rows.Clear();
+            else
+            {
+                dgvUserList.Rows.Clear();
+            }
         }
+        private Image ImageFromByteArray(byte[] byteArray)
+        {
+            using (MemoryStream memoryStream = new MemoryStream(byteArray))
+            {
+                Image image = Image.FromStream(memoryStream);
+                return image;
+            }
+        }
+
+
+
 
         public UserDialog ShowUserDialogToAdd()
         {
@@ -117,7 +230,7 @@ namespace HRMngt.Views.User
             return dialog;
         }
 
-        public UserDialog ShowUserDialogToEdit()
+        public UserDialog ShowUserDialogToEdit(string id)
         {
             UserDialog dialog = new UserDialog("Sửa");
             return dialog;

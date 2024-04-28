@@ -1,10 +1,12 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿using Bunifu.UI.WinForms.BunifuButton;
+using ComponentFactory.Krypton.Toolkit;
 using HRMngt.Models;
 using HRMngt.Views.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,13 +21,13 @@ namespace HRMngt.Views.HR
         {
             InitializeComponent();
             RunEvent();
+            GetNameDepartmentFilter();
+            GetStatusFilter();
         }
 
         public void RunEvent()
         {
-            // Add event
             btnAdd.Click += delegate { LoadHRToAdd?.Invoke(this, EventArgs.Empty); };
-            // Edit event
             dgvHRList.CellContentClick += (sender, e) =>
             {
                 if (e.RowIndex >= 0 && e.ColumnIndex == dgvHRList.Columns[7].Index)
@@ -33,7 +35,6 @@ namespace HRMngt.Views.HR
                     LoadHRToEdit?.Invoke(this, EventArgs.Empty);
                 }
             };
-            // Delete event
             dgvHRList.CellContentClick += (sender, e) =>
             {
                 if (e.RowIndex >= 0 && e.ColumnIndex == dgvHRList.Columns[8].Index)
@@ -41,20 +42,32 @@ namespace HRMngt.Views.HR
                     DeleteHR?.Invoke(this, EventArgs.Empty);
                 }
             };
+            cbDepartment.Click += delegate { FilterRecruitment?.Invoke(this, EventArgs.Empty); };
+            cbStatus.Click += delegate { FilterRecruitment?.Invoke(this, EventArgs.Empty); };
+
         }
 
-        // Get method
         ComboBox IRecruitView.cbDepartment => cbDepartment;
+
         ComboBox IRecruitView.cbStatus => cbStatus;
+
         KryptonDataGridView IRecruitView.dgvHRList => dgvHRList;
+
         SaveFileDialog IRecruitView.saveFile => saveFile;
 
-        // Event Handler
+        public BunifuButton2 ButtonAdd => btnAdd;
+
+        public DataGridViewImageColumn ButtonEdit => btnEdit;
+
+        public DataGridViewImageColumn ButtonDelete => btnDelete;
+
+        public DataGridViewImageColumn ButtonRead => btnRead;
+
         public event EventHandler DeleteHR;
         public event EventHandler LoadHRToAdd;
         public event EventHandler LoadHRToEdit;
+        public event EventHandler FilterRecruitment;
 
-        // MDI Processing
         private static RecruitView instance;
         public static RecruitView GetInstance(Form parentContainer)
         {
@@ -73,60 +86,109 @@ namespace HRMngt.Views.HR
             }
             return instance;
         }
-       
 
-        public void ShowHRList(IEnumerable<UserModel> userList)
+
+        private void GetNameDepartmentFilter()
         {
-            if (userList != null)
+            string connectionString = "Data Source=localhost;Initial Catalog=hris;Integrated Security=True;Encrypt=False";
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "Select distinct departmentID, name from department ";
+                List<string> items = new List<string>();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        items.Add($"{reader[0]} - {reader[1]}");
+                    }
+                }
+                cbDepartment.DataSource = items;
+                cbDepartment.DisplayMember = "Name";
+                cbDepartment.Refresh();
+                connection.Close();
+            }
+        }
+        private void GetStatusFilter()
+        {
+            string connectionString = "Data Source=localhost;Initial Catalog=hris;Integrated Security=True;Encrypt=False";
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "Select distinct status from users ";
+                List<string> items = new List<string>();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        items.Add(reader[0].ToString());
+                    }
+                }
+                cbStatus.DataSource = items;
+                cbStatus.DisplayMember = "Name";
+                cbStatus.Refresh();
+                connection.Close();
+            }
+        }
+        public void ShowHRList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ShowHRList(IEnumerable<UserModel> recruitList)
+        {
+            if (recruitList != null)
             {
                 dgvHRList.Rows.Clear();
 
-                foreach (var recruit in userList)
+                foreach (var recruit in recruitList)
                 {
-                    int rowIndex = dgvHRList.Rows.Add();
-                    dgvHRList.Rows[rowIndex].Cells[0].Value = recruit.Id;
-                    dgvHRList.Rows[rowIndex].Cells[1].Value = recruit.Name;
-                    dgvHRList.Rows[rowIndex].Cells[2].Value = recruit.Contract_type;
-                    dgvHRList.Rows[rowIndex].Cells[3].Value = recruit.Position;
-                    dgvHRList.Rows[rowIndex].Cells[4].Value = recruit.Roles;
-                    dgvHRList.Rows[rowIndex].Cells[5].Value = "• " + recruit.Status;
-                    
-                    if (recruit.Status == "Interviewed")
+                    if (recruit.Status != "On-boarding" &&  recruit.Status != "Doing")
                     {
-                        dgvHRList.Rows[rowIndex].Cells[5].Style.ForeColor = Color.FromArgb(69, 158, 26);
-                    }
-                    else if(recruit.Status == "Confirmed")
-                    {
-                        dgvHRList.Rows[rowIndex].Cells[5].Style.ForeColor = Color.Blue;
-                    }
-                    else if( recruit.Status == "Created")
-                    {
-                        dgvHRList.Rows[rowIndex].Cells[5].Style.ForeColor = Color.FromArgb(255, 212, 59);
+                        int rowIndex = dgvHRList.Rows.Add();
+                        dgvHRList.Rows[rowIndex].Cells[0].Value = recruit.Id;
+                        dgvHRList.Rows[rowIndex].Cells[1].Value = recruit.Name;
+                        dgvHRList.Rows[rowIndex].Cells[2].Value = recruit.Contract_type;
+                        dgvHRList.Rows[rowIndex].Cells[3].Value = recruit.Position;
+                        dgvHRList.Rows[rowIndex].Cells[4].Value = recruit.Roles;
+                        dgvHRList.Rows[rowIndex].Cells[5].Value = "• " + recruit.Status;
+
+                        // Thiết lập màu sắc dựa trên trạng thái
+                        if (recruit.Status == "Interviewed")
+                        {
+                            dgvHRList.Rows[rowIndex].Cells[5].Style.ForeColor = Color.FromArgb(69, 158, 26);
+                        }
+                        else if (recruit.Status == "Confirmed")
+                        {
+                            dgvHRList.Rows[rowIndex].Cells[5].Style.ForeColor = Color.Blue;
+                        }
+                        else if (recruit.Status == "Created")
+                        {
+                            dgvHRList.Rows[rowIndex].Cells[5].Style.ForeColor = Color.FromArgb(255, 212, 59);
+                        }
                     }
                 }
             }
-            else dgvHRList.Rows.Clear();
-        }
-
-        public void ShowCmbDepartment(IEnumerable<DepartmentModel> departmentList)
-        {
-            cbDepartment.Items.Clear();
-            foreach (var item in departmentList)
+            else
             {
-                cbDepartment.Items.Add($"{item.Id} - {item.Name}");
-            }    
+                dgvHRList.Rows.Clear();
+            }
         }
 
         public RecruitDialog ShowDialogToAdd()
         {
 
-            RecruitDialog dialog = new RecruitDialog("Add");
+            RecruitDialog dialog = new RecruitDialog("Thêm");
             return dialog;
         }
 
-        public RecruitDialog ShowDialogToEdit()
+        public RecruitDialog ShowDialogToEdit(string id)
         {
-            RecruitDialog dialog = new RecruitDialog("Edit");
+            RecruitDialog dialog = new RecruitDialog("Sửa");
             return dialog;
         }
         private void ToExcel(DataGridView dataGridView1, string fileName)
@@ -169,9 +231,11 @@ namespace HRMngt.Views.HR
             }
         }
 
+
+
         private void btnExcel_Click(object sender, EventArgs e)
         {
-            if(saveFile.ShowDialog() == DialogResult.OK)
+            if (saveFile.ShowDialog() == DialogResult.OK)
             {
                 ToExcel(dgvHRList, saveFile.FileName);
             }

@@ -1,5 +1,7 @@
 ﻿using HRMngt.Models;
+using HRMngt.Presenters;
 using HRMngt.Views;
+using Microsoft.VisualBasic.ApplicationServices;
 using ReaLTaiizor.Controls;
 using System;
 using System.Collections.Generic;
@@ -7,6 +9,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -68,7 +71,7 @@ namespace HRMngt.View
             {
                 ShowTimeKeepingView?.Invoke(this, EventArgs.Empty);
             };
-            //ShowProfile();
+            ShowProfile();
         }
 
         private void MainIndividualView_Load(object sender, EventArgs e)
@@ -109,7 +112,8 @@ namespace HRMngt.View
 
         private void picLogo_Click(object sender, EventArgs e)
         {
-            
+            IMainView view = new MainView();
+            new MainViewPresenter(view, currentUser);
 
         }
 
@@ -126,7 +130,7 @@ namespace HRMngt.View
                     lblPhoneInfo.Text = currentUser.Phone;
                     lblDepartmentInfo.Text = currentUser.DepartmentID;
                     lblGender.Text = currentUser.Sex;
-                    if (currentUser.Status == "Đang làm")
+                    if (currentUser.Status == "Doing")
                     {
                         lblStatus.ForeColor = Color.FromArgb(69, 158, 26);
                     }
@@ -139,7 +143,7 @@ namespace HRMngt.View
         }
         public void ShowProfile()
         {
-            string connectionString = "Data Source=localhost;Initial Catalog=HR;Integrated Security=True;Encrypt=False;";
+            string connectionString = "Data Source=localhost;Initial Catalog=hris;Integrated Security=True;Encrypt=False;";
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
             {
@@ -151,6 +155,9 @@ namespace HRMngt.View
                 {
                     while (reader.Read())
                     {
+                        picNavAva.Image = ByteArrayToImage((byte[])reader["ava"]);
+                        picIndividualAva.Image = ByteArrayToImage((byte[])reader["ava"]);
+
                         lblUserId.Text = "Mã NV:" + reader[0].ToString();
                         lblIndividualName.Text =  reader[1].ToString();
                         lblEmailInfo.Text = reader[2].ToString();
@@ -158,7 +165,7 @@ namespace HRMngt.View
                         lblGender.Text = reader[16].ToString();
                         lblStatus.Text = "• " + reader[17].ToString();
                         lblDepartmentInfo.Text = reader[10].ToString();
-                        if (currentUser.Status == "Đang làm")
+                        if (currentUser.Status == "Doing")
                         {
                             lblStatus.ForeColor = Color.FromArgb(69, 158, 26);
                         }
@@ -169,6 +176,14 @@ namespace HRMngt.View
                     }
                 }
                 connection.Close();
+            }
+        }
+        private Image ByteArrayToImage(byte[] byteArrayIn)
+        {
+            using (MemoryStream ms = new MemoryStream(byteArrayIn))
+            {
+                Image image = Image.FromStream(ms);
+                return image;
             }
         }
     }

@@ -18,38 +18,38 @@ namespace HRMngt.Views.Dialogs
         {
             this.type = type;
             InitializeComponent();
-            
-            if(type == "Add")
+
+            if (type == "Thêm")
             {
                 btnAdd.Text = "Thêm";
-            }else if(type == "Edit")
+            }
+            else if (type == "Sửa")
             {
                 btnAdd.Text = "Sửa";
             }
             RunEvent();
-            
+
         }
         private void RunEvent()
         {
-            if (btnAdd.Text == "Add")
+            if (btnAdd.Text == "Thêm")
             {
                 btnAdd.Click += delegate
                 {
                     AddNewDialog?.Invoke(this, EventArgs.Empty);
                 };
             }
-            else if (btnAdd.Text == "Update")
+            else if (btnAdd.Text == "Sửa")
             {
                 btnAdd.Click += delegate { EditNewDialog?.Invoke(this, EventArgs.Empty); };
             }
-            btnClose.Click += delegate { CloseEvent?.Invoke(this, EventArgs.Empty); };
             txtEmail.Click += delegate { CheckConditionBirthday?.Invoke(this, EventArgs.Empty); };
             txtPhone.Click += delegate { CheckConditionEmail?.Invoke(this, EventArgs.Empty); };
             cbRoles.Click += delegate { CheckConditionPhone?.Invoke(this, EventArgs.Empty); };
             btnClear.Click += delegate { ClearTextForm?.Invoke(this, EventArgs.Empty); };
+
+
         }
-        
-        // Get, set method
         public string ID { get => lbID.Text; set => lbID.Text = value; }
         public string NameCadidate { get => txtName.Text; set => txtName.Text = value; }
         public string Email { get => txtEmail.Text; set => txtEmail.Text = value; }
@@ -58,11 +58,13 @@ namespace HRMngt.Views.Dialogs
         public string Position { get => cbPosition.Text; set => cbPosition.Text = value; }
         public string Roles { get => cbRoles.Text; set => cbRoles.Text = value; }
         public string Note { get => txtNote.Text; set => txtNote.Text = value; }
-        public DateTime Birthday { get => birthday.Value; set => birthday.Value=value; }
+        public DateTime Birthday { get => birthday.Value; set => birthday.Value = value; }
         public string Sex { get => cbSex.Text; set => cbSex.Text = value; }
+
         public string Contract_type { get => cbContractType.Text; set => cbContractType.Text = value; }
         public string Status { get => cbStatus.Text; set => cbStatus.Text = value; }
-        public string DepartmentName {
+        public string DepartmentName
+        {
 
             get
             {
@@ -77,7 +79,8 @@ namespace HRMngt.Views.Dialogs
                     cbDepartment.SelectedIndex = index;
             }
         }
-        public string ManagerName {
+        public string ManagerName
+        {
             get
             {
                 if (cbManager.SelectedItem == null || cbManager.SelectedItem.ToString() == "")
@@ -93,7 +96,6 @@ namespace HRMngt.Views.Dialogs
 
         }
 
-        // Event Handler
         public event EventHandler AddNewDialog;
         public event EventHandler EditNewDialog;
         public event EventHandler CheckConditionBirthday;
@@ -101,7 +103,6 @@ namespace HRMngt.Views.Dialogs
         public event EventHandler CheckConditionEmail;
         public event EventHandler ClearTextForm;
         public event EventHandler CloseForm;
-        public event EventHandler CloseEvent;
 
         public void ShowRecruitList(IEnumerable<UserModel> recruits)
         {
@@ -128,13 +129,13 @@ namespace HRMngt.Views.Dialogs
                 cbManager.Items.Add(item);
             }
         }
-        public void ShowDepartmentIdNName(IEnumerable<DepartmentModel> departmentList)
+        public void ShowDepartmentIdNName(List<string> departmentIDNameList)
         {
-           cbDepartment.Items.Clear();
+            cbDepartment.Items.Clear();
 
-            foreach (var departmentModel in departmentList)
+            foreach (string item in departmentIDNameList)
             {
-                cbDepartment.Items.Add($"{departmentModel.Id} - {department.Name}");
+                cbDepartment.Items.Add(item);
 
             }
         }

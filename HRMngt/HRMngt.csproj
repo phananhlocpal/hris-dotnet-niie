@@ -146,19 +146,16 @@
     <Compile Include="Models\SalaryModel.cs" />
     <Compile Include="Presenters\CommunicatePresenter.cs" />
     <Compile Include="Presenters\HomePresenter.cs" />
-    <Compile Include="Presenters\RecruitPresenter.cs" />
     <Compile Include="Presenters\IndividualCalendarPresenter.cs" />
     <Compile Include="Presenters\IndividualSalaryPresenter.cs" />
     <Compile Include="Presenters\LoginPresenter.cs" />
     <Compile Include="Presenters\DepartmentPresenter.cs" />
     <Compile Include="Presenters\MainIndividualPresenter.cs" />
     <Compile Include="Presenters\MainViewPresenter.cs" />
+    <Compile Include="Presenters\RecruitmentPresenter.cs" />
     <Compile Include="Presenters\SalaryPresenter.cs" />
     <Compile Include="Presenters\SupportPresenter.cs" />
     <Compile Include="Presenters\TimeKeepingPresenter.cs" />
-    <Compile Include="Views\AnimationButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Views\Client\ClientView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +163,7 @@
       <DependentUpon>ClientView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Client\IClientView.cs" />
+    <Compile Include="Views\Dialogs\Interface\ICheckinDialog.cs" />
     <Compile Include="Views\Server\ChatServer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -328,6 +326,8 @@
     <Compile Include="_Repository\BaseRepository.cs" />
     <Compile Include="_Repository\Department\DepartmentRepository.cs" />
     <Compile Include="_Repository\Department\IDepartmentRepository.cs" />
+    <Compile Include="_Repository\Recruitment\IRecruitmentRepository.cs" />
+    <Compile Include="_Repository\Recruitment\RecruitmentRepository.cs" />
     <Compile Include="_Repository\Salary\ISalaryRepository.cs" />
     <Compile Include="_Repository\Salary\SalaryRepository.cs" />
     <Compile Include="_Repository\OtherRepository\ISupportRepository.cs" />
@@ -381,10 +381,6 @@
     </Compile>
     <Compile Include="_Repository\ThumbTicket\ThumbTicketRepository.cs" />
     <Compile Include="_Repository\User\UserRepository.cs" />
-    <EmbeddedResource Include="Views\AnimationButton.resx">
-      <DependentUpon>AnimationButton.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\Client\ClientView.resx">
       <DependentUpon>ClientView.cs</DependentUpon>
     </EmbeddedResource>
@@ -573,6 +569,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\check-out.png" />
+    <None Include="Resources\check-in.png" />
     <None Include="Resources\messenger.png" />
     <None Include="Resources\image 231.png" />
     <None Include="Resources\chat.png" />

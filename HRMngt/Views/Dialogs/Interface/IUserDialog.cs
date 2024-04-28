@@ -1,9 +1,11 @@
 ﻿using HRMngt.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace HRMngt.Views.Dialogs
 {
@@ -24,13 +26,13 @@ namespace HRMngt.Views.Dialogs
         string DepartmentID { get; set; }
         string Contract_type { get; set; }
         DateTime On_boarding { get; set; }
-        DateTime? Close_date { get; set; }
+        DateTime Close_date { get; set; }
         string Scan_contract { get; set; }
         string Note { get; set; }
         string Status { get; set; }
-        byte[] Photo { get; set; }
         string Roles { get; set; }
-        string Degree { get; set; }
+
+        Image Photo { get; set; }
 
         event EventHandler AddNewUserDialog;
         event EventHandler EditUserDialog;
@@ -45,8 +47,8 @@ namespace HRMngt.Views.Dialogs
         event EventHandler CheckConditionDate;
         event EventHandler CheckConditionPhone;
         void ShowUserIDName(IEnumerable<UserModel> users);
-        void ShowDepartmentIdNName(IEnumerable<DepartmentModel> departmentList);
-        
-        
+        void ShowDepartmentIdNName(List<string> departmentIDNameList);
+        void DisplayUserPhotoForEditing(byte[] photoData);
+
     }
 }

@@ -31,15 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserView));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            this.cbStatus = new System.Windows.Forms.ComboBox();
-            this.cbDepartment = new System.Windows.Forms.ComboBox();
-            this.dgvUserList = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnExcel = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.btnAdd = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            this.cbStatus = new System.Windows.Forms.ComboBox();
+            this.cbDepartment = new System.Windows.Forms.ComboBox();
+            this.dgvUserList = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.picture = new System.Windows.Forms.DataGridViewImageColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.department = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,88 +54,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvUserList)).BeginInit();
             this.SuspendLayout();
             // 
-            // cbStatus
-            // 
-            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbStatus.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.cbStatus.FormattingEnabled = true;
-            this.cbStatus.Location = new System.Drawing.Point(238, 36);
-            this.cbStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(211, 33);
-            this.cbStatus.TabIndex = 12;
-            // 
-            // cbDepartment
-            // 
-            this.cbDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDepartment.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.cbDepartment.FormattingEnabled = true;
-            this.cbDepartment.Location = new System.Drawing.Point(21, 36);
-            this.cbDepartment.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cbDepartment.Name = "cbDepartment";
-            this.cbDepartment.Size = new System.Drawing.Size(206, 33);
-            this.cbDepartment.TabIndex = 11;
-            // 
-            // dgvUserList
-            // 
-            this.dgvUserList.AllowUserToAddRows = false;
-            this.dgvUserList.AllowUserToDeleteRows = false;
-            this.dgvUserList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvUserList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUserList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.name,
-            this.department,
-            this.contractType,
-            this.position,
-            this.status,
-            this.roles,
-            this.btnRead,
-            this.btnEdit,
-            this.btnDelete});
-            this.dgvUserList.GridStyles.Style = ComponentFactory.Krypton.Toolkit.DataGridViewStyle.Mixed;
-            this.dgvUserList.GridStyles.StyleBackground = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.ContextMenuSeparator;
-            this.dgvUserList.HideOuterBorders = true;
-            this.dgvUserList.Location = new System.Drawing.Point(18, 100);
-            this.dgvUserList.Name = "dgvUserList";
-            this.dgvUserList.ReadOnly = true;
-            this.dgvUserList.RowHeadersVisible = false;
-            this.dgvUserList.RowHeadersWidth = 90;
-            this.dgvUserList.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dgvUserList.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(1);
-            this.dgvUserList.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUserList.RowTemplate.Height = 50;
-            this.dgvUserList.RowTemplate.ReadOnly = true;
-            this.dgvUserList.ShowCellErrors = false;
-            this.dgvUserList.ShowCellToolTips = false;
-            this.dgvUserList.ShowEditingIcon = false;
-            this.dgvUserList.ShowRowErrors = false;
-            this.dgvUserList.Size = new System.Drawing.Size(1640, 853);
-            this.dgvUserList.StateCommon.Background.Color1 = System.Drawing.Color.White;
-            this.dgvUserList.StateCommon.Background.Color2 = System.Drawing.Color.White;
-            this.dgvUserList.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.ContextMenuSeparator;
-            this.dgvUserList.StateCommon.DataCell.Back.Color1 = System.Drawing.Color.White;
-            this.dgvUserList.StateCommon.DataCell.Back.Color2 = System.Drawing.Color.White;
-            this.dgvUserList.StateCommon.DataCell.Border.Color1 = System.Drawing.Color.White;
-            this.dgvUserList.StateCommon.DataCell.Border.Color2 = System.Drawing.Color.White;
-            this.dgvUserList.StateCommon.DataCell.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.dgvUserList.StateCommon.DataCell.Content.Color1 = System.Drawing.Color.Black;
-            this.dgvUserList.StateCommon.DataCell.Content.Color2 = System.Drawing.Color.Black;
-            this.dgvUserList.StateCommon.DataCell.Content.Padding = new System.Windows.Forms.Padding(1);
-            this.dgvUserList.StateCommon.HeaderColumn.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.dgvUserList.StateCommon.HeaderColumn.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.dgvUserList.StateCommon.HeaderColumn.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.dgvUserList.StateCommon.HeaderColumn.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.dgvUserList.StateCommon.HeaderColumn.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.dgvUserList.StateCommon.HeaderColumn.Content.Padding = new System.Windows.Forms.Padding(3, 10, 3, 10);
-            this.dgvUserList.TabIndex = 9;
-            // 
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -143,7 +62,7 @@
             this.dataGridViewImageColumn1.MinimumWidth = 6;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             this.dataGridViewImageColumn1.ReadOnly = true;
-            this.dataGridViewImageColumn1.Width = 200;
+            this.dataGridViewImageColumn1.Width = 125;
             // 
             // dataGridViewImageColumn2
             // 
@@ -153,7 +72,7 @@
             this.dataGridViewImageColumn2.MinimumWidth = 6;
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             this.dataGridViewImageColumn2.ReadOnly = true;
-            this.dataGridViewImageColumn2.Width = 200;
+            this.dataGridViewImageColumn2.Width = 125;
             // 
             // dataGridViewImageColumn3
             // 
@@ -163,14 +82,13 @@
             this.dataGridViewImageColumn3.MinimumWidth = 6;
             this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
             this.dataGridViewImageColumn3.ReadOnly = true;
-            this.dataGridViewImageColumn3.Width = 200;
+            this.dataGridViewImageColumn3.Width = 125;
             // 
             // btnExcel
             // 
             this.btnExcel.AllowAnimations = true;
             this.btnExcel.AllowMouseEffects = true;
             this.btnExcel.AllowToggling = false;
-            this.btnExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExcel.AnimationSpeed = 200;
             this.btnExcel.AutoGenerateColors = false;
             this.btnExcel.AutoRoundBorders = false;
@@ -213,8 +131,7 @@
             this.btnExcel.IdleIconLeftImage = null;
             this.btnExcel.IdleIconRightImage = null;
             this.btnExcel.IndicateFocus = false;
-            this.btnExcel.Location = new System.Drawing.Point(1345, 36);
-            this.btnExcel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnExcel.Location = new System.Drawing.Point(810, 12);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnExcel.OnDisabledState.BorderRadius = 1;
@@ -248,21 +165,19 @@
             this.btnExcel.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.btnExcel.OnPressedState.IconLeftImage = null;
             this.btnExcel.OnPressedState.IconRightImage = null;
-            this.btnExcel.Size = new System.Drawing.Size(140, 52);
-            this.btnExcel.TabIndex = 20;
+            this.btnExcel.Size = new System.Drawing.Size(93, 44);
+            this.btnExcel.TabIndex = 25;
             this.btnExcel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnExcel.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnExcel.TextMarginLeft = 0;
             this.btnExcel.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnExcel.UseDefaultRadiusAndThickness = true;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // btnAdd
             // 
             this.btnAdd.AllowAnimations = true;
             this.btnAdd.AllowMouseEffects = true;
             this.btnAdd.AllowToggling = false;
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.AnimationSpeed = 200;
             this.btnAdd.AutoGenerateColors = false;
             this.btnAdd.AutoRoundBorders = false;
@@ -305,8 +220,7 @@
             this.btnAdd.IdleIconLeftImage = null;
             this.btnAdd.IdleIconRightImage = null;
             this.btnAdd.IndicateFocus = false;
-            this.btnAdd.Location = new System.Drawing.Point(1518, 36);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAdd.Location = new System.Drawing.Point(921, 12);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnAdd.OnDisabledState.BorderRadius = 1;
@@ -340,13 +254,89 @@
             this.btnAdd.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.btnAdd.OnPressedState.IconLeftImage = null;
             this.btnAdd.OnPressedState.IconRightImage = null;
-            this.btnAdd.Size = new System.Drawing.Size(140, 52);
-            this.btnAdd.TabIndex = 19;
+            this.btnAdd.Size = new System.Drawing.Size(93, 44);
+            this.btnAdd.TabIndex = 24;
             this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnAdd.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnAdd.TextMarginLeft = 0;
             this.btnAdd.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnAdd.UseDefaultRadiusAndThickness = true;
+            // 
+            // cbStatus
+            // 
+            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStatus.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.Location = new System.Drawing.Point(159, 23);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(142, 24);
+            this.cbStatus.TabIndex = 23;
+            // 
+            // cbDepartment
+            // 
+            this.cbDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDepartment.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.cbDepartment.FormattingEnabled = true;
+            this.cbDepartment.Location = new System.Drawing.Point(14, 23);
+            this.cbDepartment.Name = "cbDepartment";
+            this.cbDepartment.Size = new System.Drawing.Size(139, 24);
+            this.cbDepartment.TabIndex = 22;
+            // 
+            // dgvUserList
+            // 
+            this.dgvUserList.AllowUserToAddRows = false;
+            this.dgvUserList.AllowUserToDeleteRows = false;
+            this.dgvUserList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvUserList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUserList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.picture,
+            this.Id,
+            this.name,
+            this.department,
+            this.contractType,
+            this.position,
+            this.status,
+            this.roles,
+            this.btnRead,
+            this.btnEdit,
+            this.btnDelete});
+            this.dgvUserList.Location = new System.Drawing.Point(12, 64);
+            this.dgvUserList.Name = "dgvUserList";
+            this.dgvUserList.RowHeadersVisible = false;
+            this.dgvUserList.RowHeadersWidth = 51;
+            this.dgvUserList.RowTemplate.Height = 100;
+            this.dgvUserList.Size = new System.Drawing.Size(1093, 546);
+            this.dgvUserList.StateCommon.Background.Color1 = System.Drawing.Color.White;
+            this.dgvUserList.StateCommon.Background.Color2 = System.Drawing.Color.White;
+            this.dgvUserList.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
+            this.dgvUserList.StateCommon.DataCell.Back.Color1 = System.Drawing.Color.White;
+            this.dgvUserList.StateCommon.DataCell.Back.Color2 = System.Drawing.Color.White;
+            this.dgvUserList.StateCommon.DataCell.Border.Color1 = System.Drawing.Color.White;
+            this.dgvUserList.StateCommon.DataCell.Border.Color2 = System.Drawing.Color.White;
+            this.dgvUserList.StateCommon.DataCell.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.dgvUserList.StateCommon.DataCell.Content.Color1 = System.Drawing.Color.Black;
+            this.dgvUserList.StateCommon.DataCell.Content.Color2 = System.Drawing.Color.Black;
+            this.dgvUserList.StateCommon.HeaderColumn.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.dgvUserList.StateCommon.HeaderColumn.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.dgvUserList.StateCommon.HeaderColumn.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.dgvUserList.StateCommon.HeaderColumn.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.dgvUserList.StateCommon.HeaderColumn.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.dgvUserList.TabIndex = 21;
+            // 
+            // picture
+            // 
+            this.picture.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.picture.HeaderText = "";
+            this.picture.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.picture.MinimumWidth = 30;
+            this.picture.Name = "picture";
+            this.picture.ReadOnly = true;
             // 
             // Id
             // 
@@ -409,43 +399,42 @@
             this.btnRead.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.btnRead.HeaderText = "";
             this.btnRead.Image = global::HRMngt.Properties.Resources.read;
-            this.btnRead.MinimumWidth = 50;
+            this.btnRead.MinimumWidth = 6;
             this.btnRead.Name = "btnRead";
             this.btnRead.ReadOnly = true;
-            this.btnRead.Width = 50;
+            this.btnRead.Width = 7;
             // 
             // btnEdit
             // 
             this.btnEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.btnEdit.HeaderText = "";
             this.btnEdit.Image = global::HRMngt.Properties.Resources.update;
-            this.btnEdit.MinimumWidth = 50;
+            this.btnEdit.MinimumWidth = 6;
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.ReadOnly = true;
-            this.btnEdit.Width = 50;
+            this.btnEdit.Width = 7;
             // 
             // btnDelete
             // 
             this.btnDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.btnDelete.HeaderText = "";
             this.btnDelete.Image = global::HRMngt.Properties.Resources.delete;
-            this.btnDelete.MinimumWidth = 50;
+            this.btnDelete.MinimumWidth = 6;
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.ReadOnly = true;
-            this.btnDelete.Width = 50;
+            this.btnDelete.Width = 7;
             // 
             // UserView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1676, 972);
+            this.ClientSize = new System.Drawing.Size(1117, 622);
             this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.cbStatus);
             this.Controls.Add(this.cbDepartment);
             this.Controls.Add(this.dgvUserList);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "UserView";
             this.Text = "Quản lí nhân viên";
             this.Load += new System.EventHandler(this.UserView_Load);
@@ -455,15 +444,16 @@
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox cbStatus;
-        private System.Windows.Forms.ComboBox cbDepartment;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvUserList;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnExcel;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnAdd;
+        private System.Windows.Forms.ComboBox cbStatus;
+        private System.Windows.Forms.ComboBox cbDepartment;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvUserList;
+        private System.Windows.Forms.DataGridViewImageColumn picture;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn department;
