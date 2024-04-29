@@ -1,4 +1,5 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿using Bunifu.UI.WinForms.BunifuButton;
+using ComponentFactory.Krypton.Toolkit;
 using HRMngt.Models;
 using HRMngt.View;
 using HRMngt.Views.Dialogs;
@@ -20,14 +21,24 @@ namespace HRMngt.Views
         public DepartmentView()
         {
             InitializeComponent();
+            cbDepartment_SelectedIndexChanged();
+            cbAddress_Changed();
             RunEvent();
         }
 
-        ComboBox IDepartmentView.cbDepartment => cbDepartment;
+        ComboBox IDepartmentView.cbManager => cbManager;
 
         ComboBox IDepartmentView.cbAddress => cbAddress;
 
         DataGridView IDepartmentView.dgvDepartmentList => dgvDepartmentList;
+
+        public BunifuButton2 buttonAdd => btnAdd;
+
+        public DataGridViewImageColumn buttonEdit => btnEdit;
+
+        public DataGridViewImageColumn buttonDelete => btnDelete;
+
+        public DataGridViewImageColumn buttonRead => btnRead;
 
         public event EventHandler SearchEvent;
         public event EventHandler AddNewEvent;
@@ -41,10 +52,12 @@ namespace HRMngt.Views
         public event EventHandler ReadEvent;
         public event EventHandler SearchByDepartmentName;
         public event EventHandler SearchByDepartmentAddress;
+        public event EventHandler FiterDepartment;
 
         private void RunEvent()
         {
-            btnExcel.Click += delegate { LoadDepartmentDialogToAddEvent?.Invoke(this, EventArgs.Empty); };
+            btnAdd.Click += delegate { LoadDepartmentDialogToAddEvent?.Invoke(this, EventArgs.Empty); };
+
             dgvDepartmentList.CellContentClick += (sender, e) =>
             {
                 if (e.RowIndex >= 0 && e.ColumnIndex == dgvDepartmentList.Columns[6].Index)
@@ -67,9 +80,30 @@ namespace HRMngt.Views
                     ReadEvent?.Invoke(this, EventArgs.Empty);
                 }
             };
-            cbDepartment.SelectedIndexChanged += delegate { SearchByDepartmentName?.Invoke(this, EventArgs.Empty); };
-            cbAddress.SelectedIndexChanged += delegate { SearchByDepartmentAddress?.Invoke(this, EventArgs.Empty); };
+            cbManager.SelectedValueChanged += delegate { FiterDepartment?.Invoke(this, EventArgs.Empty); };
+            cbAddress.SelectedValueChanged += delegate { FiterDepartment?.Invoke(this, EventArgs.Empty); };
 
+        }
+        public string GetNameByIDUser(string id)
+        {
+            string name = "";
+            string connectionString = "Data Source=localhost;Initial Catalog=hris;Integrated Security=True;Encrypt=False";
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "Select distinct name from users where userID = @Id";
+                command.Parameters.Add("@Id", SqlDbType.NVarChar).Value = id;
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        name = reader[0].ToString();
+                    }
+                }
+            }
+            return name;
         }
         public void ShowDepartmentList(IEnumerable<DepartmentModel> departments)
         {
@@ -84,7 +118,7 @@ namespace HRMngt.Views
                     dgvDepartmentList.Rows[rowIndex].Cells[0].Value = dep.Id;
                     dgvDepartmentList.Rows[rowIndex].Cells[1].Value = dep.Name;
                     dgvDepartmentList.Rows[rowIndex].Cells[2].Value = dep.Phone;
-                    dgvDepartmentList.Rows[rowIndex].Cells[3].Value = dep.Manager;
+                    dgvDepartmentList.Rows[rowIndex].Cells[3].Value = GetNameByIDUser(dep.Manager);
                     dgvDepartmentList.Rows[rowIndex].Cells[4].Value = dep.Location;
                 }
             }
@@ -108,7 +142,56 @@ namespace HRMngt.Views
             }
             return instance;
         }
-        
+        private void cbDepartment_SelectedIndexChanged()
+        {
+            string connectionString = "Data Source=localhost;Initial Catalog=hris;Integrated Security=True;Encrypt=False;";
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "Select distinct userID, name from users where role = @Roles ";
+                command.Parameters.Add("@Roles", SqlDbType.NVarChar).Value = "Admin";
+                List<string> items = new List<string>();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        items.Add($"{reader[0]} - {reader[1]}");
+                    }
+                }
+                cbManager.DataSource = items;
+                cbManager.DisplayMember = "Name";
+                cbManager.Refresh();
+                connection.Close();
+            }
+        }
+        private void cbAddress_Changed()
+        {
+            string connectionString = "Data Source=localhost;Initial Catalog=hris;Integrated Security=True;Encrypt=False";
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "Select distinct location from department ";
+                List<string> items = new List<string>();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        items.Add(reader[0].ToString());
+                    }
+                }
+                cbAddress.DataSource = items;
+                cbAddress.DisplayMember = "Name";
+                cbAddress.Refresh();
+                connection.Close();
+            }
+        }
+
+
+
         public DepartmentDiaglog ShowDepartmentDialogToAdd()
         {
             DepartmentDiaglog diaglog = new DepartmentDiaglog("Thêm");
@@ -169,5 +252,7 @@ namespace HRMngt.Views
                 ToExcel(dgvDepartmentList, saveExcel.FileName);
             }
         }
+
+        
     }
 }

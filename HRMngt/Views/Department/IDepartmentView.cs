@@ -1,4 +1,5 @@
-﻿using HRMngt.Models;
+﻿using Bunifu.UI.WinForms.BunifuButton;
+using HRMngt.Models;
 using HRMngt.View.Popup;
 using HRMngt.Views.Dialogs;
 using System;
@@ -12,9 +13,14 @@ namespace HRMngt.Views
 {
     public interface IDepartmentView
     {
-        ComboBox cbDepartment { get; }
+        ComboBox cbManager { get; }
         ComboBox cbAddress { get; }
         DataGridView dgvDepartmentList { get; }
+
+        BunifuButton2 buttonAdd { get; }
+        DataGridViewImageColumn buttonEdit { get; }
+        DataGridViewImageColumn buttonDelete { get; }
+        DataGridViewImageColumn buttonRead { get; }
 
         event EventHandler SearchEvent;
         event EventHandler AddNewEvent;
@@ -23,18 +29,16 @@ namespace HRMngt.Views
         event EventHandler ReadEvent;
         event EventHandler SaveEvent;
         event EventHandler CancelEvent;
-        event EventHandler SearchByDepartmentName;
-        event EventHandler SearchByDepartmentAddress;
         event EventHandler LoadDepartmentDialogToAddEvent;
         event EventHandler LoadDepartmentDialogToEditEvent;
         event EventHandler AddNewDepartmentDialog;
-
+        event EventHandler FiterDepartment;
         //ThumbTicketDialog ShowThumbTicketDialogToAdd();
         //ThumbTicketDialog ShowThumbTicketDialogToUpdate(string id);
         DepartmentDiaglog ShowDepartmentDialogToAdd();
         DepartmentDiaglog ShowDepartmentDialogToEdit(string id);
         void ShowDepartmentList(IEnumerable<DepartmentModel> departments);
         void Show();
-        
+
     }
 }

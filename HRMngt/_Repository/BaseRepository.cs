@@ -8,6 +8,6 @@ namespace HRMngt._Repository
 {
     public class BaseRepository
     {
-        public static string connectionString = @"Data Source=DESKTOP-BM7NF3L;Initial Catalog=hris;Integrated Security=True;TrustServerCertificate=True";
+        public static string connectionString = @"Data Source=localhost;Initial Catalog=hris;Integrated Security=True;";
     }
 }

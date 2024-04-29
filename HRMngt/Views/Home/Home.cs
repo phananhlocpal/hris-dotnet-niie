@@ -1,5 +1,7 @@
-﻿using HRMngt.Views.Dialogs;
+﻿using HRMngt.Models;
+using HRMngt.Views.Dialogs;
 using HRMngt.Views.User;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,17 +15,31 @@ using System.Windows.Forms;
 namespace HRMngt.Views
 {
     public partial class Home : Form, IHomeView
-
     {
+        
         public Home()
         {
             InitializeComponent();
+            RunEvent();
+        }
+        private void RunEvent()
+        {
+            btnCheckout.Click += delegate { 
+                LoadToAddCalandar?.Invoke(this, EventArgs.Empty);
+                btnCheckin.Visible = true;
+                btnCheckout.Visible = false;
+                lbClick.Text = "Click To Leave";
+            };
+            btnCheckin.Click += delegate { 
+                LoadToAddCalandar?.Invoke(this, EventArgs.Empty);
+                btnCheckout.Visible = true;
+                btnCheckin.Visible = false;
+                lbClick.Text = "Click To Attendance";
+            };
         }
         private static Home instance;
 
-        System.Web.UI.WebControls.Button IHomeView.btnCheckin => throw new NotImplementedException();
-
-        System.Web.UI.WebControls.Button IHomeView.btnCheckout => throw new NotImplementedException();
+        public event EventHandler LoadToAddCalandar;
 
         public static Home GetInstance(Form parentContainer)
         {
@@ -43,15 +59,19 @@ namespace HRMngt.Views
             return instance;
         }
 
-        private void btnCheckin_Click(object sender, EventArgs e)
+        public void ShowNavName(string navName)
         {
-
+            lbName.Text = navName;
         }
-
-        private void btnCheckin_Click_1(object sender, EventArgs e)
+        public CheckinDialog ShowCheckInDialog()
         {
             CheckinDialog checkin = new CheckinDialog();
-            checkin.Show();
+            return checkin;
+        }
+
+        public void ShowCheckoutDialog()
+        {
+            throw new NotImplementedException();
         }
     }
 }

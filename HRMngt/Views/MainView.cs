@@ -7,7 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -19,8 +21,10 @@ using System.Xml.Linq;
 namespace HRMngt.View
 {
     public partial class MainView : Form, IMainView
-    {       
-        
+
+    {
+        public Image pictureAvatar { set => picNavAva.Image = value; }
+
         public MainView()
         {
             InitializeComponent();
@@ -68,7 +72,7 @@ namespace HRMngt.View
             {
 
             }
-            else if (userModel.Roles == "Manager")
+            else if (userModel.Roles == "Manager" || userModel.Roles == "Employee")
             {
                 pnlSalary.Hide();
                 pnlHire.Hide();
@@ -79,9 +83,48 @@ namespace HRMngt.View
 
             }
             lblNavName.Text = userModel.Name;
+            picNavAva.Image = ByteArrayToImage(GetPhotoById(userModel.Id));
+
+
+        }
+        public byte[] GetPhotoById(string id)
+        {
+            string connectionString = "Data Source=localhost;Initial Catalog=hris;Integrated Security=True;Encrypt=False;";
+            byte[] photoData = null; // Mảng byte chứa dữ liệu ảnh
+
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "SELECT ava FROM users WHERE userID = @userID";
+                command.Parameters.Add("@userID", SqlDbType.Char).Value = id;
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        // Đọc dữ liệu ảnh từ cột "photo" trong kết quả truy vấn
+                        if (!reader.IsDBNull(0)) // Kiểm tra xem giá trị có null không
+                        {
+                            // Lấy dữ liệu ảnh dưới dạng mảng byte
+                            photoData = (byte[])reader["ava"];
+                        }
+                    }
+                }
+            }
+
+            return photoData;
         }
 
-
+        private Image ByteArrayToImage(byte[] byteArrayIn)
+        {
+            using (MemoryStream ms = new MemoryStream(byteArrayIn))
+            {
+                Image image = Image.FromStream(ms);
+                return image;
+            }
+        }
         private void txtNavSearch_MouseClick(object sender, MouseEventArgs e)
         {
             if (txtNavSearch.Text == "Nhập tìm kiếm của bạn ...")

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HRMngt.Views.Dialogs.Interface;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,16 +11,23 @@ using System.Windows.Forms;
 
 namespace HRMngt.Views.Dialogs
 {
-    public partial class CheckinDialog : Form
+    public partial class CheckinDialog : Form, ICheckinDialog
     {
+        public string label1 { get => lb1.Text; set => lb1.Text = value; }
+        public string label2 { get => lb2.Text; set => lb2.Text = value; }
+        public string label3 { get => lb3.Text; set => lb3.Text = value; }
+
         public CheckinDialog()
         {
             InitializeComponent();
-            lbDate.Text = DateTime.Now.Day.ToString();
-            lbMonth.Text = DateTime.Now.Month.ToString();
-            lbYear.Text = DateTime.Now.Year.ToString();
-            lbTime.Text = $"{DateTime.Now.Hour}:{DateTime.Now.Minute}:{DateTime.Now.Second}";
+            RunEvent();
+           
         }
+        private void RunEvent()
+        {
+            btnAccept.Click += delegate { AddToCalculator?.Invoke(this, EventArgs.Empty); };
+        }
+        public event EventHandler AddToCalculator;
 
         private void bunifuPictureBox1_Click(object sender, EventArgs e)
         {

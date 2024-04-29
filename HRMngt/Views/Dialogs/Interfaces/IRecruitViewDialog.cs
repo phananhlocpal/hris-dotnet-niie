@@ -9,21 +9,21 @@ namespace HRMngt.Views.Dialogs
 {
     public interface IRecruitViewDialog
     {
-        string ID { get;set;}
+        string ID { get; set; }
         string NameCadidate { get; set; }
         string Email { get; set; }
         string Address { get; set; }
         string Sex { get; set; }
         string Phone { get; set; }
-        DateTime Birthday { get;set; }
+        DateTime Birthday { get; set; }
         string Position { get; set; }
         string Roles { get; set; }
-        string Note { get; set;}
+        string Note { get; set; }
         string Status { get; set; }
         string Contract_type { get; set; }
         string DepartmentName { get; set; }
         string ManagerName { get; set; }
-        
+
 
 
 
@@ -34,9 +34,10 @@ namespace HRMngt.Views.Dialogs
         event EventHandler CheckConditionBirthday;
         event EventHandler CheckConditionPhone;
         event EventHandler CheckConditionEmail;
-        event EventHandler CloseEvent;
         void Show();
         void ShowRecruitList(IEnumerable<UserModel> recruits);
+
         void ShowUserIDName(IEnumerable<UserModel> users);
+        void ShowDepartmentIdNName(List<string> departmentIDNameList);
     }
 }

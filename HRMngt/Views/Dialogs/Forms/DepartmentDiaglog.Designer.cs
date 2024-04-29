@@ -76,6 +76,7 @@
             // cbManager
             // 
             this.cbManager.BackColor = System.Drawing.Color.White;
+            this.cbManager.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbManager.ForeColor = System.Drawing.Color.Gray;
             this.cbManager.FormattingEnabled = true;
             this.cbManager.Location = new System.Drawing.Point(131, 219);

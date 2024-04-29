@@ -1,4 +1,8 @@
-﻿using System;
+﻿using HRMngt._Repository;
+using HRMngt.Models;
+using HRMngt.Presenters;
+using HRMngt.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,16 +36,18 @@ namespace HRMngt.Views.Dialogs
         {
             string email = ForgotPassword.to;
             string password = txtComfirmPassword.Text;
-            if(txtNewPassword.Text == password)
+            string salt = BCrypt.Net.BCrypt.GenerateSalt();
+            string hash = BCrypt.Net.BCrypt.HashPassword(password, salt);
+            if (txtNewPassword.Text == password)
             {
-                SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=HR;Integrated Security=True;Encrypt=False");
+                SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=hris;Integrated Security=True;Encrypt=False");
                 
                 string query = "UPDATE users SET password = @NewPassword WHERE email = @Email";
                 using (SqlConnection connection = conn)
                 {
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
-                        cmd.Parameters.AddWithValue("@NewPassword", password);
+                        cmd.Parameters.AddWithValue("@NewPassword", hash);
                         cmd.Parameters.AddWithValue("@Email", email);
 
                         connection.Open();
@@ -51,10 +57,12 @@ namespace HRMngt.Views.Dialogs
                     }
                 }
                 MessageBox.Show("Mật khẩu cập nhật thành công -_-");
-                LoginView login = new LoginView();
-                this.Hide();
-                login.ShowDialog();
-                
+                ILoginView view = new LoginView();
+                IUserRepository repository = new UserRepository();
+                new LoginPresenter(view, repository);
+                this.Close();
+
+
 
             }
             else

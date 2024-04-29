@@ -1,5 +1,4 @@
 ﻿using HRMngt.Models;
-using HRMngt.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -64,14 +63,14 @@ namespace HRMngt.Views.Dialogs
         public string ID { get => lbID.Text; set => lbID.Text = value; }
         public string Fullname { get => txtName.Text; set => txtName.Text = value; }
         public string Email { get => txtEmail.Text; set => txtEmail.Text = value; }
-        public string Phone 
-        { 
-            get 
-            { return txtPhone.Text; } 
-            set 
-            { 
-                 txtPhone.Text = value;
-            } 
+        public string Phone
+        {
+            get
+            { return txtPhone.Text; }
+            set
+            {
+                txtPhone.Text = value;
+            }
         }
         public string Address { get => txtAddress.Text; set => txtAddress.Text = value; }
         public DateTime Birthday { get => birthday.Value; set => birthday.Value = value; }
@@ -80,8 +79,9 @@ namespace HRMngt.Views.Dialogs
         public int Salary { get => int.Parse(txtSalary.Text); set => txtSalary.Text = value.ToString(); }
         public string Username { get => txtUsername.Text; set => txtUsername.Text = value; }
         public string Password { get => txtPassword.Text; set => txtPassword.Text = value; }
-        public string ManagerID { 
-           get
+        public string ManagerID
+        {
+            get
             {
                 if (cbManagerId.SelectedItem == null || cbManagerId.SelectedItem.ToString() == "")
                     return "";
@@ -94,7 +94,8 @@ namespace HRMngt.Views.Dialogs
                     cbManagerId.SelectedIndex = index;
             }
         }
-        public string DepartmentID {
+        public string DepartmentID
+        {
             get
             {
                 if (cbDepartmentId.SelectedItem == null || cbDepartmentId.SelectedItem.ToString() == "")
@@ -110,34 +111,16 @@ namespace HRMngt.Views.Dialogs
         }
         public string Contract_type { get => cbContractType.Text; set => cbContractType.Text = value; }
         public DateTime On_boarding { get => dtOnBoarding.Value; set => dtOnBoarding.Value = value; }
-        public DateTime? Close_date { get => dtClosedate.Value; set => dtClosedate.Value = (DateTime)value; }
+        public DateTime Close_date { get => dtClosedate.Value; set => dtClosedate.Value = value; }
         public string Scan_contract { get => txtScanContract.Text; set => txtScanContract.Text = value; }
-        
+
         public string Note { get => txtNote.Text; set => txtNote.Text = value; }
         public string Status { get => cbStatus.Text; set => cbStatus.Text = value; }
-        public byte[] Photo 
-        {
-            get
-            {
-                return getPhoto();
-            }
-                
-            set
-            {
-                getPhoto();
-            }
-        }
+
 
         public string Roles { get => cbRoles.Text; set => cbRoles.Text = value; }
-        public string Degree { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Image Photo { get => pbAvatar.Image; set => pbAvatar.Image = value; }
 
-        public byte[] getPhoto()
-        {
-            MemoryStream stream = new MemoryStream();
-            pbAvatar.Image.Save(stream, pbAvatar.Image.RawFormat);
-            return stream.GetBuffer();
-
-        }
         public event EventHandler AddNewUserDialog;
         public event EventHandler EditUserDialog;
         public event EventHandler GeneratedEventLoadEmail;
@@ -200,7 +183,7 @@ namespace HRMngt.Views.Dialogs
 
         private void cbStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbStatus.SelectedIndex == 0)
+            if (cbStatus.SelectedIndex == 0)
             {
                 cbRoles.SelectedIndex = 0;
                 cbRoles.Enabled = false;
@@ -211,14 +194,15 @@ namespace HRMngt.Views.Dialogs
             }
         }
 
-        public void ShowManagerComboBox(IEnumerable<UserModel> userList)
+        public void ShowUserIdNName(List<string> userIdNNameList)
         {
             cbManagerId.Items.Clear();
 
-            foreach (var userModel in userList)
+            foreach (string item in userIdNNameList)
             {
-                cbManagerId.Items.Add($"{userModel.Id} - {userModel.Name}");
-                
+                cbManagerId.Items.Add(item);
+
+
             }
         }
 
@@ -236,19 +220,20 @@ namespace HRMngt.Views.Dialogs
             }
         }
 
-
-        public void ShowDepartmentIdNName(IEnumerable<DepartmentModel> departmentList)
+        public void ShowDepartmentIdNName(List<string> departmentIDNameList)
         {
             cbDepartmentId.Items.Clear();
-            foreach (var departmentModel in departmentList)
+
+            foreach (string item in departmentIDNameList)
             {
-                cbDepartmentId.Items.Add($"{ departmentModel.Id} - {departmentModel.Name}");
+                cbDepartmentId.Items.Add(item);
+
             }
         }
         private void btnPicture_Click(object sender, EventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
-            if(open.ShowDialog() == DialogResult.OK)
+            if (open.ShowDialog() == DialogResult.OK)
             {
                 pbAvatar.Image = new Bitmap(open.FileName);
 
@@ -262,13 +247,34 @@ namespace HRMngt.Views.Dialogs
 
         public void ShowUserIDName(IEnumerable<UserModel> users)
         {
-            foreach(var user in users)
+            foreach (var user in users)
             {
-                if(user.Roles == "Admin" && users != null)
+                if (user.Roles == "Admin" && users != null)
                 {
                     cbManagerId.Items.Add($"{user.Id} - {user.Name}");
                 }
             }
+        }
+
+        public void DisplayUserPhotoForEditing(byte[] photoData)
+        {
+            if (photoData != null && photoData.Length > 0)
+            {
+                using (MemoryStream ms = new MemoryStream(photoData))
+                {
+                    pbAvatar.Image = Image.FromStream(ms);
+                }
+            }
+            else
+            {
+                // Handle case where photo data is null or empty
+                pbAvatar.Image = null; // Clear the PictureBox
+            }
+        }
+
+        private void UserDialog_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

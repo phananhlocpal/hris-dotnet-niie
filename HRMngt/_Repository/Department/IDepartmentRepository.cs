@@ -13,9 +13,11 @@ namespace HRMngt._Repository
         void Edit(DepartmentModel department);
         void Delete(string id);
         IEnumerable<DepartmentModel> GetAll();
-        IEnumerable<DepartmentModel> GetByDepartmentName(string name);
-        
-        IEnumerable<DepartmentModel> GetByAddress(string address);
-        DepartmentModel GetById(string id);
+
+        //LINQ
+        IEnumerable<DepartmentModel> LINQ_Filter(IEnumerable<DepartmentModel> departmentList, string manager, string location);
+        DepartmentModel LINQ_GetById(IEnumerable<DepartmentModel> departmentList, string id);
+
+
     }
 }

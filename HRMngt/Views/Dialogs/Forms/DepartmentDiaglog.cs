@@ -38,7 +38,22 @@ namespace HRMngt.Views.Dialogs
         public string DepartmentID { get => lbID.Text; set => lbID.Text = value; }
         public string DepartmentName { get => txtNameDepartment.Text; set => txtNameDepartment.Text = value; }
         public string Phone { get => txtPhone.Text; set => txtPhone.Text = value; }
-        public string Manager { get => cbManager.Text; set => cbManager.Text = value; }
+        public string Manager
+        {
+            get
+            {
+                if (cbManager.SelectedItem == null || cbManager.SelectedItem.ToString() == "")
+                    return "";
+                else return ExtractIdFromName(cbManager.SelectedItem.ToString());
+            }
+            set
+            {
+                int index = cbManager.FindStringExact(value);
+                if (index != -1)
+                    cbManager.SelectedIndex = index;
+            }
+
+        }
         public string Address { get => txtAddress.Text; set => txtAddress.Text = value; }
 
 
@@ -55,37 +70,29 @@ namespace HRMngt.Views.Dialogs
             {
                 btnAdd.Click += delegate { EditDepartmentDialog?.Invoke(this, EventArgs.Empty); };
             }
-            
+
         }
 
-        public DepartmentDiaglog ShowDepartmentDialogToAdd()
-        {
-            throw new NotImplementedException();
-        }
 
-        public void ShowDepartmentList(IEnumerable<DepartmentModel> departments)
-        {
-            throw new NotImplementedException();
-        }
 
         private void nameManageer_Selected_Changed()
         {
             string pos = "Admin";
-            string connectionString = "Data Source=localhost;Initial Catalog=HR;Integrated Security=True;Encrypt=False";
+            string connectionString = "Data Source=localhost;Initial Catalog=hris;Integrated Security=True;Encrypt=False";
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
             {
                 connection.Open();
-          
+
                 command.Connection = connection;
-                command.CommandText = "Select name from users where roles = @Pos";
+                command.CommandText = "Select userID, name from users where role = @Pos";
                 command.Parameters.Add("@Pos", SqlDbType.Char).Value = pos;
                 List<string> items = new List<string>();
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        items.Add(reader[0].ToString());
+                        items.Add($"{reader[0]} - {reader[1]}");
                     }
                 }
                 cbManager.DataSource = items;
@@ -95,9 +102,18 @@ namespace HRMngt.Views.Dialogs
             }
         }
 
-        private void bunifuPictureBox1_Click(object sender, EventArgs e)
+        public string ExtractIdFromName(string nameWithId)
         {
-         
+            if (!string.IsNullOrEmpty(nameWithId))
+            {
+                string[] parts = nameWithId.Split('-');
+                string id = parts[0].Trim();
+                return id;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         private void btnCancle_Click(object sender, EventArgs e)

@@ -187,6 +187,7 @@
             this.btnSuccess.TextMarginLeft = 0;
             this.btnSuccess.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnSuccess.UseDefaultRadiusAndThickness = true;
+            this.btnSuccess.Click += new System.EventHandler(this.btnSuccess_Click);
             // 
             // btnBack
             // 
@@ -276,6 +277,7 @@
             this.btnBack.TextMarginLeft = 0;
             this.btnBack.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnBack.UseDefaultRadiusAndThickness = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // pictureBox2
             // 

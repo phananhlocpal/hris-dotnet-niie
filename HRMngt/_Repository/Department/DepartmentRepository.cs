@@ -10,9 +10,12 @@ using Microsoft.Office.Interop.Excel;
 
 namespace HRMngt._Repository
 {
-    public class DepartmentRepository : IDepartmentRepository
+    public class DepartmentRepository : BaseRepository, IDepartmentRepository
     {
-        private string connectionString = BaseRepository.connectionString;
+        public DepartmentRepository()
+        {
+
+        }
 
         public void Add(DepartmentModel department)
         {
@@ -21,7 +24,7 @@ namespace HRMngt._Repository
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "insert into department (name, phone, location, manager) values(@Name, @Phone, @Location, @Manager)";
+                command.CommandText = "insert into department (name, phone, location, managerId) values(@Name, @Phone, @Location, @Manager)";
                 /*command.Parameters.Add("@departmentID", SqlDbType.Char).Value = department.Id;*/
                 command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = department.Name;
                 command.Parameters.Add("@Phone", SqlDbType.NVarChar, 10).Value = department.Phone;
@@ -54,7 +57,7 @@ namespace HRMngt._Repository
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "UPDATE department SET departmentID=@departmentID, name=@Name, phone=@Phone, location=@Location, manager=@Manager WHERE departmentID = @Id";
+                command.CommandText = "UPDATE department SET departmentID=@departmentID, name=@Name, phone=@Phone, location=@Location, managerID=@Manager WHERE departmentID = @Id";
                 command.Parameters.Add("@Id", SqlDbType.Char).Value = department.Id;
                 command.Parameters.Add("@departmentID", SqlDbType.Char).Value = department.Id;
                 command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = department.Name;
@@ -93,87 +96,17 @@ namespace HRMngt._Repository
             return departmentList;
         }
 
-        public IEnumerable<DepartmentModel> GetByDepartmentName(string name)
+
+        public IEnumerable<DepartmentModel> LINQ_Filter(IEnumerable<DepartmentModel> departmentList, string manager, string location)
         {
-            var departmentList = new List<DepartmentModel>();
-            using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand())
-            {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = "Select * from department where name = @Name";
-                command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = name;
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        var departmentModel = new DepartmentModel();
-                        departmentModel.Id = reader[0].ToString();
-                        departmentModel.Name = reader[1].ToString();
-                        departmentModel.Phone = reader[2].ToString();
-                        departmentModel.Location = reader[3].ToString();
-                        departmentModel.Manager = reader[4].ToString();
-                        departmentList.Add(departmentModel);
-                    }
-                }
-                connection.Close();
-            }
-            return departmentList;
+            var query = departmentList.Where(model => model.Manager == manager && model.Location == location);
+            return query;
         }
 
-        public DepartmentModel GetById(string id)
+        public DepartmentModel LINQ_GetById(IEnumerable<DepartmentModel> departmentList, string id)
         {
-            var departmentModel = new DepartmentModel();
-            using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand())
-            {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = "Select * from department where departmentID = @id ";
-                command.Parameters.Add("@id", SqlDbType.Char).Value = id;
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        departmentModel.Id = reader[0].ToString();
-                        departmentModel.Name = reader[1].ToString();
-                        departmentModel.Phone = reader[2].ToString();
-                        departmentModel.Location = reader[3].ToString();
-                        departmentModel.Manager = reader[4].ToString();
-                        
-                    }
-                }
-                connection.Close();
-            }
-            return departmentModel;
-        }
-
-        public IEnumerable<DepartmentModel> GetByAddress(string address )
-        {
-            var departmentList = new List<DepartmentModel>();
-            using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand())
-            {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = "Select * from department where location = @Location";
-                command.Parameters.Add("@Location", SqlDbType.NVarChar).Value = address;
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        var departmentModel = new DepartmentModel();
-                        departmentModel.Id = reader[0].ToString();
-                        departmentModel.Name = reader[1].ToString();
-                        departmentModel.Phone = reader[2].ToString();
-                        departmentModel.Location = reader[3].ToString();
-                        departmentModel.Manager = reader[4].ToString();
-                        departmentList.Add(departmentModel);
-                    }
-                }
-                connection.Close();
-            }
-            return departmentList;
+            var query = departmentList.Where(model => model.Id == id);
+            return query.FirstOrDefault();
         }
     }
 }

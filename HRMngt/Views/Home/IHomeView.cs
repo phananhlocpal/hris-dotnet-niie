@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HRMngt.Views.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +10,14 @@ namespace HRMngt.Views
 {
     public interface IHomeView
     {
-        Button btnCheckin { get; }
-        Button btnCheckout { get; }
+        event EventHandler LoadToAddCalandar;
+        
+
+        CheckinDialog ShowCheckInDialog();
+        void ShowCheckoutDialog();
 
         void Show();
+        void ShowNavName(string navName);
 
     }
 }

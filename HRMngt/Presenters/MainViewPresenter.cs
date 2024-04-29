@@ -1,7 +1,11 @@
 ﻿using HRMngt._Repository;
 using HRMngt._Repository.Calendar;
 using HRMngt._Repository.Communicate;
+<<<<<<< HEAD
 using HRMngt._Repository.Request;
+=======
+using HRMngt._Repository.Recruitment;
+>>>>>>> hieu-new
 using HRMngt._Repository.Salary;
 using HRMngt._Repository.Support;
 using HRMngt.Models;
@@ -16,11 +20,16 @@ using HRMngt.Views.Salary;
 using HRMngt.Views.User;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+<<<<<<< HEAD
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+=======
+>>>>>>> hieu-new
 
 namespace HRMngt.Presenters
 {
@@ -48,6 +57,7 @@ namespace HRMngt.Presenters
             mainView.ShowUserInformation(userModel);
             mainView.Show();
         }
+<<<<<<< HEAD
 
         private void ShowRequestView(object sender, EventArgs e)
         {
@@ -58,6 +68,9 @@ namespace HRMngt.Presenters
             new RequestPresenter(requestView, requestRepository, userModel);
         }
 
+=======
+        
+>>>>>>> hieu-new
         private void ShowCommunicateView(object sender, EventArgs e)
         {
             IClientView view = ClientView.GetInstance((MainView)mainView);
@@ -85,8 +98,8 @@ namespace HRMngt.Presenters
         private void ShowRecuitView(object sender, EventArgs e)
         {
             IRecruitView view = RecruitView.GetInstance((MainView)mainView);
-            IUserRepository repository = new UserRepository();
-            new RecruitPresenter(view, repository);
+            IRecruitmentRepository repository = new RecruitmentRepository();
+            new RecruitmentPresenter(view, repository, userModel);
         }
 
         private void ShowLoginView(object sender, EventArgs e)
@@ -114,14 +127,13 @@ namespace HRMngt.Presenters
         private void ShowHomeView(object sender, EventArgs e)
         {
             IHomeView view = Home.GetInstance((MainView)mainView);
-            IUserRepository repository = new UserRepository();
-            new HomePresenter(view, repository);
+            ICalendarRepository repository = new CalendarRepository();
+            new HomePresenter(view, repository, userModel);
         }
 
         private void ShowUserView(object sender, EventArgs e)
         {
             IUserView view = UserView.GetInstance((MainView)mainView);
-            UserModel userModel = new UserModel();
             IUserRepository repository = new UserRepository();
             new UserPresenter(view, repository, userModel);
         }
@@ -131,7 +143,7 @@ namespace HRMngt.Presenters
             IDepartmentView view = DepartmentView.GetInstance((MainView) mainView);
 
             IDepartmentRepository repository = new DepartmentRepository();
-            new DepartmentPresenter(view, repository);
+            new DepartmentPresenter(view, repository, userModel);
         }
         private void ShowThumbTicketView(object sender, EventArgs e)
         {

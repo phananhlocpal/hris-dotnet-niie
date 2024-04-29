@@ -37,7 +37,11 @@ namespace HRMngt.Presenters
             UserModel userModel = new UserModel();
             userModel = repository.Authenticator(username, password);
             // Check authenticator
+<<<<<<< HEAD
             if (userModel != null && !string.IsNullOrEmpty(userModel.Username))
+=======
+            if ((userModel != null && !string.IsNullOrEmpty(userModel.Username)))
+>>>>>>> hieu-new
             {
                 IMainView main = new MainView();
                 new MainViewPresenter(main, userModel);

@@ -8,12 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic.ApplicationServices;
 using System.Windows.Forms;
+using Microsoft.Office.Interop.Excel;
 
 namespace HRMngt._Repository.Calendar
 {
-    public class CalendarRepository: BaseRepository, ICalendarRepository
+    public class CalendarRepository : BaseRepository, ICalendarRepository
     {
-        private string connectionString = BaseRepository.connectionString;
 
         // CRUD
         public void Add(CalendarModel calendarModel)
@@ -23,11 +23,17 @@ namespace HRMngt._Repository.Calendar
             {
                 connection.Open();
                 command.Connection = connection;
+<<<<<<< HEAD
                 command.CommandText = "insert into calendar (userID, date, register_checkIn, register_checkOut, status, requestId) values(@UserID, @Date, @Register_checkIn, @Register_checkOut, @Status, @RequestId)";
+=======
+                command.CommandText = "insert into calendar (userID, date, register_checkIn, register_checkOut, real_checkIn, checkIn_location, status) values(@UserID, @Date, @Register_checkIn, @Register_checkOut, @Real_checkin, @Checkin_location, @Status)";
+>>>>>>> hieu-new
                 command.Parameters.Add("@UserID", SqlDbType.Char).Value = calendarModel.UserId;
                 command.Parameters.Add("@Date", SqlDbType.DateTime).Value = calendarModel.Date;
                 command.Parameters.Add("@Register_checkIn", SqlDbType.Time).Value = calendarModel.CheckIn;
                 command.Parameters.Add("@Register_checkOut", SqlDbType.Time).Value = calendarModel.CheckOut;
+                command.Parameters.Add("@Real_checkin", SqlDbType.Time).Value = calendarModel.RealCheckIn;
+                command.Parameters.Add("@Checkin_location", SqlDbType.NVarChar).Value = GetAddressDepartment(calendarModel.UserId);
                 command.Parameters.Add("@Status", SqlDbType.Char).Value = "Pending";
                 command.Parameters.Add("@RequestId", SqlDbType.Int).Value = calendarModel.RequestId;
                 command.ExecuteNonQuery();
@@ -122,6 +128,33 @@ namespace HRMngt._Repository.Calendar
                 connection.Close();
             }
         }
+        public string GetAddressDepartment(string userID)
+        {
+            string departmentLocation = "";
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "SELECT DISTINCT department.location " +
+                                      "FROM department " +
+                                      "INNER JOIN users ON department.departmentID = users.departmentID " +
+                                      "WHERE users.userID = @userID;";
+                command.Parameters.Add("@userID", SqlDbType.Char).Value = userID;
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        departmentLocation = reader["location"].ToString();
+                    }
+                }
+                connection.Close();
+            }
+
+            return departmentLocation;
+        }
+
+
 
         public int GetRealWorkdayByMonthNYear(string userId, int month, int year)
         {
@@ -130,6 +163,7 @@ namespace HRMngt._Repository.Calendar
 
         // ==========================================================================================================
         // LINQ 
+
         public CalendarModel LINQ_GetModelByUserIdNDate(IEnumerable<CalendarModel> calendarList, string userId, DateTime date)
         {
             var query = calendarList
@@ -197,4 +231,5 @@ namespace HRMngt._Repository.Calendar
             return query;
         }
     }
+        
 }

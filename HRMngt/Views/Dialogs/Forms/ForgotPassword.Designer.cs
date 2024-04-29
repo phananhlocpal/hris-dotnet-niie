@@ -335,6 +335,7 @@
             this.txtSend.TextMarginLeft = 0;
             this.txtSend.TextPadding = new System.Windows.Forms.Padding(0);
             this.txtSend.UseDefaultRadiusAndThickness = true;
+            this.txtSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // btnConfirm
             // 
@@ -424,6 +425,7 @@
             this.btnConfirm.TextMarginLeft = 0;
             this.btnConfirm.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnConfirm.UseDefaultRadiusAndThickness = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnComfirm_Click);
             // 
             // btnBack
             // 
@@ -513,6 +515,7 @@
             this.btnBack.TextMarginLeft = 0;
             this.btnBack.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnBack.UseDefaultRadiusAndThickness = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // pictureBox2
             // 
@@ -528,6 +531,7 @@
             // 
             this.bunifuLabel2.AllowParentOverrides = false;
             this.bunifuLabel2.AutoEllipsis = false;
+            this.bunifuLabel2.Cursor = System.Windows.Forms.Cursors.Default;
             this.bunifuLabel2.CursorType = System.Windows.Forms.Cursors.Default;
             this.bunifuLabel2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuLabel2.Location = new System.Drawing.Point(228, 3);

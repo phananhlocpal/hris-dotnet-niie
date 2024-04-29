@@ -1,4 +1,6 @@
-﻿using HRMngt.Models;
+﻿
+using Bunifu.UI.WinForms.BunifuButton;
+using HRMngt.Models;
 using HRMngt.Views.Dialogs;
 using System;
 using System.Collections.Generic;
@@ -14,6 +16,11 @@ namespace HRMngt.View
         ComboBox cbDepartment { get; }
         ComboBox cbStatus { get; }
         DataGridView dgvUserList { get; }
+
+        BunifuButton2 ButtonAdd { get; }
+        DataGridViewImageColumn ButtonEdit { get; }
+        DataGridViewImageColumn ButtonDelete { get; }
+        DataGridViewImageColumn ButtonRead { get; }
         // Events
         event EventHandler SearchEvent;
         event EventHandler AddNewEvent;
@@ -28,12 +35,13 @@ namespace HRMngt.View
         event EventHandler AddNewDepartmentDialog;
 
         event EventHandler DeleteAll;
+        event EventHandler FilterUser;
 
 
         // Methods
         void ShowUserList(IEnumerable<UserModel> userList);
         UserDialog ShowUserDialogToAdd();
-        UserDialog ShowUserDialogToEdit();
+        UserDialog ShowUserDialogToEdit(string id);
         void Show();
     }
 }

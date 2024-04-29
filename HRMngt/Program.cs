@@ -13,6 +13,7 @@ using HRMngt._Repository;
 using HRMngt.Presenters;
 using HRMngt.Views.Dialogs;
 using HRMngt._Repository.Calendar;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace HRMngt
 {
@@ -29,11 +30,6 @@ namespace HRMngt
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            UserModel userModel = new UserModel();
-            userModel.Id = "NV001";
-            userModel.Name = "Phan Anh Loc";
-            userModel.Position = "Admin";
-            userModel.Roles = "Manager";
             //ITimeKeepingView view = new TimeKeepingView();
             //ICalendarRepository repository = new CalendarRepository();
             //new TimeKeepingPresenter(view, repository, userModel);
@@ -49,6 +45,11 @@ namespace HRMngt
             new LoginPresenter(view, repository);
 
             Application.Run((Form)view);
+
+            /*string sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString;
+            IMainView view = new MainView();
+            new MainViewPresenter(view, userModel);
+            Application.Run((Form)view);*/
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]

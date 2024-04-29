@@ -147,22 +147,20 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnAdd.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAI4AAABFCAYAAACc0t5/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAADUSURBVHhe7dKxEUBAAABBlXzL9KcM+aMAjLl4g40uvWVs
-        cx/becJ/c7/HeQrwzTgkxiExDolxSIxDYhwS45AYh8Q4JMYhMQ6JcUiMQ2IcEuOQGIfEOCTGITEOiXFI
-        jENiHBLjkBiHxDgkxiExDolxSIxDYhwS45AYh8Q4JMYhMQ6JcUiMQ2IcEuOQGIfEOCTGITEOiXFIjENi
-        HBLjkBiHxDgkxiExDolxSIxDYhwS45AYh8Q4JMYhMQ6JcUiMQ2IcEuOQGIfEOCTGIVnGOo+nAK/WeVxU
-        qUidjGYtGwAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAF8AAAAsCAYAAAAD+mSaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACOSURBVHhe7dChAYAwAMAwLtnL8B9n4Dc4AAs1EVF13cYx
+        z3Gsxd/m+cx/C/zB/JD5IfND5ofMD5kfMj9kfsj8kPkh80Pmh8wPmR8yP2R+yPyQ+SHzQ+aHzA+ZHzI/
+        ZH7I/JD5IfND5ofMD5kfMj9kfsj8kPkh80Pmh8wPmR8yP2R+yPzQNvZ5vQU+ts/rBi11opDXTeevAAAA
+        AElFTkSuQmCC
 </value>
   </data>
   <data name="btnExcel.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAI4AAABFCAYAAACc0t5/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAADUSURBVHhe7dKxEUBAAABBlXzL9KcM+aMAjLl4g40uvWVs
-        cx/becJ/c7/HeQrwzTgkxiExDolxSIxDYhwS45AYh8Q4JMYhMQ6JcUiMQ2IcEuOQGIfEOCTGITEOiXFI
-        jENiHBLjkBiHxDgkxiExDolxSIxDYhwS45AYh8Q4JMYhMQ6JcUiMQ2IcEuOQGIfEOCTGITEOiXFIjENi
-        HBLjkBiHxDgkxiExDolxSIxDYhwS45AYh8Q4JMYhMQ6JcUiMQ2IcEuOQGIfEOCTGIVnGOo+nAK/WeVxU
-        qUidjGYtGwAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAF8AAAAsCAYAAAAD+mSaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACOSURBVHhe7dChAYAwAMAwLtnL8B9n4Dc4AAs1EVF13cYx
+        z3Gsxd/m+cx/C/zB/JD5IfND5ofMD5kfMj9kfsj8kPkh80Pmh8wPmR8yP2R+yPyQ+SHzQ+aHzA+ZHzI/
+        ZH7I/JD5IfND5ofMD5kfMj9kfsj8kPkh80Pmh8wPmR8yP2R+yPzQNvZ5vQU+ts/rBi11opDXTeevAAAA
+        AElFTkSuQmCC
 </value>
   </data>
 </root>
