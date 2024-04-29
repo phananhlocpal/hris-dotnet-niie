@@ -24,17 +24,14 @@ namespace HRMngt.View
         public DataGridView DataGridView => dgvThumbTicketTable;
 
         public TextBox txtChooseUserId => txtChooseUserId;
-
-        ComboBox IThumbTicketView.cmbChooseMonth => cmbChooseMonth;
-
         ComboBox IThumbTicketView.cmbChooseType => cmbChooseType;
+
+        public DateTimePicker dtpchooseMonth => dtpChooseMonth;
 
         public event EventHandler LoadThumbTicketDialogToAddEvent;
         public event EventHandler LoadThumbTicketDialogToEditEvent;
         public event EventHandler DeleteEvent;
-        public event EventHandler SearchByMonthEvent;
-        public event EventHandler SearchByTypeEvent;
-        public event EventHandler SearchByUserId;
+        public event EventHandler FilterEvent;
 
         private void RunEvent()
         {
@@ -66,11 +63,11 @@ namespace HRMngt.View
                 }
             };
             // Search by month
-            cmbChooseMonth.SelectedIndexChanged += delegate { SearchByMonthEvent?.Invoke(this, EventArgs.Empty); };
+            dtpChooseMonth.ValueChanged += delegate { FilterEvent?.Invoke(this, EventArgs.Empty); };
             // Search by type
-            cmbChooseType.SelectedIndexChanged += delegate { SearchByTypeEvent?.Invoke(this, EventArgs.Empty); };
+            cmbChooseType.SelectedIndexChanged += delegate { FilterEvent?.Invoke(this, EventArgs.Empty); };
             // Search by user ID
-            txtChooseUserID.TextChanged += delegate { SearchByUserId?.Invoke(this, EventArgs.Empty); };
+            txtChooseUserID.TextChanged += delegate { FilterEvent?.Invoke(this, EventArgs.Empty); };
         }
 
         // (Read) Show all Thumb Ticket 

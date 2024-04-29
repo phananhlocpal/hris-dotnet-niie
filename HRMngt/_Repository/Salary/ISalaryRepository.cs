@@ -10,12 +10,9 @@ namespace HRMngt._Repository.Salary
     public interface ISalaryRepository
     {
         void Add(SalaryModel salary);
-        void Edit(SalaryModel salary);
-        void Delete(string id);
+        void Update(SalaryModel salary);
+        void Delete(string userId, int month, int year);
         IEnumerable<SalaryModel> GetAll();
-        IEnumerable<SalaryListModel> GetList();
-
-        SalaryModel GetByID(string id);
-        SalaryModel GetByKey(string userId, int month, int year);
+        SalaryModel LINQ_GetModelByPK(IEnumerable<SalaryModel> salaryList, string userId, int month, int year);
     }
 }

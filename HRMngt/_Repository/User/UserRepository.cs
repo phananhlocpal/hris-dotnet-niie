@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Web.UI.WebControls;
 using System.Net.Mail;
 using System.Net;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace HRMngt._Repository
 {
@@ -145,7 +146,7 @@ namespace HRMngt._Repository
                         userModel.Birthday = (DateTime)reader[5];
                         userModel.Sex = reader[6].ToString();
                         userModel.Position = reader[7].ToString().Trim();
-                        userModel.Salary = reader[8].ToString();
+                        userModel.Salary = int.Parse(reader[8].ToString());
                         userModel.ManagerID = reader[9].ToString();
                         userModel.DepartmentID = reader[10].ToString();
                         userModel.Contract_type = reader[11].ToString();
@@ -171,14 +172,16 @@ namespace HRMngt._Repository
         public UserModel Authenticator(string username, string password)
         {
             var userModel = new UserModel();
-            if (password != string.Empty || username != string.Empty)
+            if (password != string.Empty && username != string.Empty)
             {
                 using (var connection = new SqlConnection(connectionString))
                 using (var command = new SqlCommand())
                 {
                     connection.Open();
                     command.Connection = connection;
-                    command.CommandText = "select * from users where username='" + username + "' and password='" + password + "'";
+                    command.CommandText = "select * from users where username= @Username and password= @Password";
+                    command.Parameters.Add("@Username", SqlDbType.VarChar).Value = username;
+                    command.Parameters.Add("@Password", SqlDbType.VarChar).Value = password;
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -191,24 +194,23 @@ namespace HRMngt._Repository
                             userModel.Birthday = (DateTime)reader[5];
                             userModel.Sex = reader[6].ToString();
                             userModel.Position = reader[7].ToString().Trim();
-                            userModel.Salary = reader[8].ToString();
-                            userModel.ManagerID = reader[9].ToString();
+                            userModel.Salary = int.Parse(reader[8].ToString());
+                            if (reader.IsDBNull(9))
+                                userModel.ManagerID = reader[0].ToString();
+                            else
+                                userModel.ManagerID = reader[9].ToString();
                             userModel.DepartmentID = reader[10].ToString();
                             userModel.Contract_type = reader[11].ToString();
                             userModel.On_boarding = (DateTime)reader[12];
-                            userModel.Username = reader[13].ToString();
-                            userModel.Password = reader[14].ToString();
                             if (reader[15] != DBNull.Value)
-                            {
-                                userModel.On_boarding = (DateTime)reader[15];
-                            }
-                            if (reader[16] != null)
-                                userModel.Scan_contract = reader[16].ToString();
-                            if (reader[17] != null)
-                                userModel.Note = reader[17].ToString();
-                            userModel.Ava = reader[18].ToString();
-                            userModel.Status = reader[19].ToString();
-                            userModel.Roles = reader[20].ToString().Trim();
+                                userModel.Close_date = (DateTime)reader[13];
+                            userModel.Scan_contract = reader[14].ToString();
+                            userModel.Note = reader[15].ToString();
+                            userModel.Status = reader[16].ToString();
+                            userModel.Roles = reader[17].ToString();
+                            userModel.Username = reader[18].ToString();
+                            userModel.Password = reader[19].ToString();
+                            userModel.Ava = reader[20].ToString();
 
                         }
                     }
@@ -268,6 +270,14 @@ namespace HRMngt._Repository
             }
         }
 
-
+        public UserModel LINQ_getManagerById(IEnumerable<UserModel> userList, string id)
+        {
+            var query = userList
+                .Where(userModel => userModel.Id == id)
+                .ToList()
+                .FirstOrDefault();
+            var result = LINQ_GetModelById(userList, query.ManagerID);
+            return result;
+        }
     }
 }

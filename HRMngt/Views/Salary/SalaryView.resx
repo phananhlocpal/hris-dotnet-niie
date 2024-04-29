@@ -132,9 +132,6 @@
   <metadata name="status.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="btnCheck.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="btnEdit.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -145,22 +142,31 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnAdd.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnExportExcel.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAIIAAAAsCAYAAACpFWBjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACJSURBVHhe7dIxEYAwAMBAlNQy+EMGewuXGQf94aesOcY1
-        73Gtxc7m/Y3wF9iNEYgRiBGIEYgRiBGIEYgRiBGIEYgRiBGIEYgRiBGIEYgRiBGIEYgRiBGIEYgRiBGI
-        EYgRiBGIEYgRiBGIEYgRiBGIEYgRiBGIEYgRiBGIEYgRyDHO+fwFNnLO5wUINbYweWFMDwAAAABJRU5E
-        rkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAIwAAAA7CAYAAACpD2LzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAC8SURBVHhe7dKhDYAwAABBJunKsB9j4At4mpD3J069/W0c
+        8xzHfcO/eb7DrAKsGYbEMCSGITEMiWFIDENiGBLDkBiGxDAkhiExDIlhSAxDYhgSw5AYhsQwJIYhMQyJ
+        YUgMQ2IYEsOQGIbEMCSGITEMiWFIDENiGBLDkBiGxDAkhiExDIlhSAxDYhgSw5AYhsQwJIYhMQyJYUgM
+        Q2IYEsOQGIbEMCSGITEMiWFIDENiGBLDkGxjn9cqwMc+rwcc4TpV9kZB3gAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnExcel.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnApproveAll.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAF0AAAAsCAYAAAAHD7SnAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACOSURBVHhe7dChAYAwAMAwLtnL8B9n4Dc4AAs1EVF13cYx
-        z3GsxV/m+Ux/C3zJ9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9
-        YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6wPTANvZ5vQU+ss/rBnPHt2FULd/vAAAA
-        AElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAAMMAAAA8CAYAAADbuw5mAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAC4SURBVHhe7dOhAYAwAMAwLtnL8B9n4DcQlXywiKjqHuOa
+        97jWgr3N+5vhL8B+zAAxA8QMEDNAzAAxA8QMEDNAzAAxA8QMEDNAzAAxA8QMEDNAzAAxA8QMEDNAzAAx
+        A8QMEDNAzAAxA8QMEDNAzAAxA8QMEDNAzAAxA8QMEDNAzAAxA8QMEDNAzAAxA8QMEDNAzAAxA8QMEDNA
+        zAAxA8QMEDNAzAAxA8QMEDNAzAA5xjmfvwBbOefzAlrjI7GprVNHAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btnExportSalary.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAIkAAAA8CAYAAABSI5kPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAC4SURBVHhe7dKhDYAwAABBJunKsB9j4AsEg2nyC5w49fa3
+        ccxzHPcNa/N8J1kF+JmEZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgmIZmE
+        ZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgm
+        IZmEZBKSSUgmIZmEZBKSSUgmIZmEtI19XqsAn31eD855z2ZrGrwhAAAAAElFTkSuQmCC
 </value>
   </data>
 </root>

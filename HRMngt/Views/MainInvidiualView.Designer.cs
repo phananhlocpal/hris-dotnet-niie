@@ -84,6 +84,9 @@
             this.pnlThumbTicket = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnThumbTicket = new System.Windows.Forms.Button();
+            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.btnRequest = new System.Windows.Forms.Button();
             this.lblHeader.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.pnlIndividualHeader.SuspendLayout();
@@ -114,6 +117,10 @@
             this.pnlSalaryDetail.SuspendLayout();
             this.pnlCalendar.SuspendLayout();
             this.pnlThumbTicket.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            this.kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            this.kryptonPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblHeader
@@ -441,7 +448,7 @@
             this.lblUserId.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblUserId.Location = new System.Drawing.Point(107, 176);
             this.lblUserId.Name = "lblUserId";
-            this.lblUserId.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.lblUserId.Padding = new System.Windows.Forms.Padding(10);
             this.lblUserId.Size = new System.Drawing.Size(174, 45);
             this.lblUserId.TabIndex = 2;
             this.lblUserId.Text = "Mã NV: NV123";
@@ -473,6 +480,7 @@
             // pnlNavbar
             // 
             this.pnlNavbar.AutoSize = true;
+            this.pnlNavbar.Controls.Add(this.kryptonPanel2);
             this.pnlNavbar.Controls.Add(this.pnlSupport);
             this.pnlNavbar.Controls.Add(this.pnlDepartment);
             this.pnlNavbar.Controls.Add(this.pnlTimeKeeping);
@@ -489,7 +497,7 @@
             // 
             // pnlSupport
             // 
-            this.pnlSupport.Controls.Add(this.btnHelp);
+            this.pnlSupport.Controls.Add(this.kryptonPanel1);
             this.pnlSupport.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSupport.Location = new System.Drawing.Point(0, 480);
             this.pnlSupport.Name = "pnlSupport";
@@ -503,7 +511,7 @@
             this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHelp.Image = global::HRMngt.Properties.Resources.image_22;
             this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHelp.Location = new System.Drawing.Point(-18, -11);
+            this.btnHelp.Location = new System.Drawing.Point(-18, -6);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.btnHelp.Size = new System.Drawing.Size(242, 102);
@@ -780,6 +788,41 @@
             this.btnThumbTicket.Text = "Khen thưởng/Kỷ luật";
             this.btnThumbTicket.UseVisualStyleBackColor = false;
             // 
+            // kryptonPanel1
+            // 
+            this.kryptonPanel1.Controls.Add(this.btnRequest);
+            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.Size = new System.Drawing.Size(90, 80);
+            this.kryptonPanel1.StateCommon.Color1 = System.Drawing.Color.White;
+            this.kryptonPanel1.StateCommon.Color2 = System.Drawing.Color.White;
+            this.kryptonPanel1.TabIndex = 8;
+            // 
+            // kryptonPanel2
+            // 
+            this.kryptonPanel2.Controls.Add(this.btnHelp);
+            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonPanel2.Location = new System.Drawing.Point(0, 560);
+            this.kryptonPanel2.Name = "kryptonPanel2";
+            this.kryptonPanel2.Size = new System.Drawing.Size(90, 80);
+            this.kryptonPanel2.StateCommon.Color1 = System.Drawing.Color.White;
+            this.kryptonPanel2.StateCommon.Color2 = System.Drawing.Color.White;
+            this.kryptonPanel2.TabIndex = 9;
+            // 
+            // btnRequest
+            // 
+            this.btnRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRequest.Image = global::HRMngt.Properties.Resources.quote_request__1_;
+            this.btnRequest.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRequest.Location = new System.Drawing.Point(-18, -12);
+            this.btnRequest.Name = "btnRequest";
+            this.btnRequest.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.btnRequest.Size = new System.Drawing.Size(242, 102);
+            this.btnRequest.TabIndex = 10;
+            this.btnRequest.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRequest.UseVisualStyleBackColor = true;
+            // 
             // MainInvidiualView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
@@ -828,6 +871,10 @@
             this.pnlSalaryDetail.ResumeLayout(false);
             this.pnlCalendar.ResumeLayout(false);
             this.pnlThumbTicket.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            this.kryptonPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            this.kryptonPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -890,5 +937,8 @@
         private System.Windows.Forms.Panel pnlThumbTicket;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnThumbTicket;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
+        private System.Windows.Forms.Button btnRequest;
     }
 }

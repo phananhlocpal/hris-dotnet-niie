@@ -101,169 +101,83 @@ namespace HRMngt._Repository
             return ThumbTicketList;
         }
 
-        public ThumbTicketModel GetById(string id)
+        public int GetThumbTotalByMonthNYear(string userId, int month, int year)
         {
-            var thumbTicketModel = new ThumbTicketModel();
+            int thumbTotal = 0;
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "Select * from thumbticket where id = @Id ";
-                command.Parameters.Add("@Id", SqlDbType.Char).Value = id;
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        thumbTicketModel.Id = reader[0].ToString();
-                        thumbTicketModel.Type = reader[1].ToString();
-                        thumbTicketModel.Date = (DateTime)reader[2];
-                        thumbTicketModel.Sender = reader[3].ToString();
-                        thumbTicketModel.Receiver = reader[4].ToString();
-                        thumbTicketModel.Reason = reader[5].ToString();
-                        thumbTicketModel.Money = (int)reader[6];
-                        thumbTicketModel.Complain = reader[7].ToString();
-                        thumbTicketModel.Response = reader[8].ToString();
-                        thumbTicketModel.Status = reader[9].ToString();
-                    }
-                }
-                connection.Close();
-            }
-            return thumbTicketModel;
-        }
-
-        public IEnumerable<ThumbTicketModel> GetByUserId(string id)
-        {
-            var thumbTicketList = new List<ThumbTicketModel>();
-            using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand())
-            {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = "Select * from thumbticket where receiver = @Id ";
-                command.Parameters.Add("@Id", SqlDbType.Char).Value = id;
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        var thumbTicketModel = new ThumbTicketModel();
-                        thumbTicketModel.Id = reader[0].ToString();
-                        thumbTicketModel.Type = reader[1].ToString();
-                        thumbTicketModel.Date = (DateTime)reader[2];
-                        thumbTicketModel.Sender = reader[3].ToString();
-                        thumbTicketModel.Receiver = reader[4].ToString();
-                        thumbTicketModel.Reason = reader[5].ToString();
-                        thumbTicketModel.Money = (int)reader[6];
-                        thumbTicketModel.Complain = reader[7].ToString();
-                        thumbTicketModel.Response = reader[8].ToString();
-                        thumbTicketModel.Status = reader[9].ToString();
-                        thumbTicketList.Add(thumbTicketModel);
-                    }
-                }
-                connection.Close();
-            }
-            return thumbTicketList;
-        }
-
-        public IEnumerable<ThumbTicketModel> GetByMonth(int month)
-        {
-            var thumbTicketList = new List<ThumbTicketModel>();
-            using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand())
-            {
-                connection.Open();
-                command.Connection = connection;
-                // Create command
-                command.CommandText = "SELECT * FROM thumbticket WHERE MONTH(date) = @Month";
+                command.CommandText = "SELECT SUM(money) AS total_bonus\r\nFROM thumbticket\r\nWHERE type = 'Thumb Up'\r\nAND MONTH(date) = @Month\r\nAND YEAR(date) = @Year\r\nAND receiver = @UserId\r\nAND status = 'Done';\r\n";
                 command.Parameters.Add("@Month", SqlDbType.Int).Value = month;
+                command.Parameters.Add("@Year", SqlDbType.Int).Value = year;
+                command.Parameters.Add("@UserId", SqlDbType.Char).Value = userId;
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        var thumbTicketModel = new ThumbTicketModel();
-                        thumbTicketModel.Id = reader[0].ToString();
-                        thumbTicketModel.Type = reader[1].ToString();
-                        thumbTicketModel.Date = (DateTime)reader[2];
-                        thumbTicketModel.Sender = reader[3].ToString();
-                        thumbTicketModel.Receiver = reader[4].ToString();
-                        thumbTicketModel.Reason = reader[5].ToString();
-                        thumbTicketModel.Money = (int)reader[6];
-                        thumbTicketModel.Complain = reader[7].ToString();
-                        thumbTicketModel.Response = reader[8].ToString();
-                        thumbTicketModel.Status = reader[9].ToString();
-                        thumbTicketList.Add(thumbTicketModel);
+                        thumbTotal = (int)reader[0];
                     }
                 }
+                connection.Close();
             }
-
-            if (thumbTicketList.Count > 0)
-            {
-                return thumbTicketList;
-            }
-            else
-            {
-                return null;
-            }
+            return thumbTotal;
         }
 
-
-        public IEnumerable<ThumbTicketModel> GetByType(string type)
+        public int GetTicketTotalByMonthNYear(string userId, int month, int year)
         {
-            var thumbTicketList = new List<ThumbTicketModel>();
+            int ticketTotal = 0;
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
             {
                 connection.Open();
                 command.Connection = connection;
-                // Create command
-                command.CommandText = "SELECT * FROM thumbticket WHERE type = @Type";
-                command.Parameters.Add("@Type", SqlDbType.Char).Value = type;
+                command.CommandText = "SELECT SUM(money) AS total_ticket\r\nFROM thumbticket\r\nWHERE type = 'Ticket'\r\nAND MONTH(date) = @Month\r\nAND YEAR(date) = @Year\r\nAND receiver = @UserId\r\nAND status = 'Done';\r\n";
+                command.Parameters.Add("@Month", SqlDbType.Int).Value = month;
+                command.Parameters.Add("@Year", SqlDbType.Int).Value = year;
+                command.Parameters.Add("@UserId", SqlDbType.Char).Value = userId;
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        var thumbTicketModel = new ThumbTicketModel();
-                        thumbTicketModel.Id = reader[0].ToString();
-                        thumbTicketModel.Type = reader[1].ToString();
-                        thumbTicketModel.Date = (DateTime)reader[2];
-                        thumbTicketModel.Sender = reader[3].ToString();
-                        thumbTicketModel.Receiver = reader[4].ToString();
-                        thumbTicketModel.Reason = reader[5].ToString();
-                        thumbTicketModel.Money = (int)reader[6];
-                        thumbTicketModel.Complain = reader[7].ToString();
-                        thumbTicketModel.Response = reader[8].ToString();
-                        thumbTicketModel.Status = reader[9].ToString();
-                        thumbTicketList.Add(thumbTicketModel);
+                        ticketTotal = (int)reader[0];
                     }
                 }
+                connection.Close();
             }
+            return ticketTotal;
+        }
 
-            if (thumbTicketList.Count > 0)
-            {
-                return thumbTicketList;
-            }
-            else
-            {
-                return null;
-            }
+        public IEnumerable<ThumbTicketModel> LINQ_GetListById(IEnumerable<ThumbTicketModel> thumbTicketList, string id)
+        {
+            var query = thumbTicketList
+                .Where(thumbTicketModel => thumbTicketModel.Id == id)
+                .ToList();
+            return query;
+        }
+
+        public IEnumerable<ThumbTicketModel> LINQ_GetListByUserId(IEnumerable<ThumbTicketModel> thumbTicketList, string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<ThumbTicketModel> LINQ_Filter(IEnumerable<ThumbTicketModel> thumbTicketList, string userId, int month, int year, string type)
+        {
+            var query = thumbTicketList
+                .Where(thumbTicketModel => thumbTicketModel.Receiver == userId && thumbTicketModel.Date.Month == month && thumbTicketModel.Date.Year == year && thumbTicketModel.Type == type)
+                .ToList();
+            return query;
         }
 
         public ThumbTicketModel LINQ_GetModelById(IEnumerable<ThumbTicketModel> thumbTicketList, string id)
         {
-            var query = thumbTicketList.Where(model => model.Id == id).ToList();
+            var query = thumbTicketList
+                .Where(thumbTicketModel => thumbTicketModel.Id == id)
+                .ToList();
             return query.FirstOrDefault();
         }
 
-        public IEnumerable<ThumbTicketModel> LINQ_GetListByUserId(string id)
-        {
-            throw new NotImplementedException();
-        }
 
-        public IEnumerable<ThumbTicketModel> LINQ_Filter(IEnumerable<ThumbTicketModel> thumbTicketList, int month, string type)
-        {
-            throw new NotImplementedException();
-        }
-
-       
     }
 }

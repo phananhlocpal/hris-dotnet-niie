@@ -39,10 +39,14 @@
             this.realCheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RealCheckOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEdit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnDelete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnLeave = new System.Windows.Forms.DataGridViewImageColumn();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCalendarTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,7 +94,8 @@
             this.RealCheckOut,
             this.status,
             this.btnEdit,
-            this.btnDelete});
+            this.btnDelete,
+            this.btnLeave});
             this.dgvCalendarTable.GridStyles.Style = ComponentFactory.Krypton.Toolkit.DataGridViewStyle.Mixed;
             this.dgvCalendarTable.GridStyles.StyleBackground = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.ContextMenuSeparator;
             this.dgvCalendarTable.HideOuterBorders = true;
@@ -176,6 +181,33 @@
             this.status.ReadOnly = true;
             this.status.Width = 200;
             // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "";
+            this.dataGridViewImageColumn1.Image = global::HRMngt.Properties.Resources.update;
+            this.dataGridViewImageColumn1.MinimumWidth = 10;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
+            this.dataGridViewImageColumn1.Width = 125;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.HeaderText = "";
+            this.dataGridViewImageColumn2.Image = global::HRMngt.Properties.Resources.delete;
+            this.dataGridViewImageColumn2.MinimumWidth = 10;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.ReadOnly = true;
+            this.dataGridViewImageColumn2.Width = 125;
+            // 
+            // dataGridViewImageColumn3
+            // 
+            this.dataGridViewImageColumn3.HeaderText = "";
+            this.dataGridViewImageColumn3.Image = global::HRMngt.Properties.Resources.leave;
+            this.dataGridViewImageColumn3.MinimumWidth = 10;
+            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
+            this.dataGridViewImageColumn3.ReadOnly = true;
+            this.dataGridViewImageColumn3.Width = 50;
+            // 
             // btnEdit
             // 
             this.btnEdit.HeaderText = "";
@@ -194,21 +226,39 @@
             this.btnDelete.ReadOnly = true;
             this.btnDelete.Width = 125;
             // 
-            // dataGridViewImageColumn1
+            // btnLeave
             // 
-            this.dataGridViewImageColumn1.HeaderText = "";
-            this.dataGridViewImageColumn1.Image = global::HRMngt.Properties.Resources.update;
-            this.dataGridViewImageColumn1.MinimumWidth = 10;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.Width = 125;
+            this.btnLeave.HeaderText = "";
+            this.btnLeave.Image = global::HRMngt.Properties.Resources.leave__1_;
+            this.btnLeave.MinimumWidth = 10;
+            this.btnLeave.Name = "btnLeave";
+            this.btnLeave.ReadOnly = true;
+            this.btnLeave.Width = 50;
             // 
-            // dataGridViewImageColumn2
+            // comboBox1
             // 
-            this.dataGridViewImageColumn2.HeaderText = "";
-            this.dataGridViewImageColumn2.Image = global::HRMngt.Properties.Resources.delete;
-            this.dataGridViewImageColumn2.MinimumWidth = 10;
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.Width = 125;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "All",
+            "Created",
+            "Approved",
+            "Confirmed",
+            "Leave",
+            "Not Approved"});
+            this.comboBox1.Location = new System.Drawing.Point(141, 27);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(153, 33);
+            this.comboBox1.TabIndex = 27;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Gray;
+            this.label1.Location = new System.Drawing.Point(21, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(109, 25);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Trạng thái";
             // 
             // IndividualCalendarView
             // 
@@ -216,6 +266,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1420, 903);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.dtpChoosePeriod);
             this.Controls.Add(this.btnCurrentDate);
@@ -225,6 +277,7 @@
             this.Text = "IndividualCalendarView";
             ((System.ComponentModel.ISupportInitialize)(this.dgvCalendarTable)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -234,6 +287,8 @@
         private System.Windows.Forms.DateTimePicker dtpChoosePeriod;
         private System.Windows.Forms.Button btnCurrentDate;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvCalendarTable;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
         private System.Windows.Forms.DataGridViewTextBoxColumn checkin;
         private System.Windows.Forms.DataGridViewTextBoxColumn checkout;
@@ -242,7 +297,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private System.Windows.Forms.DataGridViewImageColumn btnEdit;
         private System.Windows.Forms.DataGridViewImageColumn btnDelete;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.DataGridViewImageColumn btnLeave;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

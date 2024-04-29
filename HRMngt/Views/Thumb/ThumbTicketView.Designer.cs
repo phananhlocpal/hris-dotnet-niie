@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.txtChooseUserID = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cmbChooseType = new System.Windows.Forms.ComboBox();
-            this.cmbChooseMonth = new System.Windows.Forms.ComboBox();
             this.btnCreateThumbTicket = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.dgvThumbTicketTable = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,72 +42,35 @@
             this.btnRead = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnUpdate = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnDelete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtpChooseMonth = new System.Windows.Forms.DateTimePicker();
+            this.txtChooseUserID = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvThumbTicketTable)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtChooseUserID
-            // 
-            this.txtChooseUserID.Location = new System.Drawing.Point(233, 29);
-            this.txtChooseUserID.Margin = new System.Windows.Forms.Padding(2);
-            this.txtChooseUserID.Name = "txtChooseUserID";
-            this.txtChooseUserID.Size = new System.Drawing.Size(88, 24);
-            this.txtChooseUserID.StateCommon.Border.Color1 = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtChooseUserID.StateCommon.Border.Color2 = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtChooseUserID.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.txtChooseUserID.StateCommon.Content.Color1 = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtChooseUserID.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtChooseUserID.TabIndex = 10;
-            this.txtChooseUserID.Text = "Mã NV";
             // 
             // cmbChooseType
             // 
             this.cmbChooseType.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbChooseType.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.cmbChooseType.FormattingEnabled = true;
+            this.cmbChooseType.ItemHeight = 25;
             this.cmbChooseType.Items.AddRange(new object[] {
+            "All",
             "Thumb Up",
             "Ticket"});
-            this.cmbChooseType.Location = new System.Drawing.Point(128, 27);
-            this.cmbChooseType.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbChooseType.Location = new System.Drawing.Point(267, 66);
             this.cmbChooseType.Name = "cmbChooseType";
-            this.cmbChooseType.Size = new System.Drawing.Size(89, 24);
+            this.cmbChooseType.Size = new System.Drawing.Size(140, 33);
             this.cmbChooseType.TabIndex = 9;
-            this.cmbChooseType.Text = "Loại";
-            // 
-            // cmbChooseMonth
-            // 
-            this.cmbChooseMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbChooseMonth.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.cmbChooseMonth.FormattingEnabled = true;
-            this.cmbChooseMonth.Items.AddRange(new object[] {
-            "Tháng 1",
-            "Tháng 2",
-            "Tháng 3",
-            "Tháng 4",
-            "Tháng 5",
-            "Tháng 6",
-            "Tháng 7",
-            "Tháng 8",
-            "Tháng 9",
-            "Tháng 10",
-            "Tháng 11",
-            "Tháng 12"});
-            this.cmbChooseMonth.Location = new System.Drawing.Point(22, 27);
-            this.cmbChooseMonth.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbChooseMonth.Name = "cmbChooseMonth";
-            this.cmbChooseMonth.Size = new System.Drawing.Size(89, 24);
-            this.cmbChooseMonth.TabIndex = 8;
-            this.cmbChooseMonth.Text = "Tháng 1";
             // 
             // btnCreateThumbTicket
             // 
             this.btnCreateThumbTicket.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreateThumbTicket.Location = new System.Drawing.Point(704, 18);
-            this.btnCreateThumbTicket.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCreateThumbTicket.Location = new System.Drawing.Point(1126, 57);
             this.btnCreateThumbTicket.Name = "btnCreateThumbTicket";
-            this.btnCreateThumbTicket.Size = new System.Drawing.Size(66, 32);
+            this.btnCreateThumbTicket.Size = new System.Drawing.Size(106, 51);
             this.btnCreateThumbTicket.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.btnCreateThumbTicket.StateCommon.Back.Color2 = System.Drawing.Color.White;
             this.btnCreateThumbTicket.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(158)))), ((int)(((byte)(26)))));
@@ -157,16 +118,15 @@
             this.dgvThumbTicketTable.GridStyles.Style = ComponentFactory.Krypton.Toolkit.DataGridViewStyle.Mixed;
             this.dgvThumbTicketTable.GridStyles.StyleBackground = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.ContextMenuSeparator;
             this.dgvThumbTicketTable.HideOuterBorders = true;
-            this.dgvThumbTicketTable.Location = new System.Drawing.Point(22, 63);
-            this.dgvThumbTicketTable.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvThumbTicketTable.Location = new System.Drawing.Point(35, 130);
             this.dgvThumbTicketTable.Name = "dgvThumbTicketTable";
             this.dgvThumbTicketTable.ReadOnly = true;
             this.dgvThumbTicketTable.RowHeadersVisible = false;
             this.dgvThumbTicketTable.RowHeadersWidth = 90;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(227)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvThumbTicketTable.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(227)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvThumbTicketTable.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvThumbTicketTable.RowTemplate.Height = 50;
             this.dgvThumbTicketTable.RowTemplate.ReadOnly = true;
             this.dgvThumbTicketTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -174,7 +134,7 @@
             this.dgvThumbTicketTable.ShowCellToolTips = false;
             this.dgvThumbTicketTable.ShowEditingIcon = false;
             this.dgvThumbTicketTable.ShowRowErrors = false;
-            this.dgvThumbTicketTable.Size = new System.Drawing.Size(748, 313);
+            this.dgvThumbTicketTable.Size = new System.Drawing.Size(1197, 472);
             this.dgvThumbTicketTable.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.ContextMenuSeparator;
             this.dgvThumbTicketTable.StateCommon.DataCell.Border.Color1 = System.Drawing.Color.White;
             this.dgvThumbTicketTable.StateCommon.DataCell.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -292,18 +252,75 @@
             this.btnDelete.ReadOnly = true;
             this.btnDelete.Width = 80;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Gray;
+            this.label1.Location = new System.Drawing.Point(30, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 25);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Tháng";
+            // 
+            // dtpChooseMonth
+            // 
+            this.dtpChooseMonth.CustomFormat = "MM - yyyy";
+            this.dtpChooseMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpChooseMonth.Location = new System.Drawing.Point(35, 64);
+            this.dtpChooseMonth.MinimumSize = new System.Drawing.Size(4, 50);
+            this.dtpChooseMonth.Name = "dtpChooseMonth";
+            this.dtpChooseMonth.Size = new System.Drawing.Size(200, 50);
+            this.dtpChooseMonth.TabIndex = 17;
+            // 
+            // txtChooseUserID
+            // 
+            this.txtChooseUserID.Location = new System.Drawing.Point(437, 64);
+            this.txtChooseUserID.MinimumSize = new System.Drawing.Size(0, 50);
+            this.txtChooseUserID.Name = "txtChooseUserID";
+            this.txtChooseUserID.Size = new System.Drawing.Size(141, 50);
+            this.txtChooseUserID.StateCommon.Border.Color1 = System.Drawing.SystemColors.ControlDarkDark;
+            this.txtChooseUserID.StateCommon.Border.Color2 = System.Drawing.SystemColors.ControlDarkDark;
+            this.txtChooseUserID.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.txtChooseUserID.StateCommon.Content.Color1 = System.Drawing.SystemColors.ControlDarkDark;
+            this.txtChooseUserID.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtChooseUserID.TabIndex = 10;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Gray;
+            this.label2.Location = new System.Drawing.Point(262, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 25);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Loại";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Gray;
+            this.label3.Location = new System.Drawing.Point(432, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 25);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Mã NV";
+            // 
             // ThumbTicketView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(793, 394);
+            this.ClientSize = new System.Drawing.Size(1269, 630);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dtpChooseMonth);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtChooseUserID);
             this.Controls.Add(this.cmbChooseType);
-            this.Controls.Add(this.cmbChooseMonth);
             this.Controls.Add(this.btnCreateThumbTicket);
             this.Controls.Add(this.dgvThumbTicketTable);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ThumbTicketView";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dgvThumbTicketTable)).EndInit();
@@ -313,10 +330,7 @@
         }
 
         #endregion
-
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtChooseUserID;
         private System.Windows.Forms.ComboBox cmbChooseType;
-        private System.Windows.Forms.ComboBox cmbChooseMonth;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnCreateThumbTicket;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvThumbTicketTable;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
@@ -329,5 +343,10 @@
         private System.Windows.Forms.DataGridViewImageColumn btnRead;
         private System.Windows.Forms.DataGridViewImageColumn btnUpdate;
         private System.Windows.Forms.DataGridViewImageColumn btnDelete;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dtpChooseMonth;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtChooseUserID;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

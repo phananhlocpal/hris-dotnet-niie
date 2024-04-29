@@ -23,12 +23,13 @@ namespace HRMngt._Repository.Calendar
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "insert into calendar (userID, date, register_checkIn, register_checkOut, status) values(@UserID, @Date, @Register_checkIn, @Register_checkOut, @Status)";
+                command.CommandText = "insert into calendar (userID, date, register_checkIn, register_checkOut, status, requestId) values(@UserID, @Date, @Register_checkIn, @Register_checkOut, @Status, @RequestId)";
                 command.Parameters.Add("@UserID", SqlDbType.Char).Value = calendarModel.UserId;
                 command.Parameters.Add("@Date", SqlDbType.DateTime).Value = calendarModel.Date;
                 command.Parameters.Add("@Register_checkIn", SqlDbType.Time).Value = calendarModel.CheckIn;
                 command.Parameters.Add("@Register_checkOut", SqlDbType.Time).Value = calendarModel.CheckOut;
                 command.Parameters.Add("@Status", SqlDbType.Char).Value = "Pending";
+                command.Parameters.Add("@RequestId", SqlDbType.Int).Value = calendarModel.RequestId;
                 command.ExecuteNonQuery();
                 connection.Close();
             }
@@ -72,8 +73,9 @@ namespace HRMngt._Repository.Calendar
                         if (calendarModel.RealCheckOut != null)
                             calendarModel.RealCheckOut = (TimeSpan)reader[5];
                         calendarModel.Status = reader[8].ToString();
-                        calendarModel.UserName = reader[9].ToString();
-                        calendarModel.UserDepartment = reader[10].ToString();
+                        calendarModel.RequestId = int.Parse(reader[9].ToString());
+                        calendarModel.UserName = reader[10].ToString();
+                        calendarModel.UserDepartment = reader[11].ToString();
                         calendarList.Add(calendarModel);
                     }
                 }
@@ -81,6 +83,7 @@ namespace HRMngt._Repository.Calendar
             }
             return calendarList;
         }
+
 
         public void Update(CalendarModel calendarModel)
         {
@@ -120,6 +123,11 @@ namespace HRMngt._Repository.Calendar
             }
         }
 
+        public int GetRealWorkdayByMonthNYear(string userId, int month, int year)
+        {
+            throw new NotImplementedException();
+        }
+
         // ==========================================================================================================
         // LINQ 
         public CalendarModel LINQ_GetModelByUserIdNDate(IEnumerable<CalendarModel> calendarList, string userId, DateTime date)
@@ -139,8 +147,8 @@ namespace HRMngt._Repository.Calendar
         }
         public bool LINQ_checkExistDate(IEnumerable<CalendarModel> calendarList, DateTime date)
         {
-            var exists = calendarList.Any(calendarModel => calendarModel.Date == date);
-            return exists;
+            var existingCalendar = calendarList.FirstOrDefault(calendarModel => calendarModel.Date == date);
+            return existingCalendar != null; // Trả về true nếu có mục thỏa mãn điều kiện
         }
 
         public IEnumerable<CalendarModel> LINQ_Filter(IEnumerable<CalendarModel> calendarList, DateTime start, DateTime end, string departmentName, string status, string userId)
@@ -177,6 +185,14 @@ namespace HRMngt._Repository.Calendar
         {
             var query = calendarList
                 .Where(calendarModel => calendarModel.Date >= start && calendarModel.Date <= end)
+                .ToList();
+            return query;
+        }
+
+        public IEnumerable<CalendarModel> LINQ_GetListByRequestId(IEnumerable<CalendarModel> calendarList, int requestId)
+        {
+            var query = calendarList
+                .Where(calendarModel => calendarModel.RequestId == requestId)
                 .ToList();
             return query;
         }

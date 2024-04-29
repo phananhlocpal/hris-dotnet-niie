@@ -44,7 +44,7 @@ namespace HRMngt.Views.Dialogs
             dgvDetailSalaryTable.Rows[1].Cells[1].Value = "Tổng số ngày làm thực tế";
             dgvDetailSalaryTable.Rows[1].Cells[2].Value = salaryModel.RealWorkday.ToString();
             // Row 3          
-            int gross = (salaryModel.RealWorkday / salaryModel.Workday) * 100 * int.Parse(userModel.Salary);
+            int gross = (salaryModel.RealWorkday / salaryModel.Workday) * 100 * userModel.Salary;
             dgvDetailSalaryTable.Rows[2].Cells[0].Value = "3";
             dgvDetailSalaryTable.Rows[2].Cells[1].Value = "Tổng lương gross";
             dgvDetailSalaryTable.Rows[2].Cells[2].Value = gross.ToString();

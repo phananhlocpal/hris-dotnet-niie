@@ -142,7 +142,7 @@
   <ItemGroup>
     <Compile Include="Models\CalendarModel.cs" />
     <Compile Include="Models\DepartmentModel.cs" />
-    <Compile Include="Models\SalaryListModel.cs" />
+    <Compile Include="Models\RequestModel.cs" />
     <Compile Include="Models\SalaryModel.cs" />
     <Compile Include="Presenters\CommunicatePresenter.cs" />
     <Compile Include="Presenters\HomePresenter.cs" />
@@ -153,6 +153,7 @@
     <Compile Include="Presenters\DepartmentPresenter.cs" />
     <Compile Include="Presenters\MainIndividualPresenter.cs" />
     <Compile Include="Presenters\MainViewPresenter.cs" />
+    <Compile Include="Presenters\RequestPresenter.cs" />
     <Compile Include="Presenters\SalaryPresenter.cs" />
     <Compile Include="Presenters\SupportPresenter.cs" />
     <Compile Include="Presenters\TimeKeepingPresenter.cs" />
@@ -166,6 +167,27 @@
       <DependentUpon>ClientView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Client\IClientView.cs" />
+    <Compile Include="Views\Dialogs\Forms\LeaveDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Dialogs\Forms\LeaveDialog.Designer.cs">
+      <DependentUpon>LeaveDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\Forms\RequestDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Dialogs\Forms\RequestDialog.Designer.cs">
+      <DependentUpon>RequestDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\Interfaces\IRequestDialog.cs" />
+    <Compile Include="Views\Dialogs\Interfaces\ILeaveDialog.cs" />
+    <Compile Include="Views\Request\IRequestView.cs" />
+    <Compile Include="Views\Request\RequestView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Request\RequestView.Designer.cs">
+      <DependentUpon>RequestView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Server\ChatServer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,47 +200,47 @@
     <Compile Include="Views\Department\DepartmentView.Designer.cs">
       <DependentUpon>DepartmentView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\CheckinDialog.cs">
+    <Compile Include="Views\Dialogs\Forms\CheckinDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\CheckinDialog.Designer.cs">
+    <Compile Include="Views\Dialogs\Forms\CheckinDialog.Designer.cs">
       <DependentUpon>CheckinDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\DepartmentDiaglog.cs">
+    <Compile Include="Views\Dialogs\Forms\DepartmentDiaglog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\DepartmentDiaglog.Designer.cs">
+    <Compile Include="Views\Dialogs\Forms\DepartmentDiaglog.Designer.cs">
       <DependentUpon>DepartmentDiaglog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\ForgotPassword.cs">
+    <Compile Include="Views\Dialogs\Forms\ForgotPassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\ForgotPassword.Designer.cs">
+    <Compile Include="Views\Dialogs\Forms\ForgotPassword.Designer.cs">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\RecruitDialog.cs">
+    <Compile Include="Views\Dialogs\Forms\RecruitDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\RecruitDialog.Designer.cs">
+    <Compile Include="Views\Dialogs\Forms\RecruitDialog.Designer.cs">
       <DependentUpon>RecruitDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Dialogs\Interface\IDepartmentDialog.cs" />
-    <Compile Include="Views\Dialogs\Interface\IRecruitViewDialog.cs" />
-    <Compile Include="Views\Dialogs\Interface\IIndividualCalendarDialogForAdding.cs" />
-    <Compile Include="Views\Dialogs\Interface\IIndividualCalendarDialogForEditting.cs" />
+    <Compile Include="Views\Dialogs\Interfaces\IDepartmentDialog.cs" />
+    <Compile Include="Views\Dialogs\Interfaces\IRecruitViewDialog.cs" />
+    <Compile Include="Views\Dialogs\Interfaces\IIndividualCalendarDialogForAdding.cs" />
+    <Compile Include="Views\Dialogs\Interfaces\IIndividualCalendarDialogForEditting.cs" />
     <Compile Include="Views\IndividualCalendar\IIndividualCalendarView.cs" />
-    <Compile Include="Views\Dialogs\Interface\IIndividualSalaryDialog.cs" />
+    <Compile Include="Views\Dialogs\Interfaces\IIndividualSalaryDialog.cs" />
     <Compile Include="Views\IndividualSalary\IIndividualSalaryView.cs" />
-    <Compile Include="Views\Dialogs\Form\IndividualCalendarDialogForAdding.cs">
+    <Compile Include="Views\Dialogs\Forms\IndividualCalendarDialogForAdding.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\IndividualCalendarDialogForAdding.Designer.cs">
+    <Compile Include="Views\Dialogs\Forms\IndividualCalendarDialogForAdding.Designer.cs">
       <DependentUpon>IndividualCalendarDialogForAdding.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\IndividualCalendarDialogForEditting.cs">
+    <Compile Include="Views\Dialogs\Forms\IndividualCalendarDialogForEditting.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\IndividualCalendarDialogForEditting.Designer.cs">
+    <Compile Include="Views\Dialogs\Forms\IndividualCalendarDialogForEditting.Designer.cs">
       <DependentUpon>IndividualCalendarDialogForEditting.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\IndividualCalendar\IndividualCalendarView.cs">
@@ -227,10 +249,10 @@
     <Compile Include="Views\IndividualCalendar\IndividualCalendarView.Designer.cs">
       <DependentUpon>IndividualCalendarView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\IndividualSalaryDialog.cs">
+    <Compile Include="Views\Dialogs\Forms\IndividualSalaryDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\IndividualSalaryDialog.Designer.cs">
+    <Compile Include="Views\Dialogs\Forms\IndividualSalaryDialog.Designer.cs">
       <DependentUpon>IndividualSalaryDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\IndividualSalary\IndividualSalaryView.cs">
@@ -239,7 +261,7 @@
     <Compile Include="Views\IndividualSalary\IndividualSalaryView.Designer.cs">
       <DependentUpon>IndividualSalaryView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Dialogs\Interface\ISupport.cs" />
+    <Compile Include="Views\Dialogs\Interfaces\ISupport.cs" />
     <Compile Include="Views\ClockCountdown.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,17 +275,17 @@
       <DependentUpon>MainInvidiualView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\TimeKeeping\ITimeKeepingView.cs" />
-    <Compile Include="Views\Dialogs\Interface\IUserDialog.cs" />
-    <Compile Include="Views\Dialogs\Form\ResetPassword.cs">
+    <Compile Include="Views\Dialogs\Interfaces\IUserDialog.cs" />
+    <Compile Include="Views\Dialogs\Forms\ResetPassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\ResetPassword.Designer.cs">
+    <Compile Include="Views\Dialogs\Forms\ResetPassword.Designer.cs">
       <DependentUpon>ResetPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\Support.cs">
+    <Compile Include="Views\Dialogs\Forms\Support.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\Support.Designer.cs">
+    <Compile Include="Views\Dialogs\Forms\Support.Designer.cs">
       <DependentUpon>Support.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\TimeKeeping\TimeKeepingView.cs">
@@ -272,10 +294,10 @@
     <Compile Include="Views\TimeKeeping\TimeKeepingView.Designer.cs">
       <DependentUpon>TimeKeepingView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\UserDialog.cs">
+    <Compile Include="Views\Dialogs\Forms\UserDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\UserDialog.Designer.cs">
+    <Compile Include="Views\Dialogs\Forms\UserDialog.Designer.cs">
       <DependentUpon>UserDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Home\Home.cs">
@@ -302,10 +324,10 @@
     <Compile Include="Views\Login\LoginView.Designer.cs">
       <DependentUpon>LoginView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\ProfileDialog.cs">
+    <Compile Include="Views\Dialogs\Forms\ProfileDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\ProfileDialog.Designer.cs">
+    <Compile Include="Views\Dialogs\Forms\ProfileDialog.Designer.cs">
       <DependentUpon>ProfileDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Salary\ISalaryView.cs" />
@@ -328,6 +350,8 @@
     <Compile Include="_Repository\BaseRepository.cs" />
     <Compile Include="_Repository\Department\DepartmentRepository.cs" />
     <Compile Include="_Repository\Department\IDepartmentRepository.cs" />
+    <Compile Include="_Repository\Request\IRequestRepository.cs" />
+    <Compile Include="_Repository\Request\RequestRepository.cs" />
     <Compile Include="_Repository\Salary\ISalaryRepository.cs" />
     <Compile Include="_Repository\Salary\SalaryRepository.cs" />
     <Compile Include="_Repository\OtherRepository\ISupportRepository.cs" />
@@ -351,11 +375,11 @@
     <Compile Include="Views\Thumb\ThumbTicketView.Designer.cs">
       <DependentUpon>ThumbTicketView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Dialogs\Interface\IThumbTicketDialog.cs" />
-    <Compile Include="Views\Dialogs\Form\ThumbTicketDialog.cs">
+    <Compile Include="Views\Dialogs\Interfaces\IThumbTicketDialog.cs" />
+    <Compile Include="Views\Dialogs\Forms\ThumbTicketDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Dialogs\Form\ThumbTicketDialog.Designer.cs">
+    <Compile Include="Views\Dialogs\Forms\ThumbTicketDialog.Designer.cs">
       <DependentUpon>ThumbTicketDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\User\IUserView.cs" />
@@ -388,43 +412,49 @@
     <EmbeddedResource Include="Views\Client\ClientView.resx">
       <DependentUpon>ClientView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Dialogs\Forms\RequestDialog.resx">
+      <DependentUpon>RequestDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Request\RequestView.resx">
+      <DependentUpon>RequestView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Server\ChatServer.resx">
       <DependentUpon>ChatServer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Department\DepartmentView.resx">
       <DependentUpon>DepartmentView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Dialogs\Form\CheckinDialog.resx">
+    <EmbeddedResource Include="Views\Dialogs\Forms\CheckinDialog.resx">
       <DependentUpon>CheckinDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Dialogs\Form\DepartmentDiaglog.resx">
+    <EmbeddedResource Include="Views\Dialogs\Forms\DepartmentDiaglog.resx">
       <DependentUpon>DepartmentDiaglog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Dialogs\Form\ForgotPassword.resx">
+    <EmbeddedResource Include="Views\Dialogs\Forms\ForgotPassword.resx">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Dialogs\Form\RecruitDialog.resx">
+    <EmbeddedResource Include="Views\Dialogs\Forms\RecruitDialog.resx">
       <DependentUpon>RecruitDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Dialogs\Form\IndividualCalendarDialogForAdding.resx">
+    <EmbeddedResource Include="Views\Dialogs\Forms\IndividualCalendarDialogForAdding.resx">
       <DependentUpon>IndividualCalendarDialogForAdding.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Dialogs\Form\IndividualCalendarDialogForEditting.resx">
+    <EmbeddedResource Include="Views\Dialogs\Forms\IndividualCalendarDialogForEditting.resx">
       <DependentUpon>IndividualCalendarDialogForEditting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\IndividualCalendar\IndividualCalendarView.resx">
       <DependentUpon>IndividualCalendarView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Dialogs\Form\IndividualSalaryDialog.resx">
+    <EmbeddedResource Include="Views\Dialogs\Forms\IndividualSalaryDialog.resx">
       <DependentUpon>IndividualSalaryDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\IndividualSalary\IndividualSalaryView.resx">
       <DependentUpon>IndividualSalaryView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Dialogs\Form\ResetPassword.resx">
+    <EmbeddedResource Include="Views\Dialogs\Forms\ResetPassword.resx">
       <DependentUpon>ResetPassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Dialogs\Form\Support.resx">
+    <EmbeddedResource Include="Views\Dialogs\Forms\Support.resx">
       <DependentUpon>Support.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ClockCountdown.resx">
@@ -436,7 +466,7 @@
     <EmbeddedResource Include="Views\TimeKeeping\TimeKeepingView.resx">
       <DependentUpon>TimeKeepingView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Dialogs\Form\UserDialog.resx">
+    <EmbeddedResource Include="Views\Dialogs\Forms\UserDialog.resx">
       <DependentUpon>UserDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\Home.resx">
@@ -448,7 +478,7 @@
     <EmbeddedResource Include="Views\Login\LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Dialogs\Form\ProfileDialog.resx">
+    <EmbeddedResource Include="Views\Dialogs\Forms\ProfileDialog.resx">
       <DependentUpon>ProfileDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Salary\SalaryView.resx">
@@ -457,7 +487,7 @@
     <EmbeddedResource Include="Views\Thumb\ThumbTicketView.resx">
       <DependentUpon>ThumbTicketView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Dialogs\Form\ThumbTicketDialog.resx">
+    <EmbeddedResource Include="Views\Dialogs\Forms\ThumbTicketDialog.resx">
       <DependentUpon>ThumbTicketDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Popups\FailPopUp.resx">
@@ -573,6 +603,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\quote-request %281%29.png" />
+    <None Include="Resources\quote-request.png" />
+    <None Include="Resources\leave %281%29.png" />
+    <None Include="Resources\leave.png" />
     <None Include="Resources\messenger.png" />
     <None Include="Resources\image 231.png" />
     <None Include="Resources\chat.png" />

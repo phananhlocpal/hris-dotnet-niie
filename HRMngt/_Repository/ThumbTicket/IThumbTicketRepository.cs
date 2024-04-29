@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HRMngt.Models;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace HRMngt._Repository
 {
@@ -13,15 +14,13 @@ namespace HRMngt._Repository
         void Update(ThumbTicketModel thumbTicketModel);
         void Delete(string id);
         IEnumerable<ThumbTicketModel> GetAll();
-        IEnumerable<ThumbTicketModel> GetByMonth(int month);
-        IEnumerable<ThumbTicketModel> GetByType(string type);
-        ThumbTicketModel GetById(string id);
-        IEnumerable<ThumbTicketModel> GetByUserId(string id);
 
         // LINQ
         ThumbTicketModel LINQ_GetModelById(IEnumerable<ThumbTicketModel> thumbTicketList, string id);
-        IEnumerable<ThumbTicketModel> LINQ_GetListByUserId(string id);
-        IEnumerable<ThumbTicketModel> LINQ_Filter(IEnumerable<ThumbTicketModel> thumbTicketList, int month, string type);
-
+        IEnumerable<ThumbTicketModel> LINQ_GetListById(IEnumerable<ThumbTicketModel> thumbTicketList, string id);
+        IEnumerable<ThumbTicketModel> LINQ_GetListByUserId(IEnumerable<ThumbTicketModel> thumbTicketList, string id);
+        IEnumerable<ThumbTicketModel> LINQ_Filter(IEnumerable<ThumbTicketModel> thumbTicketList, string userId, int month, int year, string type);
+        int GetThumbTotalByMonthNYear(string userId, int month, int year);
+        int GetTicketTotalByMonthNYear(string userId, int month, int year);
     }
 }

@@ -20,7 +20,7 @@ namespace HRMngt.popup
 
         public static void ShowPopUp()
         {
-            SucessPopUp popup = new SucessPopUp();
+            FailPopUp popup = new FailPopUp();
             popup.Show();
 
         }

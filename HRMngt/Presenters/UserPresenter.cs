@@ -166,7 +166,7 @@ namespace HRMngt.Presenter
             dialog.Phone = "";
             dialog.Address = "";
             dialog.Birthday = DateTime.Now;
-            dialog.Salary = "";
+            dialog.Salary = 0;
             dialog.Username = "";
             dialog.Password = "";
             dialog.On_boarding = DateTime.Now;
@@ -233,7 +233,7 @@ namespace HRMngt.Presenter
         {
             try
             {
-                if(int.Parse(dialog.Salary) < 0)
+                if(dialog.Salary < 0)
                 {
                     MessageBox.Show("Vui lòng nhập lương lớn hơn 0!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

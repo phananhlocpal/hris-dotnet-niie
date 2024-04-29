@@ -40,6 +40,7 @@ namespace HRMngt.View
         public event EventHandler ShowIndividualSalaryView;
         public event EventHandler ShowMainIndividualView;
         public event EventHandler ShowCommunicateView;
+        public event EventHandler ShowRequestView;
 
         public void RunEvent()
         {
@@ -51,9 +52,8 @@ namespace HRMngt.View
             btnSalary.Click += delegate { ShowSalaryView?.Invoke(this, EventArgs.Empty); };
             btnHiring.Click += delegate { ShowRecuitView?.Invoke(this, EventArgs.Empty); };
             btnTimeKeeping.Click += delegate { ShowTimeKeepingView?.Invoke(this, EventArgs.Empty); };
-            btnMessage.Click += delegate {
-                ShowCommunicateView?.Invoke(this, EventArgs.Empty);
-            };
+            btnMessage.Click += delegate { ShowCommunicateView?.Invoke(this, EventArgs.Empty); };
+            btnRequest.Click += delegate { ShowRequestView?.Invoke(this, EventArgs.Empty); };
         }
         private void MainView_Load(object sender, EventArgs e)
         {

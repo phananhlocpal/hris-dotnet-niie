@@ -20,7 +20,7 @@ namespace HRMngt.Models
         private DateTime birthday;
         private string sex;
         private string position;
-        private string salary;
+        private int salary;
         private string username;
         private string password;
         private string managerID;
@@ -45,7 +45,7 @@ namespace HRMngt.Models
         public DateTime Birthday { get => birthday; set => birthday = value; }
         public string Sex { get => sex; set => sex = value; }
         public string Position { get => position; set => position = value; }
-        public string Salary { get => salary; set => salary = value; }
+        public int Salary { get => salary; set => salary = value; }
         public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }
         public string ManagerID { get => managerID; set => managerID = value; }

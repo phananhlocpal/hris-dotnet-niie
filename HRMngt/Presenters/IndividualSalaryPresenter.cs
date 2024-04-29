@@ -17,6 +17,7 @@ namespace HRMngt.Presenters
         private ISalaryRepository salaryRepository;
         private IIndividualSalaryDialog salaryDialog;
         private IEnumerable<CalendarModel> calendarList;
+        private IEnumerable<SalaryModel> salaryList;
 
         public IndividualSalaryPresenter(IIndividualSalaryView salaryView, ISalaryRepository salaryRepository, UserModel userModel)
         {
@@ -25,6 +26,7 @@ namespace HRMngt.Presenters
             this.userModel = userModel;
             ICalendarRepository calendarRepository = new CalendarRepository();
             this.calendarList = calendarRepository.GetAll();
+            this.salaryList = salaryRepository.GetAll();
 
             // Event handler Processing
             this.salaryView.LoadSalaryDialogToViewEvent += LoadSalaryDialogToView;
@@ -70,7 +72,7 @@ namespace HRMngt.Presenters
             int year = selectedDate.Year;
 
             // Show dialog
-            SalaryModel salaryModel = salaryRepository.GetByKey(userModel.Id, month, year);
+            SalaryModel salaryModel = salaryRepository.LINQ_GetModelByPK(salaryList, userModel.Id, month, year);
             salaryDialog = new IndividualSalaryDialog();
             salaryDialog.ShowSalaryInfo(salaryModel, this.userModel);
 

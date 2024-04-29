@@ -13,14 +13,12 @@ namespace HRMngt.Views
     {
         DataGridView DataGridView { get; }
         TextBox txtChooseUserId { get; }
-        ComboBox cmbChooseMonth { get; }
+        DateTimePicker dtpchooseMonth { get; }
         ComboBox cmbChooseType { get; }
 
 
         // Events
-        event EventHandler SearchByMonthEvent;
-        event EventHandler SearchByTypeEvent;
-        event EventHandler SearchByUserId;
+        event EventHandler FilterEvent;
         event EventHandler LoadThumbTicketDialogToAddEvent;
         event EventHandler LoadThumbTicketDialogToEditEvent;
         event EventHandler DeleteEvent;

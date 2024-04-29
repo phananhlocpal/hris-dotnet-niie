@@ -1,6 +1,7 @@
 ﻿using HRMngt._Repository;
 using HRMngt._Repository.Calendar;
 using HRMngt._Repository.Communicate;
+using HRMngt._Repository.Request;
 using HRMngt._Repository.Salary;
 using HRMngt._Repository.Support;
 using HRMngt.Models;
@@ -10,6 +11,7 @@ using HRMngt.Views;
 using HRMngt.Views.Client;
 using HRMngt.Views.Dialogs;
 using HRMngt.Views.HR;
+using HRMngt.Views.Request;
 using HRMngt.Views.Salary;
 using HRMngt.Views.User;
 using System;
@@ -18,6 +20,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace HRMngt.Presenters
 {
@@ -41,8 +44,18 @@ namespace HRMngt.Presenters
             mainView.ShowTimeKeepingView += ShowTimeKeepingView;
             mainView.ShowMainIndividualView += ShowMainIndividualView;
             mainView.ShowCommunicateView += ShowCommunicateView;
+            mainView.ShowRequestView += ShowRequestView;
             mainView.ShowUserInformation(userModel);
             mainView.Show();
+        }
+
+        private void ShowRequestView(object sender, EventArgs e)
+        {
+            
+            IRequestView requestView = RequestView.GetInstance((MainView)mainView);
+            IRequestRepository requestRepository = new RequestRepository();
+
+            new RequestPresenter(requestView, requestRepository, userModel);
         }
 
         private void ShowCommunicateView(object sender, EventArgs e)
@@ -88,7 +101,7 @@ namespace HRMngt.Presenters
             ISalaryView view = SalaryView.GetInstance((MainView)mainView);
             ISalaryRepository repository = new SalaryRepository();
 
-            new SalaryPresenter(view, repository);
+            new SalaryPresenter(view, repository, userModel);
         }
 
         private void ShowSupportView(object sender, EventArgs e)

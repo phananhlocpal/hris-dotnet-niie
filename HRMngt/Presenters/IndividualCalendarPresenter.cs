@@ -1,4 +1,6 @@
-﻿using HRMngt._Repository.Calendar;
+﻿using HRMngt._Repository;
+using HRMngt._Repository.Calendar;
+using HRMngt._Repository.Request;
 using HRMngt.Models;
 using HRMngt.popup;
 using HRMngt.Views.Dialogs;
@@ -46,6 +48,7 @@ namespace HRMngt.Presenters
         {
             // Create calendar dialog
             addDialog = this.view.ShowCalendarDialogToAdd();
+            addDialog.ShowListDate();
 
             // Event Handle for Update ThumbTicket dialog
             addDialog.CreateEvent += AddDialog_CreateEvent;
@@ -60,18 +63,34 @@ namespace HRMngt.Presenters
             if (dialog != null)
             {
                 // Save the added content to thumbticket model 
-                CalendarModel calendarModel = new CalendarModel();
-                calendarModel = dialog.getCalendarInfo();
-                calendarModel.UserId = userModel.Id;
+                IEnumerable<CalendarModel> calendarRegisterList = new List<CalendarModel>();
+                calendarRegisterList = dialog.getCalendarInfo();
 
-                if (repository.LINQ_checkExistDate(calendarList, calendarModel.Date) == true)
+                // Check exist date
+                if (CheckExistDate(calendarRegisterList) == true)
                 {
-                    MessageBox.Show($"Ngày {calendarModel.Date.ToString("dd/MM/yyyy")} đã được đăng ký!");
+                    MessageBox.Show("Có ngày bạn đã đăng ký");
                     FailPopUp.ShowPopUp();
-                }
+                }    
                 else
                 {
-                    repository.Add(calendarModel);
+                    // Create request
+                    RequestModel requestModel = new RequestModel();
+                    IRequestRepository requestRepository = new RequestRepository();
+                    requestModel.Type = "Calendar";
+                    requestModel.Time = DateTime.Now;
+                    requestModel.Sender = userModel.Id;
+                    requestModel.Approver = userModel.ManagerID;
+                    requestModel.Status = 0;
+                    requestModel = requestRepository.Add(requestModel);
+
+                    foreach (CalendarModel calendarModel in calendarRegisterList)
+                    {
+                        calendarModel.UserId = userModel.Id;
+                        calendarModel.RequestId = requestModel.Id;
+                        repository.Add(calendarModel);
+                    }
+                    
                     calendarList = repository.GetAll();
 
                     // Close dialog and refresh list
@@ -80,6 +99,21 @@ namespace HRMngt.Presenters
                     SucessPopUp.ShowPopUp();
                 }
             }
+        }
+
+        private bool CheckExistDate(IEnumerable<CalendarModel> calendarRegisterList)
+        {
+            // Ensure that calendarList is initialized and contains data
+            if (calendarList == null)
+                return false;
+
+            foreach (CalendarModel calendarModel in calendarRegisterList)
+            {
+                // Check if the date already exists in the calendarList
+                if (repository.LINQ_checkExistDate(calendarList, calendarModel.Date))
+                    return true;
+            }
+            return false;
         }
 
 

@@ -77,7 +77,7 @@ namespace HRMngt.Views.Dialogs
         public DateTime Birthday { get => birthday.Value; set => birthday.Value = value; }
         public string Sex { get => cbSex.Text; set => cbSex.Text = value; }
         public string Position { get => cbPosition.Text; set => cbPosition.Text = value; }
-        public string Salary { get => txtSalary.Text; set => txtSalary.Text = value; }
+        public int Salary { get => int.Parse(txtSalary.Text); set => txtSalary.Text = value.ToString(); }
         public string Username { get => txtUsername.Text; set => txtUsername.Text = value; }
         public string Password { get => txtPassword.Text; set => txtPassword.Text = value; }
         public string ManagerID { 

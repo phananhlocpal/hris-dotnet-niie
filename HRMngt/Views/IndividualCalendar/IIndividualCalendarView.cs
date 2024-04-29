@@ -19,10 +19,13 @@ namespace HRMngt.Views.Dialogs
         event EventHandler LoadCalendarDialogToUpdateEvent;
         event EventHandler DeleteCalendarEvent;
         event EventHandler LoadCalendarDialogToCreateEvent;
+        event EventHandler Filter;
+        event EventHandler LeaveEvent;
 
         // Methods
         IndividualCalendarDialogForEditting ShowCalendarDialogToEdit();
         IndividualCalendarDialogForAdding ShowCalendarDialogToAdd();
+
 
         void ShowCalendarList(IEnumerable<CalendarModel> CalendarList);
         void Show();

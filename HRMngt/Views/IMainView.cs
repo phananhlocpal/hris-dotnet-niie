@@ -21,6 +21,7 @@ namespace HRMngt.Views
         event EventHandler ShowIndividualSalaryView;
         event EventHandler ShowMainIndividualView;
         event EventHandler ShowCommunicateView;
+        event EventHandler ShowRequestView;
         void Show();
         void ShowUserInformation(UserModel userModel);
         void Hide();

@@ -63,12 +63,23 @@ namespace HRMngt.View
                 btnSalaryDetail.ForeColor = Color.FromArgb(111, 111, 111);
                 panel3.BackColor = Color.White;
             };
-
-            btnTimeKeeping.Click += delegate
-            {
-                ShowTimeKeepingView?.Invoke(this, EventArgs.Empty);
-            };
             //ShowProfile();
+
+            RunEvent();
+        }
+
+        private void RunEvent()
+        {
+            btnHome.Click += delegate { ShowHomeView?.Invoke(this, EventArgs.Empty); };
+            btnEmployee.Click += delegate { ShowUserView?.Invoke(this, EventArgs.Empty); };
+            btnSalary.Click += delegate { ShowSalaryView?.Invoke(this, EventArgs.Empty); };
+            btnHiring.Click += delegate { ShowRecuitView?.Invoke(this, EventArgs.Empty); };
+            btnTimeKeeping.Click += delegate { ShowTimeKeepingView?.Invoke(this, EventArgs.Empty); };
+            btnDepartment.Click += delegate { ShowDepartmentView?.Invoke(this, EventArgs.Empty); };
+            btnRequest.Click += delegate { ShowRequestView?.Invoke(this, EventArgs.Empty); };
+            btnHelp.Click += delegate { ShowSupportView?.Invoke(this, EventArgs.Empty); };
+
+
         }
 
         private void MainIndividualView_Load(object sender, EventArgs e)
@@ -88,6 +99,16 @@ namespace HRMngt.View
         public event EventHandler ShowIndividualSalaryView;
         public event EventHandler ShowIndividualCalendarView;
         public event EventHandler ShowTimeKeepingView;
+        public event EventHandler ShowDepartmentView;
+        public event EventHandler ShowHomeView;
+        public event EventHandler ShowUserView;
+        public event EventHandler ShowSupportView;
+        public event EventHandler ShowSalaryView;
+        public event EventHandler ShowLoginEvent;
+        public event EventHandler ShowRecuitView;
+        public event EventHandler ShowMainView;
+        public event EventHandler ShowCommunicateView;
+        public event EventHandler ShowRequestView;
 
         private void txtNavSearch_Leave(object sender, EventArgs e)
         {

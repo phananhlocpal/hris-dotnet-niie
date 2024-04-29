@@ -20,10 +20,21 @@ namespace HRMngt.Views
         event EventHandler ShowIndividualSalaryView;
         event EventHandler ShowIndividualCalendarView;
 
+        event EventHandler ShowDepartmentView;
+        event EventHandler ShowHomeView;
+        event EventHandler ShowUserView;
+        event EventHandler ShowSupportView;
+        event EventHandler ShowSalaryView;
+        event EventHandler ShowLoginEvent;
+        event EventHandler ShowRecuitView;
         event EventHandler ShowTimeKeepingView;
+        event EventHandler ShowMainView;
+        event EventHandler ShowCommunicateView;
+        event EventHandler ShowRequestView;
 
         void ShowUserList(IEnumerable<UserModel> userList);
 
         void Show();
+        void Hide();
     }
 }

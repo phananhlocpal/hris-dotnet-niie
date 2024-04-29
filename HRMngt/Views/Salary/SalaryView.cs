@@ -19,6 +19,14 @@ namespace HRMngt.Views
 {
     public partial class SalaryView : Form, ISalaryView
     {
+        ComboBox ISalaryView.cmbDepartment => cmbDepartment;
+
+        ComboBox ISalaryView.cmbStatus => cmbStatus;
+
+        DataGridView ISalaryView.dgvSalaryTable => dgvSalaryTable;
+
+        DateTimePicker ISalaryView.dtpChooseMonth => dtpChooseMonth;
+
         public SalaryView()
         {
             InitializeComponent();
@@ -26,24 +34,38 @@ namespace HRMngt.Views
 
         private void RunEvent()
         {
-            /*btnAdd.Click += delegate { LoadSalaryDialogToAddEvent?.Invoke(this, EventArgs.Empty); };*/
-            dgvSalaryList.CellContentClick += (sender, e) =>
+            cmbDepartment.SelectedIndexChanged += delegate { FilterEvent?.Invoke(this, EventArgs.Empty); };
+            cmbStatus.SelectedIndexChanged += delegate { FilterEvent?.Invoke(this, EventArgs.Empty); };
+            dtpChooseMonth.ValueChanged += delegate { ShowSalaryTableEvent?.Invoke(this, EventArgs.Empty); };
+            btnExportSalary.Click += delegate { ExportExcelEvent?.Invoke(this, EventArgs.Empty); };
+            btnApproveAll.Click += delegate { ApproveAllEvent?.Invoke(this, EventArgs.Empty); };
+            btnExportExcel.Click += delegate { ExportExcelEvent?.Invoke(this, EventArgs.Empty); };
+            dgvSalaryTable.CellContentClick += (sender, e) =>
             {
-                if (e.RowIndex >= 0 && e.ColumnIndex == dgvSalaryList.Columns[5].Index)
+                if (e.RowIndex >= 0 && e.ColumnIndex == dgvSalaryTable.Columns[5].Index)
                 {
-                    CheckSalary?.Invoke(this, EventArgs.Empty);
+                    LoadSalaryDialogToEditEvent?.Invoke(this, EventArgs.Empty);
+                }
+            };
+            dgvSalaryTable.CellContentClick += (sender, e) =>
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex == dgvSalaryTable.Columns[5].Index)
+                {
+                    DeleteEvent?.Invoke(this, EventArgs.Empty);
                 }
             };
         }
-        public event EventHandler CheckSalary;
-        public event EventHandler LoadSalaryToEdit;
-        public event EventHandler LoadSalaryToDelete;
 
-        ComboBox ISalaryView.cbDepartment => cbDepartment;
+        public event EventHandler FilterEvent;
+        public event EventHandler ShowSalaryTableEvent;
+        public event EventHandler ExportSalaryEvent;
+        public event EventHandler ApproveAllEvent;
+        public event EventHandler ExportExcelEvent;
+        public event EventHandler LoadSalaryDialogToEditEvent;
+        public event EventHandler DeleteEvent;
 
-        ComboBox ISalaryView.cbStatus => cbStatus;
+        
 
-        DataGridView ISalaryView.dgvSalaryList => dgvSalaryList;
         private static SalaryView instance;
         public static SalaryView GetInstance(Form parentContainer)
         {
@@ -106,7 +128,7 @@ namespace HRMngt.Views
         {
             if (saveExcel.ShowDialog() == DialogResult.OK)
             {
-                ToExcel(dgvSalaryList, saveExcel.FileName);
+                ToExcel(dgvSalaryTable, saveExcel.FileName);
             }
         }
 
@@ -120,32 +142,33 @@ namespace HRMngt.Views
             throw new NotImplementedException();
         }
 
-        public void ShowSalaryList(IEnumerable<SalaryListModel> salaryList)
+        public void ShowSalaryList(IEnumerable<SalaryModel> salaryList)
         {
             if (salaryList != null)
             {
-                dgvSalaryList.Rows.Clear();
+                dgvSalaryTable.Rows.Clear();
 
                 foreach (var salary in salaryList)
                 {
-                    int rowIndex = dgvSalaryList.Rows.Add();
-                    dgvSalaryList.Rows[rowIndex].Cells[0].Value = salary.UserId;
-                    dgvSalaryList.Rows[rowIndex].Cells[1].Value = salary.Name;
+                    int rowIndex = dgvSalaryTable.Rows.Add();
+                    dgvSalaryTable.Rows[rowIndex].Cells[0].Value = salary.UserId;
+                    dgvSalaryTable.Rows[rowIndex].Cells[1].Value = salary.UserName;
                     
-                    dgvSalaryList.Rows[rowIndex].Cells[2].Value = salary.ContractType;
-                    dgvSalaryList.Rows[rowIndex].Cells[3].Value = salary.Position;
-                    dgvSalaryList.Rows[rowIndex].Cells[4].Value = "• "+salary.SalaryStatus;
-                    if (salary.SalaryStatus == "Đã xác nhận")
+                    dgvSalaryTable.Rows[rowIndex].Cells[2].Value = salary.Contract_type;
+                    dgvSalaryTable.Rows[rowIndex].Cells[3].Value = salary.Position;
+                    dgvSalaryTable.Rows[rowIndex].Cells[4].Value = "• "+salary.Status;
+                    if (salary.Status == "Đã xác nhận")
                     {
-                        dgvSalaryList.Rows[rowIndex].Cells[4].Style.ForeColor = Color.FromArgb(69, 158, 26);
+                        dgvSalaryTable.Rows[rowIndex].Cells[4].Style.ForeColor = Color.FromArgb(69, 158, 26);
                     }
                     else
                     {
-                        dgvSalaryList.Rows[rowIndex].Cells[4].Style.ForeColor = Color.Red;
+                        dgvSalaryTable.Rows[rowIndex].Cells[4].Style.ForeColor = Color.Red;
                     }
                 }
             }
-            else dgvSalaryList.Rows.Clear();
+            else dgvSalaryTable.Rows.Clear();
         }
+
     }
 }

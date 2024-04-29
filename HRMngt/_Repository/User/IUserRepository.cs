@@ -23,6 +23,8 @@ namespace HRMngt._Repository
         IEnumerable<UserModel> LINQ_GetManagerList(IEnumerable<UserModel> userList);
 
         void SendMail(string password, string userID);
-        
+        UserModel LINQ_getManagerById(IEnumerable<UserModel> userList, string id);
+
+
     }
 }

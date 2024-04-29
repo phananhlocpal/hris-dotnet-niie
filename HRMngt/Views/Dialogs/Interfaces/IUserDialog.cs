@@ -17,7 +17,7 @@ namespace HRMngt.Views.Dialogs
         DateTime Birthday { get; set; }
         string Sex { get; set; }
         string Position { get; set; }
-        string Salary { get; set; }
+        int Salary { get; set; }
         string Username { get; set; }
         string Password { get; set; }
         string ManagerID { get; set; }

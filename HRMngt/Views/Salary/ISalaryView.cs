@@ -11,20 +11,23 @@ namespace HRMngt.Views.Salary
 {
     public interface ISalaryView
     {
-        ComboBox cbDepartment { get; }
-        ComboBox cbStatus { get; }
-        DataGridView dgvSalaryList { get; }
+        ComboBox cmbDepartment { get; }
+        ComboBox cmbStatus { get; }
+        DataGridView dgvSalaryTable { get; }
+        DateTimePicker dtpChooseMonth { get; }
 
-        event EventHandler CheckSalary;
-        event EventHandler LoadSalaryToEdit;
-        event EventHandler LoadSalaryToDelete;
+        event EventHandler FilterEvent;
+        event EventHandler ShowSalaryTableEvent;
+        event EventHandler ExportSalaryEvent;
+        event EventHandler ApproveAllEvent;
+        event EventHandler ExportExcelEvent;
+        event EventHandler LoadSalaryDialogToEditEvent;
+        event EventHandler DeleteEvent;
         
 
-        //ThumbTicketDialog ShowThumbTicketDialogToAdd();
-        //ThumbTicketDialog ShowThumbTicketDialogToUpdate(string id);
         DepartmentDiaglog ShowSalaryDialogToAdd();
         DepartmentDiaglog ShowSalaryDialogToEdit(string id);
-        void ShowSalaryList(IEnumerable<SalaryListModel> salaryList);
+        void ShowSalaryList(IEnumerable<SalaryModel> salaryList);
         void Show();
     }
 }

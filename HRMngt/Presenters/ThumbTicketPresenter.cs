@@ -35,12 +35,30 @@ namespace HRMngt.Presenter
             this.view.LoadThumbTicketDialogToAddEvent += LoadThumbTicketDialogToAdd;
             this.view.LoadThumbTicketDialogToEditEvent += LoadThumbTicketDialogToEdit;
             this.view.DeleteEvent += DeleteSelectedThumbTicket;
+            this.view.FilterEvent += Filter;
+
+            // Enable button
+            if (userModel.Roles == "HR")
+                return;
 
             // Show thumbticket list when starting
             ReadPermit();
 
             //Show view
             this.view.Show();
+        }
+
+        private void Filter(object sender, EventArgs e)
+        {
+            int month = view.dtpchooseMonth.Value.Month;
+            int year = view.dtpchooseMonth.Value.Year;
+            string type = view.cmbChooseType.SelectedIndex.ToString();
+            string userId = view.txtChooseUserId.Text;
+
+            IEnumerable<ThumbTicketModel> thumbTicketTempList = new List<ThumbTicketModel>();
+            thumbTicketTempList = this.thumbTicketRepository.LINQ_Filter(thumbTicketTempList, userId, month, year, type);
+
+            this.view.ShowAllThumbTicketList(thumbTicketTempList);
         }
 
         private void DeleteSelectedThumbTicket(object sender, EventArgs e)
@@ -160,7 +178,6 @@ namespace HRMngt.Presenter
             dialog = this.view.ShowThumbTicketDialogToAdd();
 
             // Get id for sender and receiver
-            // Get id for sender and receiver
             IEnumerable<UserModel> userList = new List<UserModel>();
             IUserRepository userRepository = new UserRepository();
             userList = userRepository.GetAll();
@@ -201,7 +218,7 @@ namespace HRMngt.Presenter
                 MessageBox.Show(stringNoti);
             else
             {
-                thumbTicketRepository.Add(thumbTicketModel);
+                AddPermit(thumbTicketModel);
                 // Close dialog and refresh list
                 ReadPermit();
                 SucessPopUp.ShowPopUp();
@@ -221,7 +238,7 @@ namespace HRMngt.Presenter
             else if (userModel.Position == "User")
             {
                 string id = userModel.Id;
-                thumbTicketList = thumbTicketRepository.GetByUserId(id);
+                thumbTicketList = thumbTicketRepository.LINQ_GetListById(thumbTicketList, id);
                 this.view.ShowAllThumbTicketList(thumbTicketList);
             }
             else if (userModel.Position == "Manager")
@@ -272,15 +289,18 @@ namespace HRMngt.Presenter
             }
         }
         // Add
-        private void AddPermit()
+        private void AddPermit(ThumbTicketModel thumbTicketModel)
         {
             if (userModel.Position == "Admin")
             {
+                if (thumbTicketModel.Id != userModel.Id)
+                    thumbTicketRepository.Add(thumbTicketModel);
+                else MessageBox.Show("Không được tạo cho bản thân nhéeee!");
 
             }
             else if (userModel.Position == "HR")
             {
-
+                
             }
 
             else if (userModel.Position == "User")
@@ -289,7 +309,10 @@ namespace HRMngt.Presenter
             }
             else if (userModel.Position == "Manager")
             {
-
+                if (thumbTicketModel.Id != userModel.Id)
+                    thumbTicketRepository.Add(thumbTicketModel);
+                else MessageBox.Show("Không được tạo cho bản thân nhéeee!");
+                
             }
         }
     }
