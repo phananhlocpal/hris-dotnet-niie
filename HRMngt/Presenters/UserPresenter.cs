@@ -86,14 +86,18 @@ namespace HRMngt.Presenter
             IEnumerable<UserModel> userList;
             List<string> departmentIDNameList = new List<string>();
             userList = repository.GetAll();
-            departmentIDNameList = repository.GetDepartmentIDName();
 
-            this.dialog.ShowDepartmentIdNName(departmentIDNameList);
+            // Show Department Id - Name
+            IDepartmentRepository departmentRepository = new DepartmentRepository();
+            IEnumerable<DepartmentModel> departmentList = departmentRepository.GetAll();
+            this.dialog.ShowDepartmentIdNName(departmentList);
             dialog.ShowUserIDName(userList);
 
             DataGridViewRow selectedRow = view.dgvUserList.CurrentRow;
             string id = selectedRow.Cells[1].Value.ToString();
-            UserModel user = repository.GetById(id);
+            UserModel user = repository.LINQ_GetModelById(userList, id);
+            UserModel manager = repository.LINQ_GetModelById(userList, user.ManagerID);
+            DepartmentModel department = departmentRepository.LINQ_GetModelById(departmentList, user.DepartmentID);
 
             dialog.ID = user.Id;
             dialog.Fullname = user.Name;
@@ -104,10 +108,10 @@ namespace HRMngt.Presenter
             dialog.Salary = user.Salary;
             dialog.Username = user.Username;
             dialog.Password = user.Password;
-            dialog.ManagerID = $"{user.ManagerID} - {repository.GetNameById(user.ManagerID)}";
-            dialog.DepartmentID = $"{user.DepartmentID} - {repository.GetNameDepartmentById(user.DepartmentID)}";
+            dialog.ManagerID = $"{manager.Id} - {manager.Name}";
+            dialog.DepartmentID = $"{department.Id} - {department.Name}";
             dialog.On_boarding = user.On_boarding;
-            dialog.Close_date = user.Close_date;
+            dialog.Close_date = user.Close_date.Value;
             dialog.Scan_contract = user.Scan_contract;
             dialog.Note = user.Note;
             dialog.Sex = user.Sex;
@@ -177,16 +181,14 @@ namespace HRMngt.Presenter
         private void LoadUserDialogToAddEvent(object sender, EventArgs e)
         {
             dialog = this.view.ShowUserDialogToAdd();
-            List<string> userIdNNameList = new List<string>();
-            List<string> departmentIDNameList = new List<string>();
-            DepartmentModel departmentModel = new DepartmentModel();
-            userIdNNameList = repository.GetUserIdNName();
-            departmentIDNameList = repository.GetDepartmentIDName();
+
             // Add user to sender and receiver
-            dialog.ShowUserIdNName(userIdNNameList);
-            dialog.ShowDepartmentIdNName(departmentIDNameList);
-            dialog.ManagerID = $"{userModel.Id} - {userModel.Name}";
-            dialog.DepartmentID = $"{departmentModel.Id} - {departmentModel.Name}";
+            IDepartmentRepository departmentRepository = new DepartmentRepository();
+            IEnumerable<UserModel> userList = repository.GetAll();
+            IEnumerable<DepartmentModel> departmentList = departmentRepository.GetAll();
+            dialog.ShowUserIdNName(userList);
+            dialog.ShowDepartmentIdNName(departmentList);
+
 
             dialog.CheckConditionSalary += CheckConditionSalary;
             dialog.CheckConditionEmail += CheckConditionEmail;
@@ -274,11 +276,7 @@ namespace HRMngt.Presenter
         {
             try
             {
-<<<<<<< HEAD
-                if(dialog.Salary < 0)
-=======
-                if (int.Parse(dialog.Salary) < 0)
->>>>>>> hieu-new
+                if (dialog.Salary < 0)
                 {
                     MessageBox.Show("Vui lòng nhập lương lớn hơn 0!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

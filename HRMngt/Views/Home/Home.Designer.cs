@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbName = new System.Windows.Forms.Label();
+            this.lblWelcome = new System.Windows.Forms.Label();
             this.lbClick = new System.Windows.Forms.Label();
             this.btnCheckin = new System.Windows.Forms.PictureBox();
             this.btnCheckout = new System.Windows.Forms.PictureBox();
@@ -38,45 +37,38 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnCheckout)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lblWelcome
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label1.Location = new System.Drawing.Point(373, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 38);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Welcome";
-            // 
-            // lbName
-            // 
-            this.lbName.AutoSize = true;
-            this.lbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbName.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.lbName.Location = new System.Drawing.Point(520, 19);
-            this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(144, 38);
-            this.lbName.TabIndex = 2;
-            this.lbName.Text = "Xin chào";
+            this.lblWelcome.AutoSize = true;
+            this.lblWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcome.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.lblWelcome.Location = new System.Drawing.Point(647, 29);
+            this.lblWelcome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(248, 61);
+            this.lblWelcome.TabIndex = 1;
+            this.lblWelcome.Text = "Welcome";
+            this.lblWelcome.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lbClick
             // 
             this.lbClick.AutoSize = true;
             this.lbClick.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbClick.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.lbClick.Location = new System.Drawing.Point(365, 146);
+            this.lbClick.Location = new System.Drawing.Point(479, 264);
+            this.lbClick.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbClick.Name = "lbClick";
-            this.lbClick.Size = new System.Drawing.Size(299, 38);
+            this.lbClick.Size = new System.Drawing.Size(630, 61);
             this.lbClick.TabIndex = 4;
-            this.lbClick.Text = "Click to Attandance";
+            this.lbClick.Text = "Click to check attandance";
             // 
             // btnCheckin
             // 
             this.btnCheckin.Image = global::HRMngt.Properties.Resources.check_in;
-            this.btnCheckin.Location = new System.Drawing.Point(292, 201);
+            this.btnCheckin.Location = new System.Drawing.Point(536, 359);
+            this.btnCheckin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCheckin.Name = "btnCheckin";
-            this.btnCheckin.Size = new System.Drawing.Size(411, 316);
+            this.btnCheckin.Size = new System.Drawing.Size(495, 413);
             this.btnCheckin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnCheckin.TabIndex = 5;
             this.btnCheckin.TabStop = false;
@@ -84,9 +76,10 @@
             // btnCheckout
             // 
             this.btnCheckout.Image = global::HRMngt.Properties.Resources.check_out;
-            this.btnCheckout.Location = new System.Drawing.Point(292, 201);
+            this.btnCheckout.Location = new System.Drawing.Point(536, 359);
+            this.btnCheckout.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCheckout.Name = "btnCheckout";
-            this.btnCheckout.Size = new System.Drawing.Size(411, 316);
+            this.btnCheckout.Size = new System.Drawing.Size(495, 413);
             this.btnCheckout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnCheckout.TabIndex = 3;
             this.btnCheckout.TabStop = false;
@@ -96,24 +89,25 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label4.Location = new System.Drawing.Point(256, 74);
+            this.label4.Location = new System.Drawing.Point(384, 116);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(536, 29);
+            this.label4.Size = new System.Drawing.Size(848, 42);
             this.label4.TabIndex = 7;
             this.label4.Text = "Rất vui được gặp bạn! Chúc bạn một ngày tốt lành";
             // 
             // Home
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1030, 603);
+            this.ClientSize = new System.Drawing.Size(1545, 942);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCheckin);
             this.Controls.Add(this.lbClick);
             this.Controls.Add(this.btnCheckout);
-            this.Controls.Add(this.lbName);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblWelcome);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Home";
             this.Text = "Trang chủ";
             ((System.ComponentModel.ISupportInitialize)(this.btnCheckin)).EndInit();
@@ -124,8 +118,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lbName;
+        private System.Windows.Forms.Label lblWelcome;
         private System.Windows.Forms.PictureBox btnCheckout;
         private System.Windows.Forms.Label lbClick;
         private System.Windows.Forms.PictureBox btnCheckin;

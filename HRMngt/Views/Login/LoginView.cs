@@ -24,17 +24,14 @@ namespace HRMngt.Views
         public event EventHandler LoginEvent;
         List<Image> images = new List<Image>();
         string[] location = new string[25];
-        private string firstString = "D:\\hris-dotnet-mhieu\\hris-dotnet-mhieu";
+        private string firstString = "C:\\Users\\Surface\\source\\repos\\hris-dotnet-niie";
 
         public string username { get => txtUserName.Text; set => txtUserName.Text = value; }
         public string password { get => txtPassword.Text; set => txtPassword.Text = value; }
 
-        
-
         public LoginView()
         {
             InitializeComponent();
-            
             location[0] = @"\animation\textbox_user_1.jpg";
             location[1] = @"\animation\textbox_user_2.jpg";
             location[2] = @"\animation\textbox_user_4.jpg";

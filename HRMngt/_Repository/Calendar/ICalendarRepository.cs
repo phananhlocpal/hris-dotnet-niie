@@ -26,5 +26,6 @@ namespace HRMngt._Repository.Calendar
         IEnumerable<CalendarModel> LINQ_Filter(IEnumerable<CalendarModel> calendarList, DateTime start, DateTime end, string departmentId, string status, string userId);
         IEnumerable<CalendarModel> LINQ_GetListByPeriod(IEnumerable<CalendarModel> calendarList, DateTime start, DateTime end);
         IEnumerable<CalendarModel> LINQ_GetListByRequestId(IEnumerable<CalendarModel> calendarList, int requestId);
+        IEnumerable<CalendarModel> LINQ_GetListByUserID(IEnumerable<CalendarModel> calendarList, string userId);
     }
 }

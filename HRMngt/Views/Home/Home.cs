@@ -20,21 +20,41 @@ namespace HRMngt.Views
         public Home()
         {
             InitializeComponent();
+            TimeSpan checkInStart = new TimeSpan(0, 0, 0); // 0:00:00
+            TimeSpan checkInEnd = new TimeSpan(8, 15, 0); // 8:15:00
+            TimeSpan checkOutStart = new TimeSpan(17, 0, 0); // 17:00:00
+            TimeSpan checkOutEnd = new TimeSpan(24, 0, 0); // 24:00:00 (tương đương với 0:00:00 của ngày hôm sau)
+
+            TimeSpan now = DateTime.Now.TimeOfDay;
+
+            string checkType;
+
+            if (now >= checkInStart && now <= checkInEnd)
+            {
+                btnCheckin.Visible = true;
+                btnCheckout.Visible = false;
+            }
+            else if (now >= checkOutStart && now <= checkOutEnd)
+            {
+                btnCheckin.Visible = false;
+                btnCheckout.Visible = true;
+            }
+            else
+            {
+                btnCheckin.Visible = false;
+                btnCheckout.Visible = false;
+            }
             RunEvent();
         }
         private void RunEvent()
         {
             btnCheckout.Click += delegate { 
                 LoadToAddCalandar?.Invoke(this, EventArgs.Empty);
-                btnCheckin.Visible = true;
-                btnCheckout.Visible = false;
-                lbClick.Text = "Click To Leave";
+                lbClick.Text = "Click to leave";
             };
             btnCheckin.Click += delegate { 
                 LoadToAddCalandar?.Invoke(this, EventArgs.Empty);
-                btnCheckout.Visible = true;
-                btnCheckin.Visible = false;
-                lbClick.Text = "Click To Attendance";
+                lbClick.Text = "Click to check attendance";
             };
         }
         private static Home instance;
@@ -61,17 +81,12 @@ namespace HRMngt.Views
 
         public void ShowNavName(string navName)
         {
-            lbName.Text = navName;
+            lblWelcome.Text = "Welcome " + navName + "!";
         }
-        public CheckinDialog ShowCheckInDialog()
+        public AttendanceDialog ShowAttendanceDialog()
         {
-            CheckinDialog checkin = new CheckinDialog();
+            AttendanceDialog checkin = new AttendanceDialog();
             return checkin;
-        }
-
-        public void ShowCheckoutDialog()
-        {
-            throw new NotImplementedException();
         }
     }
 }

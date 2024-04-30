@@ -19,6 +19,7 @@ namespace HRMngt.Views.Dialogs
         event EventHandler LoadCalendarDialogToUpdateEvent;
         event EventHandler DeleteCalendarEvent;
         event EventHandler LoadCalendarDialogToCreateEvent;
+        event EventHandler LoadLeaveDialogEvent;
         event EventHandler Filter;
         event EventHandler LeaveEvent;
 

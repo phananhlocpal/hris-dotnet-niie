@@ -130,13 +130,11 @@
   <data name="window-restore-regular 1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\window-restore-regular 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-<<<<<<< HEAD
   <data name="quote-request" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\quote-request.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-=======
+  </data>
   <data name="check-in" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\check-in.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
->>>>>>> hieu-new
   </data>
   <data name="update" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\update.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -219,13 +217,11 @@
   <data name="image 19" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\image 19.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-<<<<<<< HEAD
-  <data name="image 39" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\image 39.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-=======
+	<data name="image 39" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\Resources\image 39.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
   <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
->>>>>>> hieu-new
   </data>
   <data name="support" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\support.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -241,15 +237,15 @@
   </data>
   <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-<<<<<<< HEAD
   </data>
   <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="leave (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\leave (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-=======
->>>>>>> hieu-new
+	<data name="leave (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\Resources\leave (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+  <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="image 37" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\image 37.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -263,12 +259,10 @@
   <data name="x-solid 1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\x-solid 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-<<<<<<< HEAD
-  <data name="quote-request (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\quote-request (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-=======
-  <data name="check-out" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\check-out.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
->>>>>>> hieu-new
-  </data>
+	<data name="check-out" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\Resources\check-out.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="quote-request (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\Resources\quote-request (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
 </root>

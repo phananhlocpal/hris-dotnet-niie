@@ -1,11 +1,8 @@
 ﻿using HRMngt._Repository;
 using HRMngt._Repository.Calendar;
 using HRMngt._Repository.Communicate;
-<<<<<<< HEAD
 using HRMngt._Repository.Request;
-=======
 using HRMngt._Repository.Recruitment;
->>>>>>> hieu-new
 using HRMngt._Repository.Salary;
 using HRMngt._Repository.Support;
 using HRMngt.Models;
@@ -25,11 +22,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-<<<<<<< HEAD
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
-=======
->>>>>>> hieu-new
 
 namespace HRMngt.Presenters
 {
@@ -57,7 +51,6 @@ namespace HRMngt.Presenters
             mainView.ShowUserInformation(userModel);
             mainView.Show();
         }
-<<<<<<< HEAD
 
         private void ShowRequestView(object sender, EventArgs e)
         {
@@ -68,9 +61,6 @@ namespace HRMngt.Presenters
             new RequestPresenter(requestView, requestRepository, userModel);
         }
 
-=======
-        
->>>>>>> hieu-new
         private void ShowCommunicateView(object sender, EventArgs e)
         {
             IClientView view = ClientView.GetInstance((MainView)mainView);

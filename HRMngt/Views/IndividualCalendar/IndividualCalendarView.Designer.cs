@@ -39,21 +39,22 @@
             this.realCheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RealCheckOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnLeave = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnCreateLeave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCalendarTable)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCreate
             // 
             this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreate.Location = new System.Drawing.Point(1248, 17);
+            this.btnCreate.Location = new System.Drawing.Point(1117, 19);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(128, 50);
             this.btnCreate.TabIndex = 26;
@@ -63,7 +64,7 @@
             // dtpChoosePeriod
             // 
             this.dtpChoosePeriod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpChoosePeriod.Location = new System.Drawing.Point(683, 17);
+            this.dtpChoosePeriod.Location = new System.Drawing.Point(552, 19);
             this.dtpChoosePeriod.MinimumSize = new System.Drawing.Size(4, 50);
             this.dtpChoosePeriod.Name = "dtpChoosePeriod";
             this.dtpChoosePeriod.Size = new System.Drawing.Size(396, 50);
@@ -72,7 +73,7 @@
             // btnCurrentDate
             // 
             this.btnCurrentDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCurrentDate.Location = new System.Drawing.Point(1100, 17);
+            this.btnCurrentDate.Location = new System.Drawing.Point(969, 19);
             this.btnCurrentDate.Name = "btnCurrentDate";
             this.btnCurrentDate.Size = new System.Drawing.Size(128, 50);
             this.btnCurrentDate.TabIndex = 24;
@@ -181,33 +182,6 @@
             this.status.ReadOnly = true;
             this.status.Width = 200;
             // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.HeaderText = "";
-            this.dataGridViewImageColumn1.Image = global::HRMngt.Properties.Resources.update;
-            this.dataGridViewImageColumn1.MinimumWidth = 10;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.ReadOnly = true;
-            this.dataGridViewImageColumn1.Width = 125;
-            // 
-            // dataGridViewImageColumn2
-            // 
-            this.dataGridViewImageColumn2.HeaderText = "";
-            this.dataGridViewImageColumn2.Image = global::HRMngt.Properties.Resources.delete;
-            this.dataGridViewImageColumn2.MinimumWidth = 10;
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.ReadOnly = true;
-            this.dataGridViewImageColumn2.Width = 125;
-            // 
-            // dataGridViewImageColumn3
-            // 
-            this.dataGridViewImageColumn3.HeaderText = "";
-            this.dataGridViewImageColumn3.Image = global::HRMngt.Properties.Resources.leave;
-            this.dataGridViewImageColumn3.MinimumWidth = 10;
-            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
-            this.dataGridViewImageColumn3.ReadOnly = true;
-            this.dataGridViewImageColumn3.Width = 50;
-            // 
             // btnEdit
             // 
             this.btnEdit.HeaderText = "";
@@ -235,6 +209,33 @@
             this.btnLeave.ReadOnly = true;
             this.btnLeave.Width = 50;
             // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "";
+            this.dataGridViewImageColumn1.Image = global::HRMngt.Properties.Resources.update;
+            this.dataGridViewImageColumn1.MinimumWidth = 10;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
+            this.dataGridViewImageColumn1.Width = 125;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.HeaderText = "";
+            this.dataGridViewImageColumn2.Image = global::HRMngt.Properties.Resources.delete;
+            this.dataGridViewImageColumn2.MinimumWidth = 10;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.ReadOnly = true;
+            this.dataGridViewImageColumn2.Width = 125;
+            // 
+            // dataGridViewImageColumn3
+            // 
+            this.dataGridViewImageColumn3.HeaderText = "";
+            this.dataGridViewImageColumn3.Image = global::HRMngt.Properties.Resources.leave;
+            this.dataGridViewImageColumn3.MinimumWidth = 10;
+            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
+            this.dataGridViewImageColumn3.ReadOnly = true;
+            this.dataGridViewImageColumn3.Width = 50;
+            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
@@ -260,12 +261,23 @@
             this.label1.TabIndex = 28;
             this.label1.Text = "Trạng thái";
             // 
+            // btnCreateLeave
+            // 
+            this.btnCreateLeave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCreateLeave.Location = new System.Drawing.Point(1262, 19);
+            this.btnCreateLeave.Name = "btnCreateLeave";
+            this.btnCreateLeave.Size = new System.Drawing.Size(128, 50);
+            this.btnCreateLeave.TabIndex = 29;
+            this.btnCreateLeave.Text = "Tạo nghỉ";
+            this.btnCreateLeave.UseVisualStyleBackColor = true;
+            // 
             // IndividualCalendarView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1420, 903);
+            this.Controls.Add(this.btnCreateLeave);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnCreate);
@@ -301,5 +313,6 @@
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnCreateLeave;
     }
 }

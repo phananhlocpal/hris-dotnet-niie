@@ -40,6 +40,8 @@ namespace HRMngt.Views.Dialogs
                     LoadCalendarDialogToUpdateEvent?.Invoke(this, EventArgs.Empty);
                 }
             };
+
+            btnCreateLeave.Click += delegate { LoadLeaveDialogEvent?.Invoke(this, EventArgs.Empty); };
         }
 
         KryptonDataGridView IIndividualCalendarView.dgvCalendarTable { get => dgvCalendarTable; set => throw new NotImplementedException(); }
@@ -52,6 +54,7 @@ namespace HRMngt.Views.Dialogs
         public event EventHandler LoadCalendarDialogToCreateEvent;
         public event EventHandler Filter;
         public event EventHandler LeaveEvent;
+        public event EventHandler LoadLeaveDialogEvent;
 
         public IndividualCalendarDialogForEditting ShowCalendarDialogToEdit()
         {

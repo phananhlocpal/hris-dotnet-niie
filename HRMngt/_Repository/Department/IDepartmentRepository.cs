@@ -15,8 +15,8 @@ namespace HRMngt._Repository
         IEnumerable<DepartmentModel> GetAll();
 
         //LINQ
-        IEnumerable<DepartmentModel> LINQ_Filter(IEnumerable<DepartmentModel> departmentList, string manager, string location);
-        DepartmentModel LINQ_GetById(IEnumerable<DepartmentModel> departmentList, string id);
+        IEnumerable<DepartmentModel> LINQ_Filter(IEnumerable<DepartmentModel> departmentList, string manager);
+        DepartmentModel LINQ_GetModelById(IEnumerable<DepartmentModel> departmentList, string id);
 
 
     }

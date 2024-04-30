@@ -66,7 +66,6 @@ namespace HRMngt.View
                 btnSalaryDetail.ForeColor = Color.FromArgb(111, 111, 111);
                 panel3.BackColor = Color.White;
             };
-<<<<<<< HEAD
             //ShowProfile();
 
             RunEvent();
@@ -84,14 +83,6 @@ namespace HRMngt.View
             btnHelp.Click += delegate { ShowSupportView?.Invoke(this, EventArgs.Empty); };
 
 
-=======
-
-            btnTimeKeeping.Click += delegate
-            {
-                ShowTimeKeepingView?.Invoke(this, EventArgs.Empty);
-            };
-            ShowProfile();
->>>>>>> hieu-new
         }
 
         private void MainIndividualView_Load(object sender, EventArgs e)

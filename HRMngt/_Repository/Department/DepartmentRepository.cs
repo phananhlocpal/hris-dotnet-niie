@@ -97,13 +97,15 @@ namespace HRMngt._Repository
         }
 
 
-        public IEnumerable<DepartmentModel> LINQ_Filter(IEnumerable<DepartmentModel> departmentList, string manager, string location)
+        public IEnumerable<DepartmentModel> LINQ_Filter(IEnumerable<DepartmentModel> departmentList, string manager)
         {
-            var query = departmentList.Where(model => model.Manager == manager && model.Location == location);
-            return query;
+            var query = departmentList.AsEnumerable();
+            if (manager != null)
+                query = query.Where(model => model.Manager == manager);
+            return query.ToList();
         }
 
-        public DepartmentModel LINQ_GetById(IEnumerable<DepartmentModel> departmentList, string id)
+        public DepartmentModel LINQ_GetModelById(IEnumerable<DepartmentModel> departmentList, string id)
         {
             var query = departmentList.Where(model => model.Id == id);
             return query.FirstOrDefault();

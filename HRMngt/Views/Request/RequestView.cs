@@ -18,6 +18,14 @@ namespace HRMngt.Views.Request
     {
         public DataGridView DataGridViewRequest => dgvRequestTable;
 
+        DateTimePicker IRequestView.dtpChooseMonth => dtpChooseMonth;
+
+        ComboBox IRequestView.cmbChooseType => cmbChooseType;
+
+        TextBox IRequestView.txtChooseUserId => txtChooseUserID;
+
+        ComboBox IRequestView.cmbChooseStatus => cmbChooseStatus;
+
         public RequestView()
         {
             InitializeComponent();
@@ -33,6 +41,10 @@ namespace HRMngt.Views.Request
                     ShowRequestDialog?.Invoke(this, EventArgs.Empty);
                 }
             };
+            dtpChooseMonth.ValueChanged += delegate { Filter?.Invoke(this, EventArgs.Empty); };
+            cmbChooseType.SelectedIndexChanged += delegate { Filter?.Invoke(this, EventArgs.Empty); };
+            txtChooseUserID.TextChanged += delegate { Filter?.Invoke(this, EventArgs.Empty); };
+            cmbChooseStatus.SelectedIndexChanged += delegate { Filter?.Invoke(this, EventArgs.Empty); };
 
         }
 

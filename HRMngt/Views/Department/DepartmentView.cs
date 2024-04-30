@@ -1,6 +1,7 @@
 ﻿using Bunifu.UI.WinForms.BunifuButton;
 using ComponentFactory.Krypton.Toolkit;
 using HRMngt.Models;
+using HRMngt.popup;
 using HRMngt.View;
 using HRMngt.Views.Dialogs;
 using System;
@@ -21,14 +22,10 @@ namespace HRMngt.Views
         public DepartmentView()
         {
             InitializeComponent();
-            cbDepartment_SelectedIndexChanged();
-            cbAddress_Changed();
             RunEvent();
         }
 
         ComboBox IDepartmentView.cbManager => cbManager;
-
-        ComboBox IDepartmentView.cbAddress => cbAddress;
 
         DataGridView IDepartmentView.dgvDepartmentList => dgvDepartmentList;
 
@@ -81,33 +78,23 @@ namespace HRMngt.Views
                 }
             };
             cbManager.SelectedValueChanged += delegate { FiterDepartment?.Invoke(this, EventArgs.Empty); };
-            cbAddress.SelectedValueChanged += delegate { FiterDepartment?.Invoke(this, EventArgs.Empty); };
+        }
 
-        }
-        public string GetNameByIDUser(string id)
+        public void ShowManagerList(IEnumerable<UserModel> managerList)
         {
-            string name = "";
-            string connectionString = "Data Source=localhost;Initial Catalog=hris;Integrated Security=True;Encrypt=False";
-            using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand())
+            cbManager.Items.Clear();
+            cbManager.Items.Add("All");
+            if (managerList != null)
             {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = "Select distinct name from users where userID = @Id";
-                command.Parameters.Add("@Id", SqlDbType.NVarChar).Value = id;
-                using (var reader = command.ExecuteReader())
+                foreach (var manager in managerList)
                 {
-                    while (reader.Read())
-                    {
-                        name = reader[0].ToString();
-                    }
-                }
-            }
-            return name;
+                    cbManager.Items.Add($"{manager.Id} - {manager.Name}");
+                }    
+            } 
         }
+
         public void ShowDepartmentList(IEnumerable<DepartmentModel> departments)
         {
-
             if (departments != null)
             {
                 dgvDepartmentList.Rows.Clear();
@@ -118,79 +105,13 @@ namespace HRMngt.Views
                     dgvDepartmentList.Rows[rowIndex].Cells[0].Value = dep.Id;
                     dgvDepartmentList.Rows[rowIndex].Cells[1].Value = dep.Name;
                     dgvDepartmentList.Rows[rowIndex].Cells[2].Value = dep.Phone;
-                    dgvDepartmentList.Rows[rowIndex].Cells[3].Value = GetNameByIDUser(dep.Manager);
+                    dgvDepartmentList.Rows[rowIndex].Cells[3].Value = dep.Manager;
                     dgvDepartmentList.Rows[rowIndex].Cells[4].Value = dep.Location;
                 }
             }
             else dgvDepartmentList.Rows.Clear();
         }
-        private static DepartmentView instance;
-        public static DepartmentView GetInstance(Form parentContainer)
-        {
-            if (instance == null || instance.IsDisposed)
-            {
-                instance = new DepartmentView();
-                instance.MdiParent = parentContainer;
-                instance.FormBorderStyle = FormBorderStyle.None;
-                instance.Dock = DockStyle.Fill;
-            }
-            else
-            {
-                if (instance.WindowState == FormWindowState.Minimized)
-                    instance.WindowState = FormWindowState.Normal;
-                instance.BringToFront();
-            }
-            return instance;
-        }
-        private void cbDepartment_SelectedIndexChanged()
-        {
-            string connectionString = "Data Source=localhost;Initial Catalog=hris;Integrated Security=True;Encrypt=False;";
-            using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand())
-            {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = "Select distinct userID, name from users where role = @Roles ";
-                command.Parameters.Add("@Roles", SqlDbType.NVarChar).Value = "Admin";
-                List<string> items = new List<string>();
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        items.Add($"{reader[0]} - {reader[1]}");
-                    }
-                }
-                cbManager.DataSource = items;
-                cbManager.DisplayMember = "Name";
-                cbManager.Refresh();
-                connection.Close();
-            }
-        }
-        private void cbAddress_Changed()
-        {
-            string connectionString = "Data Source=localhost;Initial Catalog=hris;Integrated Security=True;Encrypt=False";
-            using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand())
-            {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = "Select distinct location from department ";
-                List<string> items = new List<string>();
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        items.Add(reader[0].ToString());
-                    }
-                }
-                cbAddress.DataSource = items;
-                cbAddress.DisplayMember = "Name";
-                cbAddress.Refresh();
-                connection.Close();
-            }
-        }
-
-
+        
 
         public DepartmentDiaglog ShowDepartmentDialogToAdd()
         {
@@ -232,6 +153,7 @@ namespace HRMngt.Views
                 workbook.Close();
                 excel.Quit();
                 MessageBox.Show("Xuất dữ liệu ra Excel thành công!");
+                SucessPopUp.ShowPopUp();
             }
             catch (Exception ex)
             {
@@ -244,7 +166,6 @@ namespace HRMngt.Views
             }
         }
 
-
         private void btnExcel_Click(object sender, EventArgs e)
         {
             if (saveExcel.ShowDialog() == DialogResult.OK)
@@ -253,6 +174,25 @@ namespace HRMngt.Views
             }
         }
 
-        
+        private static DepartmentView instance;
+        public static DepartmentView GetInstance(Form parentContainer)
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new DepartmentView();
+                instance.MdiParent = parentContainer;
+                instance.FormBorderStyle = FormBorderStyle.None;
+                instance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                    instance.WindowState = FormWindowState.Normal;
+                instance.BringToFront();
+            }
+            return instance;
+        }
+
+
     }
 }

@@ -165,7 +165,7 @@ namespace HRMngt.Presenters
         // Read
         private void ReadListPermit()
         {
-            if (userModel.Position == "Admin" || userModel.Position == "HR")
+            if (userModel.Roles == "Admin" || userModel.Roles == "HR")
             {
                 // Xem được tất cả mọi người
                 DateTime start = view.dtpStart.Value;
@@ -173,11 +173,11 @@ namespace HRMngt.Presenters
                 calendarList = repository.LINQ_GetListByPeriod(calendarList, start, end);
                 this.view.ShowCalendarList(calendarList);
             }
-            else if (userModel.Position == "User")
+            else if (userModel.Roles == "User")
             {
                 // Không xem được  
             }
-            else if (userModel.Position == "Manager")
+            else if (userModel.Roles == "Manager")
             {
                 // Chỉ xem được những người mà mình quản lý
                 DateTime start = view.dtpStart.Value;
@@ -189,7 +189,7 @@ namespace HRMngt.Presenters
         // Delete
         private void DeletePermit(CalendarModel model)
         {
-            if (userModel.Position == "Admin")
+            if (userModel.Roles == "Admin")
             {
                 // Xóa ai cũng được
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -202,15 +202,15 @@ namespace HRMngt.Presenters
                     ReadListPermit();
                 }
             }
-            else if (userModel.Position == "HR")
+            else if (userModel.Roles == "HR")
             {
                 // Không xóa được
             }
-            else if (userModel.Position == "User")
+            else if (userModel.Roles == "User")
             {
                 // Không xóa được
             }
-            else if (userModel.Position == "Manager")
+            else if (userModel.Roles == "Manager")
             {
                 // Xóa được những người mình quản lý. Vì đã read chỉ những người mình đã quản lý nên không cần điều kiện
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -227,22 +227,22 @@ namespace HRMngt.Presenters
         // Edit
         private void UpdatePermit(CalendarModel model)
         {
-            if (userModel.Position == "Admin")
+            if (userModel.Roles == "Admin")
             {
                 // Sửa ai cũng được
                 this.repository.Update(model);
                 ReadListPermit();
                 SucessPopUp.ShowPopUp();
             }
-            else if (userModel.Position == "HR")
+            else if (userModel.Roles == "HR")
             {
                 // Không sửa được
             }
-            else if (userModel.Position == "User")
+            else if (userModel.Roles == "User")
             {
                 // Không sửa được
             }
-            else if (userModel.Position == "Manager")
+            else if (userModel.Roles == "Manager")
             {
                 // Sửa được những người mình quản lý. Vì đã read những người mình quản lý nên không cần điều kiện
                 this.repository.Update(model);
@@ -253,20 +253,20 @@ namespace HRMngt.Presenters
         // Add
         private void AddPermit(CalendarModel model)
         {
-            if (userModel.Position == "Admin")
+            if (userModel.Roles == "Admin")
             {
 
             }
-            else if (userModel.Position == "HR")
+            else if (userModel.Roles == "HR")
             {
 
             }
 
-            else if (userModel.Position == "User")
+            else if (userModel.Roles == "User")
             {
 
             }
-            else if (userModel.Position == "Manager")
+            else if (userModel.Roles == "Manager")
             {
 
             }

@@ -1,4 +1,5 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
+using HRMngt._Repository;
 using HRMngt.Models;
 using HRMngt.Views;
 using Microsoft.VisualBasic.ApplicationServices;
@@ -83,13 +84,14 @@ namespace HRMngt.View
 
             }
             lblNavName.Text = userModel.Name;
-            picNavAva.Image = ByteArrayToImage(GetPhotoById(userModel.Id));
+            
+            //picNavAva.Image = ByteArrayToImage(GetPhotoById(userModel.Id));
 
 
         }
         public byte[] GetPhotoById(string id)
         {
-            string connectionString = "Data Source=localhost;Initial Catalog=hris;Integrated Security=True;Encrypt=False;";
+            string connectionString = BaseRepository.connectionString;
             byte[] photoData = null; // Mảng byte chứa dữ liệu ảnh
 
             using (var connection = new SqlConnection(connectionString))

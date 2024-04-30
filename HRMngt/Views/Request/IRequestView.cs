@@ -13,6 +13,10 @@ namespace HRMngt.Views.Request
     public interface IRequestView
     {
         DataGridView DataGridViewRequest { get; }
+        DateTimePicker dtpChooseMonth { get; }
+        ComboBox cmbChooseType { get; }
+        TextBox txtChooseUserId { get; }
+        ComboBox cmbChooseStatus { get; }
         // Events
         event EventHandler ShowRequestDialog;
         event EventHandler Filter;

@@ -120,22 +120,22 @@ namespace HRMngt.Views.Dialogs
                 }
             }
         }
-        public void ShowUserIdNName(List<string> userIdNNameList)
+        public void ShowUserIdNName(IEnumerable<UserModel> userList)
         {
             cbManager.Items.Clear();
 
-            foreach (string item in userIdNNameList)
+            foreach (var item in userList)
             {
-                cbManager.Items.Add(item);
+                cbManager.Items.Add($"{item.Id} - {item.Name}");
             }
         }
-        public void ShowDepartmentIdNName(List<string> departmentIDNameList)
+        public void ShowDepartmentIdNName(IEnumerable<DepartmentModel> departmentList)
         {
             cbDepartment.Items.Clear();
 
-            foreach (string item in departmentIDNameList)
+            foreach (var item in departmentList)
             {
-                cbDepartment.Items.Add(item);
+                cbDepartment.Items.Add($"{item.Id} - {item.Name}");
 
             }
         }

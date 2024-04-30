@@ -47,7 +47,7 @@ namespace HRMngt.Views.Dialogs
         event EventHandler CheckConditionDate;
         event EventHandler CheckConditionPhone;
         void ShowUserIDName(IEnumerable<UserModel> users);
-        void ShowDepartmentIdNName(List<string> departmentIDNameList);
+        void ShowDepartmentIdNName(IEnumerable<DepartmentModel> departmentList);
         void DisplayUserPhotoForEditing(byte[] photoData);
 
     }

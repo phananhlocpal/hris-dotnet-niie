@@ -38,7 +38,24 @@ namespace HRMngt.Presenters
 
         private void Filter(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            DateTime time = view.dtpChooseMonth.Value.Date;
+            string type = view.cmbChooseType.Text;
+            string statusString = view.cmbChooseStatus.Text;
+            int status = -1;
+            switch (statusString)
+            {
+                case "Chưa xử lý":
+                    status = 0;
+                    break;
+                case "Đã xử lý":
+                    status = 1;
+                    break;
+            }
+            string senderString = view.txtChooseUserId.Text;
+
+            IEnumerable<RequestModel> FilterList = repository.LINQ_Filter(requestList, time, status, type, senderString);
+            view.ShowAllRequestList(FilterList);
+
         }
 
         private void ShowRequestDialog(object sender, EventArgs e)
@@ -72,8 +89,17 @@ namespace HRMngt.Presenters
 
             foreach (CalendarModel calendarModel in calendarRequestList)
             {
-                calendarModel.Status = "Not Approved";
-                calendarRepository.Update(calendarModel);
+                if (requestModel.Type == "Calendar")
+                {
+                    calendarModel.Status = "Not Approved";
+                    calendarRepository.Delete(calendarModel.UserId, calendarModel.Date);
+                }    
+                else
+                {
+                    // Nếu không aprrove thì xóa các calendar có requestId và status là Leave Pending
+                    if (calendarModel.Status == "Leave Pending")
+                        calendarRepository.Delete(calendarModel.UserId, calendarModel.Date);
+                }    
             }
 
             requestModel.Status = 1;
@@ -104,8 +130,16 @@ namespace HRMngt.Presenters
 
             foreach (CalendarModel calendarModel in calendarRequestList)
             {
-                calendarModel.Status = "Approved";
-                calendarRepository.Update(calendarModel);
+                if (requestModel.Type == "Calendar")
+                {
+                    calendarModel.Status = "Approved";
+                    calendarRepository.Update(calendarModel);
+                }
+                else
+                {
+                    calendarModel.Status = requestModel.Type;
+                    calendarRepository.Update(calendarModel);
+                }      
             }
 
             requestModel.Status = 1;

@@ -41,14 +41,13 @@ namespace HRMngt.Views.Dialogs.Forms
 
             DataTable requestInfo = new DataTable(); // Create a DataTable to hold request information
 
+            ICalendarRepository calendarRepository = new CalendarRepository();
+            IEnumerable<CalendarModel> calendarList = calendarRepository.GetAll();
+            IEnumerable<CalendarModel> calendarRequestList = calendarRepository.LINQ_GetListByRequestId(calendarList, requestModel.Id);
+
             // Get request information
             if (requestModel.Type == "Calendar")
             {
-                ICalendarRepository calendarRepository = new CalendarRepository();
-                IEnumerable<CalendarModel> calendarList = calendarRepository.GetAll();
-
-                IEnumerable<CalendarModel> calendarRequestList = calendarRepository.LINQ_GetListByRequestId(calendarList, requestModel.Id);
-
                 // Add columns to the DataTable
                 requestInfo.Columns.Add("Date");
                 requestInfo.Columns.Add("CheckIn");
@@ -66,9 +65,25 @@ namespace HRMngt.Views.Dialogs.Forms
                     requestInfo.Rows.Add(row);
                 }
             }
-            else if (requestModel.Type == "Leave")
+            else if (requestModel.Type == "Leave 1" || requestModel.Type == "Leave 2" || requestModel.Type == "Leave 3" || requestModel.Type == "Leave 4")
             {
+                // Add columns to the DataTable
+                requestInfo.Columns.Add("Date");
+                requestInfo.Columns.Add("Type");
+                requestInfo.Columns.Add("Status");
 
+                // Populate DataTable with calendar request information
+                foreach (var calendarRequest in calendarRequestList)
+                {
+                    DataRow row = requestInfo.NewRow();
+                    row["Date"] = calendarRequest.Date.ToString("yyyy-MM-dd");
+                    if (requestModel.Type == "Leave 1") row["Type"] = "Nghỉ phép nguyên lương";
+                    if (requestModel.Type == "Leave 2") row["Type"] = "Nghỉ việc riêng";
+                    if (requestModel.Type == "Leave 3") row["Type"] = "Nghỉ lễ/tết";
+                    if (requestModel.Type == "Leave 4") row["Type"] = "Nghỉ không lương";
+                    row["Status"] = calendarRequest.Status;
+                    requestInfo.Rows.Add(row);
+                }
             }   
             
             // Display information

@@ -17,7 +17,7 @@ namespace HRMngt._Repository.Request
 
         // LINQ
         IEnumerable<RequestModel> LINQ_GetListByApproverId(IEnumerable<RequestModel> requestList, string approverId);
-        IEnumerable<RequestModel> LINQ_Filter(IEnumerable<RequestModel> requestList, DateTime time, int status, string senderId);
+        IEnumerable<RequestModel> LINQ_Filter(IEnumerable<RequestModel> requestList, DateTime time, int status, string type, string senderId);
         RequestModel LINQ_GetModelById(IEnumerable<RequestModel> requestList, int id);
     }
 }

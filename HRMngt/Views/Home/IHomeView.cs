@@ -13,8 +13,7 @@ namespace HRMngt.Views
         event EventHandler LoadToAddCalandar;
         
 
-        CheckinDialog ShowCheckInDialog();
-        void ShowCheckoutDialog();
+        AttendanceDialog ShowAttendanceDialog();
 
         void Show();
         void ShowNavName(string navName);

@@ -77,17 +77,26 @@ namespace HRMngt.Presenters
         private void LoadHRToEdit(object sender, EventArgs e)
         {
             dialog = view.ShowDialogToEdit(null);
-            IEnumerable<UserModel> userList;
-            List<string> departmentIDNameList = new List<string>();
-            var repo = new UserRepository();
-            userList = repository.GetAll();
-            departmentIDNameList = repo.GetDepartmentIDName();
-            this.dialog.ShowDepartmentIdNName(departmentIDNameList);
+
+            // Show Department List
+            IDepartmentRepository departmentRepository = new DepartmentRepository();
+            IEnumerable<DepartmentModel> departmentList = departmentRepository.GetAll();
+            this.dialog.ShowDepartmentIdNName(departmentList);
+
+            // Show UserList
+            IUserRepository userRepository = new UserRepository();
+            IEnumerable<UserModel> userList = userRepository.GetAll();
             dialog.ShowUserIDName(userList);
+
+            // Get user id from datagridview
             DataGridViewRow selectedRow = view.dgvHRList.CurrentRow;
             string id = selectedRow.Cells[0].Value.ToString();
             UserModel recruit = new UserModel();
             recruit = repository.LINQ_GetModelById(recruitmentList, id);
+
+            // Load data to form
+            UserModel manager = userRepository.LINQ_GetModelById(userList, recruit.ManagerID);
+            DepartmentModel department = departmentRepository.LINQ_GetModelById(departmentList, recruit.DepartmentID);
             dialog.ID = recruit.Id;
             dialog.NameCadidate = recruit.Name;
             dialog.Email = recruit.Email;
@@ -100,11 +109,10 @@ namespace HRMngt.Presenters
             dialog.Note = recruit.Note;
             dialog.Status = recruit.Status;
             dialog.Contract_type = recruit.Contract_type;
-            dialog.ManagerName = $"{recruit.ManagerID} - {repo.GetNameById(recruit.ManagerID)}";
-            dialog.DepartmentName = $"{recruit.DepartmentID} - {repo.GetNameDepartmentById(recruit.DepartmentID)}";
+            dialog.ManagerName = $"{manager.Id} - {manager.Name}";
+            dialog.DepartmentName = $"{department.Id} - {department.Name}";
 
             dialog.EditNewDialog += EditRecruitDialog;
-            /*dialog.CancleEvent += CancleEvent;*/
             dialog.ShowDialog();
         }
 
@@ -148,18 +156,16 @@ namespace HRMngt.Presenters
         {
             dialog = this.view.ShowDialogToAdd();
 
-            List<string> userIdNNameList = new List<string>();
-            List<string> departmentIDNameList = new List<string>();
-            var repo = new UserRepository();
-            DepartmentModel departmentModel = new DepartmentModel();
-            UserModel userModel = new UserModel();
-            userIdNNameList = repo.GetUserIdNName();
-            departmentIDNameList = repo.GetDepartmentIDName();
-            dialog.ManagerName = $"{userModel.Id} - {userModel.Name}";
-            dialog.DepartmentName = $"{departmentModel.Id} - {departmentModel.Name}";
-            // Add user to sender and receiver
-            dialog.ShowUserIdNName(userIdNNameList);
-            dialog.ShowDepartmentIdNName(departmentIDNameList);
+            // Return department id and name
+            IDepartmentRepository departmentRepository = new DepartmentRepository();
+            IEnumerable<DepartmentModel> departmentList = departmentRepository.GetAll();
+            dialog.ShowDepartmentIdNName(departmentList);
+
+
+            // Return user id and name
+            IUserRepository userRepository = new UserRepository();
+            IEnumerable<UserModel> userList = userRepository.GetAll();
+            dialog.ShowUserIdNName(userList);
 
             dialog.AddNewDialog += AddRecuit;
             dialog.ShowDialog();

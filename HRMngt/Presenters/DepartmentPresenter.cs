@@ -34,6 +34,11 @@ namespace HRMngt.Presenters
             this.view.LoadDepartmentDialogToAddEvent += LoadDepartmentDialogToAddEvent;
             this.view.LoadDepartmentDialogToEditEvent += LoadDepartmentDialogToEditEvent;
             this.view.FiterDepartment += FilterDepartment;
+
+            IUserRepository userRepository = new UserRepository();
+            IEnumerable<UserModel> managerList = userRepository.GetAll();
+            managerList = userRepository.LINQ_GetListManager(managerList);
+            this.view.ShowManagerList(managerList);
             LoadAllDepartmentList();
             SetRole(userModel);
             this.view.ShowDepartmentList(departments);
@@ -44,15 +49,14 @@ namespace HRMngt.Presenters
         private void FilterDepartment(object sender, EventArgs e)
         {
             string manager = ExtractIdFromName(view.cbManager.Text);
-            string location = view.cbAddress.Text;
             if (view.dgvDepartmentList == null)
             {
-                departmentFilter = repository.LINQ_Filter(departments, manager, location);
+                departmentFilter = repository.LINQ_Filter(departments, manager);
                 this.view.ShowDepartmentList(departmentFilter);
             }
             else
             {
-                departmentFilter = repository.LINQ_Filter(departments, manager, location);
+                departmentFilter = repository.LINQ_Filter(departments, manager);
                 this.view.ShowDepartmentList(departmentFilter);
             }
 
@@ -93,7 +97,7 @@ namespace HRMngt.Presenters
             DataGridViewRow selectedRow = view.dgvDepartmentList.CurrentRow;
             string id = selectedRow.Cells[0].Value.ToString();
             DepartmentModel department = new DepartmentModel();
-            department = repository.LINQ_GetById(departments, id);
+            department = repository.LINQ_GetModelById(departments, id);
             dialog.DepartmentID = department.Id;
             dialog.DepartmentName = department.Name;
             dialog.Phone = department.Phone;

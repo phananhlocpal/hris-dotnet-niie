@@ -38,6 +38,6 @@ namespace HRMngt.Views.Dialogs
         void ShowRecruitList(IEnumerable<UserModel> recruits);
 
         void ShowUserIDName(IEnumerable<UserModel> users);
-        void ShowDepartmentIdNName(List<string> departmentIDNameList);
+        void ShowDepartmentIdNName(IEnumerable<DepartmentModel> departmentList);
     }
 }

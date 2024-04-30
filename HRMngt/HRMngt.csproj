@@ -152,11 +152,8 @@
     <Compile Include="Presenters\DepartmentPresenter.cs" />
     <Compile Include="Presenters\MainIndividualPresenter.cs" />
     <Compile Include="Presenters\MainViewPresenter.cs" />
-<<<<<<< HEAD
     <Compile Include="Presenters\RequestPresenter.cs" />
-=======
     <Compile Include="Presenters\RecruitmentPresenter.cs" />
->>>>>>> hieu-new
     <Compile Include="Presenters\SalaryPresenter.cs" />
     <Compile Include="Presenters\SupportPresenter.cs" />
     <Compile Include="Presenters\TimeKeepingPresenter.cs" />
@@ -167,7 +164,6 @@
       <DependentUpon>ClientView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Client\IClientView.cs" />
-<<<<<<< HEAD
     <Compile Include="Views\Dialogs\Forms\LeaveDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,9 +185,6 @@
     <Compile Include="Views\Request\RequestView.Designer.cs">
       <DependentUpon>RequestView.cs</DependentUpon>
     </Compile>
-=======
-    <Compile Include="Views\Dialogs\Interface\ICheckinDialog.cs" />
->>>>>>> hieu-new
     <Compile Include="Views\Server\ChatServer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,11 +197,11 @@
     <Compile Include="Views\Department\DepartmentView.Designer.cs">
       <DependentUpon>DepartmentView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Dialogs\Forms\CheckinDialog.cs">
+    <Compile Include="Views\Dialogs\Forms\AttendanceDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Dialogs\Forms\CheckinDialog.Designer.cs">
-      <DependentUpon>CheckinDialog.cs</DependentUpon>
+    <Compile Include="Views\Dialogs\Forms\AttendanceDialog.Designer.cs">
+      <DependentUpon>AttendanceDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Dialogs\Forms\DepartmentDiaglog.cs">
       <SubType>Form</SubType>
@@ -354,13 +347,10 @@
     <Compile Include="_Repository\BaseRepository.cs" />
     <Compile Include="_Repository\Department\DepartmentRepository.cs" />
     <Compile Include="_Repository\Department\IDepartmentRepository.cs" />
-<<<<<<< HEAD
     <Compile Include="_Repository\Request\IRequestRepository.cs" />
     <Compile Include="_Repository\Request\RequestRepository.cs" />
-=======
     <Compile Include="_Repository\Recruitment\IRecruitmentRepository.cs" />
     <Compile Include="_Repository\Recruitment\RecruitmentRepository.cs" />
->>>>>>> hieu-new
     <Compile Include="_Repository\Salary\ISalaryRepository.cs" />
     <Compile Include="_Repository\Salary\SalaryRepository.cs" />
     <Compile Include="_Repository\OtherRepository\ISupportRepository.cs" />
@@ -417,6 +407,9 @@
     <EmbeddedResource Include="Views\Client\ClientView.resx">
       <DependentUpon>ClientView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Dialogs\Forms\LeaveDialog.resx">
+      <DependentUpon>LeaveDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Dialogs\Forms\RequestDialog.resx">
       <DependentUpon>RequestDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -429,8 +422,8 @@
     <EmbeddedResource Include="Views\Department\DepartmentView.resx">
       <DependentUpon>DepartmentView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Dialogs\Forms\CheckinDialog.resx">
-      <DependentUpon>CheckinDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Dialogs\Forms\AttendanceDialog.resx">
+      <DependentUpon>AttendanceDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Dialogs\Forms\DepartmentDiaglog.resx">
       <DependentUpon>DepartmentDiaglog.cs</DependentUpon>
@@ -608,15 +601,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
-<<<<<<< HEAD
+    <None Include="Resources\check-out.png" />
+    <None Include="Resources\check-in.png" />
     <None Include="Resources\quote-request %281%29.png" />
     <None Include="Resources\quote-request.png" />
     <None Include="Resources\leave %281%29.png" />
     <None Include="Resources\leave.png" />
-=======
-    <None Include="Resources\check-out.png" />
-    <None Include="Resources\check-in.png" />
->>>>>>> hieu-new
     <None Include="Resources\messenger.png" />
     <None Include="Resources\image 231.png" />
     <None Include="Resources\chat.png" />

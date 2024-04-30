@@ -23,18 +23,12 @@ namespace HRMngt._Repository.Calendar
             {
                 connection.Open();
                 command.Connection = connection;
-<<<<<<< HEAD
                 command.CommandText = "insert into calendar (userID, date, register_checkIn, register_checkOut, status, requestId) values(@UserID, @Date, @Register_checkIn, @Register_checkOut, @Status, @RequestId)";
-=======
-                command.CommandText = "insert into calendar (userID, date, register_checkIn, register_checkOut, real_checkIn, checkIn_location, status) values(@UserID, @Date, @Register_checkIn, @Register_checkOut, @Real_checkin, @Checkin_location, @Status)";
->>>>>>> hieu-new
                 command.Parameters.Add("@UserID", SqlDbType.Char).Value = calendarModel.UserId;
                 command.Parameters.Add("@Date", SqlDbType.DateTime).Value = calendarModel.Date;
                 command.Parameters.Add("@Register_checkIn", SqlDbType.Time).Value = calendarModel.CheckIn;
                 command.Parameters.Add("@Register_checkOut", SqlDbType.Time).Value = calendarModel.CheckOut;
-                command.Parameters.Add("@Real_checkin", SqlDbType.Time).Value = calendarModel.RealCheckIn;
-                command.Parameters.Add("@Checkin_location", SqlDbType.NVarChar).Value = GetAddressDepartment(calendarModel.UserId);
-                command.Parameters.Add("@Status", SqlDbType.Char).Value = "Pending";
+                command.Parameters.Add("@Status", SqlDbType.VarChar).Value = calendarModel.Status;
                 command.Parameters.Add("@RequestId", SqlDbType.Int).Value = calendarModel.RequestId;
                 command.ExecuteNonQuery();
                 connection.Close();
@@ -98,12 +92,11 @@ namespace HRMngt._Repository.Calendar
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "UPDATE calendar SET register_checkIn=@CheckIn, register_checkOut=@CheckOut, real_checkIn=@RealCheckIn, real_checkOut=@RealCheckOut, status=@Status WHERE (userID = @UserID and date = @Date)";
+                command.CommandText = "UPDATE calendar SET register_checkIn=@CheckIn, register_checkOut=@CheckOut, real_checkIn=@RealCheckIn, real_checkOut=@RealCheckOut, status=@Status, requestId=@RequestId WHERE (userID = @UserID and date = @Date)";
                 command.Parameters.Add("@UserID", SqlDbType.Char).Value = calendarModel.UserId;
                 command.Parameters.Add("@Date", SqlDbType.Date).Value = calendarModel.Date;
                 command.Parameters.Add("@CheckIn", SqlDbType.Time).Value = calendarModel.CheckIn;
                 command.Parameters.Add("@CheckOut", SqlDbType.Time).Value = calendarModel.CheckOut;
-
                 // Kiểm tra và thiết lập giá trị cho realCheckIn và realCheckOut
                 if (calendarModel.RealCheckIn.HasValue)
                 {
@@ -124,9 +117,16 @@ namespace HRMngt._Repository.Calendar
                 }
 
                 command.Parameters.Add("@Status", SqlDbType.Char).Value = calendarModel.Status;
+                command.Parameters.Add("@RequestId", SqlDbType.Int).Value = calendarModel.RequestId;
+
                 command.ExecuteNonQuery();
                 connection.Close();
             }
+        }
+
+        public int GetRealWorkdayByMonthNYear(string userId, int month, int year)
+        {
+            throw new NotImplementedException();
         }
         public string GetAddressDepartment(string userID)
         {
@@ -155,11 +155,6 @@ namespace HRMngt._Repository.Calendar
         }
 
 
-
-        public int GetRealWorkdayByMonthNYear(string userId, int month, int year)
-        {
-            throw new NotImplementedException();
-        }
 
         // ==========================================================================================================
         // LINQ 
@@ -227,6 +222,14 @@ namespace HRMngt._Repository.Calendar
         {
             var query = calendarList
                 .Where(calendarModel => calendarModel.RequestId == requestId)
+                .ToList();
+            return query;
+        }
+
+        public IEnumerable<CalendarModel> LINQ_GetListByUserID(IEnumerable<CalendarModel> calendarList, string userId)
+        {
+            var query = calendarList
+                .Where(calendarModel => calendarModel.UserId == userId)
                 .ToList();
             return query;
         }

@@ -89,8 +89,9 @@ namespace HRMngt._Repository.Request
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "UPDATE request SET status=@Status";
-                command.Parameters.Add("@Status", SqlDbType.Char).Value = requestModel.Status;
+                command.CommandText = "UPDATE request SET status=@Status where id = @Id";
+                command.Parameters.Add("@Status", SqlDbType.Int).Value = requestModel.Status;
+                command.Parameters.Add("@Id", SqlDbType.Char).Value = requestModel.Id;
                 command.ExecuteNonQuery();
                 connection.Close();
             }
@@ -104,12 +105,26 @@ namespace HRMngt._Repository.Request
             return query;
         }
 
-        public IEnumerable<RequestModel> LINQ_Filter(IEnumerable<RequestModel> requestList, DateTime time, int status, string senderId)
+        public IEnumerable<RequestModel> LINQ_Filter(IEnumerable<RequestModel> requestList, DateTime time, int status, string type, string senderId)
         {
-            var query = requestList
-                .Where(requestModel => requestModel.Time.Month == time.Month && requestModel.Time.Year == time.Year && requestModel.Status == status && requestModel.Sender == senderId)
-                .ToList();
-            return query;
+            var query = requestList.AsEnumerable();
+            query = query.Where(requestModel => requestModel.Time.Month == time.Month && requestModel.Time.Year == time.Year);
+
+            if (status != -1)
+            {
+                query = query.Where(requestModel => requestModel.Status == status);
+            }
+            if (type != "All")
+            {
+                query = query.Where(requestModel => requestModel.Type == type);
+
+            }
+            if (senderId != "")
+            {
+                query = query.Where(requestModel => requestModel.Sender == senderId);
+            }
+
+            return query.ToList();
         }
 
         public RequestModel LINQ_GetModelById(IEnumerable<RequestModel> requestList, int id)

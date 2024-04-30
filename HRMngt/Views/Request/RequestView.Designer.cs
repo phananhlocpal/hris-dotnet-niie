@@ -33,16 +33,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dtpChooseMonth = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtChooseUserID = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.cmbChooseType = new System.Windows.Forms.ComboBox();
             this.dgvRequestTable = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserIDCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRead = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmbChooseStatus = new System.Windows.Forms.ComboBox();
+            this.txtChooseUserID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRequestTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,31 +88,20 @@
             this.label1.TabIndex = 24;
             this.label1.Text = "Tháng";
             // 
-            // txtChooseUserID
-            // 
-            this.txtChooseUserID.Location = new System.Drawing.Point(424, 53);
-            this.txtChooseUserID.MinimumSize = new System.Drawing.Size(0, 50);
-            this.txtChooseUserID.Name = "txtChooseUserID";
-            this.txtChooseUserID.Size = new System.Drawing.Size(141, 50);
-            this.txtChooseUserID.StateCommon.Border.Color1 = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtChooseUserID.StateCommon.Border.Color2 = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtChooseUserID.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.txtChooseUserID.StateCommon.Content.Color1 = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtChooseUserID.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtChooseUserID.TabIndex = 23;
-            // 
             // cmbChooseType
             // 
+            this.cmbChooseType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbChooseType.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbChooseType.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.cmbChooseType.FormattingEnabled = true;
             this.cmbChooseType.ItemHeight = 25;
             this.cmbChooseType.Items.AddRange(new object[] {
             "All",
-            "Thumb Up",
-            "Ticket"});
+            "Calendar",
+            "Leave 1",
+            "Leave 2",
+            "Leave 3",
+            "Leave 4"});
             this.cmbChooseType.Location = new System.Drawing.Point(254, 55);
             this.cmbChooseType.Name = "cmbChooseType";
             this.cmbChooseType.Size = new System.Drawing.Size(140, 33);
@@ -166,16 +157,6 @@
             this.dgvRequestTable.StateSelected.DataCell.Back.Color1 = System.Drawing.Color.White;
             this.dgvRequestTable.StateSelected.DataCell.Back.Color2 = System.Drawing.Color.White;
             this.dgvRequestTable.TabIndex = 20;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.FillWeight = 55.48507F;
-            this.dataGridViewImageColumn1.HeaderText = "";
-            this.dataGridViewImageColumn1.Image = global::HRMngt.Properties.Resources.read;
-            this.dataGridViewImageColumn1.MinimumWidth = 10;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.ReadOnly = true;
-            this.dataGridViewImageColumn1.Width = 80;
             // 
             // id
             // 
@@ -235,17 +216,63 @@
             this.btnRead.Name = "btnRead";
             this.btnRead.ReadOnly = true;
             // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.FillWeight = 55.48507F;
+            this.dataGridViewImageColumn1.HeaderText = "";
+            this.dataGridViewImageColumn1.Image = global::HRMngt.Properties.Resources.read;
+            this.dataGridViewImageColumn1.MinimumWidth = 10;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
+            this.dataGridViewImageColumn1.Width = 80;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Gray;
+            this.label4.Location = new System.Drawing.Point(599, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 25);
+            this.label4.TabIndex = 29;
+            this.label4.Text = "Loại";
+            // 
+            // cmbChooseStatus
+            // 
+            this.cmbChooseStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbChooseStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbChooseStatus.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.cmbChooseStatus.FormattingEnabled = true;
+            this.cmbChooseStatus.ItemHeight = 25;
+            this.cmbChooseStatus.Items.AddRange(new object[] {
+            "All",
+            "Chưa xử lý",
+            "Đã xử lý"});
+            this.cmbChooseStatus.Location = new System.Drawing.Point(604, 53);
+            this.cmbChooseStatus.Name = "cmbChooseStatus";
+            this.cmbChooseStatus.Size = new System.Drawing.Size(140, 33);
+            this.cmbChooseStatus.TabIndex = 28;
+            this.cmbChooseStatus.Tag = "0";
+            // 
+            // txtChooseUserID
+            // 
+            this.txtChooseUserID.Location = new System.Drawing.Point(424, 55);
+            this.txtChooseUserID.Name = "txtChooseUserID";
+            this.txtChooseUserID.Size = new System.Drawing.Size(165, 31);
+            this.txtChooseUserID.TabIndex = 30;
+            // 
             // RequestView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1246, 620);
+            this.Controls.Add(this.txtChooseUserID);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cmbChooseStatus);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dtpChooseMonth);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtChooseUserID);
             this.Controls.Add(this.cmbChooseType);
             this.Controls.Add(this.dgvRequestTable);
             this.Name = "RequestView";
@@ -262,7 +289,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtpChooseMonth;
         private System.Windows.Forms.Label label1;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtChooseUserID;
         private System.Windows.Forms.ComboBox cmbChooseType;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvRequestTable;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
@@ -272,5 +298,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TimeCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserIDCol;
         private System.Windows.Forms.DataGridViewImageColumn btnRead;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbChooseStatus;
+        private System.Windows.Forms.TextBox txtChooseUserID;
     }
 }

@@ -14,7 +14,6 @@ namespace HRMngt.Views
     public interface IDepartmentView
     {
         ComboBox cbManager { get; }
-        ComboBox cbAddress { get; }
         DataGridView dgvDepartmentList { get; }
 
         BunifuButton2 buttonAdd { get; }
@@ -38,6 +37,7 @@ namespace HRMngt.Views
         DepartmentDiaglog ShowDepartmentDialogToAdd();
         DepartmentDiaglog ShowDepartmentDialogToEdit(string id);
         void ShowDepartmentList(IEnumerable<DepartmentModel> departments);
+        void ShowManagerList(IEnumerable<UserModel> managerList);
         void Show();
 
     }

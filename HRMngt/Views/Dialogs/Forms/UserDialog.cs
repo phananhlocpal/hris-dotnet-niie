@@ -194,15 +194,13 @@ namespace HRMngt.Views.Dialogs
             }
         }
 
-        public void ShowUserIdNName(List<string> userIdNNameList)
+        public void ShowUserIdNName(IEnumerable<UserModel> userList)
         {
             cbManagerId.Items.Clear();
 
-            foreach (string item in userIdNNameList)
+            foreach (var item in userList)
             {
-                cbManagerId.Items.Add(item);
-
-
+                cbManagerId.Items.Add($"{item.Id} - {item.Name}");
             }
         }
 
@@ -220,14 +218,12 @@ namespace HRMngt.Views.Dialogs
             }
         }
 
-        public void ShowDepartmentIdNName(List<string> departmentIDNameList)
+        public void ShowDepartmentIdNName(IEnumerable<DepartmentModel> departmentList)
         {
             cbDepartmentId.Items.Clear();
-
-            foreach (string item in departmentIDNameList)
+            foreach (var item in departmentList)
             {
-                cbDepartmentId.Items.Add(item);
-
+                cbDepartmentId.Items.Add($"{item.Id} - {item.Name}");
             }
         }
         private void btnPicture_Click(object sender, EventArgs e)
