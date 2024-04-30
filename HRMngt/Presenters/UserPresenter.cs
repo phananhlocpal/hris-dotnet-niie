@@ -108,10 +108,14 @@ namespace HRMngt.Presenter
             dialog.Salary = user.Salary;
             dialog.Username = user.Username;
             dialog.Password = user.Password;
-            dialog.ManagerID = $"{manager.Id} - {manager.Name}";
+            if (manager != null)
+                dialog.ManagerID = $"{manager.Id} - {manager.Name}";
             dialog.DepartmentID = $"{department.Id} - {department.Name}";
             dialog.On_boarding = user.On_boarding;
-            dialog.Close_date = user.Close_date.Value;
+            if (user.Close_date != null)
+            {
+                dialog.Close_date = user.Close_date.Value;
+            }
             dialog.Scan_contract = user.Scan_contract;
             dialog.Note = user.Note;
             dialog.Sex = user.Sex;
@@ -123,7 +127,7 @@ namespace HRMngt.Presenter
             if (user.Photo == null || user.Photo.Length == 0)
             {
                 // Đường dẫn đến tệp hình ảnh mặc định
-                string defaultImagePath = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\HRMngt\Resources\no-image.jpg";
+                string defaultImagePath = @"C:\Users\Surface\source\repos\hris-dotnet-niie\HRMngt\Resources\no-image.jpg";
                 byte[] defaultImageBytes = File.ReadAllBytes(defaultImagePath);
                 dialog.Photo = ByteArrayToImage(defaultImageBytes);
             }

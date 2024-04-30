@@ -47,7 +47,7 @@ namespace HRMngt._Repository
                     command.Parameters.Add("@On_boarding", SqlDbType.DateTime).Value = userModel.On_boarding;
                     command.Parameters.Add("@Close_date", SqlDbType.DateTime).Value = userModel.Close_date;
                     command.Parameters.Add("@Scan_contract", SqlDbType.NVarChar).Value = userModel.Scan_contract;
-                    command.Parameters.Add("@Note", SqlDbType.VarChar).Value = userModel.Note;
+                    command.Parameters.Add("@Note", SqlDbType.NVarChar).Value = userModel.Note;
                     command.Parameters.Add("@Status", SqlDbType.NVarChar).Value = userModel.Status;
                     command.Parameters.Add("@Role", SqlDbType.NVarChar).Value = userModel.Roles;
                     command.Parameters.Add("@Username", SqlDbType.VarChar).Value = userModel.Username;
@@ -119,7 +119,7 @@ namespace HRMngt._Repository
                 else
                     command.Parameters.Add("@Close_date", SqlDbType.DateTime).Value = userModel.Close_date;
                 command.Parameters.Add("@Scan_contract", SqlDbType.NVarChar).Value = userModel.Scan_contract;
-                command.Parameters.Add("@Note", SqlDbType.VarChar).Value = userModel.Note;
+                command.Parameters.Add("@Note", SqlDbType.NVarChar).Value = userModel.Note;
                 command.Parameters.Add("@Sex", SqlDbType.NVarChar).Value = userModel.Sex;
                 command.Parameters.Add("@Status", SqlDbType.NVarChar).Value = userModel.Status;
                 command.Parameters.Add("@Position", SqlDbType.NVarChar).Value = userModel.Position;
@@ -163,11 +163,25 @@ namespace HRMngt._Repository
                         userModel.Birthday = (DateTime)reader[5];
                         userModel.Sex = reader[6].ToString();
                         userModel.Position = reader[7].ToString().Trim();
-                        userModel.Salary = int.Parse(reader[8].ToString());
+                        if (reader[8] != null && !reader.IsDBNull(8))
+                        {
+                            string salaryString = reader[8].ToString();
+                            if (int.TryParse(salaryString, out int salary))
+                            {
+                                userModel.Salary = salary;
+                            }
+                            else
+                            {
+                                // Xử lý trường hợp không thể chuyển đổi
+                            }
+                        }
                         userModel.ManagerID = reader[9].ToString();
                         userModel.DepartmentID = reader[10].ToString();
                         userModel.Contract_type = reader[11].ToString();
-                        userModel.On_boarding = (DateTime)reader[12];
+                        if (!reader.IsDBNull(12))
+                        {
+                            userModel.On_boarding = (DateTime)reader[12];
+                        }
                         if (reader[13] != DBNull.Value)
                         {
                             userModel.Close_date = (DateTime)reader[13];

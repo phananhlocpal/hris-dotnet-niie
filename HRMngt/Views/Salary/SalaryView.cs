@@ -30,14 +30,15 @@ namespace HRMngt.Views
         public SalaryView()
         {
             InitializeComponent();
+            RunEvent();
         }
 
         private void RunEvent()
         {
             cmbDepartment.SelectedIndexChanged += delegate { FilterEvent?.Invoke(this, EventArgs.Empty); };
             cmbStatus.SelectedIndexChanged += delegate { FilterEvent?.Invoke(this, EventArgs.Empty); };
-            dtpChooseMonth.ValueChanged += delegate { ShowSalaryTableEvent?.Invoke(this, EventArgs.Empty); };
-            btnExportSalary.Click += delegate { ExportExcelEvent?.Invoke(this, EventArgs.Empty); };
+            dtpChooseMonth.ValueChanged += delegate { FilterEvent?.Invoke(this, EventArgs.Empty); };
+            btnExportSalary.Click += delegate { ExportSalaryEvent?.Invoke(this, EventArgs.Empty); };
             btnApproveAll.Click += delegate { ApproveAllEvent?.Invoke(this, EventArgs.Empty); };
             btnExportExcel.Click += delegate { ExportExcelEvent?.Invoke(this, EventArgs.Empty); };
             dgvSalaryTable.CellContentClick += (sender, e) =>
@@ -63,73 +64,15 @@ namespace HRMngt.Views
         public event EventHandler ExportExcelEvent;
         public event EventHandler LoadSalaryDialogToEditEvent;
         public event EventHandler DeleteEvent;
-
-        
-
-        private static SalaryView instance;
-        public static SalaryView GetInstance(Form parentContainer)
+       
+        public void LoadDepartmentCmb(IEnumerable<DepartmentModel> departmentList)
         {
-            if (instance == null || instance.IsDisposed)
+            cmbDepartment.Items.Clear();
+            cmbDepartment.Items.Add("All");
+            foreach (var item in departmentList)
             {
-                instance = new SalaryView();
-                instance.MdiParent = parentContainer;
-                instance.FormBorderStyle = FormBorderStyle.None;
-                instance.Dock = DockStyle.Fill;
-            }
-            else
-            {
-                if (instance.WindowState == FormWindowState.Minimized)
-                    instance.WindowState = FormWindowState.Normal;
-                instance.BringToFront();
-            }
-            return instance;
-        }
-        private void ToExcel(DataGridView dataGridView1, string fileName)
-        {
-            Microsoft.Office.Interop.Excel.Application excel;
-            Microsoft.Office.Interop.Excel.Workbook workbook;
-            Microsoft.Office.Interop.Excel.Worksheet worksheet;
-            try
-            {
-                excel = new Microsoft.Office.Interop.Excel.Application();
-                excel.Visible = false;
-                excel.DisplayAlerts = false;
-                workbook = excel.Workbooks.Add(Type.Missing);
-                worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets["Sheet1"];
-                worksheet.Name = "Quản lý lương";
-                for (int i = 0; i < dataGridView1.ColumnCount; i++)
-                {
-                    worksheet.Cells[1, i + 1] = dataGridView1.Columns[i].HeaderText;
-                }
-                for (int i = 0; i < dataGridView1.RowCount; i++)
-                {
-                    for (int j = 0; j < dataGridView1.ColumnCount; j++)
-                    {
-                        worksheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
-                    }
-                }
-                workbook.SaveAs(fileName);
-                workbook.Close();
-                excel.Quit();
-                MessageBox.Show("Xuất dữ liệu ra Excel thành công!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                workbook = null;
-                worksheet = null;
-            }
-        }
-
-        private void btnExcel_Click(object sender, EventArgs e)
-        {
-            if (saveExcel.ShowDialog() == DialogResult.OK)
-            {
-                ToExcel(dgvSalaryTable, saveExcel.FileName);
-            }
+                cmbDepartment.Items.Add($"{item.Id} - {item.Name}");
+            }    
         }
 
         public DepartmentDiaglog ShowSalaryDialogToAdd()
@@ -168,6 +111,25 @@ namespace HRMngt.Views
                 }
             }
             else dgvSalaryTable.Rows.Clear();
+        }
+
+        private static SalaryView instance;
+        public static SalaryView GetInstance(Form parentContainer)
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new SalaryView();
+                instance.MdiParent = parentContainer;
+                instance.FormBorderStyle = FormBorderStyle.None;
+                instance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                    instance.WindowState = FormWindowState.Normal;
+                instance.BringToFront();
+            }
+            return instance;
         }
 
     }

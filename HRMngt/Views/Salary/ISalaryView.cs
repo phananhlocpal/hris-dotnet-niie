@@ -28,6 +28,7 @@ namespace HRMngt.Views.Salary
         DepartmentDiaglog ShowSalaryDialogToAdd();
         DepartmentDiaglog ShowSalaryDialogToEdit(string id);
         void ShowSalaryList(IEnumerable<SalaryModel> salaryList);
+        void LoadDepartmentCmb(IEnumerable<DepartmentModel> departmentList);
         void Show();
     }
 }

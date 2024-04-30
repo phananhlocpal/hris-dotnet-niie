@@ -126,8 +126,25 @@ namespace HRMngt._Repository.Calendar
 
         public int GetRealWorkdayByMonthNYear(string userId, int month, int year)
         {
-            throw new NotImplementedException();
+            int workdays = 0;
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT COUNT(*) FROM calendar WHERE userID = @UserID AND MONTH(date) = @Month AND YEAR(date) = @Year AND status IN ('Leave 1', 'Leave 2', 'Leave 3', 'Leave 4', 'Confirmed')";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserID", userId);
+                    command.Parameters.AddWithValue("@Month", month);
+                    command.Parameters.AddWithValue("@Year", year);
+                    workdays = (int)command.ExecuteScalar();
+                }
+                connection.Close();
+            }
+
+            return workdays;
         }
+
         public string GetAddressDepartment(string userID)
         {
             string departmentLocation = "";
@@ -233,6 +250,14 @@ namespace HRMngt._Repository.Calendar
                 .ToList();
             return query;
         }
+
+        public IEnumerable<CalendarModel> LINQ_GetListByMonthNYear(IEnumerable<CalendarModel> calendarList, int month, int year)
+        {
+            var query = calendarList
+                .Where(calendarModel => calendarModel.Date.Month == month && calendarModel.Date.Year == year)
+                .ToList();
+            return query;
+        }
     }
-        
+
 }

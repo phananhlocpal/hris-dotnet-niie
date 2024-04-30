@@ -117,8 +117,12 @@ namespace HRMngt._Repository
                 {
                     while (reader.Read())
                     {
-                        thumbTotal = (int)reader[0];
+                        if (!reader.IsDBNull(0))
+                        {
+                            thumbTotal = Convert.ToInt32(reader[0]);
+                        }
                     }
+
                 }
                 connection.Close();
             }
@@ -141,7 +145,10 @@ namespace HRMngt._Repository
                 {
                     while (reader.Read())
                     {
-                        ticketTotal = (int)reader[0];
+                        if (!reader.IsDBNull(0))
+                        {
+                            ticketTotal = Convert.ToInt32(reader[0]);
+                        }
                     }
                 }
                 connection.Close();

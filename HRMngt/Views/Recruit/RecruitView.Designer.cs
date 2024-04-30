@@ -34,9 +34,6 @@
             this.cbStatus = new System.Windows.Forms.ComboBox();
             this.cbDepartment = new System.Windows.Forms.ComboBox();
             this.dgvHRList = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.saveFile = new System.Windows.Forms.SaveFileDialog();
-            this.btnAdd = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
-            this.btnExcel = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +43,9 @@
             this.btnRead = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnDelete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.saveFile = new System.Windows.Forms.SaveFileDialog();
+            this.btnAdd = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            this.btnExcel = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHRList)).BeginInit();
@@ -127,6 +127,84 @@
             this.dgvHRList.StateCommon.HeaderRow.Back.Color2 = System.Drawing.Color.White;
             this.dgvHRList.TabIndex = 9;
             // 
+            // Id
+            // 
+            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Id.HeaderText = "ID";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.name.HeaderText = "Tên nhân viên";
+            this.name.MinimumWidth = 6;
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // phone
+            // 
+            this.phone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.phone.HeaderText = "Chế độ";
+            this.phone.MinimumWidth = 6;
+            this.phone.Name = "phone";
+            this.phone.ReadOnly = true;
+            // 
+            // roles
+            // 
+            this.roles.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.roles.HeaderText = "Vị trí";
+            this.roles.MinimumWidth = 6;
+            this.roles.Name = "roles";
+            this.roles.ReadOnly = true;
+            // 
+            // position
+            // 
+            this.position.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.position.HeaderText = "Chức vụ";
+            this.position.MinimumWidth = 6;
+            this.position.Name = "position";
+            this.position.ReadOnly = true;
+            // 
+            // status
+            // 
+            this.status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.status.HeaderText = "Trạng thái";
+            this.status.MinimumWidth = 6;
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
+            // 
+            // btnRead
+            // 
+            this.btnRead.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.btnRead.HeaderText = "";
+            this.btnRead.Image = global::HRMngt.Properties.Resources.read;
+            this.btnRead.MinimumWidth = 50;
+            this.btnRead.Name = "btnRead";
+            this.btnRead.ReadOnly = true;
+            this.btnRead.Width = 50;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.btnEdit.HeaderText = "";
+            this.btnEdit.Image = global::HRMngt.Properties.Resources.update;
+            this.btnEdit.MinimumWidth = 50;
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.ReadOnly = true;
+            this.btnEdit.Width = 50;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.btnDelete.HeaderText = "";
+            this.btnDelete.Image = global::HRMngt.Properties.Resources.delete;
+            this.btnDelete.MinimumWidth = 50;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.ReadOnly = true;
+            this.btnDelete.Width = 50;
+            // 
             // btnAdd
             // 
             this.btnAdd.AllowAnimations = true;
@@ -186,12 +264,12 @@
             this.btnAdd.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
             this.btnAdd.OnDisabledState.IconLeftImage = null;
             this.btnAdd.OnDisabledState.IconRightImage = null;
-            this.btnAdd.onHoverState.BorderColor = System.Drawing.Color.White;
+            this.btnAdd.onHoverState.BorderColor = System.Drawing.Color.DodgerBlue;
             this.btnAdd.onHoverState.BorderRadius = 1;
             this.btnAdd.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             this.btnAdd.onHoverState.BorderThickness = 1;
             this.btnAdd.onHoverState.FillColor = System.Drawing.Color.White;
-            this.btnAdd.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnAdd.onHoverState.ForeColor = System.Drawing.Color.DodgerBlue;
             this.btnAdd.onHoverState.IconLeftImage = null;
             this.btnAdd.onHoverState.IconRightImage = null;
             this.btnAdd.OnIdleState.BorderColor = System.Drawing.Color.DodgerBlue;
@@ -277,12 +355,12 @@
             this.btnExcel.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
             this.btnExcel.OnDisabledState.IconLeftImage = null;
             this.btnExcel.OnDisabledState.IconRightImage = null;
-            this.btnExcel.onHoverState.BorderColor = System.Drawing.Color.White;
+            this.btnExcel.onHoverState.BorderColor = System.Drawing.Color.DodgerBlue;
             this.btnExcel.onHoverState.BorderRadius = 1;
             this.btnExcel.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             this.btnExcel.onHoverState.BorderThickness = 1;
             this.btnExcel.onHoverState.FillColor = System.Drawing.Color.White;
-            this.btnExcel.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnExcel.onHoverState.ForeColor = System.Drawing.Color.DodgerBlue;
             this.btnExcel.onHoverState.IconLeftImage = null;
             this.btnExcel.onHoverState.IconRightImage = null;
             this.btnExcel.OnIdleState.BorderColor = System.Drawing.Color.DodgerBlue;
@@ -309,84 +387,6 @@
             this.btnExcel.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnExcel.UseDefaultRadiusAndThickness = true;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
-            // 
-            // Id
-            // 
-            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Id.HeaderText = "ID";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            // 
-            // name
-            // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.name.HeaderText = "Tên nhân viên";
-            this.name.MinimumWidth = 6;
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
-            // phone
-            // 
-            this.phone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.phone.HeaderText = "Chế độ";
-            this.phone.MinimumWidth = 6;
-            this.phone.Name = "phone";
-            this.phone.ReadOnly = true;
-            // 
-            // roles
-            // 
-            this.roles.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.roles.HeaderText = "Vị trí";
-            this.roles.MinimumWidth = 6;
-            this.roles.Name = "roles";
-            this.roles.ReadOnly = true;
-            // 
-            // position
-            // 
-            this.position.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.position.HeaderText = "Chức vụ";
-            this.position.MinimumWidth = 6;
-            this.position.Name = "position";
-            this.position.ReadOnly = true;
-            // 
-            // status
-            // 
-            this.status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.status.HeaderText = "Trạng thái";
-            this.status.MinimumWidth = 6;
-            this.status.Name = "status";
-            this.status.ReadOnly = true;
-            // 
-            // btnRead
-            // 
-            this.btnRead.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.btnRead.HeaderText = "";
-            this.btnRead.Image = global::HRMngt.Properties.Resources.read;
-            this.btnRead.MinimumWidth = 50;
-            this.btnRead.Name = "btnRead";
-            this.btnRead.ReadOnly = true;
-            this.btnRead.Width = 50;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.btnEdit.HeaderText = "";
-            this.btnEdit.Image = global::HRMngt.Properties.Resources.update;
-            this.btnEdit.MinimumWidth = 50;
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.ReadOnly = true;
-            this.btnEdit.Width = 50;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.btnDelete.HeaderText = "";
-            this.btnDelete.Image = global::HRMngt.Properties.Resources.delete;
-            this.btnDelete.MinimumWidth = 50;
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.ReadOnly = true;
-            this.btnDelete.Width = 50;
             // 
             // label1
             // 

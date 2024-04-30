@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace HRMngt._Repository.Salary
 {
@@ -31,7 +32,9 @@ namespace HRMngt._Repository.Salary
                 command.Parameters.Add("@ticket_total", SqlDbType.Int).Value = salary.TicketTotal;
                 command.Parameters.Add("@tax", SqlDbType.Int).Value = salary.Tax;
                 command.Parameters.Add("@total_salary", SqlDbType.Int).Value = salary.TotalSalary;
-                command.Parameters.Add("@res", SqlDbType.NVarChar).Value = salary.Res;
+                if (salary.Res != null)
+                    command.Parameters.Add("@res", SqlDbType.NVarChar).Value = salary.Res;
+                else command.Parameters.Add("@res", SqlDbType.NVarChar).Value = DBNull.Value;
                 command.Parameters.Add("@status", SqlDbType.NVarChar).Value = salary.Status;
                 command.ExecuteNonQuery();
                 connection.Close();
@@ -45,7 +48,7 @@ namespace HRMngt._Repository.Salary
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "Delete from salary where userId = @UserId and month = @Month and year = @Year";
+                command.CommandText = "Delete from salary where userID = @UserId and get_month = @Month and get_year = @Year";
                 command.Parameters.Add("@UserId", SqlDbType.Char).Value = userId;
                 command.Parameters.Add("@Month", SqlDbType.Int).Value = month;
                 command.Parameters.Add("@Year", SqlDbType.Int).Value = year;
@@ -70,7 +73,7 @@ namespace HRMngt._Repository.Salary
                 command.Parameters.Add("@TotalSalary", SqlDbType.Int).Value = salaryModel.TotalSalary;
                 // Use ternary operator to handle null values for Response
                 command.Parameters.Add("@Res", SqlDbType.NVarChar).Value = salaryModel.Res ?? (object)DBNull.Value;
-                command.Parameters.Add("@Status", SqlDbType.NVarChar).Value = salaryModel.Status;
+                command.Parameters.Add("@Status", SqlDbType.VarChar).Value = salaryModel.Status;
                 command.Parameters.Add("@UserID", SqlDbType.Char).Value = salaryModel.UserId;
                 command.Parameters.Add("@Month", SqlDbType.Int).Value = salaryModel.Month;
                 command.Parameters.Add("@Year", SqlDbType.Int).Value = salaryModel.Year;
@@ -87,7 +90,7 @@ namespace HRMngt._Repository.Salary
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "Select * from salary";
+                command.CommandText = "SELECT salary.*, users.*, department.departmentID AS departmentId\r\nFROM salary\r\nINNER JOIN users ON salary.userID = users.userID\r\nINNER JOIN department ON department.departmentID = users.departmentID;\r\n";
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -105,6 +108,10 @@ namespace HRMngt._Repository.Salary
                         salaryModel.TotalSalary = double.Parse(reader[9].ToString());
                         salaryModel.Res = reader[10].ToString();
                         salaryModel.Status = reader[11].ToString();
+                        salaryModel.UserName = reader["name"].ToString();
+                        salaryModel.Contract_type = reader["contract_type"].ToString();
+                        salaryModel.Position = reader["position"].ToString();
+                        salaryModel.DepartmentId = reader["departmentId"].ToString();
                         salaryList.Add(salaryModel);
                     }
                 }
@@ -120,6 +127,35 @@ namespace HRMngt._Repository.Salary
                 .ToList();
             return query.FirstOrDefault();
         }
+
+
+        public bool LINQ_CheckExistSalary(IEnumerable<SalaryModel> salaryList, string userId, int month, int year)
+        {
+            var query = salaryList
+                .Where(salaryModel => salaryModel.UserId == userId && salaryModel.Month == month && salaryModel.Year == year)
+                .ToList();
+            return query.Any(); 
+        }
+
+        public IEnumerable<SalaryModel> LINQ_GetListByMonthNYear(IEnumerable<SalaryModel> salaryList,  int month, int year)
+        {
+            var query = salaryList
+                .Where(salaryModel => salaryModel.Month == month && salaryModel.Year == year)
+                .ToList();
+            return query;
+        }
+
+        public IEnumerable<SalaryModel> LINQ_Filter(IEnumerable<SalaryModel> salaryList, string departmentId, string status)
+        {
+            var query = salaryList;
+            //MessageBox.Show(departmentId);
+            if (departmentId != "All")
+                query = query.Where(salaryModel => salaryModel.DepartmentId == departmentId);
+            if (status != "All")
+                query = query.Where(salaryModel => salaryModel.Status == status);
+            return query.ToList();
+        }
+
 
     }
 }
