@@ -50,7 +50,7 @@ namespace HRMngt.Views
             };
             dgvSalaryTable.CellContentClick += (sender, e) =>
             {
-                if (e.RowIndex >= 0 && e.ColumnIndex == dgvSalaryTable.Columns[5].Index)
+                if (e.RowIndex >= 0 && e.ColumnIndex == dgvSalaryTable.Columns[6].Index)
                 {
                     DeleteEvent?.Invoke(this, EventArgs.Empty);
                 }

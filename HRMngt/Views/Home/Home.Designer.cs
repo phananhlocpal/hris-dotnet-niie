@@ -42,7 +42,7 @@
             this.lblWelcome.AutoSize = true;
             this.lblWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWelcome.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.lblWelcome.Location = new System.Drawing.Point(647, 29);
+            this.lblWelcome.Location = new System.Drawing.Point(662, 28);
             this.lblWelcome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblWelcome.Name = "lblWelcome";
             this.lblWelcome.Size = new System.Drawing.Size(248, 61);

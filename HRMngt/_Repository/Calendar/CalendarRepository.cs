@@ -54,36 +54,33 @@ namespace HRMngt._Repository.Calendar
         {
             var calendarList = new List<CalendarModel>();
             using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand())
+            using (var command = new SqlCommand("SELECT c.*, u.*, d.name AS department_name, d.departmentID FROM calendar c JOIN [users] u ON c.userID = u.userID JOIN department d ON u.departmentID = d.departmentID", connection))
             {
                 connection.Open();
-                command.Connection = connection;
-                command.CommandText = "SELECT c.*, u.name AS user_name, d.name AS department_name\r\nFROM calendar c\r\nJOIN [users] u ON c.userID = u.userID\r\nJOIN department d ON u.departmentID = d.departmentID;\r\n ";
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         var calendarModel = new CalendarModel();
-                        calendarModel.UserId = reader[0].ToString();
-                        calendarModel.Date = (DateTime)reader[1];
-                        calendarModel.CheckIn = (TimeSpan)reader[2];
-                        calendarModel.CheckOut = (TimeSpan)reader[3];
-                        if (calendarModel.RealCheckIn != null)
-                            calendarModel.RealCheckIn = (TimeSpan)reader[4];
-                        if (calendarModel.RealCheckOut != null)
-                            calendarModel.RealCheckOut = (TimeSpan)reader[5];
-                        calendarModel.Status = reader[8].ToString();
-                        calendarModel.RequestId = int.Parse(reader[9].ToString());
-                        calendarModel.UserName = reader[10].ToString();
-                        calendarModel.UserDepartment = reader[11].ToString();
+                        calendarModel.UserId = reader["userID"].ToString();
+                        calendarModel.Date = (DateTime)reader["date"];
+                        calendarModel.CheckIn = (TimeSpan)reader["register_checkIn"];
+                        calendarModel.CheckOut = (TimeSpan)reader["register_checkOut"];
+                        calendarModel.RealCheckIn = reader["real_CheckIn"] == DBNull.Value ? (TimeSpan?)null : (TimeSpan)reader["real_CheckIn"];
+                        calendarModel.RealCheckOut = reader["real_CheckOut"] == DBNull.Value ? (TimeSpan?)null : (TimeSpan)reader["real_CheckOut"];
+                        calendarModel.Status = reader["status"].ToString();
+                        calendarModel.RequestId = Convert.ToInt32(reader["requestId"]);
+                        calendarModel.UserName = reader["name"].ToString();
+                        calendarModel.UserDepartment = reader["department_name"].ToString();
+                        calendarModel.DepartmentId = reader["departmentID"].ToString();
+                        //calendarModel.ManagerId = reader["managerID"] == DBNull.Value ? reader["userID"].ToString() : reader["managerID"].ToString();
                         calendarList.Add(calendarModel);
                     }
                 }
                 connection.Close();
-            }
+            }   
             return calendarList;
         }
-
 
         public void Update(CalendarModel calendarModel)
         {
@@ -141,7 +138,6 @@ namespace HRMngt._Repository.Calendar
                 }
                 connection.Close();
             }
-
             return workdays;
         }
 
@@ -179,7 +175,7 @@ namespace HRMngt._Repository.Calendar
         public CalendarModel LINQ_GetModelByUserIdNDate(IEnumerable<CalendarModel> calendarList, string userId, DateTime date)
         {
             var query = calendarList
-                .Where(calendarModel => calendarModel.UserId == userId && calendarModel.Date.Date == date.Date.Date)
+                .Where(calendarModel => calendarModel.UserId == userId && calendarModel.Date.Date == date.Date)
                 .ToList();
             return query.FirstOrDefault();
         }
@@ -197,9 +193,10 @@ namespace HRMngt._Repository.Calendar
             return existingCalendar != null; // Trả về true nếu có mục thỏa mãn điều kiện
         }
 
-        public IEnumerable<CalendarModel> LINQ_Filter(IEnumerable<CalendarModel> calendarList, DateTime start, DateTime end, string departmentName, string status, string userId)
+        public IEnumerable<CalendarModel> LINQ_Filter(IEnumerable<CalendarModel> calendarList, DateTime start, DateTime end, string departmentId, string status, string userId)
         {
-            IEnumerable<CalendarModel> query = calendarList;
+            var query = calendarList;
+            query = query.Where(c => c.Date >= start && c.Date <= end);
 
             if (!string.IsNullOrEmpty(userId))
             {
@@ -207,21 +204,13 @@ namespace HRMngt._Repository.Calendar
             }
 
             // Áp dụng các điều kiện lọc khác (nếu có)
-            if (departmentName != "All")
+            if (departmentId != "All")
             {
-                query = query.Where(c => c.UserDepartment == departmentName);
+                query = query.Where(c => c.DepartmentId == departmentId);
             }
             if (status != "All")
             {
                 query = query.Where(c => c.Status == status);
-            }
-            if (start != default(DateTime))
-            {
-                query = query.Where(c => c.Date >= start);
-            }
-            if (end != default(DateTime))
-            {
-                query = query.Where(c => c.Date <= end);
             }
 
             return query.ToList();
@@ -257,6 +246,20 @@ namespace HRMngt._Repository.Calendar
                 .Where(calendarModel => calendarModel.Date.Month == month && calendarModel.Date.Year == year)
                 .ToList();
             return query;
+        }
+
+        public IEnumerable<CalendarModel> LINQ_GetListByManagerId(IEnumerable<CalendarModel> calendarList, string managerId)
+        {
+            var query = calendarList
+                .Where(calendarModel => calendarModel.ManagerId == managerId)
+                .ToList();
+            return query;
+        }
+
+        public bool LINQ_CheckIndividualExistDate(IEnumerable<CalendarModel> calendarList, string userID, DateTime date)
+        {
+            var existingCalendar = calendarList.FirstOrDefault(calendarModel => calendarModel.Date == date && calendarModel.UserId == userID);
+            return existingCalendar != null;
         }
     }
 

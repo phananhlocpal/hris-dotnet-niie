@@ -88,3 +88,4 @@ C:\Users\Surface\source\repos\hris-dotnet-niie\HRMngt\obj\Debug\HRMngt.exe
 C:\Users\Surface\source\repos\hris-dotnet-niie\HRMngt\obj\Debug\HRMngt.pdb
 C:\Users\Surface\source\repos\hris-dotnet-niie\HRMngt\obj\Debug\HRMngt.Views.Dialogs.AttendanceDialog.resources
 C:\Users\Surface\source\repos\hris-dotnet-niie\HRMngt\obj\Debug\HRMngt.Views.Dialogs.Forms.LeaveDialog.resources
+C:\Users\Surface\source\repos\hris-dotnet-niie\HRMngt\obj\Debug\HRMngt.Views.Dialogs.Forms.SalaryDialogForEditing.resources

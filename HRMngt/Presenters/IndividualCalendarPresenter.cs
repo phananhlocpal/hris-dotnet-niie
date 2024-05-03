@@ -41,11 +41,35 @@ namespace HRMngt.Presenters
             this.view.LoadCalendarDialogToCreateEvent += LoadCalendarDialogToAdd;
             this.view.SearchByPeriodEvent += SearchByPeriod;
             this.view.LoadLeaveDialogEvent += LoadLeaveDialog;
+            this.view.Filter += Filter;
 
             view.dtpChoosePeriod.Value = DateTime.Now;
             ReadPermit();
             this.view.Show();
         }
+
+        private void Filter(object sender, EventArgs e)
+        {
+            calendarList = repository.GetAll();
+
+            DateTime selectedDate = view.dtpChoosePeriod.Value;
+            DateTime monday = selectedDate.AddDays(DayOfWeek.Monday - selectedDate.DayOfWeek);
+            DateTime sunday = monday.AddDays(6);
+
+            string status = view.cmbStatus.Text;
+            IEnumerable<CalendarModel> calendarFilterList = repository.LINQ_Filter(calendarList, monday, sunday, userModel.DepartmentID, status, userModel.Id);
+
+            if (calendarFilterList.Any())
+            {
+                this.view.ShowCalendarList(calendarFilterList);
+            }
+            else
+            {
+                MessageBox.Show("Không có lịch");
+                FailPopUp.ShowPopUp();
+            }
+        }
+
 
         private void LoadLeaveDialog(object sender, EventArgs e)
         {
@@ -187,6 +211,7 @@ namespace HRMngt.Presenters
                     {
                         calendarModel.UserId = userModel.Id;
                         calendarModel.RequestId = requestModel.Id;
+                        calendarModel.Status = "Created";
                         repository.Add(calendarModel);
                     }
                     
@@ -201,17 +226,18 @@ namespace HRMngt.Presenters
 
         private bool CheckExistDate(IEnumerable<CalendarModel> calendarRegisterList)
         {
+            bool result = false;
             // Ensure that calendarList is initialized and contains data
             if (calendarRegisterList == null)
-                return false;
+                result =  false;
 
             foreach (CalendarModel calendarModel in calendarRegisterList)
             {
                 // Check if the date already exists in the calendarList
-                if (repository.LINQ_checkExistDate(calendarRegisterList, calendarModel.Date))
-                    return true;
+                if (repository.LINQ_CheckIndividualExistDate(calendarList, userModel.Id, calendarModel.Date))
+                    result = true;
             }
-            return false;
+            return result;
         }
 
 

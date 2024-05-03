@@ -13,6 +13,7 @@ namespace HRMngt.Views.Dialogs
     {
         KryptonDataGridView dgvCalendarTable { get; set; }
         DateTimePicker dtpChoosePeriod { get; set; }
+        ComboBox cmbStatus {  get; set; }
         // Events
         event EventHandler SearchByPeriodEvent;
         event EventHandler ViewCurrentCalendarEvent;

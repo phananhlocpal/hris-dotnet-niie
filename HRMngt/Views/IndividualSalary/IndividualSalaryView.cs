@@ -26,8 +26,8 @@ namespace HRMngt.Views.Dialogs
         {
             btnExportExcel.Click += delegate { ExportExcelEvent?.Invoke(this, EventArgs.Empty); };
             btnView.Click += delegate { SearchByMonthEvent?.Invoke(this, EventArgs.Empty); };
-            btnViewResume.Click += delegate { LoadSalaryDialogToViewEvent?.Invoke(this, EventArgs.Empty); };
-            btnViewResume.Click += delegate { ViewResumeEvent?.Invoke(this, EventArgs.Empty); };
+            //btnReadSalaryTable.Click += delegate { LoadSalaryDialogToViewEvent?.Invoke(this, EventArgs.Empty); };
+            btnReadSalaryTable.Click += delegate { ViewResumeEvent?.Invoke(this, EventArgs.Empty); };
         }
 
         KryptonDataGridView IIndividualSalaryView.dgvSalaryTable => dgvSalaryTable;

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace HRMngt._Repository.Salary
 {
@@ -26,7 +27,7 @@ namespace HRMngt._Repository.Salary
                 command.Parameters.Add("@get_month", SqlDbType.Int).Value = salary.Month;
                 command.Parameters.Add("@get_year", SqlDbType.Int).Value = salary.Year;
                 command.Parameters.Add("@workday", SqlDbType.Int).Value = salary.Workday;
-                command.Parameters.Add("@real_workday", SqlDbType.Int).Value = salary.Workday;
+                command.Parameters.Add("@real_workday", SqlDbType.Int).Value = salary.RealWorkday;
                 command.Parameters.Add("@welfare", SqlDbType.Int).Value = salary.Welfare;
                 command.Parameters.Add("@thumb_total", SqlDbType.Int).Value = salary.ThumbTotal;
                 command.Parameters.Add("@ticket_total", SqlDbType.Int).Value = salary.TicketTotal;
@@ -64,7 +65,7 @@ namespace HRMngt._Repository.Salary
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "UPDATE salary SET workday=@Workday, real_workday=@RealWorkday, thumb_total=@ThumbTotal, ticket_total=@TicketTotal, tax=@Tax, total_salary=@TotalSalary, res=@Res, status=@Status WHERE (userID = @UserID AND get_month= @Month AND get_year = @Year)";
+                command.CommandText = "UPDATE salary SET workday=@Workday, real_workday=@RealWorkday, thumb_total=@ThumbTotal, ticket_total=@TicketTotal, tax=@Tax, total_salary=@TotalSalary, welfare = @Welfare, res=@Res, complain = @Complain, status=@Status WHERE (userID = @UserID AND get_month= @Month AND get_year = @Year)";
                 command.Parameters.Add("@Workday", SqlDbType.Char).Value = salaryModel.Workday;
                 command.Parameters.Add("@RealWorkday", SqlDbType.NVarChar).Value = salaryModel.RealWorkday;
                 command.Parameters.Add("@ThumbTotal", SqlDbType.Int).Value = salaryModel.ThumbTotal;
@@ -77,6 +78,9 @@ namespace HRMngt._Repository.Salary
                 command.Parameters.Add("@UserID", SqlDbType.Char).Value = salaryModel.UserId;
                 command.Parameters.Add("@Month", SqlDbType.Int).Value = salaryModel.Month;
                 command.Parameters.Add("@Year", SqlDbType.Int).Value = salaryModel.Year;
+                command.Parameters.Add("@Complain", SqlDbType.NVarChar).Value = salaryModel.Complain ?? (object)DBNull.Value;
+                command.Parameters.Add("@Welfare", SqlDbType.Int).Value = salaryModel.Welfare;
+
                 command.ExecuteNonQuery();
                 connection.Close();
             }
@@ -107,11 +111,14 @@ namespace HRMngt._Repository.Salary
                         salaryModel.Tax = double.Parse(reader[8].ToString());
                         salaryModel.TotalSalary = double.Parse(reader[9].ToString());
                         salaryModel.Res = reader[10].ToString();
+                        salaryModel.Complain = reader["complain"].ToString();
                         salaryModel.Status = reader[11].ToString();
                         salaryModel.UserName = reader["name"].ToString();
                         salaryModel.Contract_type = reader["contract_type"].ToString();
                         salaryModel.Position = reader["position"].ToString();
                         salaryModel.DepartmentId = reader["departmentId"].ToString();
+                        if (reader["managerID"] != null)
+                            salaryModel.ManagerId = reader["managerID"].ToString();
                         salaryList.Add(salaryModel);
                     }
                 }
@@ -120,6 +127,7 @@ namespace HRMngt._Repository.Salary
             return salaryList;
         }
 
+        // LINQ Method
         public SalaryModel LINQ_GetModelByPK(IEnumerable<SalaryModel> salaryList,string userId, int month, int year)
         {
             var query = salaryList
@@ -128,8 +136,7 @@ namespace HRMngt._Repository.Salary
             return query.FirstOrDefault();
         }
 
-
-        public bool LINQ_CheckExistSalary(IEnumerable<SalaryModel> salaryList, string userId, int month, int year)
+        public bool LINQ_CheckExistIndividualSalary(IEnumerable<SalaryModel> salaryList, string userId, int month, int year)
         {
             var query = salaryList
                 .Where(salaryModel => salaryModel.UserId == userId && salaryModel.Month == month && salaryModel.Year == year)
@@ -145,10 +152,11 @@ namespace HRMngt._Repository.Salary
             return query;
         }
 
-        public IEnumerable<SalaryModel> LINQ_Filter(IEnumerable<SalaryModel> salaryList, string departmentId, string status)
+        public IEnumerable<SalaryModel> LINQ_Filter(IEnumerable<SalaryModel> salaryList, string departmentId, string status, int month, int year)
         {
             var query = salaryList;
             //MessageBox.Show(departmentId);
+            query = query.Where(salaryModel => salaryModel.Month == month && salaryModel.Year == year);
             if (departmentId != "All")
                 query = query.Where(salaryModel => salaryModel.DepartmentId == departmentId);
             if (status != "All")
@@ -156,7 +164,21 @@ namespace HRMngt._Repository.Salary
             return query.ToList();
         }
 
+        public IEnumerable<SalaryModel> LINQ_GetListByManagerNMonthNYear(IEnumerable<SalaryModel> salaryList, string managerId,int month, int year)
+        {
+            var query = salaryList
+                .Where(salaryModel => salaryModel.ManagerId == managerId && salaryModel.Month == month && salaryModel.Year == year)
+                .ToList();
+            return query;
+        }
 
+        public bool LINQ_CheckExistSalary(IEnumerable<SalaryModel> salaryList, int month, int year)
+        {
+            var query = salaryList
+                .Where(salaryModel => salaryModel.Month == month && salaryModel.Year == year)
+                .ToList();
+            return query.Any();
+        }
     }
 }
 

@@ -20,6 +20,7 @@ namespace HRMngt._Repository
         IEnumerable<ThumbTicketModel> LINQ_GetListById(IEnumerable<ThumbTicketModel> thumbTicketList, string id);
         IEnumerable<ThumbTicketModel> LINQ_GetListByUserId(IEnumerable<ThumbTicketModel> thumbTicketList, string id);
         IEnumerable<ThumbTicketModel> LINQ_Filter(IEnumerable<ThumbTicketModel> thumbTicketList, string userId, int month, int year, string type);
+        IEnumerable<ThumbTicketModel> LINQ_GetListByManager(IEnumerable<ThumbTicketModel> thumbTicketList, string managerId);
         int GetThumbTotalByMonthNYear(string userId, int month, int year);
         int GetTicketTotalByMonthNYear(string userId, int month, int year);
     }

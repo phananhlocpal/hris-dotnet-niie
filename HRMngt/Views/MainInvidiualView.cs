@@ -113,6 +113,18 @@ namespace HRMngt.View
         public event EventHandler ShowCommunicateView;
         public event EventHandler ShowRequestView;
 
+        public void ShowIndividualInfo(UserModel userModel)
+        {
+            lblNavName.Text = userModel.Name;
+            lblIndividualName.Text = userModel.Name;
+            lblUserId.Text = "Mã NV: " + userModel.Id.ToString();
+            lblEmailInfo.Text = userModel.Email;
+            lblPhoneInfo.Text = userModel.Phone;
+            lblGender.Text = userModel.Sex;
+            lblPosition.Text = userModel.Position;
+
+        }
+
         private void txtNavSearch_Leave(object sender, EventArgs e)
         {
             if (txtNavSearch.Text == "")
@@ -129,13 +141,6 @@ namespace HRMngt.View
                 txtNavSearch.Text = "";
                 txtNavSearch.ForeColor = Color.Black;
             }
-        }
-
-        private void picLogo_Click(object sender, EventArgs e)
-        {
-            IMainView view = new MainView();
-            new MainViewPresenter(view, currentUser);
-
         }
 
         public void ShowUserList(IEnumerable<UserModel> userList)

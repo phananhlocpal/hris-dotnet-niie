@@ -14,5 +14,6 @@ namespace HRMngt.Views.Dialogs
 
         // Methods
         void ShowSalaryInfo(SalaryModel salaryModel, UserModel userModel);
+        void ShowDialog();
     }
 }

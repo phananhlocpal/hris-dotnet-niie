@@ -45,7 +45,7 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCreateLeave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCalendarTable)).BeginInit();
@@ -236,20 +236,20 @@
             this.dataGridViewImageColumn3.ReadOnly = true;
             this.dataGridViewImageColumn3.Width = 50;
             // 
-            // comboBox1
+            // cmbStatus
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cmbStatus.FormattingEnabled = true;
+            this.cmbStatus.Items.AddRange(new object[] {
             "All",
             "Created",
             "Approved",
             "Confirmed",
             "Leave",
             "Not Approved"});
-            this.comboBox1.Location = new System.Drawing.Point(141, 27);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(153, 33);
-            this.comboBox1.TabIndex = 27;
+            this.cmbStatus.Location = new System.Drawing.Point(141, 27);
+            this.cmbStatus.Name = "cmbStatus";
+            this.cmbStatus.Size = new System.Drawing.Size(153, 33);
+            this.cmbStatus.TabIndex = 27;
             // 
             // label1
             // 
@@ -279,7 +279,7 @@
             this.ClientSize = new System.Drawing.Size(1420, 903);
             this.Controls.Add(this.btnCreateLeave);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbStatus);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.dtpChoosePeriod);
             this.Controls.Add(this.btnCurrentDate);
@@ -311,7 +311,7 @@
         private System.Windows.Forms.DataGridViewImageColumn btnDelete;
         private System.Windows.Forms.DataGridViewImageColumn btnLeave;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbStatus;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCreateLeave;
     }

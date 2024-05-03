@@ -19,6 +19,7 @@ namespace HRMngt.Models
         private string complain;
         private string response;
         private string status;
+        private string managerID;
 
         // Encapsulate fields
         public string Id { get => id; set => id = value; }
@@ -31,5 +32,6 @@ namespace HRMngt.Models
         public string Complain { get => complain; set => complain = value; }
         public string Response { get => response; set => response = value; }
         public string Status { get => status; set => status = value; }
+        public string ManagerID { get => managerID; set => managerID = value; }
     }
 }

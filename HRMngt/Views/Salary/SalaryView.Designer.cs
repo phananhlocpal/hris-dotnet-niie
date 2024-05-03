@@ -35,13 +35,6 @@
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.cmbDepartment = new System.Windows.Forms.ComboBox();
             this.dgvSalaryTable = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.position = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEdit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.saveExcel = new System.Windows.Forms.SaveFileDialog();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -53,6 +46,13 @@
             this.btnExportSalary = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.position = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnDelete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalaryTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,66 +131,6 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.dgvSalaryTable.StateCommon.HeaderColumn.Content.Padding = new System.Windows.Forms.Padding(10);
             this.dgvSalaryTable.TabIndex = 4;
-            // 
-            // Id
-            // 
-            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Id.HeaderText = "ID";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            // 
-            // name
-            // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.name.HeaderText = "Tên nhân viên";
-            this.name.MinimumWidth = 6;
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
-            // type
-            // 
-            this.type.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.type.HeaderText = "Chế độ";
-            this.type.MinimumWidth = 6;
-            this.type.Name = "type";
-            this.type.ReadOnly = true;
-            // 
-            // position
-            // 
-            this.position.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.position.HeaderText = "Vị trí";
-            this.position.MinimumWidth = 6;
-            this.position.Name = "position";
-            this.position.ReadOnly = true;
-            // 
-            // status
-            // 
-            this.status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.status.HeaderText = "Trạng thái";
-            this.status.MinimumWidth = 6;
-            this.status.Name = "status";
-            this.status.ReadOnly = true;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.btnEdit.HeaderText = "";
-            this.btnEdit.Image = global::HRMngt.Properties.Resources.update;
-            this.btnEdit.MinimumWidth = 6;
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.ReadOnly = true;
-            this.btnEdit.Width = 23;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.btnDelete.HeaderText = "";
-            this.btnDelete.Image = global::HRMngt.Properties.Resources.delete;
-            this.btnDelete.MinimumWidth = 6;
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.ReadOnly = true;
-            this.btnDelete.Width = 23;
             // 
             // dataGridViewImageColumn1
             // 
@@ -536,6 +476,62 @@
             this.label3.Size = new System.Drawing.Size(109, 25);
             this.label3.TabIndex = 25;
             this.label3.Text = "Trạng thái";
+            // 
+            // Id
+            // 
+            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Id.HeaderText = "ID";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.name.HeaderText = "Tên nhân viên";
+            this.name.MinimumWidth = 6;
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // type
+            // 
+            this.type.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.type.HeaderText = "Chế độ";
+            this.type.MinimumWidth = 6;
+            this.type.Name = "type";
+            this.type.ReadOnly = true;
+            // 
+            // position
+            // 
+            this.position.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.position.HeaderText = "Vị trí";
+            this.position.MinimumWidth = 6;
+            this.position.Name = "position";
+            this.position.ReadOnly = true;
+            // 
+            // status
+            // 
+            this.status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.status.HeaderText = "Trạng thái";
+            this.status.MinimumWidth = 6;
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.HeaderText = "";
+            this.btnEdit.Image = global::HRMngt.Properties.Resources.update;
+            this.btnEdit.MinimumWidth = 100;
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.ReadOnly = true;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.HeaderText = "";
+            this.btnDelete.Image = global::HRMngt.Properties.Resources.delete;
+            this.btnDelete.MinimumWidth = 100;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.ReadOnly = true;
             // 
             // SalaryView
             // 

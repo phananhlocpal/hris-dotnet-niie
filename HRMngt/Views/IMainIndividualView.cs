@@ -32,6 +32,7 @@ namespace HRMngt.Views
         event EventHandler ShowCommunicateView;
         event EventHandler ShowRequestView;
 
+        void ShowIndividualInfo(UserModel userModel);
         void ShowUserList(IEnumerable<UserModel> userList);
 
         void Show();

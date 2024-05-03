@@ -15,6 +15,7 @@ namespace HRMngt.Views
         TextBox txtChooseUserId { get; }
         DateTimePicker dtpchooseMonth { get; }
         ComboBox cmbChooseType { get; }
+        Button btnCreate { get; set; }
 
 
         // Events

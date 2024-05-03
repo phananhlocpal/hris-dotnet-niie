@@ -28,5 +28,6 @@ namespace HRMngt._Repository
         IEnumerable<UserModel> LINQ_GetAllManager(IEnumerable<UserModel> userList, string managerID);
         IEnumerable<UserModel> LINQ_GetListManager(IEnumerable<UserModel> userList);
         IEnumerable<UserModel> LINQ_GetAllUser(IEnumerable<UserModel> userList, string departmentID);
+        IEnumerable<UserModel> LINQ_GetListByManager(IEnumerable<UserModel> userList, string managerID);
     }
 }

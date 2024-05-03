@@ -352,5 +352,13 @@ namespace HRMngt._Repository
             var result = LINQ_GetModelById(userList, query.ManagerID);
             return result;
         }
+
+        public IEnumerable<UserModel> LINQ_GetListByManager(IEnumerable<UserModel> userList, string managerID)
+        {
+            var query = userList
+                .Where(userModel => userModel.ManagerID == managerID)
+                .ToList();
+            return query;
+        }
     }
 }

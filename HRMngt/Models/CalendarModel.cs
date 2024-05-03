@@ -11,6 +11,7 @@ namespace HRMngt.Models
         private string userId;
         private string userName;
         private string userDepartment;
+        private string departmentId;
         private DateTime date;
         private TimeSpan checkIn;
         private TimeSpan checkOut;
@@ -18,6 +19,7 @@ namespace HRMngt.Models
         private TimeSpan? realCheckOut;
         private string status;
         private int requestId;
+        private string managerId;
 
         // Encapsulate fields
         public string UserId { get => userId; set => userId = value; }
@@ -30,5 +32,7 @@ namespace HRMngt.Models
         public string UserName { get => userName; set => userName = value; }
         public string UserDepartment { get => userDepartment; set => userDepartment = value; }
         public int RequestId { get => requestId; set => requestId = value; }
+        public string ManagerId { get => managerId; set => managerId = value; }
+        public string DepartmentId { get => departmentId; set => departmentId = value; }
     }
 }

@@ -40,11 +40,7 @@
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.pnlIndividualInfo = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.lblPlaceInfo = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblDateInfo = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.lblPersonID = new System.Windows.Forms.Label();
+            this.lblPosition = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lblGender = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -59,8 +55,11 @@
             this.lblIndividualName = new System.Windows.Forms.Label();
             this.picIndividualAva = new System.Windows.Forms.PictureBox();
             this.pnlNavbar = new System.Windows.Forms.Panel();
-            this.pnlSupport = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.btnHelp = new System.Windows.Forms.Button();
+            this.pnlSupport = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.btnRequest = new System.Windows.Forms.Button();
             this.pnlDepartment = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.btnDepartment = new System.Windows.Forms.Button();
             this.pnlTimeKeeping = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -84,9 +83,6 @@
             this.pnlThumbTicket = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnThumbTicket = new System.Windows.Forms.Button();
-            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.btnRequest = new System.Windows.Forms.Button();
             this.lblHeader.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.pnlIndividualHeader.SuspendLayout();
@@ -98,8 +94,12 @@
             this.pnlIndividualInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picIndividualAva)).BeginInit();
             this.pnlNavbar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlSupport)).BeginInit();
             this.pnlSupport.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDepartment)).BeginInit();
             this.pnlDepartment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlTimeKeeping)).BeginInit();
@@ -117,10 +117,6 @@
             this.pnlSalaryDetail.SuspendLayout();
             this.pnlCalendar.SuspendLayout();
             this.pnlThumbTicket.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
-            this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
-            this.kryptonPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblHeader
@@ -237,17 +233,12 @@
             this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picLogo.TabIndex = 0;
             this.picLogo.TabStop = false;
-            this.picLogo.Click += new System.EventHandler(this.picLogo_Click);
             // 
             // pnlIndividualInfo
             // 
             this.pnlIndividualInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.pnlIndividualInfo.Controls.Add(this.lblPlaceInfo);
-            this.pnlIndividualInfo.Controls.Add(this.label5);
-            this.pnlIndividualInfo.Controls.Add(this.lblDateInfo);
-            this.pnlIndividualInfo.Controls.Add(this.label12);
-            this.pnlIndividualInfo.Controls.Add(this.lblPersonID);
+            this.pnlIndividualInfo.Controls.Add(this.lblPosition);
             this.pnlIndividualInfo.Controls.Add(this.label10);
             this.pnlIndividualInfo.Controls.Add(this.lblGender);
             this.pnlIndividualInfo.Controls.Add(this.label8);
@@ -267,62 +258,16 @@
             this.pnlIndividualInfo.StateNormal.Color1 = System.Drawing.Color.White;
             this.pnlIndividualInfo.TabIndex = 0;
             // 
-            // lblPlaceInfo
+            // lblPosition
             // 
-            this.lblPlaceInfo.AutoSize = true;
-            this.lblPlaceInfo.BackColor = System.Drawing.Color.White;
-            this.lblPlaceInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlaceInfo.Location = new System.Drawing.Point(130, 627);
-            this.lblPlaceInfo.Name = "lblPlaceInfo";
-            this.lblPlaceInfo.Size = new System.Drawing.Size(138, 25);
-            this.lblPlaceInfo.TabIndex = 17;
-            this.lblPlaceInfo.Text = "Cục cảnh sát";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.White;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label5.Location = new System.Drawing.Point(30, 627);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(91, 25);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Nơi cấp:";
-            // 
-            // lblDateInfo
-            // 
-            this.lblDateInfo.AutoSize = true;
-            this.lblDateInfo.BackColor = System.Drawing.Color.White;
-            this.lblDateInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateInfo.Location = new System.Drawing.Point(126, 571);
-            this.lblDateInfo.Name = "lblDateInfo";
-            this.lblDateInfo.Size = new System.Drawing.Size(120, 25);
-            this.lblDateInfo.TabIndex = 15;
-            this.lblDateInfo.Text = "11/12/2023";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.White;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label12.Location = new System.Drawing.Point(16, 571);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(109, 25);
-            this.label12.TabIndex = 14;
-            this.label12.Text = "Ngày cấp:";
-            // 
-            // lblPersonID
-            // 
-            this.lblPersonID.AutoSize = true;
-            this.lblPersonID.BackColor = System.Drawing.Color.White;
-            this.lblPersonID.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPersonID.Location = new System.Drawing.Point(126, 512);
-            this.lblPersonID.Name = "lblPersonID";
-            this.lblPersonID.Size = new System.Drawing.Size(144, 25);
-            this.lblPersonID.TabIndex = 13;
-            this.lblPersonID.Text = "12345678910";
+            this.lblPosition.AutoSize = true;
+            this.lblPosition.BackColor = System.Drawing.Color.White;
+            this.lblPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPosition.Location = new System.Drawing.Point(126, 512);
+            this.lblPosition.Name = "lblPosition";
+            this.lblPosition.Size = new System.Drawing.Size(144, 25);
+            this.lblPosition.TabIndex = 13;
+            this.lblPosition.Text = "12345678910";
             // 
             // label10
             // 
@@ -330,11 +275,11 @@
             this.label10.BackColor = System.Drawing.Color.White;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label10.Location = new System.Drawing.Point(43, 512);
+            this.label10.Location = new System.Drawing.Point(59, 512);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(78, 25);
+            this.label10.Size = new System.Drawing.Size(61, 25);
             this.label10.TabIndex = 12;
-            this.label10.Text = "CCCD:";
+            this.label10.Text = "Vị trí:";
             // 
             // lblGender
             // 
@@ -452,7 +397,7 @@
             this.lblUserId.Size = new System.Drawing.Size(174, 45);
             this.lblUserId.TabIndex = 2;
             this.lblUserId.Text = "Mã NV: NV123";
-            this.lblUserId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblUserId.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblIndividualName
             // 
@@ -464,7 +409,7 @@
             this.lblIndividualName.Size = new System.Drawing.Size(118, 25);
             this.lblIndividualName.TabIndex = 1;
             this.lblIndividualName.Text = "Minh Hiếu";
-            this.lblIndividualName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblIndividualName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // picIndividualAva
             // 
@@ -495,16 +440,16 @@
             this.pnlNavbar.Size = new System.Drawing.Size(90, 1083);
             this.pnlNavbar.TabIndex = 1;
             // 
-            // pnlSupport
+            // kryptonPanel2
             // 
-            this.pnlSupport.Controls.Add(this.kryptonPanel1);
-            this.pnlSupport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSupport.Location = new System.Drawing.Point(0, 480);
-            this.pnlSupport.Name = "pnlSupport";
-            this.pnlSupport.Size = new System.Drawing.Size(90, 80);
-            this.pnlSupport.StateCommon.Color1 = System.Drawing.Color.White;
-            this.pnlSupport.StateCommon.Color2 = System.Drawing.Color.White;
-            this.pnlSupport.TabIndex = 7;
+            this.kryptonPanel2.Controls.Add(this.btnHelp);
+            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonPanel2.Location = new System.Drawing.Point(0, 560);
+            this.kryptonPanel2.Name = "kryptonPanel2";
+            this.kryptonPanel2.Size = new System.Drawing.Size(90, 80);
+            this.kryptonPanel2.StateCommon.Color1 = System.Drawing.Color.White;
+            this.kryptonPanel2.StateCommon.Color2 = System.Drawing.Color.White;
+            this.kryptonPanel2.TabIndex = 9;
             // 
             // btnHelp
             // 
@@ -518,6 +463,41 @@
             this.btnHelp.TabIndex = 4;
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHelp.UseVisualStyleBackColor = true;
+            // 
+            // pnlSupport
+            // 
+            this.pnlSupport.Controls.Add(this.kryptonPanel1);
+            this.pnlSupport.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSupport.Location = new System.Drawing.Point(0, 480);
+            this.pnlSupport.Name = "pnlSupport";
+            this.pnlSupport.Size = new System.Drawing.Size(90, 80);
+            this.pnlSupport.StateCommon.Color1 = System.Drawing.Color.White;
+            this.pnlSupport.StateCommon.Color2 = System.Drawing.Color.White;
+            this.pnlSupport.TabIndex = 7;
+            // 
+            // kryptonPanel1
+            // 
+            this.kryptonPanel1.Controls.Add(this.btnRequest);
+            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.Size = new System.Drawing.Size(90, 80);
+            this.kryptonPanel1.StateCommon.Color1 = System.Drawing.Color.White;
+            this.kryptonPanel1.StateCommon.Color2 = System.Drawing.Color.White;
+            this.kryptonPanel1.TabIndex = 8;
+            // 
+            // btnRequest
+            // 
+            this.btnRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRequest.Image = global::HRMngt.Properties.Resources.quote_request__1_;
+            this.btnRequest.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRequest.Location = new System.Drawing.Point(-18, -12);
+            this.btnRequest.Name = "btnRequest";
+            this.btnRequest.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.btnRequest.Size = new System.Drawing.Size(242, 102);
+            this.btnRequest.TabIndex = 10;
+            this.btnRequest.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRequest.UseVisualStyleBackColor = true;
             // 
             // pnlDepartment
             // 
@@ -788,41 +768,6 @@
             this.btnThumbTicket.Text = "Khen thưởng/Kỷ luật";
             this.btnThumbTicket.UseVisualStyleBackColor = false;
             // 
-            // kryptonPanel1
-            // 
-            this.kryptonPanel1.Controls.Add(this.btnRequest);
-            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(90, 80);
-            this.kryptonPanel1.StateCommon.Color1 = System.Drawing.Color.White;
-            this.kryptonPanel1.StateCommon.Color2 = System.Drawing.Color.White;
-            this.kryptonPanel1.TabIndex = 8;
-            // 
-            // kryptonPanel2
-            // 
-            this.kryptonPanel2.Controls.Add(this.btnHelp);
-            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.kryptonPanel2.Location = new System.Drawing.Point(0, 560);
-            this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(90, 80);
-            this.kryptonPanel2.StateCommon.Color1 = System.Drawing.Color.White;
-            this.kryptonPanel2.StateCommon.Color2 = System.Drawing.Color.White;
-            this.kryptonPanel2.TabIndex = 9;
-            // 
-            // btnRequest
-            // 
-            this.btnRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRequest.Image = global::HRMngt.Properties.Resources.quote_request__1_;
-            this.btnRequest.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRequest.Location = new System.Drawing.Point(-18, -12);
-            this.btnRequest.Name = "btnRequest";
-            this.btnRequest.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.btnRequest.Size = new System.Drawing.Size(242, 102);
-            this.btnRequest.TabIndex = 10;
-            this.btnRequest.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRequest.UseVisualStyleBackColor = true;
-            // 
             // MainInvidiualView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
@@ -852,8 +797,12 @@
             this.pnlIndividualInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picIndividualAva)).EndInit();
             this.pnlNavbar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            this.kryptonPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlSupport)).EndInit();
             this.pnlSupport.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            this.kryptonPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlDepartment)).EndInit();
             this.pnlDepartment.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlTimeKeeping)).EndInit();
@@ -871,10 +820,6 @@
             this.pnlSalaryDetail.ResumeLayout(false);
             this.pnlCalendar.ResumeLayout(false);
             this.pnlThumbTicket.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
-            this.kryptonPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
-            this.kryptonPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -920,12 +865,8 @@
         private System.Windows.Forms.Label lblPhoneInfo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblStatus;
-        private System.Windows.Forms.Label lblDateInfo;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label lblPersonID;
+        private System.Windows.Forms.Label lblPosition;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label lblPlaceInfo;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel pnlSalaryDetail;

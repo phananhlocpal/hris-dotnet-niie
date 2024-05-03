@@ -77,7 +77,7 @@ namespace HRMngt._Repository
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "Select * from thumbticket ";
+                command.CommandText = "Select * from thumbticket, users where thumbticket.receiver = users.userID";
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -93,6 +93,7 @@ namespace HRMngt._Repository
                         thumbTicketModel.Complain = reader[7].ToString();
                         thumbTicketModel.Response = reader[8].ToString();
                         thumbTicketModel.Status = reader[9].ToString();
+                        thumbTicketModel.ManagerID = reader["managerId"].ToString();
                         ThumbTicketList.Add(thumbTicketModel);
                     }
                 }
@@ -171,10 +172,13 @@ namespace HRMngt._Repository
 
         public IEnumerable<ThumbTicketModel> LINQ_Filter(IEnumerable<ThumbTicketModel> thumbTicketList, string userId, int month, int year, string type)
         {
-            var query = thumbTicketList
-                .Where(thumbTicketModel => thumbTicketModel.Receiver == userId && thumbTicketModel.Date.Month == month && thumbTicketModel.Date.Year == year && thumbTicketModel.Type == type)
-                .ToList();
-            return query;
+            var query = thumbTicketList;
+            query = query.Where(model => model.Date.Year == year && model.Date.Month == month);
+            if (userId != "")
+                query = query.Where(thumbTicketModel => thumbTicketModel.Receiver == userId);
+            if (type != "All")
+                query = query.Where(model => model.Type == type);
+            return query.ToList();
         }
 
         public ThumbTicketModel LINQ_GetModelById(IEnumerable<ThumbTicketModel> thumbTicketList, string id)
@@ -185,6 +189,11 @@ namespace HRMngt._Repository
             return query.FirstOrDefault();
         }
 
-
+        public IEnumerable<ThumbTicketModel> LINQ_GetListByManager(IEnumerable<ThumbTicketModel> thumbTicketList, string managerId)
+        {
+            var query = thumbTicketList
+                .Where(thumbTicketModel => thumbTicketModel.ManagerID == managerId);
+            return query.ToList();
+        }
     }
 }

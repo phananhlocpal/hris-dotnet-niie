@@ -367,7 +367,7 @@
             this.btnRequest.Image = global::HRMngt.Properties.Resources.quote_request__1_;
             this.btnRequest.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRequest.Location = new System.Drawing.Point(-30, -18);
-            this.btnRequest.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnRequest.Margin = new System.Windows.Forms.Padding(5);
             this.btnRequest.Name = "btnRequest";
             this.btnRequest.Padding = new System.Windows.Forms.Padding(48, 0, 0, 0);
             this.btnRequest.Size = new System.Drawing.Size(277, 113);
@@ -392,7 +392,7 @@
             this.pnlNavBar.Location = new System.Drawing.Point(0, 99);
             this.pnlNavBar.MinimumSize = new System.Drawing.Size(221, 0);
             this.pnlNavBar.Name = "pnlNavBar";
-            this.pnlNavBar.Size = new System.Drawing.Size(221, 955);
+            this.pnlNavBar.Size = new System.Drawing.Size(221, 1083);
             this.pnlNavBar.TabIndex = 1;
             // 
             // kryptonPanel1
@@ -400,7 +400,7 @@
             this.kryptonPanel1.Controls.Add(this.btnHelp);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 560);
-            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(5);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(221, 94);
             this.kryptonPanel1.StateCommon.Color1 = System.Drawing.Color.White;
@@ -437,7 +437,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1869, 1054);
+            this.ClientSize = new System.Drawing.Size(1869, 1182);
             this.Controls.Add(this.pnlNavBar);
             this.Controls.Add(this.pnlHeader);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

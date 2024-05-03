@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
@@ -38,6 +40,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.dgvTimeKeepingTable = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtUserId = new System.Windows.Forms.TextBox();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tên = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,8 +55,6 @@
             this.btnDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.approve = new System.Windows.Forms.DataGridViewButtonColumn();
             this.notApprove = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtUserId = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTimeKeepingTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -165,10 +167,10 @@
             this.dgvTimeKeepingTable.ReadOnly = true;
             this.dgvTimeKeepingTable.RowHeadersVisible = false;
             this.dgvTimeKeepingTable.RowHeadersWidth = 90;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(227)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvTimeKeepingTable.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(227)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvTimeKeepingTable.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTimeKeepingTable.RowTemplate.Height = 50;
             this.dgvTimeKeepingTable.RowTemplate.ReadOnly = true;
             this.dgvTimeKeepingTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -193,6 +195,23 @@
             this.dgvTimeKeepingTable.StateSelected.DataCell.Back.Color1 = System.Drawing.Color.White;
             this.dgvTimeKeepingTable.StateSelected.DataCell.Back.Color2 = System.Drawing.Color.White;
             this.dgvTimeKeepingTable.TabIndex = 11;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label5.Location = new System.Drawing.Point(745, 31);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(109, 25);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Nhân viên";
+            // 
+            // txtUserId
+            // 
+            this.txtUserId.Location = new System.Drawing.Point(750, 67);
+            this.txtUserId.Name = "txtUserId";
+            this.txtUserId.Size = new System.Drawing.Size(195, 31);
+            this.txtUserId.TabIndex = 22;
             // 
             // id
             // 
@@ -302,36 +321,29 @@
             // 
             // approve
             // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Green;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            this.approve.DefaultCellStyle = dataGridViewCellStyle1;
             this.approve.HeaderText = "";
             this.approve.MinimumWidth = 10;
             this.approve.Name = "approve";
             this.approve.ReadOnly = true;
+            this.approve.Text = "Approve";
             this.approve.Width = 200;
             // 
             // notApprove
             // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            this.notApprove.DefaultCellStyle = dataGridViewCellStyle2;
             this.notApprove.HeaderText = "";
             this.notApprove.MinimumWidth = 10;
             this.notApprove.Name = "notApprove";
             this.notApprove.ReadOnly = true;
+            this.notApprove.Text = "Reject";
             this.notApprove.Width = 200;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label5.Location = new System.Drawing.Point(745, 31);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(109, 25);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "Nhân viên";
-            // 
-            // txtUserId
-            // 
-            this.txtUserId.Location = new System.Drawing.Point(750, 67);
-            this.txtUserId.Name = "txtUserId";
-            this.txtUserId.Size = new System.Drawing.Size(195, 31);
-            this.txtUserId.TabIndex = 22;
             // 
             // TimeKeepingView
             // 

@@ -3,6 +3,7 @@ using HRMngt._Repository.Calendar;
 using HRMngt.Models;
 using HRMngt.popup;
 using HRMngt.Views.Dialogs;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -20,6 +21,7 @@ namespace HRMngt.Presenters
         private IndividualCalendarDialogForEditting editDialog;
         private UserModel userModel;
         private IEnumerable<CalendarModel> calendarList;
+        private IEnumerable<CalendarModel> calendarFilterList;
 
         public TimeKeepingPresenter(ITimeKeepingView timeKeepingView, ICalendarRepository timeKeepingRepository, UserModel userModel)
         {
@@ -56,24 +58,22 @@ namespace HRMngt.Presenters
         {
             DateTime start = view.dtpStart.Value;
             DateTime end = view.dtpEnd.Value;
-            string departmentName = "";
+            string departmentId = "";
             if (view.cmbDepartment.Text == "All")
-                departmentName = view.cmbDepartment.Text;
-            else departmentName = view.cmbDepartment.Text.Split(new char[] { '-' })[1].Trim();
+                departmentId = view.cmbDepartment.Text;
+            else departmentId = view.cmbDepartment.Text.Split(new char[] { '-' })[0].Trim();
             string status = view.cmbStatus.Text;
             if (view.txtUserId == null)
             {
                 string userId = "";
-                IEnumerable<CalendarModel> calendarList = new List<CalendarModel>();
-                calendarList = repository.LINQ_Filter(calendarList, start, end, departmentName, status, userId);
-                this.view.ShowCalendarList(calendarList);
+                calendarFilterList = repository.LINQ_Filter(calendarList, start, end, departmentId, status, userId);
+                this.view.ShowCalendarList(calendarFilterList);
             }
             else
             {
-                string userID = view.txtUserId.Text;
-                IEnumerable<CalendarModel> calendarList = new List<CalendarModel>();
-                calendarList = repository.LINQ_Filter(calendarList, start, end, departmentName, status, userID);
-                this.view.ShowCalendarList(calendarList);
+                string userId = view.txtUserId.Text;
+                calendarFilterList = repository.LINQ_Filter(calendarList, start, end, departmentId, status, userId);
+                this.view.ShowCalendarList(calendarFilterList);
             }
         }
 
@@ -167,11 +167,12 @@ namespace HRMngt.Presenters
         {
             if (userModel.Roles == "Admin" || userModel.Roles == "HR")
             {
+                calendarList = repository.GetAll();
                 // Xem được tất cả mọi người
                 DateTime start = view.dtpStart.Value;
                 DateTime end = view.dtpEnd.Value;
-                calendarList = repository.LINQ_GetListByPeriod(calendarList, start, end);
-                this.view.ShowCalendarList(calendarList);
+                IEnumerable<CalendarModel> FilterList = repository.LINQ_GetListByPeriod(calendarList, start, end);
+                this.view.ShowCalendarList(FilterList);
             }
             else if (userModel.Roles == "User")
             {
@@ -179,11 +180,13 @@ namespace HRMngt.Presenters
             }
             else if (userModel.Roles == "Manager")
             {
+                calendarList = repository.GetAll();
+                calendarList = repository.LINQ_GetListByManagerId(calendarList, userModel.Id);
                 // Chỉ xem được những người mà mình quản lý
                 DateTime start = view.dtpStart.Value;
                 DateTime end = view.dtpEnd.Value;
-                calendarList = repository.LINQ_GetListByPeriod(calendarList, start, end);
-                this.view.ShowCalendarList(calendarList);
+                IEnumerable<CalendarModel> FilterList = repository.LINQ_GetListByPeriod(calendarList, start, end);
+                this.view.ShowCalendarList(FilterList);
             }
         }
         // Delete

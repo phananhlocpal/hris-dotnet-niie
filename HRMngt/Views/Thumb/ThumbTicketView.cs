@@ -19,14 +19,18 @@ namespace HRMngt.View
         public ThumbTicketView()
         {
             InitializeComponent();
+            cmbChooseType.SelectedIndex = 0;
             RunEvent();
         }
         public DataGridView DataGridView => dgvThumbTicketTable;
 
-        public TextBox txtChooseUserId => txtChooseUserId;
         ComboBox IThumbTicketView.cmbChooseType => cmbChooseType;
 
         public DateTimePicker dtpchooseMonth => dtpChooseMonth;
+
+        TextBox IThumbTicketView.txtChooseUserId => txtChooseUserId;
+
+        public Button btnCreate { get => btnCreate; set => throw new NotImplementedException(); }
 
         public event EventHandler LoadThumbTicketDialogToAddEvent;
         public event EventHandler LoadThumbTicketDialogToEditEvent;
@@ -67,7 +71,7 @@ namespace HRMngt.View
             // Search by type
             cmbChooseType.SelectedIndexChanged += delegate { FilterEvent?.Invoke(this, EventArgs.Empty); };
             // Search by user ID
-            txtChooseUserID.TextChanged += delegate { FilterEvent?.Invoke(this, EventArgs.Empty); };
+            txtChooseUserId.TextChanged += delegate { FilterEvent?.Invoke(this, EventArgs.Empty); };
         }
 
         // (Read) Show all Thumb Ticket 

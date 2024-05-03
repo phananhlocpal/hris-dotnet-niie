@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnViewResume = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IndividualSalaryView));
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExportExcel = new System.Windows.Forms.Button();
             this.btnView = new System.Windows.Forms.Button();
@@ -40,26 +41,9 @@
             this.realCheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RealCheckOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnReadSalaryTable = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalaryTable)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnViewResume
-            // 
-            this.btnViewResume.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnViewResume.Location = new System.Drawing.Point(936, 623);
-            this.btnViewResume.Name = "btnViewResume";
-            this.btnViewResume.Size = new System.Drawing.Size(154, 48);
-            this.btnViewResume.StateCommon.Back.Color1 = System.Drawing.Color.White;
-            this.btnViewResume.StateCommon.Back.Color2 = System.Drawing.Color.White;
-            this.btnViewResume.StateCommon.Border.Color1 = System.Drawing.Color.Green;
-            this.btnViewResume.StateCommon.Border.Color2 = System.Drawing.Color.Green;
-            this.btnViewResume.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnViewResume.StateCommon.Border.Rounding = 10;
-            this.btnViewResume.StateCommon.Border.Width = 3;
-            this.btnViewResume.TabIndex = 20;
-            this.btnViewResume.Values.Text = "Tổng kết";
             // 
             // label1
             // 
@@ -134,7 +118,7 @@
             this.dgvSalaryTable.ShowCellToolTips = false;
             this.dgvSalaryTable.ShowEditingIcon = false;
             this.dgvSalaryTable.ShowRowErrors = false;
-            this.dgvSalaryTable.Size = new System.Drawing.Size(1060, 527);
+            this.dgvSalaryTable.Size = new System.Drawing.Size(1060, 528);
             this.dgvSalaryTable.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.ContextMenuSeparator;
             this.dgvSalaryTable.StateCommon.DataCell.Border.Color1 = System.Drawing.Color.White;
             this.dgvSalaryTable.StateCommon.DataCell.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -192,13 +176,105 @@
             this.status.ReadOnly = true;
             this.status.Width = 200;
             // 
+            // btnReadSalaryTable
+            // 
+            this.btnReadSalaryTable.AllowAnimations = true;
+            this.btnReadSalaryTable.AllowMouseEffects = true;
+            this.btnReadSalaryTable.AllowToggling = false;
+            this.btnReadSalaryTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReadSalaryTable.AnimationSpeed = 200;
+            this.btnReadSalaryTable.AutoGenerateColors = false;
+            this.btnReadSalaryTable.AutoRoundBorders = false;
+            this.btnReadSalaryTable.AutoSizeLeftIcon = true;
+            this.btnReadSalaryTable.AutoSizeRightIcon = true;
+            this.btnReadSalaryTable.BackColor = System.Drawing.Color.Transparent;
+            this.btnReadSalaryTable.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(183)))));
+            this.btnReadSalaryTable.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnReadSalaryTable.BackgroundImage")));
+            this.btnReadSalaryTable.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnReadSalaryTable.ButtonText = "Xem";
+            this.btnReadSalaryTable.ButtonTextMarginLeft = 0;
+            this.btnReadSalaryTable.ColorContrastOnClick = 45;
+            this.btnReadSalaryTable.ColorContrastOnHover = 45;
+            this.btnReadSalaryTable.Cursor = System.Windows.Forms.Cursors.Default;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btnReadSalaryTable.CustomizableEdges = borderEdges1;
+            this.btnReadSalaryTable.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnReadSalaryTable.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnReadSalaryTable.DisabledFillColor = System.Drawing.Color.Empty;
+            this.btnReadSalaryTable.DisabledForecolor = System.Drawing.Color.Empty;
+            this.btnReadSalaryTable.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.btnReadSalaryTable.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnReadSalaryTable.ForeColor = System.Drawing.Color.White;
+            this.btnReadSalaryTable.IconLeft = null;
+            this.btnReadSalaryTable.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReadSalaryTable.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnReadSalaryTable.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnReadSalaryTable.IconMarginLeft = 11;
+            this.btnReadSalaryTable.IconPadding = 10;
+            this.btnReadSalaryTable.IconRight = null;
+            this.btnReadSalaryTable.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnReadSalaryTable.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnReadSalaryTable.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnReadSalaryTable.IconSize = 25;
+            this.btnReadSalaryTable.IdleBorderColor = System.Drawing.Color.Empty;
+            this.btnReadSalaryTable.IdleBorderRadius = 0;
+            this.btnReadSalaryTable.IdleBorderThickness = 0;
+            this.btnReadSalaryTable.IdleFillColor = System.Drawing.Color.Empty;
+            this.btnReadSalaryTable.IdleIconLeftImage = null;
+            this.btnReadSalaryTable.IdleIconRightImage = null;
+            this.btnReadSalaryTable.IndicateFocus = false;
+            this.btnReadSalaryTable.Location = new System.Drawing.Point(925, 627);
+            this.btnReadSalaryTable.Name = "btnReadSalaryTable";
+            this.btnReadSalaryTable.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnReadSalaryTable.OnDisabledState.BorderRadius = 1;
+            this.btnReadSalaryTable.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnReadSalaryTable.OnDisabledState.BorderThickness = 1;
+            this.btnReadSalaryTable.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnReadSalaryTable.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnReadSalaryTable.OnDisabledState.IconLeftImage = null;
+            this.btnReadSalaryTable.OnDisabledState.IconRightImage = null;
+            this.btnReadSalaryTable.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnReadSalaryTable.onHoverState.BorderRadius = 1;
+            this.btnReadSalaryTable.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnReadSalaryTable.onHoverState.BorderThickness = 1;
+            this.btnReadSalaryTable.onHoverState.FillColor = System.Drawing.Color.White;
+            this.btnReadSalaryTable.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnReadSalaryTable.onHoverState.IconLeftImage = null;
+            this.btnReadSalaryTable.onHoverState.IconRightImage = null;
+            this.btnReadSalaryTable.OnIdleState.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnReadSalaryTable.OnIdleState.BorderRadius = 1;
+            this.btnReadSalaryTable.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnReadSalaryTable.OnIdleState.BorderThickness = 1;
+            this.btnReadSalaryTable.OnIdleState.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btnReadSalaryTable.OnIdleState.ForeColor = System.Drawing.Color.White;
+            this.btnReadSalaryTable.OnIdleState.IconLeftImage = null;
+            this.btnReadSalaryTable.OnIdleState.IconRightImage = null;
+            this.btnReadSalaryTable.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnReadSalaryTable.OnPressedState.BorderRadius = 1;
+            this.btnReadSalaryTable.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnReadSalaryTable.OnPressedState.BorderThickness = 1;
+            this.btnReadSalaryTable.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnReadSalaryTable.OnPressedState.ForeColor = System.Drawing.Color.White;
+            this.btnReadSalaryTable.OnPressedState.IconLeftImage = null;
+            this.btnReadSalaryTable.OnPressedState.IconRightImage = null;
+            this.btnReadSalaryTable.Size = new System.Drawing.Size(166, 62);
+            this.btnReadSalaryTable.TabIndex = 20;
+            this.btnReadSalaryTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnReadSalaryTable.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnReadSalaryTable.TextMarginLeft = 0;
+            this.btnReadSalaryTable.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnReadSalaryTable.UseDefaultRadiusAndThickness = true;
+            // 
             // IndividualSalaryView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1120, 689);
-            this.Controls.Add(this.btnViewResume);
+            this.ClientSize = new System.Drawing.Size(1120, 704);
+            this.Controls.Add(this.btnReadSalaryTable);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnExportExcel);
             this.Controls.Add(this.btnView);
@@ -214,8 +290,6 @@
         }
 
         #endregion
-
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnViewResume;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnExportExcel;
         private System.Windows.Forms.Button btnView;
@@ -226,5 +300,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn realCheckIn;
         private System.Windows.Forms.DataGridViewTextBoxColumn RealCheckOut;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnReadSalaryTable;
     }
 }

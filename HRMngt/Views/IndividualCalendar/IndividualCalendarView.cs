@@ -17,11 +17,12 @@ namespace HRMngt.Views.Dialogs
         public IndividualCalendarView()
         {
             InitializeComponent();
+            cmbStatus.SelectedIndex = 0;
             RunEvent();
         }
         private void RunEvent()
         {
-            dtpChoosePeriod.ValueChanged += delegate { SearchByPeriodEvent?.Invoke(this, EventArgs.Empty); };
+            dtpChoosePeriod.ValueChanged += delegate { Filter?.Invoke(this, EventArgs.Empty); };
             btnCurrentDate.Click += delegate { ViewCurrentCalendarEvent?.Invoke(this, EventArgs.Empty); };
             btnCreate.Click += delegate { LoadCalendarDialogToCreateEvent?.Invoke(this, EventArgs.Empty); };
             // Delete Event         
@@ -42,10 +43,12 @@ namespace HRMngt.Views.Dialogs
             };
 
             btnCreateLeave.Click += delegate { LoadLeaveDialogEvent?.Invoke(this, EventArgs.Empty); };
+            cmbStatus.SelectedIndexChanged += delegate { Filter?.Invoke(this, EventArgs.Empty); };
         }
 
         KryptonDataGridView IIndividualCalendarView.dgvCalendarTable { get => dgvCalendarTable; set => throw new NotImplementedException(); }
         DateTimePicker IIndividualCalendarView.dtpChoosePeriod { get => dtpChoosePeriod; set => throw new NotImplementedException(); }
+        ComboBox IIndividualCalendarView.cmbStatus { get => cmbStatus; set => throw new NotImplementedException(); }
 
         public event EventHandler SearchByPeriodEvent;
         public event EventHandler ViewCurrentCalendarEvent;

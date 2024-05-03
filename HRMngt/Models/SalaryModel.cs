@@ -25,6 +25,8 @@ namespace HRMngt.Models
         private string res;
         private string status;
         private string departmentId;
+        private string managerId;
+        private string complain;
 
         // Encapsulate fields
         public string UserId { get => userId; set => userId = value; }
@@ -43,5 +45,7 @@ namespace HRMngt.Models
         public string Contract_type { get => contract_type; set => contract_type = value; }
         public string Position { get => position; set => position = value; }
         public string DepartmentId { get => departmentId; set => departmentId = value; }
+        public string ManagerId { get => managerId; set => managerId = value; }
+        public string Complain { get => complain; set => complain = value; }
     }
 }

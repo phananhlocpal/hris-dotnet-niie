@@ -28,5 +28,7 @@ namespace HRMngt._Repository.Calendar
         IEnumerable<CalendarModel> LINQ_GetListByRequestId(IEnumerable<CalendarModel> calendarList, int requestId);
         IEnumerable<CalendarModel> LINQ_GetListByUserID(IEnumerable<CalendarModel> calendarList, string userId);
         IEnumerable<CalendarModel> LINQ_GetListByMonthNYear(IEnumerable<CalendarModel> calendarList, int month, int year);
+        IEnumerable<CalendarModel> LINQ_GetListByManagerId(IEnumerable<CalendarModel> calendarList, string managerId);
+        bool LINQ_CheckIndividualExistDate(IEnumerable<CalendarModel> calendarList, string userID, DateTime date);
     }
 }
