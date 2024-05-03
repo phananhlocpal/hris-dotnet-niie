@@ -176,6 +176,7 @@
             this.btnExcel.TextMarginLeft = 0;
             this.btnExcel.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnExcel.UseDefaultRadiusAndThickness = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // btnAdd
             // 
@@ -273,8 +274,16 @@
             this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStatus.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.cbStatus.FormattingEnabled = true;
+<<<<<<< HEAD
             this.cbStatus.Location = new System.Drawing.Point(273, 71);
             this.cbStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+=======
+            this.cbStatus.Items.AddRange(new object[] {
+            "All",
+            "On-boarding",
+            "Retired"});
+            this.cbStatus.Location = new System.Drawing.Point(159, 23);
+>>>>>>> new-mhieu
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(211, 33);
             this.cbStatus.TabIndex = 23;

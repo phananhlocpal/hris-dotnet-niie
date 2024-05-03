@@ -5,15 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
-using System.Windows.Forms;
 using HRMngt.Models;
+using System.Windows.Forms;
 using System.Web.UI.WebControls;
 using System.Net.Mail;
 using System.Net;
+<<<<<<< HEAD
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.IO;
 using System.Drawing;
 using Microsoft.VisualBasic.ApplicationServices;
+=======
+>>>>>>> new-mhieu
 
 namespace HRMngt._Repository
 {
@@ -38,12 +41,11 @@ namespace HRMngt._Repository
                     command.Parameters.Add("@Phone", SqlDbType.VarChar, 10).Value = userModel.Phone;
                     command.Parameters.Add("@Address", SqlDbType.NVarChar).Value = userModel.Address;
                     command.Parameters.Add("@Birthday", SqlDbType.DateTime).Value = userModel.Birthday;
-                    command.Parameters.Add("@Sex", SqlDbType.NVarChar).Value = userModel.Sex;
-                    command.Parameters.Add("@Position", SqlDbType.NVarChar).Value = userModel.Position;
                     command.Parameters.Add("@Deal_salary", SqlDbType.Int).Value = userModel.Salary;
+                    command.Parameters.Add("@Username", SqlDbType.VarChar).Value = userModel.Username;
+                    command.Parameters.Add("@Password", SqlDbType.VarChar).Value = hash;
                     command.Parameters.Add("@ManagerID", SqlDbType.Char).Value = userModel.ManagerID;
                     command.Parameters.Add("@DepartmentID", SqlDbType.Char).Value = userModel.DepartmentID;
-                    command.Parameters.Add("@Contract_type", SqlDbType.NVarChar).Value = userModel.Contract_type;
                     command.Parameters.Add("@On_boarding", SqlDbType.DateTime).Value = userModel.On_boarding;
                     command.Parameters.Add("@Close_date", SqlDbType.DateTime).Value = userModel.Close_date;
                     command.Parameters.Add("@Scan_contract", SqlDbType.NVarChar).Value = userModel.Scan_contract;
@@ -59,14 +61,11 @@ namespace HRMngt._Repository
                     connection.Close();
                 }
             }
-            catch (Exception e)
+            catch(Exception e)
             {
-                /*MessageBox.Show("Thêm nhân viên hiện tại đang gặp sự cố!, vui lòng thử lại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);*/
                 MessageBox.Show(e.ToString());
             }
         }
-
-
 
         public void Delete(string id)
         {
@@ -163,6 +162,7 @@ namespace HRMngt._Repository
                         userModel.Birthday = (DateTime)reader[5];
                         userModel.Sex = reader[6].ToString();
                         userModel.Position = reader[7].ToString().Trim();
+<<<<<<< HEAD
                         if (reader[8] != null && !reader.IsDBNull(8))
                         {
                             string salaryString = reader[8].ToString();
@@ -190,12 +190,22 @@ namespace HRMngt._Repository
                         {
                             userModel.Close_date = null; // Thay đổi ở đây
                         }
+=======
+                        userModel.Salary = reader[8].ToString();
+                        userModel.ManagerID = reader[9].ToString();
+                        userModel.DepartmentID = reader[10].ToString();
+                        userModel.Contract_type = reader[11].ToString();
+                        userModel.On_boarding = (DateTime)reader[12];
+                        if (reader[15] != DBNull.Value)
+                            userModel.Close_date = (DateTime)reader[13];
+>>>>>>> new-mhieu
                         userModel.Scan_contract = reader[14].ToString();
                         userModel.Note = reader[15].ToString();
                         userModel.Status = reader[16].ToString();
                         userModel.Roles = reader[17].ToString();
                         userModel.Username = reader[18].ToString();
                         userModel.Password = reader[19].ToString();
+<<<<<<< HEAD
 
                         // Kiểm tra nếu giá trị của cột "Photo" không phải là DBNull
                         if (reader[20] != DBNull.Value)
@@ -208,6 +218,10 @@ namespace HRMngt._Repository
                             userModel.Photo = new byte[0]; // hoặc null, tùy thuộc vào yêu cầu của bạn
                         }
 
+=======
+                        userModel.Ava = reader[20].ToString();
+                        
+>>>>>>> new-mhieu
                         userLists.Add(userModel);
                     }
                 }
@@ -216,6 +230,71 @@ namespace HRMngt._Repository
             return userLists;
         }
 
+<<<<<<< HEAD
+=======
+        public UserModel Authenticator(string username, string password)
+        {
+            var userModel = new UserModel();
+            if (password != string.Empty || username != string.Empty)
+            {
+                using (var connection = new SqlConnection(connectionString))
+                using (var command = new SqlCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = "select * from users where username='" + username + "' and password='" + password + "'";
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            userModel.Id = reader[0].ToString();
+                            userModel.Name = reader[1].ToString();
+                            userModel.Email = reader[2].ToString();
+                            userModel.Phone = reader[3].ToString();
+                            userModel.Address = reader[4].ToString();
+                            userModel.Birthday = (DateTime)reader[5];
+                            userModel.Sex = reader[6].ToString();
+                            userModel.Position = reader[7].ToString().Trim();
+                            userModel.Salary = reader[8].ToString();
+                            userModel.ManagerID = reader[9].ToString();
+                            userModel.DepartmentID = reader[10].ToString();
+                            userModel.Contract_type = reader[11].ToString();
+                            userModel.On_boarding = (DateTime)reader[12];
+                            userModel.Username = reader[13].ToString();
+                            userModel.Password = reader[14].ToString();
+                            if (reader[15] != DBNull.Value)
+                            {
+                                userModel.On_boarding = (DateTime)reader[15];
+                            }
+                            if (reader[16] != null)
+                                userModel.Scan_contract = reader[16].ToString();
+                            if (reader[17] != null)
+                                userModel.Note = reader[17].ToString();
+                            userModel.Ava = reader[18].ToString();
+                            userModel.Status = reader[19].ToString();
+                            userModel.Roles = reader[20].ToString().Trim();
+
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            return userModel;
+        }
+
+        // LINQ
+        public UserModel LINQ_GetModelById(IEnumerable<UserModel> userList,string id)
+        {
+            var query = userList.Where(model => model.Id == id).ToList();
+            return query.FirstOrDefault();
+        }
+
+        public IEnumerable<UserModel> LINQ_GetManagerList(IEnumerable<UserModel> userList)
+        {
+            var query = userList.Where(model => model.Position == "Manager" || model.Position == "Admin").ToList();
+            return query;
+        }
+>>>>>>> new-mhieu
 
         public string RandomPasswords()
         {
@@ -343,6 +422,7 @@ namespace HRMngt._Repository
             return query;
         }
 
+<<<<<<< HEAD
         public UserModel LINQ_getManagerById(IEnumerable<UserModel> userList, string id)
         {
             var query = userList
@@ -360,5 +440,8 @@ namespace HRMngt._Repository
                 .ToList();
             return query;
         }
+=======
+
+>>>>>>> new-mhieu
     }
 }

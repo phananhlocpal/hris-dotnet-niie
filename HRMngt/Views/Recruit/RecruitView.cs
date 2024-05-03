@@ -22,7 +22,7 @@ namespace HRMngt.Views.HR
             InitializeComponent();
             RunEvent();
             GetNameDepartmentFilter();
-            GetStatusFilter();
+            cbStatus.SelectedIndex = 0;
         }
 
         public void RunEvent()
@@ -100,6 +100,7 @@ namespace HRMngt.Views.HR
                 List<string> items = new List<string>();
                 using (var reader = command.ExecuteReader())
                 {
+                    items.Add("All");
                     while (reader.Read())
                     {
                         items.Add($"{reader[0]} - {reader[1]}");
@@ -111,33 +112,7 @@ namespace HRMngt.Views.HR
                 connection.Close();
             }
         }
-        private void GetStatusFilter()
-        {
-            string connectionString = "Data Source=localhost;Initial Catalog=hris;Integrated Security=True;Encrypt=False";
-            using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand())
-            {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = "Select distinct status from users ";
-                List<string> items = new List<string>();
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        items.Add(reader[0].ToString());
-                    }
-                }
-                cbStatus.DataSource = items;
-                cbStatus.DisplayMember = "Name";
-                cbStatus.Refresh();
-                connection.Close();
-            }
-        }
-        public void ShowHRList()
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public void ShowHRList(IEnumerable<UserModel> recruitList)
         {

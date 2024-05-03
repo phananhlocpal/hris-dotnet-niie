@@ -22,8 +22,8 @@ namespace HRMngt._Repository.Recruitment
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "insert into users (name, email, phone, address, birthday, sex, position, managerID, departmentID, contract_type, note, status, role, username, password) " +
-                    "values(@Name, @Email, @Phone, @Address, @Birthday, @Sex, @Position, @ManagerID, @DepartmentID, @Contract_type, @Note, @Status, @Role, @Username, @Password)";
+                command.CommandText = "insert into users (name, email, phone, address, birthday, sex, position, managerID, departmentID, contract_type, on_boarding, close_date, note, status, role, username, password) " +
+                    "values(@Name, @Email, @Phone, @Address, @Birthday, @Sex, @Position, @ManagerID, @DepartmentID, @Contract_type, @On_boarding, @Close_date, @Note, @Status, @Role, @Username, @Password)";
                 command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = userModel.Name;
                 command.Parameters.Add("@Email", SqlDbType.NVarChar, 10).Value = userModel.Email;
                 command.Parameters.Add("@Phone", SqlDbType.NVarChar).Value = userModel.Phone;
@@ -34,6 +34,8 @@ namespace HRMngt._Repository.Recruitment
                 command.Parameters.Add("@ManagerID", SqlDbType.NVarChar).Value = userModel.ManagerID;
                 command.Parameters.Add("@DepartmentID", SqlDbType.NVarChar).Value = userModel.DepartmentID;
                 command.Parameters.Add("@Contract_type", SqlDbType.NVarChar).Value = userModel.Contract_type;
+                command.Parameters.Add("@On_boarding", SqlDbType.DateTime).Value = DateTime.Now;
+                command.Parameters.Add("@Close_date", SqlDbType.DateTime).Value = DateTime.Now;
                 command.Parameters.Add("@Note", SqlDbType.NVarChar).Value = userModel.Note;
                 command.Parameters.Add("@Status", SqlDbType.NVarChar).Value = userModel.Status;
                 command.Parameters.Add("@Role", SqlDbType.NVarChar).Value = userModel.Roles;
@@ -183,7 +185,12 @@ namespace HRMngt._Repository.Recruitment
 
         public IEnumerable<UserModel> Filter(IEnumerable<UserModel> recruitmentList, string department, string status)
         {
-            var query = recruitmentList.Where(model => model.DepartmentID == department && model.Status == status);
+
+            var query = recruitmentList;
+            if (department != "All")
+                query = query.Where(model => model.DepartmentID == department);
+            if (status != "All")
+                query = query.Where(model => model.Status == status);
             return query;
         }
 
