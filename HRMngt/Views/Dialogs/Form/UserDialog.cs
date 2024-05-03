@@ -181,20 +181,6 @@ namespace HRMngt.Views.Dialogs
             // Chuyển đổi kết quả thành chuỗi và trả về
             return result.ToString();
         }
-
-        
-        public void ShowUserIdNName(List<string> userIdNNameList)
-        {
-            cbManagerId.Items.Clear();
-
-            foreach (string item in userIdNNameList)
-            {
-                cbManagerId.Items.Add(item);
-
-
-            }
-        }
-
         public string ExtractIdFromName(string nameWithId)
         {
             if (!string.IsNullOrEmpty(nameWithId))
@@ -209,16 +195,6 @@ namespace HRMngt.Views.Dialogs
             }
         }
 
-        public void ShowDepartmentIdNName(List<string> departmentIDNameList)
-        {
-            cbDepartmentId.Items.Clear();
-
-            foreach (string item in departmentIDNameList)
-            {
-                cbDepartmentId.Items.Add(item);
-
-            }
-        }
         private void btnPicture_Click(object sender, EventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
@@ -244,7 +220,14 @@ namespace HRMngt.Views.Dialogs
                 }
             }
         }
-
+        public void ShowDepartmentIdNName(IEnumerable<DepartmentModel> departmentList)
+        {
+            cbDepartmentId.Items.Clear();
+            foreach (var item in departmentList)
+            {
+                cbDepartmentId.Items.Add($"{item.Id} - {item.Name}");
+            }
+        }
         public void DisplayUserPhotoForEditing(byte[] photoData)
         {
             if (photoData != null && photoData.Length > 0)

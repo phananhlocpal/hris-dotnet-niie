@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Web.UI.WebControls;
 using System.Net.Mail;
 using System.Net;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace HRMngt._Repository
 {
@@ -39,11 +41,12 @@ namespace HRMngt._Repository
                     command.Parameters.Add("@Phone", SqlDbType.VarChar, 10).Value = userModel.Phone;
                     command.Parameters.Add("@Address", SqlDbType.NVarChar).Value = userModel.Address;
                     command.Parameters.Add("@Birthday", SqlDbType.DateTime).Value = userModel.Birthday;
+                    command.Parameters.Add("@Sex", SqlDbType.NVarChar).Value = userModel.Sex;
+                    command.Parameters.Add("@Position", SqlDbType.NVarChar).Value = userModel.Position;
                     command.Parameters.Add("@Deal_salary", SqlDbType.Int).Value = userModel.Salary;
-                    command.Parameters.Add("@Username", SqlDbType.VarChar).Value = userModel.Username;
-                    command.Parameters.Add("@Password", SqlDbType.VarChar).Value = hash;
                     command.Parameters.Add("@ManagerID", SqlDbType.Char).Value = userModel.ManagerID;
                     command.Parameters.Add("@DepartmentID", SqlDbType.Char).Value = userModel.DepartmentID;
+                    command.Parameters.Add("@Contract_type", SqlDbType.Char).Value = userModel.DepartmentID;
                     command.Parameters.Add("@On_boarding", SqlDbType.DateTime).Value = userModel.On_boarding;
                     command.Parameters.Add("@Close_date", SqlDbType.DateTime).Value = userModel.Close_date;
                     command.Parameters.Add("@Scan_contract", SqlDbType.NVarChar).Value = userModel.Scan_contract;
@@ -53,13 +56,13 @@ namespace HRMngt._Repository
                     command.Parameters.Add("@Username", SqlDbType.VarChar).Value = userModel.Username;
                     command.Parameters.Add("@Password", SqlDbType.VarChar).Value = hash;
                     command.Parameters.Add("@Ava", SqlDbType.Image).Value = userModel.Photo;
-                    
+
 
                     command.ExecuteNonQuery();
                     connection.Close();
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.ToString());
             }
@@ -170,8 +173,16 @@ namespace HRMngt._Repository
                         userModel.Roles = reader[17].ToString();
                         userModel.Username = reader[18].ToString();
                         userModel.Password = reader[19].ToString();
-                        userModel.Ava = reader[20].ToString();
-                        
+                        if (reader[20] != DBNull.Value)
+                        {
+                            userModel.Photo = (byte[])reader[20];
+                        }
+                        else
+                        {
+                            // Xử lý trường hợp giá trị DBNull, ví dụ: gán một giá trị mặc định
+                            userModel.Photo = new byte[0]; // hoặc null, tùy thuộc vào yêu cầu của bạn
+                        }
+
                         userLists.Add(userModel);
                     }
                 }
@@ -179,59 +190,8 @@ namespace HRMngt._Repository
             }
             return userLists;
         }
-
-        public UserModel Authenticator(string username, string password)
-        {
-            var userModel = new UserModel();
-            if (password != string.Empty || username != string.Empty)
-            {
-                using (var connection = new SqlConnection(connectionString))
-                using (var command = new SqlCommand())
-                {
-                    connection.Open();
-                    command.Connection = connection;
-                    command.CommandText = "select * from users where username='" + username + "' and password='" + password + "'";
-                    using (var reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            userModel.Id = reader[0].ToString();
-                            userModel.Name = reader[1].ToString();
-                            userModel.Email = reader[2].ToString();
-                            userModel.Phone = reader[3].ToString();
-                            userModel.Address = reader[4].ToString();
-                            userModel.Birthday = (DateTime)reader[5];
-                            userModel.Sex = reader[6].ToString();
-                            userModel.Position = reader[7].ToString().Trim();
-                            userModel.Salary = reader[8].ToString();
-                            userModel.ManagerID = reader[9].ToString();
-                            userModel.DepartmentID = reader[10].ToString();
-                            userModel.Contract_type = reader[11].ToString();
-                            userModel.On_boarding = (DateTime)reader[12];
-                            userModel.Username = reader[13].ToString();
-                            userModel.Password = reader[14].ToString();
-                            if (reader[15] != DBNull.Value)
-                            {
-                                userModel.On_boarding = (DateTime)reader[15];
-                            }
-                            if (reader[16] != null)
-                                userModel.Scan_contract = reader[16].ToString();
-                            if (reader[17] != null)
-                                userModel.Note = reader[17].ToString();
-                            userModel.Ava = reader[18].ToString();
-                            userModel.Status = reader[19].ToString();
-                            userModel.Roles = reader[20].ToString().Trim();
-
-                        }
-                    }
-                    connection.Close();
-                }
-            }
-            return userModel;
-        }
-
         // LINQ
-        public UserModel LINQ_GetModelById(IEnumerable<UserModel> userList,string id)
+        public UserModel LINQ_GetModelById(IEnumerable<UserModel> userList, string id)
         {
             var query = userList.Where(model => model.Id == id).ToList();
             return query.FirstOrDefault();
@@ -304,6 +264,31 @@ namespace HRMngt._Repository
             }
             return departmentIDNameList;
         }
+        public List<string> GetUserIdNName()
+        {
+
+            var userNameList = new List<string>();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "Select departmentID, name from users";
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var userModel = new UserModel();
+                        userModel.Id = reader[0].ToString();
+                        userModel.Name = reader[1].ToString();
+                        userNameList.Add($"{userModel.Id} - {userModel.Name}");
+                    }
+                }
+                connection.Close();
+            }
+            return userNameList;
+        }
         public UserModel Authenticator(string username, string password)
         {
             var userModel = new UserModel();
@@ -365,11 +350,15 @@ namespace HRMngt._Repository
             return BCrypt.Net.BCrypt.Verify(inputPassword, hashedPasswordFromDatabase);
         }
 
-        
+
 
         public IEnumerable<UserModel> Filter(IEnumerable<UserModel> userList, string department, string status)
         {
-            var query = userList.Where(model => model.DepartmentID == department && model.Status == status);
+            var query = userList;
+            if (department != "All")
+                query = query.Where(model => model.DepartmentID == department);
+            if (status != "All")
+                query = query.Where(model => model.Status == status);
             return query;
         }
 
@@ -385,6 +374,91 @@ namespace HRMngt._Repository
             return query;
         }
 
+        public UserModel GetById(string id)
+        {
+            var userModel = new UserModel();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "SELECT * FROM users WHERE userID = @Id";
+                command.Parameters.Add("@Id", SqlDbType.NVarChar).Value = id;
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        userModel.Id = reader["userID"].ToString();
+                        userModel.Name = reader["name"].ToString();
+                        userModel.Email = reader["email"].ToString();
+                        userModel.Phone = reader["phone"].ToString();
+                        userModel.Address = reader["address"].ToString();
+                        userModel.Birthday = (DateTime)reader["birthday"];
+                        userModel.Sex = reader["sex"].ToString();
+                        userModel.Position = reader["position"].ToString();
+                        userModel.Salary = reader["deal_salary"].ToString();
+                        userModel.ManagerID = reader["managerID"].ToString();
+                        userModel.DepartmentID = reader["departmentID"].ToString();
+                        userModel.Contract_type = reader["contract_type"].ToString();
+                        userModel.On_boarding = (DateTime)reader["on_boarding"];
+                        userModel.Close_date = (DateTime)reader["close_date"];
+                        userModel.Scan_contract = reader["scan_contract"].ToString();
+                        userModel.Note = reader["note"].ToString();
+                        userModel.Status = reader["status"].ToString();
+                        userModel.Roles = reader["role"].ToString();
+                        userModel.Username = reader["username"].ToString();
+                        userModel.Password = reader["password"].ToString();
+                        userModel.Ava = reader["ava"].ToString();
+                    }
+                }
+                connection.Close();
+            }
+            return userModel;
+        }
 
+
+        public string GetNameDepartmentById(string id)
+        {
+            var department = "";
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "Select name from department";
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        department = reader[0].ToString();
+                    }
+                }
+                connection.Close();
+            }
+            return department;
+        }
+
+        public string GetNameById(string id)
+        {
+            var name = "";
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "Select name from users";
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        name = reader["name"].ToString();
+                    }
+                }
+                connection.Close();
+            }
+            return name;
+        }
     }
 }

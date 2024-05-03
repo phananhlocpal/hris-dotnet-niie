@@ -43,7 +43,7 @@ namespace HRMngt.Presenters
 
         private void FilterDepartment(object sender, EventArgs e)
         {
-            string manager = ExtractIdFromName(view.cbManager.Text);
+            string manager = ExtractIdFromName(view..Text);
             string location = view.cbAddress.Text;
             if (view.dgvDepartmentList == null)
             {

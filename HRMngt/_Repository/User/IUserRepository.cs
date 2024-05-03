@@ -16,11 +16,13 @@ namespace HRMngt._Repository
         IEnumerable<UserModel> GetAll();
         
         List<string> GetDepartmentIDName();// Get "ID - Name"
+        List<string> GetUserIdNName();// Get "ID - Name"
         
         UserModel GetById(string id);
         UserModel Authenticator(string username, string password);
         string RandomPasswords();
         string GetNameDepartmentById(string id);
+        string GetNameById(string id);
 
         void SendMail(string password, string userID);
 

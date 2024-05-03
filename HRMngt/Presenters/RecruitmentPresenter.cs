@@ -194,7 +194,6 @@ namespace HRMngt.Presenters
             }
             else
             {
-                
                 recruitmentList = repository.GetAll();
                 this.view.ShowHRList(recruitmentList);
             }
