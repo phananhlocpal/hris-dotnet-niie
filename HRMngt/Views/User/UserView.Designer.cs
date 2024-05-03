@@ -134,7 +134,7 @@
             this.btnExcel.IdleIconLeftImage = null;
             this.btnExcel.IdleIconRightImage = null;
             this.btnExcel.IndicateFocus = false;
-            this.btnExcel.Location = new System.Drawing.Point(1317, 62);
+            this.btnExcel.Location = new System.Drawing.Point(1319, 42);
             this.btnExcel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
@@ -226,7 +226,7 @@
             this.btnAdd.IdleIconLeftImage = null;
             this.btnAdd.IdleIconRightImage = null;
             this.btnAdd.IndicateFocus = false;
-            this.btnAdd.Location = new System.Drawing.Point(1485, 62);
+            this.btnAdd.Location = new System.Drawing.Point(1482, 42);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
@@ -274,16 +274,11 @@
             this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStatus.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.cbStatus.FormattingEnabled = true;
-<<<<<<< HEAD
-            this.cbStatus.Location = new System.Drawing.Point(273, 71);
-            this.cbStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-=======
             this.cbStatus.Items.AddRange(new object[] {
             "All",
             "On-boarding",
             "Retired"});
-            this.cbStatus.Location = new System.Drawing.Point(159, 23);
->>>>>>> new-mhieu
+            this.cbStatus.Location = new System.Drawing.Point(319, 62);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(211, 33);
             this.cbStatus.TabIndex = 23;
@@ -293,7 +288,7 @@
             this.cbDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDepartment.ForeColor = System.Drawing.Color.Black;
             this.cbDepartment.FormattingEnabled = true;
-            this.cbDepartment.Location = new System.Drawing.Point(40, 71);
+            this.cbDepartment.Location = new System.Drawing.Point(47, 62);
             this.cbDepartment.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbDepartment.Name = "cbDepartment";
             this.cbDepartment.Size = new System.Drawing.Size(206, 33);
@@ -319,13 +314,13 @@
             this.btnRead,
             this.btnEdit,
             this.btnDelete});
-            this.dgvUserList.Location = new System.Drawing.Point(38, 134);
+            this.dgvUserList.Location = new System.Drawing.Point(38, 117);
             this.dgvUserList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvUserList.Name = "dgvUserList";
             this.dgvUserList.RowHeadersVisible = false;
             this.dgvUserList.RowHeadersWidth = 51;
             this.dgvUserList.RowTemplate.Height = 100;
-            this.dgvUserList.Size = new System.Drawing.Size(1597, 802);
+            this.dgvUserList.Size = new System.Drawing.Size(1597, 819);
             this.dgvUserList.StateCommon.Background.Color1 = System.Drawing.Color.White;
             this.dgvUserList.StateCommon.Background.Color2 = System.Drawing.Color.White;
             this.dgvUserList.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
@@ -456,7 +451,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.DimGray;
-            this.label2.Location = new System.Drawing.Point(268, 30);
+            this.label2.Location = new System.Drawing.Point(314, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 25);
             this.label2.TabIndex = 27;

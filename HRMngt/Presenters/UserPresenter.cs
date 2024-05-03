@@ -81,13 +81,9 @@ namespace HRMngt.Presenter
 
             DataGridViewRow selectedRow = view.dgvUserList.CurrentRow;
             string id = selectedRow.Cells[1].Value.ToString();
-<<<<<<< HEAD
-            UserModel user = repository.LINQ_GetModelById(userList, id);
+            user = repository.LINQ_GetModelById(userList, id);
             UserModel manager = repository.LINQ_GetModelById(userList, user.ManagerID);
             DepartmentModel department = departmentRepository.LINQ_GetModelById(departmentList, user.DepartmentID);
-=======
-            user = repository.GetById(id);
->>>>>>> new-mhieu
 
             dialog.ID = user.Id;
             dialog.Fullname = user.Name;
@@ -97,15 +93,9 @@ namespace HRMngt.Presenter
             dialog.Birthday = user.Birthday;
             dialog.Salary = user.Salary;
             dialog.Username = user.Username;
-<<<<<<< HEAD
-            dialog.Password = user.Password;
             if (manager != null)
                 dialog.ManagerID = $"{manager.Id} - {manager.Name}";
             dialog.DepartmentID = $"{department.Id} - {department.Name}";
-=======
-            dialog.ManagerID = $"{user.ManagerID} - {repository.GetNameById(user.ManagerID)}";
-            dialog.DepartmentID = $"{user.DepartmentID} - {repository.GetNameDepartmentById(user.DepartmentID)}";
->>>>>>> new-mhieu
             dialog.On_boarding = user.On_boarding;
             if (user.Close_date != null)
             {
@@ -155,9 +145,7 @@ namespace HRMngt.Presenter
             user.Birthday = dialog.Birthday;
             user.Salary = dialog.Salary;
             user.Username = dialog.Username;
-            
             user.Password = dialog.Password;
-            
             user.ManagerID = dialog.ManagerID;
             user.DepartmentID = dialog.DepartmentID;
             user.On_boarding = dialog.On_boarding;
@@ -317,14 +305,13 @@ namespace HRMngt.Presenter
             user.Scan_contract = dialog.Scan_contract;
             user.Note = dialog.Note;
             user.Sex = dialog.Sex;
-            /*user.Status = dialog.Status;*/
+            user.Status = "On-boarding";
             user.Position = dialog.Position;
             user.Contract_type = dialog.Contract_type;
             user.Photo = getPhoto();
             user.Roles = dialog.Roles;
             repository.Add(user);
             this.dialog.Close();
-            /*LoadAllUserList();*/
             SetRole(userModel);
             view.ShowUserList(userList, userModel);
             dialog.SendPasswordToMail += SendPassToMail;

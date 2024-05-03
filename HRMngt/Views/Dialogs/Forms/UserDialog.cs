@@ -181,26 +181,8 @@ namespace HRMngt.Views.Dialogs
             // Chuyển đổi kết quả thành chuỗi và trả về
             return result.ToString();
         }
-
-<<<<<<< HEAD:HRMngt/Views/Dialogs/Forms/UserDialog.cs
-        private void cbStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbStatus.SelectedIndex == 0)
-            {
-                cbRoles.SelectedIndex = 0;
-                cbRoles.Enabled = false;
-            }
-            else
-            {
-                cbRoles.Enabled = true;
-            }
-        }
-
-        public void ShowUserIdNName(IEnumerable<UserModel> userList)
-=======
         
-        public void ShowUserIdNName(List<string> userIdNNameList)
->>>>>>> new-mhieu:HRMngt/Views/Dialogs/Form/UserDialog.cs
+        public void ShowUserIdNName(IEnumerable<UserModel> userList)
         {
             cbManagerId.Items.Clear();
 

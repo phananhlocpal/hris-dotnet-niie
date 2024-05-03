@@ -15,15 +15,7 @@ namespace HRMngt._Repository
         void Update(UserModel userModel);
         void Delete(string id);
         IEnumerable<UserModel> GetAll();
-<<<<<<< HEAD
 
-        // Others
-=======
-        
-        List<string> GetDepartmentIDName();// Get "ID - Name"
-        
-        UserModel GetById(string id);
->>>>>>> new-mhieu
         UserModel Authenticator(string username, string password);
         string RandomPasswords();
         void SendMail(string password, string userID);
