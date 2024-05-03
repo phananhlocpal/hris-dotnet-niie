@@ -24,6 +24,7 @@ namespace HRMngt.Presenter
         private IEnumerable<UserModel> userList;
         private IEnumerable<UserModel> filterUser;
         private UserModel userModel;
+        private UserModel user;
 
 
         public UserPresenter(IUserView view, IUserRepository repository, UserModel userModel)
@@ -44,26 +45,11 @@ namespace HRMngt.Presenter
 
         private void FilterUser(object sender, EventArgs e)
         {
-            string department = ExtractIdFromName(view.cbDepartment.Text);
+            string department = view.cbDepartment.Text.Split()[0].Trim();
             string status = view.cbStatus.Text;
             filterUser = repository.Filter(userList, department, status);
-            view.ShowUserList(filterUser);
+            view.ShowUserList(filterUser, userModel);
         }
-        public string ExtractIdFromName(string nameWithId)
-        {
-            if (!string.IsNullOrEmpty(nameWithId))
-            {
-                string[] parts = nameWithId.Split('-');
-                string id = parts[0].Trim();
-                return id;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-
         private void DeleteUser(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = view.dgvUserList.CurrentRow;
@@ -76,7 +62,7 @@ namespace HRMngt.Presenter
                 SucessPopUp.ShowPopUp();
                 /*LoadAllUserList();*/
                 SetRole(userModel);
-                view.ShowUserList(userList);
+                view.ShowUserList(userList, userModel);
             }
         }
 
@@ -93,7 +79,7 @@ namespace HRMngt.Presenter
 
             DataGridViewRow selectedRow = view.dgvUserList.CurrentRow;
             string id = selectedRow.Cells[1].Value.ToString();
-            UserModel user = repository.GetById(id);
+            user = repository.GetById(id);
 
             dialog.ID = user.Id;
             dialog.Fullname = user.Name;
@@ -103,7 +89,6 @@ namespace HRMngt.Presenter
             dialog.Birthday = user.Birthday;
             dialog.Salary = user.Salary;
             dialog.Username = user.Username;
-            dialog.Password = user.Password;
             dialog.ManagerID = $"{user.ManagerID} - {repository.GetNameById(user.ManagerID)}";
             dialog.DepartmentID = $"{user.DepartmentID} - {repository.GetNameDepartmentById(user.DepartmentID)}";
             dialog.On_boarding = user.On_boarding;
@@ -111,7 +96,7 @@ namespace HRMngt.Presenter
             dialog.Scan_contract = user.Scan_contract;
             dialog.Note = user.Note;
             dialog.Sex = user.Sex;
-            dialog.Status = user.Status;
+            /*dialog.Status = user.Status;*/
             dialog.Position = user.Position;
             dialog.Contract_type = user.Contract_type;
 
@@ -144,7 +129,6 @@ namespace HRMngt.Presenter
         }
         private void EditUserDialog(object sender, EventArgs e)
         {
-            UserModel user = new UserModel();
             user.Id = dialog.ID;
             user.Name = dialog.Fullname;
             user.Email = dialog.Email;
@@ -153,7 +137,9 @@ namespace HRMngt.Presenter
             user.Birthday = dialog.Birthday;
             user.Salary = dialog.Salary;
             user.Username = dialog.Username;
+            
             user.Password = dialog.Password;
+            
             user.ManagerID = dialog.ManagerID;
             user.DepartmentID = dialog.DepartmentID;
             user.On_boarding = dialog.On_boarding;
@@ -161,7 +147,7 @@ namespace HRMngt.Presenter
             user.Scan_contract = dialog.Scan_contract;
             user.Note = dialog.Note;
             user.Sex = dialog.Sex;
-            user.Status = dialog.Status;
+            /*user.Status = dialog.Status;*/
             user.Position = dialog.Position;
             user.Contract_type = dialog.Contract_type;
             user.Photo = getPhoto();
@@ -170,7 +156,7 @@ namespace HRMngt.Presenter
             this.dialog.Close();
             /*LoadAllUserList();*/
             SetRole(userModel);
-            view.ShowUserList(userList);
+            view.ShowUserList(userList, userModel);
             SucessPopUp.ShowPopUp();
         }
 
@@ -214,7 +200,7 @@ namespace HRMngt.Presenter
             dialog.Close_date = DateTime.Now;
             dialog.Scan_contract = "";
             dialog.Sex = "";
-            dialog.Status = "";
+            
             dialog.Position = "";
             dialog.Roles = "";
             dialog.ManagerID = "";
@@ -315,7 +301,7 @@ namespace HRMngt.Presenter
             user.Scan_contract = dialog.Scan_contract;
             user.Note = dialog.Note;
             user.Sex = dialog.Sex;
-            user.Status = dialog.Status;
+            /*user.Status = dialog.Status;*/
             user.Position = dialog.Position;
             user.Contract_type = dialog.Contract_type;
             user.Photo = getPhoto();
@@ -324,7 +310,7 @@ namespace HRMngt.Presenter
             this.dialog.Close();
             /*LoadAllUserList();*/
             SetRole(userModel);
-            view.ShowUserList(userList);
+            view.ShowUserList(userList, userModel);
             dialog.SendPasswordToMail += SendPassToMail;
             SucessPopUp.ShowPopUp();
         }
@@ -351,27 +337,26 @@ namespace HRMngt.Presenter
         {
             if(userModel.Roles == "Manager")
             {
-                MessageBox.Show(userModel.Roles);
+                
                 view.ButtonAdd.Enabled = false;
                 view.ButtonEdit.Visible = false;
                 view.ButtonDelete.Visible = false;
                 userList = repository.LINQ_GetAllManager(userList, userModel.Id);
-                this.view.ShowUserList(userList);
+                this.view.ShowUserList(userList, userModel);
             }
             else if(userModel.Roles == "Employee")
             {
-                MessageBox.Show(userModel.Roles);
+                
                 view.ButtonAdd.Enabled = false;
                 view.ButtonEdit.Visible = false;
                 view.ButtonDelete.Visible = false;
                 userList = repository.LINQ_GetAllUser(userList,userModel.DepartmentID);
-                this.view.ShowUserList(userList);
+                this.view.ShowUserList(userList, userModel);
             }
             else
             {
-                MessageBox.Show(userModel.Roles);
                 userList = repository.GetAll();
-                this.view.ShowUserList(userList);
+                this.view.ShowUserList(userList, userModel);
             }
         }
     }

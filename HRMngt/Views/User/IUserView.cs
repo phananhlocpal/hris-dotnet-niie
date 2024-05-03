@@ -39,7 +39,7 @@ namespace HRMngt.View
 
 
         // Methods
-        void ShowUserList(IEnumerable<UserModel> userList);
+        void ShowUserList(IEnumerable<UserModel> userList, UserModel userModel);
         UserDialog ShowUserDialogToAdd();
         UserDialog ShowUserDialogToEdit(string id);
         void Show();

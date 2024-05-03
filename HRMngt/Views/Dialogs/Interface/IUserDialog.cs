@@ -29,7 +29,7 @@ namespace HRMngt.Views.Dialogs
         DateTime Close_date { get; set; }
         string Scan_contract { get; set; }
         string Note { get; set; }
-        string Status { get; set; }
+        
         string Roles { get; set; }
 
         Image Photo { get; set; }

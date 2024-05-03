@@ -38,22 +38,10 @@ namespace HRMngt.Presenters
 
 
         }
-        public string ExtractIdFromName(string nameWithId)
-        {
-            if (!string.IsNullOrEmpty(nameWithId))
-            {
-                string[] parts = nameWithId.Split('-');
-                string id = parts[0].Trim();
-                return id;
-            }
-            else
-            {
-                return null;
-            }
-        }
+        
         private void FilterRecruitment(object sender, EventArgs e)
         {
-            string department = ExtractIdFromName(view.cbDepartment.Text);
+            string department = view.cbDepartment.Text.Split('-')[0].Trim();
             string status = view.cbStatus.Text;
             recruitmentList = repository.Filter(recruitmentList, department, status);
             view.ShowHRList(recruitmentList);
@@ -190,7 +178,7 @@ namespace HRMngt.Presenters
         {
             if (userModel.Roles == "Manager")
             {
-                MessageBox.Show(userModel.Roles);
+                
                 view.ButtonAdd.Enabled = false;
                 view.ButtonEdit.Visible = false;
                 view.ButtonDelete.Visible = false;
@@ -199,14 +187,14 @@ namespace HRMngt.Presenters
             }
             else if (userModel.Roles == "Employee")
             {
-                MessageBox.Show(userModel.Roles);
+                
                 view.ButtonAdd.Enabled = false;
                 view.ButtonEdit.Visible = false;
                 view.ButtonDelete.Visible = false;
             }
             else
             {
-                MessageBox.Show(userModel.Roles);
+                
                 recruitmentList = repository.GetAll();
                 this.view.ShowHRList(recruitmentList);
             }

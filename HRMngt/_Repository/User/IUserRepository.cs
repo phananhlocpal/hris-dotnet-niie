@@ -15,10 +15,7 @@ namespace HRMngt._Repository
         void Delete(string id);
         IEnumerable<UserModel> GetAll();
         
-        IEnumerable<UserModel> GetByValue(); // Search
-        List<string> GetUserIdNName();
         List<string> GetDepartmentIDName();// Get "ID - Name"
-        string GetNameById(string id);
         
         UserModel GetById(string id);
         UserModel Authenticator(string username, string password);

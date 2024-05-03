@@ -23,7 +23,7 @@ namespace HRMngt.Views.User
             InitializeComponent();
             RunEvent();
             GetNameDepartmentFilter();
-            GetStatusFilter();
+            cbStatus.SelectedIndex = 0;
         }
 
         public void RunEvent()
@@ -107,8 +107,10 @@ namespace HRMngt.Views.User
                 List<string> items = new List<string>();
                 using (var reader = command.ExecuteReader())
                 {
+                    items.Add("All");
                     while (reader.Read())
                     {
+
                         items.Add($"{reader[0]} - {reader[1]}");
                     }
                 }
@@ -118,29 +120,7 @@ namespace HRMngt.Views.User
                 connection.Close();
             }
         }
-        private void GetStatusFilter()
-        {
-            string connectionString = "Data Source=localhost;Initial Catalog=hris;Integrated Security=True;Encrypt=False";
-            using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand())
-            {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = "Select distinct status from users ";
-                List<string> items = new List<string>();
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        items.Add(reader["status"].ToString());
-                    }
-                }
-                cbStatus.DataSource = items;
-                cbStatus.DisplayMember = "Name";
-                cbStatus.Refresh();
-                connection.Close();
-            }
-        }
+        
         private string GetNameDepartment(string id)
         {
             string name = "";
@@ -165,7 +145,7 @@ namespace HRMngt.Views.User
         }
 
 
-        public void ShowUserList(IEnumerable<UserModel> userList)
+        public void ShowUserList(IEnumerable<UserModel> userList, UserModel userModel)
         {
             if (userList != null)
             {
@@ -174,7 +154,7 @@ namespace HRMngt.Views.User
                 foreach (var user in userList)
                 {
                     
-                    if (user.Status == "On-boarding" || user.Status == "Doing")
+                    if (user.Status == "On-boarding" && user.Id != userModel.Id)
                     {
                         int rowIndex = dgvUserList.Rows.Add();
 
@@ -195,15 +175,8 @@ namespace HRMngt.Views.User
                         dgvUserList.Rows[rowIndex].Cells[6].Value = "• " + user.Status;
                         dgvUserList.Rows[rowIndex].Cells[7].Value = user.Roles;
 
-                        // Thiết lập màu sắc dựa trên trạng thái
-                        if (user.Status == "Doing")
-                        {
-                            dgvUserList.Rows[rowIndex].Cells[6].Style.ForeColor = Color.FromArgb(69, 158, 26);
-                        }
-                        else
-                        {
-                            dgvUserList.Rows[rowIndex].Cells[6].Style.ForeColor = Color.FromArgb(255, 212, 59);
-                        }
+                        dgvUserList.Rows[rowIndex].Cells[6].Style.ForeColor = Color.FromArgb(255, 212, 59);
+                        
                     }
                 }
             }
@@ -220,9 +193,6 @@ namespace HRMngt.Views.User
                 return image;
             }
         }
-
-
-
 
         public UserDialog ShowUserDialogToAdd()
         {

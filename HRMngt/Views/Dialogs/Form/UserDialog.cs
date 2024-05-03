@@ -25,12 +25,13 @@ namespace HRMngt.Views.Dialogs
             {
                 lblTitle.Text = "Thêm mới nhân viên";
                 btnAdd.Text = "Thêm";
+                txtPassword.ReadOnly = true;
             }
             else if (type == "Sửa")
             {
                 lblTitle.Text = "Cập nhật nhân viên";
                 btnAdd.Text = "Sửa";
-
+                txtPassword.ReadOnly = false;
             }
             RunEvent();
         }
@@ -115,7 +116,7 @@ namespace HRMngt.Views.Dialogs
         public string Scan_contract { get => txtScanContract.Text; set => txtScanContract.Text = value; }
 
         public string Note { get => txtNote.Text; set => txtNote.Text = value; }
-        public string Status { get => cbStatus.Text; set => cbStatus.Text = value; }
+       
 
 
         public string Roles { get => cbRoles.Text; set => cbRoles.Text = value; }
@@ -181,19 +182,7 @@ namespace HRMngt.Views.Dialogs
             return result.ToString();
         }
 
-        private void cbStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbStatus.SelectedIndex == 0)
-            {
-                cbRoles.SelectedIndex = 0;
-                cbRoles.Enabled = false;
-            }
-            else
-            {
-                cbRoles.Enabled = true;
-            }
-        }
-
+        
         public void ShowUserIdNName(List<string> userIdNNameList)
         {
             cbManagerId.Items.Clear();
