@@ -20,6 +20,7 @@ namespace HRMngt.Views.HR
         public RecruitView()
         {
             InitializeComponent();
+            cbStatus.SelectedIndex = 0;
             RunEvent();
             GetNameDepartmentFilter();
         }

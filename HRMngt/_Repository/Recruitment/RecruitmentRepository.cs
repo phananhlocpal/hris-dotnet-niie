@@ -25,7 +25,7 @@ namespace HRMngt._Repository.Recruitment
                 command.CommandText = "insert into users (name, email, phone, address, birthday, sex, position, managerID, departmentID, contract_type, note, status, role, username, password) " +
                     "values(@Name, @Email, @Phone, @Address, @Birthday, @Sex, @Position, @ManagerID, @DepartmentID, @Contract_type, @Note, @Status, @Role, @Username, @Password)";
                 command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = userModel.Name;
-                command.Parameters.Add("@Email", SqlDbType.NVarChar, 10).Value = userModel.Email;
+                command.Parameters.Add("@Email", SqlDbType.NVarChar).Value = userModel.Email;
                 command.Parameters.Add("@Phone", SqlDbType.NVarChar).Value = userModel.Phone;
                 command.Parameters.Add("@Address", SqlDbType.NVarChar).Value = userModel.Address;
                 command.Parameters.Add("@Birthday", SqlDbType.NVarChar).Value = userModel.Birthday;
@@ -188,7 +188,7 @@ namespace HRMngt._Repository.Recruitment
                 query = query.Where(model => model.DepartmentID == department);
             if (status != "All")
                 query = query.Where(model => model.Status == status);
-            return query;
+            return query.ToList();
         }
 
         public IEnumerable<UserModel> GetAll()

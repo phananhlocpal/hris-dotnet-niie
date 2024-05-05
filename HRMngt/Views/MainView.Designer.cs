@@ -56,7 +56,7 @@
             this.pnlNavBar = new System.Windows.Forms.Panel();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.btnHelp = new System.Windows.Forms.Button();
-            this.btnMessage = new Guna.UI.WinForms.GunaPictureBox();
+            this.btnMessage = new Guna.UI2.WinForms.Guna2PictureBox();
             this.pnlHeader.SuspendLayout();
             this.pnlmainHeader.SuspendLayout();
             this.pnlIndividualHeader.SuspendLayout();
@@ -423,7 +423,7 @@
             // 
             // btnMessage
             // 
-            this.btnMessage.BaseColor = System.Drawing.Color.White;
+            this.btnMessage.BackColor = System.Drawing.Color.White;
             this.btnMessage.Image = global::HRMngt.Properties.Resources.messenger;
             this.btnMessage.Location = new System.Drawing.Point(115, 1614);
             this.btnMessage.Name = "btnMessage";
@@ -503,7 +503,7 @@
         private System.Windows.Forms.Button btnHiring;
         private System.Windows.Forms.Button btnTimeKeeping;
         private System.Windows.Forms.Button btnDepartment;
-        private Guna.UI.WinForms.GunaPictureBox btnMessage;
+        private Guna.UI2.WinForms.Guna2PictureBox btnMessage;
         private System.Windows.Forms.PictureBox picNavAva;
         private System.Windows.Forms.Button btnRequest;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;

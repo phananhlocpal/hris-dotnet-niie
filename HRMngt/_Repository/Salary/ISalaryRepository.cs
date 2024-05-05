@@ -16,6 +16,6 @@ namespace HRMngt._Repository.Salary
         SalaryModel LINQ_GetModelByPK(IEnumerable<SalaryModel> salaryList, string userId, int month, int year);
         bool LINQ_CheckExistSalary(IEnumerable<SalaryModel> salaryList, string userId, int month, int year);
         IEnumerable<SalaryModel> LINQ_GetListByMonthNYear(IEnumerable<SalaryModel> salaryList, int month, int year);
-        IEnumerable<SalaryModel> LINQ_Filter(IEnumerable<SalaryModel> salaryList, string departmentId, string status);
+        IEnumerable<SalaryModel> LINQ_Filter(IEnumerable<SalaryModel> salaryList, string departmentId, string status, int month, int year);
     }
 }

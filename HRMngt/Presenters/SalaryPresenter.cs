@@ -3,6 +3,8 @@ using HRMngt._Repository.Calendar;
 using HRMngt._Repository.Salary;
 using HRMngt.Models;
 using HRMngt.popup;
+using HRMngt.Views.Dialogs;
+using HRMngt.Views;
 using HRMngt.Views.Salary;
 using Microsoft.Office.Interop.Excel;
 using System;
@@ -12,6 +14,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace HRMngt.Presenters
 {
@@ -23,6 +26,8 @@ namespace HRMngt.Presenters
         private IEnumerable<SalaryModel> salaryList;
         private SaveFileDialog saveExcel = new SaveFileDialog();
         private IEnumerable<SalaryModel> salaryFilterList;
+        private IIndividualSalaryDialog salaryDialog;
+        private SalaryModel editSalaryModel;
 
         public SalaryPresenter(ISalaryView view, ISalaryRepository repository, UserModel userModel)
         {
@@ -31,7 +36,6 @@ namespace HRMngt.Presenters
             this.userModel = userModel;
 
             LoadAllSalaryList();
-            this.view.ShowSalaryList(salaryList);
 
             // Đổ dữ liệu vào cmbDepartment
             IDepartmentRepository departmentRepository = new DepartmentRepository();
@@ -47,7 +51,7 @@ namespace HRMngt.Presenters
             this.view.LoadSalaryDialogToEditEvent += LoadSalaryDialogToEdit;
             this.view.DeleteEvent += Delete;
 
-
+            Filter();
             this.view.Show();
 
             saveExcel.Filter = "Excel Files|*.xlsx;*.xls";
@@ -60,25 +64,112 @@ namespace HRMngt.Presenters
             salaryFilterList = salaryList;
             string departmentId = "All";
             string status = "All";
+            int month = view.dtpChooseMonth.Value.Month;
+            int year = view.dtpChooseMonth.Value.Year;
             if (this.view.cmbDepartment.SelectedItem != null && this.view.cmbDepartment.SelectedItem.ToString() != "All")
             {
                 string selectedItem = this.view.cmbDepartment.SelectedItem.ToString();
                 departmentId = selectedItem.Split(new string[] { " - " }, StringSplitOptions.None)[0];
             } 
             if (this.view.cmbStatus.SelectedItem != null) status = this.view.cmbStatus.SelectedItem.ToString();
-            salaryFilterList = repository.LINQ_Filter(salaryList, departmentId, status);
+            salaryFilterList = repository.LINQ_Filter(salaryList, departmentId, status, month, year);
             this.view.ShowSalaryList(salaryFilterList);
         }
 
         private void Delete(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            // Get month and year
+            DateTime selectedDate = view.dtpChooseMonth.Value;
+            int month = selectedDate.Month;
+            int year = selectedDate.Year;
+
+            // Get id from row
+            string userId = view.dgvSalaryTable.CurrentRow.Cells[0].Value.ToString();
+
+            DialogResult result = MessageBox.Show("Bạn có chắc muốn xóa bảng lương này không?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.OK)
+            {
+                try
+                {
+                    repository.Delete(userId, month, year);
+
+                    MessageBox.Show("Bảng lương đã được xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    SucessPopUp.ShowPopUp();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Đã xảy ra lỗi khi xóa bảng lương: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void LoadSalaryDialogToEdit(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            // Get month and year
+            DateTime selectedDate = view.dtpChooseMonth.Value;
+            int month = selectedDate.Month;
+            int year = selectedDate.Year;
+
+            // Get id from row
+            string userId = view.dgvSalaryTable.CurrentRow.Cells[0].Value.ToString();
+
+            // Show dialog
+            editSalaryModel = repository.LINQ_GetModelByPK(salaryList, userId, month, year);
+            salaryDialog = new IndividualSalaryDialog(userModel.Roles);
+
+            IUserRepository userRepository = new UserRepository();
+            IEnumerable<UserModel> userList = userRepository.GetAll();
+            UserModel userTemp = userRepository.LINQ_GetModelById(userList, userId);
+            salaryDialog.ShowSalaryInfo(editSalaryModel, userTemp);
+
+            // Event Handler
+            salaryDialog.ResponseEvent += Dialog_ResponseEvent;
+            salaryDialog.UpdateEvent += Dialog_UpdateEvent;
+            salaryDialog.ApproveEvent += Dialog_ApproveEvent;
+
+            salaryDialog.rtbRes.Text = editSalaryModel.Res;
+
+            salaryDialog.ShowDialog();
         }
+
+        private void Dialog_ApproveEvent(object sender, EventArgs e)
+        {
+            editSalaryModel.Status = "Approved";
+            repository.Update(editSalaryModel);
+            salaryList = repository.GetAll();
+            Filter();
+
+            salaryDialog.Close();
+        }
+
+        private void Dialog_UpdateEvent(object sender, EventArgs e)
+        {
+            editSalaryModel.Welfare = int.Parse(salaryDialog.txtWelfare.Text.ToString());
+            repository.Update(editSalaryModel);
+            salaryList = repository.GetAll();
+            Filter();
+
+            SucessPopUp.ShowPopUp();
+        }
+
+        private void Dialog_ResponseEvent(object sender, EventArgs e)
+        {
+            string input = Microsoft.VisualBasic.Interaction.InputBox("Mời bạn nhập phản hồi:", "Nhập phản hồi", "") + " - " + DateTime.Now.ToString() + " " + userModel.Id + " " + userModel.Name;
+
+            if (!string.IsNullOrEmpty(input))
+            {
+                editSalaryModel.Res += "\n" + input;
+                repository.Update(editSalaryModel);
+                salaryList = repository.GetAll();
+                salaryDialog.rtbRes.Text = editSalaryModel.Res;
+            }
+            else
+            {
+                MessageBox.Show("Bạn chưa nhập dữ liệu!");
+            }
+        }
+
 
         private void ExportExcel(object sender, EventArgs e)
         {
@@ -246,7 +337,7 @@ namespace HRMngt.Presenters
                 int real_workday = calendarRepository.GetRealWorkdayByMonthNYear(user.Id, month, year);
 
                 // Calculate tax. If tax > 2 million, minus 10% 
-                double total = (real_workday / 22 + thumb_total - ticket_total) * user.Salary;
+                double total = (real_workday / 22) * user.Salary + thumb_total - ticket_total;
                 double tax = 0;
                 if (total >= 2000000) tax = 0.1 *total;
 
@@ -281,5 +372,23 @@ namespace HRMngt.Presenters
         {
             salaryList = repository.GetAll();
         }
+
+        private void Filter()
+        {
+            salaryFilterList = salaryList;
+            string departmentId = "All";
+            string status = "All";
+            int month = view.dtpChooseMonth.Value.Month;
+            int year = view.dtpChooseMonth.Value.Year;
+            if (this.view.cmbDepartment.SelectedItem != null && this.view.cmbDepartment.SelectedItem.ToString() != "All")
+            {
+                string selectedItem = this.view.cmbDepartment.SelectedItem.ToString();
+                departmentId = selectedItem.Split(new string[] { " - " }, StringSplitOptions.None)[0];
+            }
+            if (this.view.cmbStatus.SelectedItem != null) status = this.view.cmbStatus.SelectedItem.ToString();
+            salaryFilterList = repository.LINQ_Filter(salaryList, departmentId, status, month, year);
+            this.view.ShowSalaryList(salaryFilterList);
+        }
     }
+
 }

@@ -131,13 +131,6 @@ namespace HRMngt.View
             }
         }
 
-        private void picLogo_Click(object sender, EventArgs e)
-        {
-            IMainView view = new MainView();
-            new MainViewPresenter(view, currentUser);
-
-        }
-
         public void ShowUserList(IEnumerable<UserModel> userList)
         {
             if (userList != null)
@@ -206,6 +199,11 @@ namespace HRMngt.View
                 Image image = Image.FromStream(ms);
                 return image;
             }
+        }
+
+        public void ShowIndividualInfo(UserModel userModel)
+        {
+            
         }
     }
 }

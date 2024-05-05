@@ -24,7 +24,7 @@ namespace HRMngt.Presenter
         private IEnumerable<UserModel> userList;
         private IEnumerable<UserModel> filterUser;
         private UserModel userModel;
-
+        private SaveFileDialog saveExcel = new SaveFileDialog();
 
         public UserPresenter(IUserView view, IUserRepository repository, UserModel userModel)
         {
@@ -32,14 +32,96 @@ namespace HRMngt.Presenter
             this.repository = repository;
             this.userModel = userModel;
             userList = repository.GetAll();
+
+            // Event Handler
             this.view.LoadUserDialogToAddEvent += LoadUserDialogToAddEvent;
             this.view.LoadUserDialogToEditEvent += LoadUserDialogToEditEvent;
             this.view.FilterUser += FilterUser;
             this.view.DeleteEvent += DeleteUser;
+            this.view.ExportExcelEvent += ExportExcel;
 
 
             SetRole(userModel);
             this.view.Show();
+
+            saveExcel.Filter = "Excel Files|*.xlsx;*.xls";
+            saveExcel.Title = "Save an Excel File";
+        }
+
+        private void ExportExcel(object sender, EventArgs e)
+        {
+            if (saveExcel.ShowDialog() == DialogResult.OK)
+            {
+                Microsoft.Office.Interop.Excel.Application excel;
+                Microsoft.Office.Interop.Excel.Workbook workbook;
+                Microsoft.Office.Interop.Excel.Worksheet worksheet;
+                try
+                {
+                    excel = new Microsoft.Office.Interop.Excel.Application();
+                    excel.Visible = false;
+                    excel.DisplayAlerts = false;
+                    workbook = excel.Workbooks.Add(Type.Missing);
+                    worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets["Sheet1"];
+                    worksheet.Name = "Quản lý nhân viên";
+
+
+                    // Header
+                    // Thêm header cho bảng lương
+                    worksheet.Cells[1, 1] = "UserID";
+                    worksheet.Cells[1, 2] = "UserName";
+                    worksheet.Cells[1, 3] = "Email";
+                    worksheet.Cells[1, 4] = "Phone";
+                    worksheet.Cells[1, 5] = "Address";
+                    worksheet.Cells[1, 6] = "Birthday";
+                    worksheet.Cells[1, 7] = "Sex";
+                    worksheet.Cells[1, 8] = "Position";
+                    worksheet.Cells[1, 9] = "Deal salary";
+                    worksheet.Cells[1, 10] = "Contract type";
+                    worksheet.Cells[1, 11] = "On-boarding";
+                    worksheet.Cells[1, 12] = "Close date";
+                    worksheet.Cells[1, 13] = "Scan contract";
+                    worksheet.Cells[1, 14] = "Status";
+                    worksheet.Cells[1, 15] = "Role";
+
+                    // Contents
+                    int i = 0;
+                    foreach (var user in filterUser)
+                    {
+                        worksheet.Cells[i + 2, 1] = user.Id;
+                        worksheet.Cells[i + 2, 2] = user.Name;
+                        worksheet.Cells[i + 2, 3] = user.Email;
+                        worksheet.Cells[i + 2, 4] = user.Phone;
+                        worksheet.Cells[i + 2, 5] = user.Address;
+                        worksheet.Cells[i + 2, 6] = user.Birthday;
+                        worksheet.Cells[i + 2, 7] = user.Sex;
+                        worksheet.Cells[i + 2, 8] = user.Position;
+                        worksheet.Cells[i + 2, 9] = user.Salary;
+                        worksheet.Cells[i + 2, 10] = user.Contract_type;
+                        worksheet.Cells[i + 2, 11] = user.On_boarding;
+                        worksheet.Cells[i + 2, 12] = user.Close_date;
+                        worksheet.Cells[i + 2, 13] = user.Scan_contract;
+                        worksheet.Cells[i + 2, 14] = user.Status;
+                        worksheet.Cells[i + 2, 15] = user.Roles;
+                        i++;
+                    }
+
+                    workbook.SaveAs(saveExcel.FileName);
+                    workbook.Close();
+                    excel.Quit();
+                    MessageBox.Show("Xuất dữ liệu ra Excel thành công!");
+                    SucessPopUp.ShowPopUp();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    FailPopUp.ShowPopUp();
+                }
+                finally
+                {
+                    workbook = null;
+                    worksheet = null;
+                }
+            }
         }
 
         private void FilterUser(object sender, EventArgs e)
@@ -126,7 +208,7 @@ namespace HRMngt.Presenter
             if (user.Photo == null || user.Photo.Length == 0)
             {
                 // Đường dẫn đến tệp hình ảnh mặc định
-                string defaultImagePath = @"D:\hris-dotnet-mhieu\hris-dotnet-mhieu\HRMngt\Resources\no-image.jpg";
+                string defaultImagePath = @"C:\Users\Surface\source\repos\hris-dotnet-niie\HRMngt\Resources\no-image.jpg";
                 byte[] defaultImageBytes = File.ReadAllBytes(defaultImagePath);
                 dialog.Photo = ByteArrayToImage(defaultImageBytes);
             }
@@ -373,6 +455,7 @@ namespace HRMngt.Presenter
             {
                 
                 userList = repository.GetAll();
+                filterUser = userList;
                 this.view.ShowUserList(userList, userModel);
             }
         }

@@ -59,8 +59,11 @@
             this.lblIndividualName = new System.Windows.Forms.Label();
             this.picIndividualAva = new System.Windows.Forms.PictureBox();
             this.pnlNavbar = new System.Windows.Forms.Panel();
-            this.pnlSupport = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.btnHelp = new System.Windows.Forms.Button();
+            this.pnlSupport = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.btnRequest = new System.Windows.Forms.Button();
             this.pnlDepartment = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.btnDepartment = new System.Windows.Forms.Button();
             this.pnlTimeKeeping = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -84,9 +87,6 @@
             this.pnlThumbTicket = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnThumbTicket = new System.Windows.Forms.Button();
-            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.btnRequest = new System.Windows.Forms.Button();
             this.lblHeader.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.pnlIndividualHeader.SuspendLayout();
@@ -98,8 +98,12 @@
             this.pnlIndividualInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picIndividualAva)).BeginInit();
             this.pnlNavbar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlSupport)).BeginInit();
             this.pnlSupport.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDepartment)).BeginInit();
             this.pnlDepartment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlTimeKeeping)).BeginInit();
@@ -117,10 +121,6 @@
             this.pnlSalaryDetail.SuspendLayout();
             this.pnlCalendar.SuspendLayout();
             this.pnlThumbTicket.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
-            this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
-            this.kryptonPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblHeader
@@ -237,7 +237,6 @@
             this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picLogo.TabIndex = 0;
             this.picLogo.TabStop = false;
-            this.picLogo.Click += new System.EventHandler(this.picLogo_Click);
             // 
             // pnlIndividualInfo
             // 
@@ -495,16 +494,16 @@
             this.pnlNavbar.Size = new System.Drawing.Size(90, 1083);
             this.pnlNavbar.TabIndex = 1;
             // 
-            // pnlSupport
+            // kryptonPanel2
             // 
-            this.pnlSupport.Controls.Add(this.kryptonPanel1);
-            this.pnlSupport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSupport.Location = new System.Drawing.Point(0, 480);
-            this.pnlSupport.Name = "pnlSupport";
-            this.pnlSupport.Size = new System.Drawing.Size(90, 80);
-            this.pnlSupport.StateCommon.Color1 = System.Drawing.Color.White;
-            this.pnlSupport.StateCommon.Color2 = System.Drawing.Color.White;
-            this.pnlSupport.TabIndex = 7;
+            this.kryptonPanel2.Controls.Add(this.btnHelp);
+            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonPanel2.Location = new System.Drawing.Point(0, 560);
+            this.kryptonPanel2.Name = "kryptonPanel2";
+            this.kryptonPanel2.Size = new System.Drawing.Size(90, 80);
+            this.kryptonPanel2.StateCommon.Color1 = System.Drawing.Color.White;
+            this.kryptonPanel2.StateCommon.Color2 = System.Drawing.Color.White;
+            this.kryptonPanel2.TabIndex = 9;
             // 
             // btnHelp
             // 
@@ -518,6 +517,41 @@
             this.btnHelp.TabIndex = 4;
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHelp.UseVisualStyleBackColor = true;
+            // 
+            // pnlSupport
+            // 
+            this.pnlSupport.Controls.Add(this.kryptonPanel1);
+            this.pnlSupport.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSupport.Location = new System.Drawing.Point(0, 480);
+            this.pnlSupport.Name = "pnlSupport";
+            this.pnlSupport.Size = new System.Drawing.Size(90, 80);
+            this.pnlSupport.StateCommon.Color1 = System.Drawing.Color.White;
+            this.pnlSupport.StateCommon.Color2 = System.Drawing.Color.White;
+            this.pnlSupport.TabIndex = 7;
+            // 
+            // kryptonPanel1
+            // 
+            this.kryptonPanel1.Controls.Add(this.btnRequest);
+            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.Size = new System.Drawing.Size(90, 80);
+            this.kryptonPanel1.StateCommon.Color1 = System.Drawing.Color.White;
+            this.kryptonPanel1.StateCommon.Color2 = System.Drawing.Color.White;
+            this.kryptonPanel1.TabIndex = 8;
+            // 
+            // btnRequest
+            // 
+            this.btnRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRequest.Image = global::HRMngt.Properties.Resources.quote_request__1_;
+            this.btnRequest.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRequest.Location = new System.Drawing.Point(-18, -12);
+            this.btnRequest.Name = "btnRequest";
+            this.btnRequest.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.btnRequest.Size = new System.Drawing.Size(242, 102);
+            this.btnRequest.TabIndex = 10;
+            this.btnRequest.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRequest.UseVisualStyleBackColor = true;
             // 
             // pnlDepartment
             // 
@@ -788,41 +822,6 @@
             this.btnThumbTicket.Text = "Khen thưởng/Kỷ luật";
             this.btnThumbTicket.UseVisualStyleBackColor = false;
             // 
-            // kryptonPanel1
-            // 
-            this.kryptonPanel1.Controls.Add(this.btnRequest);
-            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(90, 80);
-            this.kryptonPanel1.StateCommon.Color1 = System.Drawing.Color.White;
-            this.kryptonPanel1.StateCommon.Color2 = System.Drawing.Color.White;
-            this.kryptonPanel1.TabIndex = 8;
-            // 
-            // kryptonPanel2
-            // 
-            this.kryptonPanel2.Controls.Add(this.btnHelp);
-            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.kryptonPanel2.Location = new System.Drawing.Point(0, 560);
-            this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(90, 80);
-            this.kryptonPanel2.StateCommon.Color1 = System.Drawing.Color.White;
-            this.kryptonPanel2.StateCommon.Color2 = System.Drawing.Color.White;
-            this.kryptonPanel2.TabIndex = 9;
-            // 
-            // btnRequest
-            // 
-            this.btnRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRequest.Image = global::HRMngt.Properties.Resources.quote_request__1_;
-            this.btnRequest.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRequest.Location = new System.Drawing.Point(-18, -12);
-            this.btnRequest.Name = "btnRequest";
-            this.btnRequest.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.btnRequest.Size = new System.Drawing.Size(242, 102);
-            this.btnRequest.TabIndex = 10;
-            this.btnRequest.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRequest.UseVisualStyleBackColor = true;
-            // 
             // MainInvidiualView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
@@ -852,8 +851,12 @@
             this.pnlIndividualInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picIndividualAva)).EndInit();
             this.pnlNavbar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            this.kryptonPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlSupport)).EndInit();
             this.pnlSupport.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            this.kryptonPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlDepartment)).EndInit();
             this.pnlDepartment.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlTimeKeeping)).EndInit();
@@ -871,10 +874,6 @@
             this.pnlSalaryDetail.ResumeLayout(false);
             this.pnlCalendar.ResumeLayout(false);
             this.pnlThumbTicket.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
-            this.kryptonPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
-            this.kryptonPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -26,7 +26,7 @@ namespace HRMngt._Repository.Salary
                 command.Parameters.Add("@get_month", SqlDbType.Int).Value = salary.Month;
                 command.Parameters.Add("@get_year", SqlDbType.Int).Value = salary.Year;
                 command.Parameters.Add("@workday", SqlDbType.Int).Value = salary.Workday;
-                command.Parameters.Add("@real_workday", SqlDbType.Int).Value = salary.Workday;
+                command.Parameters.Add("@real_workday", SqlDbType.Int).Value = salary.RealWorkday;
                 command.Parameters.Add("@welfare", SqlDbType.Int).Value = salary.Welfare;
                 command.Parameters.Add("@thumb_total", SqlDbType.Int).Value = salary.ThumbTotal;
                 command.Parameters.Add("@ticket_total", SqlDbType.Int).Value = salary.TicketTotal;
@@ -64,7 +64,7 @@ namespace HRMngt._Repository.Salary
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "UPDATE salary SET workday=@Workday, real_workday=@RealWorkday, thumb_total=@ThumbTotal, ticket_total=@TicketTotal, tax=@Tax, total_salary=@TotalSalary, res=@Res, status=@Status WHERE (userID = @UserID AND get_month= @Month AND get_year = @Year)";
+                command.CommandText = "UPDATE salary SET workday=@Workday, real_workday=@RealWorkday, thumb_total=@ThumbTotal, ticket_total=@TicketTotal, tax=@Tax, total_salary=@TotalSalary, res=@Res, status=@Status, welfare = @Welfare WHERE (userID = @UserID AND get_month= @Month AND get_year = @Year)";
                 command.Parameters.Add("@Workday", SqlDbType.Char).Value = salaryModel.Workday;
                 command.Parameters.Add("@RealWorkday", SqlDbType.NVarChar).Value = salaryModel.RealWorkday;
                 command.Parameters.Add("@ThumbTotal", SqlDbType.Int).Value = salaryModel.ThumbTotal;
@@ -74,6 +74,7 @@ namespace HRMngt._Repository.Salary
                 // Use ternary operator to handle null values for Response
                 command.Parameters.Add("@Res", SqlDbType.NVarChar).Value = salaryModel.Res ?? (object)DBNull.Value;
                 command.Parameters.Add("@Status", SqlDbType.VarChar).Value = salaryModel.Status;
+                command.Parameters.Add("@Welfare", SqlDbType.Int).Value = salaryModel.Welfare;
                 command.Parameters.Add("@UserID", SqlDbType.Char).Value = salaryModel.UserId;
                 command.Parameters.Add("@Month", SqlDbType.Int).Value = salaryModel.Month;
                 command.Parameters.Add("@Year", SqlDbType.Int).Value = salaryModel.Year;
@@ -145,10 +146,11 @@ namespace HRMngt._Repository.Salary
             return query;
         }
 
-        public IEnumerable<SalaryModel> LINQ_Filter(IEnumerable<SalaryModel> salaryList, string departmentId, string status)
+        public IEnumerable<SalaryModel> LINQ_Filter(IEnumerable<SalaryModel> salaryList, string departmentId, string status, int month, int year)
         {
             var query = salaryList;
             //MessageBox.Show(departmentId);
+            query = query.Where(salaryModel => salaryModel.Month == month && salaryModel.Year == year);
             if (departmentId != "All")
                 query = query.Where(salaryModel => salaryModel.DepartmentId == departmentId);
             if (status != "All")

@@ -45,7 +45,7 @@ namespace HRMngt.Views.User
             };
             cbDepartment.SelectedValueChanged += delegate { FilterUser?.Invoke(this, EventArgs.Empty); };
             cbStatus.SelectedValueChanged += delegate { FilterUser?.Invoke(this, EventArgs.Empty); };
-
+            btnExcel.Click += delegate { ExportExcelEvent?.Invoke(this, EventArgs.Empty); };
 
         }
         private static UserView instance;
@@ -77,6 +77,7 @@ namespace HRMngt.Views.User
         public event EventHandler GeneratedEventLoadEmail;
         public event EventHandler DeleteAll;
         public event EventHandler FilterUser;
+        public event EventHandler ExportExcelEvent;
 
         public static UserView GetInstance(Form parentContainer)
         {
@@ -213,53 +214,7 @@ namespace HRMngt.Views.User
             UserDialog dialog = new UserDialog("Sửa");
             return dialog;
         }
-        private void ToExcel(DataGridView dataGridView1, string fileName)
-        {
-            Microsoft.Office.Interop.Excel.Application excel;
-            Microsoft.Office.Interop.Excel.Workbook workbook;
-            Microsoft.Office.Interop.Excel.Worksheet worksheet;
-            try
-            {
-                excel = new Microsoft.Office.Interop.Excel.Application();
-                excel.Visible = false;
-                excel.DisplayAlerts = false;
-                workbook = excel.Workbooks.Add(Type.Missing);
-                worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets["Sheet1"];
-                worksheet.Name = "Quản lý nhân viên";
-                for (int i = 0; i < dataGridView1.ColumnCount; i++)
-                {
-                    worksheet.Cells[1, i + 1] = dataGridView1.Columns[i].HeaderText;
-                }
-                for (int i = 0; i < dataGridView1.RowCount; i++)
-                {
-                    for (int j = 0; j < dataGridView1.ColumnCount; j++)
-                    {
-                        worksheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
-                    }
-                }
-                workbook.SaveAs(fileName);
-                workbook.Close();
-                excel.Quit();
-                MessageBox.Show("Xuất dữ liệu ra Excel thành công!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                workbook = null;
-                worksheet = null;
-            }
-        }
-
-        private void btnExcel_Click(object sender, EventArgs e)
-        {
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                ToExcel(dgvUserList, saveFileDialog1.FileName);
-            }
-        }
+       
 
         private void UserView_Load(object sender, EventArgs e)
         {

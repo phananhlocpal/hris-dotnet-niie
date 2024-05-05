@@ -33,6 +33,7 @@ namespace HRMngt.View
         event EventHandler LoadUserDialogToEditEvent;
         event EventHandler LoadUserDialogToAddEvent;
         event EventHandler AddNewDepartmentDialog;
+        event EventHandler ExportExcelEvent;
 
         event EventHandler DeleteAll;
         event EventHandler FilterUser;

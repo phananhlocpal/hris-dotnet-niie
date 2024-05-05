@@ -33,7 +33,7 @@ namespace HRMngt.Views
         event EventHandler ShowRequestView;
 
         void ShowUserList(IEnumerable<UserModel> userList);
-
+        void ShowIndividualInfo(UserModel userModel);
         void Show();
         void Hide();
     }

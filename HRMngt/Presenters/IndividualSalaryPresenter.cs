@@ -1,12 +1,14 @@
 ﻿using HRMngt._Repository.Calendar;
 using HRMngt._Repository.Salary;
 using HRMngt.Models;
+using HRMngt.popup;
 using HRMngt.Views.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace HRMngt.Presenters
 {
@@ -18,6 +20,7 @@ namespace HRMngt.Presenters
         private IIndividualSalaryDialog salaryDialog;
         private IEnumerable<CalendarModel> calendarList;
         private IEnumerable<SalaryModel> salaryList;
+        private SalaryModel viewSalaryModel;
 
         public IndividualSalaryPresenter(IIndividualSalaryView salaryView, ISalaryRepository salaryRepository, UserModel userModel)
         {
@@ -72,23 +75,39 @@ namespace HRMngt.Presenters
             int year = selectedDate.Year;
 
             // Show dialog
-            SalaryModel salaryModel = salaryRepository.LINQ_GetModelByPK(salaryList, userModel.Id, month, year);
-            salaryDialog = new IndividualSalaryDialog();
-            salaryDialog.ShowSalaryInfo(salaryModel, this.userModel);
+            viewSalaryModel = salaryRepository.LINQ_GetModelByPK(salaryList, userModel.Id, month, year);
+            salaryDialog = new IndividualSalaryDialog("user");
+            salaryDialog.ShowSalaryInfo(viewSalaryModel, this.userModel);
 
             // Event Handler
             salaryDialog.ConfirmEvent += Dialog_ConfirmEvent;
-            salaryDialog.ResponseEvent += Dialog_ResponseEvent;
+            salaryDialog.ResponseEvent += Dialog_ComplainEvent;
         }
 
-        private void Dialog_ResponseEvent(object sender, EventArgs e)
+        private void Dialog_ComplainEvent(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            string input = Microsoft.VisualBasic.Interaction.InputBox("Mời bạn nhập phản hồi:", "Nhập phản hồi", "") + " - " + DateTime.Now.ToString() + " " + userModel.Id + " " + userModel.Name;
+
+            if (!string.IsNullOrEmpty(input))
+            {
+                viewSalaryModel.Res += "\n" + input;
+                salaryRepository.Update(viewSalaryModel);
+                salaryList = salaryRepository.GetAll();
+                salaryDialog.rtbRes.Text = viewSalaryModel.Res;
+            }
+            else
+            {
+                MessageBox.Show("Bạn chưa nhập dữ liệu!");
+            }
         }
 
         private void Dialog_ConfirmEvent(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            viewSalaryModel.Status = "Confirmed";
+            salaryRepository.Update(viewSalaryModel);
+            salaryList = salaryRepository.GetAll();
+
+            SucessPopUp.ShowPopUp();
         }
 
 

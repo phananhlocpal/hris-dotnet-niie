@@ -41,7 +41,7 @@ namespace HRMngt.Views.Dialogs
 
         public IndividualSalaryDialog ShowSalaryDialogToView()
         {
-            IndividualSalaryDialog individualSalaryDialog = new IndividualSalaryDialog();
+            IndividualSalaryDialog individualSalaryDialog = new IndividualSalaryDialog("user");
             return individualSalaryDialog;
 
         }

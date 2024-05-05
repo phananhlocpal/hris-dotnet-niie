@@ -41,7 +41,8 @@ namespace HRMngt.Presenters
             if (userModel != null && !string.IsNullOrEmpty(userModel.Username))
             {
                 IMainView main = new MainView();
-                new MainViewPresenter(main, userModel);
+                IMainIndividualView individualView = new MainInvidiualView(userModel);
+                new MainViewPresenter(main, userModel, individualView);
                 this.view.Hide();
 
             }

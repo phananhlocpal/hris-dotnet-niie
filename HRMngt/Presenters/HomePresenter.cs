@@ -52,11 +52,29 @@ namespace HRMngt.Presenters
             if (calendarRepository.LINQ_checkExistDate(calendarList, today))
             {
                 CalendarModel calendar = calendarRepository.LINQ_GetModelByUserIdNDate(calendarList, userModel.Id, today);
-                calendar.RealCheckOut = DateTime.Now.TimeOfDay;
-                calendarRepository.Update(calendar);
-
+                if (calendar.Status != "Approved")
+                {
+                    MessageBox.Show("Lịch làm ngày hôm nay của bạn chưa được phê duyệt!");
+                    FailPopUp.ShowPopUp();
+                }    
+                else
+                {
+                    if (calendar.RealCheckIn == null)
+                    {
+                        MessageBox.Show("Bạn chưa checkin nên không thể checkout!");
+                        FailPopUp.ShowPopUp();
+                    }    
+                    else
+                    {
+                        calendar.RealCheckOut = DateTime.Now.TimeOfDay;
+                        calendar.Status = "Confirmed";
+                        calendarRepository.Update(calendar);
+                        SucessPopUp.ShowPopUp();
+                    }    
+                }
                 this.dialog.Close();
-                SucessPopUp.ShowPopUp();
+
+
             }
             else
             {
@@ -75,11 +93,19 @@ namespace HRMngt.Presenters
             if (calendarRepository.LINQ_checkExistDate(calendarList,today))
             {
                 CalendarModel calendar = calendarRepository.LINQ_GetModelByUserIdNDate(calendarList, userModel.Id, today);
-                calendar.RealCheckIn = DateTime.Now.TimeOfDay;
-                calendarRepository.Update(calendar);
-
+                if (calendar.Status != "Approved")
+                {
+                    MessageBox.Show("Lịch làm ngày hôm nay của bạn chưa được phê duyệt!");
+                    FailPopUp.ShowPopUp();
+                }    
+                else
+                {
+                    calendar.RealCheckIn = DateTime.Now.TimeOfDay;
+                    calendarRepository.Update(calendar);
+                    SucessPopUp.ShowPopUp();
+                }
                 this.dialog.Close();
-                SucessPopUp.ShowPopUp();
+
             }
             else
             {

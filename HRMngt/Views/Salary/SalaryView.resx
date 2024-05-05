@@ -142,6 +142,15 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnExportSalary.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAIkAAAA8CAYAAABSI5kPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAC4SURBVHhe7dKhDYAwAABBJunKsB9j4AsEg2nyC5w49fa3
+        ccxzHPcNa/N8J1kF+JmEZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgmIZmE
+        ZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgm
+        IZmEZBKSSUgmIZmEZBKSSUgmIZmEtI19XqsAn31eD855z2ZrGrwhAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="btnExportExcel.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIwAAAA7CAYAAACpD2LzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -158,15 +167,6 @@
         97jWgr3N+5vhL8B+zAAxA8QMEDNAzAAxA8QMEDNAzAAxA8QMEDNAzAAxA8QMEDNAzAAxA8QMEDNAzAAx
         A8QMEDNAzAAxA8QMEDNAzAAxA8QMEDNAzAAxA8QMEDNAzAAxA8QMEDNAzAAxA8QMEDNAzAAxA8QMEDNA
         zAAxA8QMEDNAzAAxA8QMEDNAzAA5xjmfvwBbOefzAlrjI7GprVNHAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="btnExportSalary.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAIkAAAA8CAYAAABSI5kPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAC4SURBVHhe7dKhDYAwAABBJunKsB9j4AsEg2nyC5w49fa3
-        ccxzHPcNa/N8J1kF+JmEZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgmIZmE
-        ZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgmIZmEZBKSSUgm
-        IZmEZBKSSUgmIZmEZBKSSUgmIZmEtI19XqsAn31eD855z2ZrGrwhAAAAAElFTkSuQmCC
 </value>
   </data>
 </root>
