@@ -11,9 +11,9 @@ namespace HRMngt.Views.Dialogs
 {
     public interface ITimeKeepingView
     {
-        DateTimePicker dtpStart {  get; set; }
+        DateTimePicker dtpStart { get; set; }
         DateTimePicker dtpEnd { get; set; }
-        ComboBox cmbStatus { get; set; } 
+        ComboBox cmbStatus { get; set; }
         ComboBox cmbDepartment { get; set; }
         TextBox txtUserId { get; set; }
         DataGridView dgvTimeKeepingTable { get; set; }
@@ -31,3 +31,6 @@ namespace HRMngt.Views.Dialogs
         void Show();
     }
 }
+
+
+

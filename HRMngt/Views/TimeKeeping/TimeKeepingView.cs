@@ -33,6 +33,7 @@ namespace HRMngt.Views.Dialogs
             dtpEnd.ValueChanged += delegate { FilterEvent?.Invoke(this, EventArgs.Empty); };
             cmbDepartment.SelectedValueChanged += delegate { FilterEvent?.Invoke(this, EventArgs.Empty); };
             cmbStatus.SelectedValueChanged += delegate { FilterEvent?.Invoke(this, EventArgs.Empty); };
+            txtUserId.TextChanged += delegate { FilterEvent?.Invoke(this, EventArgs.Empty); };
             // Edit Event
             dgvTimeKeepingTable.CellContentClick += (sender, e) =>
             {
@@ -97,10 +98,39 @@ namespace HRMngt.Views.Dialogs
                     dgvTimeKeepingTable.Rows[rowIndex].Cells[6].Value = calendarModel.RealCheckIn;
                     dgvTimeKeepingTable.Rows[rowIndex].Cells[7].Value = calendarModel.RealCheckOut;
                     dgvTimeKeepingTable.Rows[rowIndex].Cells[8].Value = calendarModel.Status;
+
+                    // Create and add approve button
+                    DataGridViewButtonCell approveButtonCell = new DataGridViewButtonCell();
+                    approveButtonCell.Value = "Approve";
+                    approveButtonCell.Style.BackColor = Color.Green;
+                    approveButtonCell.Style.ForeColor = Color.White;
+                    dgvTimeKeepingTable.Rows[rowIndex].Cells[11] = approveButtonCell;
+
+                    // Create and add reject button
+                    DataGridViewButtonCell rejectButtonCell = new DataGridViewButtonCell();
+                    rejectButtonCell.Value = "Not Approve";
+                    rejectButtonCell.Style.BackColor = Color.Red; // Set background color
+                    rejectButtonCell.Style.ForeColor = Color.White; // Set text color
+                    dgvTimeKeepingTable.Rows[rowIndex].Cells[12] = rejectButtonCell;
+
+                    if (calendarModel.Status == "Approved" || calendarModel.Status == "Not Approved")
+                    {
+                        dgvTimeKeepingTable.Rows[rowIndex].Cells[11].ReadOnly = true;
+                        dgvTimeKeepingTable.Rows[rowIndex].Cells[12].ReadOnly = true;
+                    }
                 }
+
+                // Set column width for buttons
+                dgvTimeKeepingTable.Columns[9].Width = 200; // Set width for column 9
+                dgvTimeKeepingTable.Columns[10].Width = 200; // Set width for column 10
             }
-            else dgvTimeKeepingTable.Rows.Clear();
+            else
+            {
+                dgvTimeKeepingTable.Rows.Clear();
+            }
         }
+
+
 
         public void ShowDepartmentList(IEnumerable<DepartmentModel> departmentList)
         {
@@ -108,7 +138,7 @@ namespace HRMngt.Views.Dialogs
             cmbDepartment.Items.Add("All");
             if (departmentList != null)
             {
-                foreach (var departmentModel in  departmentList)
+                foreach (var departmentModel in departmentList)
                 {
                     cmbDepartment.Items.Add($"{departmentModel.Id} - {departmentModel.Name}");
                 }
@@ -117,42 +147,42 @@ namespace HRMngt.Views.Dialogs
             cmbStatus.SelectedIndex = 0;
         }
 
-        
 
-        DateTimePicker ITimeKeepingView.dtpStart 
+
+        DateTimePicker ITimeKeepingView.dtpStart
         {
             get => dtpStart;
-            set => throw new NotImplementedException(); 
+            set => throw new NotImplementedException();
         }
         DateTimePicker ITimeKeepingView.dtpEnd
         {
-            get => dtpEnd; 
-            set => throw new NotImplementedException(); 
+            get => dtpEnd;
+            set => throw new NotImplementedException();
         }
-        ComboBox ITimeKeepingView.cmbStatus 
+        ComboBox ITimeKeepingView.cmbStatus
         {
-            get => cmbStatus; 
-            set => throw new NotImplementedException(); 
+            get => cmbStatus;
+            set => throw new NotImplementedException();
         }
-        ComboBox ITimeKeepingView.cmbDepartment 
+        ComboBox ITimeKeepingView.cmbDepartment
         {
             get => cmbDepartment;
-            set => throw new NotImplementedException(); 
+            set => throw new NotImplementedException();
         }
         TextBox ITimeKeepingView.txtUserId
         {
             get
             {
                 if (txtUserId.Text == "")
-                    return null;    
+                    return null;
                 else return txtUserId;
             }
-            set => throw new NotImplementedException(); 
+            set => throw new NotImplementedException();
         }
-        DataGridView ITimeKeepingView.dgvTimeKeepingTable 
+        DataGridView ITimeKeepingView.dgvTimeKeepingTable
         {
             get => dgvTimeKeepingTable;
-            set => throw new NotImplementedException(); 
+            set => throw new NotImplementedException();
         }
 
         private static TimeKeepingView instance;
@@ -176,3 +206,4 @@ namespace HRMngt.Views.Dialogs
         }
     }
 }
+
